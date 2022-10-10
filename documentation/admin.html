@@ -1,0 +1,586 @@
+<html lang="en">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <title>BookMySlot | Documentation</title>
+        <meta name="description" content="Quick help to design">
+        <meta name="author" content="">
+        <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+        <link rel="stylesheet" href="css/perfect-scrollbar.css" media="all">
+        <link rel="stylesheet" href="css/font-awesome.css" media="all">
+        <link rel="stylesheet" href="css/style.css" media="all">
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/perfect-scrollbar.js"></script>
+        <!--<script type="text/javascript" src="js/bootstrap.js"></script>-->
+        <script type="text/javascript" src="js/script.js"></script>
+    </head>
+    <body data-spy="scroll" data-target="#documenter_nav_cover">
+        <div class="content-inner">
+            <div id="sidebar-btn" class="act-sidebar">
+                <i class="fa fa-bars"></i>
+            </div>
+            <div id="documenter_sidebar" class="active_menu">
+                <div id="documenter_nav_cover">
+                    <ul id="documenter_nav" class="nav ps-container ps-active-y">
+                        <li class="sidebar-title">
+                            <a class="logo" href="index.html">
+                                <img src="images/logo.png" alt="BookMySlot" width="200">
+                            </a>
+                        </li>
+                        <li class="tab-heading"><span class="tab-txt">Getting Started</span></li>
+                        <li class=""><a title="Introduction" class="scroll-a" href="index.html">
+                                <i class="fa fa-info-circle"></i><span class="tab-txt">Introduction</span>
+                            </a>
+                        </li>
+
+                        <li class="tab-heading"><span class="tab-txt">Installation</span></li>
+                        <li><a title="Installation" class="scroll-a" href="index.html">
+                                <i class="fa fa-wrench"></i><span class="tab-txt">Installation</span>
+                            </a>
+                        </li>  
+
+                        <li class="tab-heading"><span class="tab-txt">How does it work</span></li>
+                        <li class="tab-desktop active">
+                            <a id="tog-tab1" title="Admin" class="tog-tab" href="javascript:void(0)">
+                                <i class="fa fa-user"></i><span class="tab-txt">Admin</span><span class="caret"></span>
+                            </a>
+                            <ul id="tog-content1" class="tog-content">
+                                <li><a title="Mandatory Update" class="scroll-a" href="#admin_update">
+                                        <i class="fa fa-arrow-circle-o-up"></i><span class="tab-txt">Mandatory Update</span>
+                                    </a>
+                                </li>                       
+                                <li><a title="Dashboard" class="scroll-a" href="#admin_dahsboard">
+                                        <i class="fa fa-home"></i><span class="tab-txt">Dashboard</span>
+                                    </a>
+                                </li>                       
+                                <li><a title="Customers" class="scroll-a" href="#customers">
+                                        <i class="fa fa-user"></i><span class="tab-txt">Customers</span>
+                                    </a>
+                                </li>                       
+                                <li><a title="Vendor" class="scroll-a" href="#vendor">
+                                        <i class="fa fa-user-plus"></i><span class="tab-txt">Vendor</span>
+                                    </a>
+                                </li>                       
+                                <li>
+                                    <a title="Service" class="scroll-a" href="#service">
+                                        <i class="fa fa-calendar"></i><span class="tab-txt">Service</span>
+                                    </a>
+                                </li> 
+                                <li>
+                                    <a title="Event Category" class="scroll-a" href="#event">
+                                        <i class="fa fa-calendar"></i><span class="tab-txt">Event</span>
+                                    </a>
+                                </li>                       
+
+                                <li>
+                                    <a title="Report" class="scroll-a" href="#report">
+                                        <i class="fa fa-line-chart"></i><span class="tab-txt">Report</span>
+                                    </a>
+                                </li>
+
+                                <li><a title="cms_pages" class="scroll-a" href="#cms_pages">
+                                        <i class="fa fa-sliders"></i><span class="tab-txt">Content Management</span>
+                                    </a>
+                                </li>
+                                <li><a title="admin_contact" class="scroll-a" href="#admin_contact">
+                                        <i class="fa fa-reply"></i><span class="tab-txt">Contact Us</span>
+                                    </a>
+                                </li>
+                                <li><a title="Setting" class="scroll-a" href="#site_setting">
+                                        <i class="fa fa-cog"></i><span class="tab-txt">Setting</span>
+                                    </a>
+                                </li>
+                                <li><a title="Integrate On Your Web" class="scroll-a" href="#integrate_on_web">
+                                        <i class="fa fa-cog"></i><span class="tab-txt">Integrate On Your Web</span>
+                                    </a>
+                                </li>
+                                <li><a title="Language" class="scroll-a" href="#language">
+                                        <i class="fa fa-map-marker"></i><span class="tab-txt">Language</span>
+                                    </a>
+                                </li>  
+                                <li><a title="Location" class="scroll-a" href="#master">
+                                        <i class="fa fa-map-marker"></i><span class="tab-txt">Master</span>
+                                    </a>
+                                </li>                       
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a title="Features" class="scroll-a" href="vendor.html">
+                                <i class="fa fa-users"></i><span class="tab-txt">Vendor</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a title="Features" class="scroll-a" href="staff.html">
+                                <i class="fa fa-user-plus"></i><span class="tab-txt">Staff</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a title="Features" class="scroll-a" href="customer.html">
+                                <i class="fa fa-user-plus"></i><span class="tab-txt">Customer</span>
+                            </a>
+                        </li>
+
+                        <li class="tab-heading"><span class="tab-txt">Features</span></li>
+
+                        <li><a title="Features" class="scroll-a" href="features.html">
+                                <i class="fa fa-asterisk"></i><span class="tab-txt">Features</span>
+                            </a>
+                        </li>
+                        <li class="tab-heading"><span class="tab-txt">Other</span></li>
+                        <li><a title="Credits" class="scroll-a" href="credits.html">
+                                <i class="fa fa-plug"></i><span class="tab-txt">Credits</span>
+                            </a>
+                        </li>
+                        <li><a title="Support" class="scroll-a" href="support.html">
+                                <i class="fa fa-life-ring"></i><span class="tab-txt">Support</span>
+                            </a>
+                        </li>
+                        <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: -102px;">
+                            <div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div>    
+                        </div>
+                        <div class="ps-scrollbar-y-rail" style="top: 105px; height: 632px; right: 3px;">
+                            <div class="ps-scrollbar-y" style="top: 77px; height: 466px;">
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+            <div id="document-content-main" class="active_content">
+                <div id="top-header" class="top-header text-center active-top">
+                    <h1 class="product-name">BookMySlot Documentation</h1>
+                    <div class="header-buttons-block pull-right">
+                        <div class="header-buttons-block-inner">
+                            <div class="header-buttons-block-inner-content">
+                                <nav class="navbar navbar-default">
+                                    <div class="navbar-header">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-header-btns" aria-expanded="true">
+                                            <span class="sr-only">Toggle navigation</span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                        </button>
+                                    </div>
+                                    <div class="navbar-collapse collapse in" id="top-header-btns" aria-expanded="true">
+                                        <ul class="nav navbar-nav">
+                                            <li><a target="_blank" class="header-btn" href="https://bookmyslot.io/">Live Demo</a></li>
+                                        </ul>
+                                    </div>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="documenter_content">
+                    <section id="admin_update" class="section_cover">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    Mandatory Update
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                                <img alt="Login" src="images/mandatory_update.png" class="image_with_padding">                                
+                                <ol>
+                                    <li>
+                                        <b>Mandatory Update</b>.
+                                        <p>To getting started with service and event booking it require some mandatory data like.</p>
+                                        <ul>
+                                            <li>Service & Event Category creation. Admin can create category from service & event module respectively.</li>
+                                            <li>City & Location creation. Admin can create this from master module.</li>
+                                        </ul>
+                                    </li>                                    
+                                </ol>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="admin_dahsboard" class="section_cover">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    Dashboard
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                                <img alt="Login" src="images/admin_dashboard.png" class="image_with_padding">                                
+                                <ol>
+                                    <li>
+                                        <b>Admin Dashboard</b>.
+                                        <p>After login successfully Admin dashboard come up with some statistics about module.</p>
+                                        <p>Admin can able to see unverified vendor which are pending for approval from admin side.</p>
+                                        <p>Admin can see pending appointment list from dashboard. It may be service appointment or event booking.</p>
+                                    </li>                                    
+                                </ol>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="customers" class="section_cover">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    Customers
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                                <img alt="Login" src="images/manage_customer.png" class="image_with_padding">
+                                <ol>
+                                    <li>
+                                        <b>Customers</b>.
+                                        <p>1 Using this module, admin will manage all front side customers.</p>
+                                        <p>2) Admin can create new customer by clicking on plus icon and update information of customer.</p>
+                                        <p>3) Also, admin can see the number of service or event booked by customer.</p>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="vendor" class="section_cover">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    Vendor
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                                <img alt="Login" src="images/manage_vendor.png" class="image_with_padding">
+                                <ol>
+                                    <li>
+                                        <b>Vendor</b>.
+                                        <p>1) Admin can create/update/delete vendor from admin panel.</p>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="service" class="section_cover">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    Service
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                                <img alt="Login" src="images/admin_service_manage.png" class="image_with_padding">                                
+                                <ol>
+                                    <li>
+                                        <b>Service</b>
+                                        <p>Service is most important part of BookMySlot. Let's get started with how to create and what you need while creating service. Below point you have to consider while creating new service.</p>
+                                        <p>1) <b>Title :</b> This is a value to service title which you want to add.</p>
+                                        <p>2) <b>Select Service Category* :</b> Select category that represent service.</p>
+                                        <p>3) <b>Select Staff :</b> You can assign staff member to you serice If you have staff. You don't need to be worry if you are running businnes by single handed.</p>
+                                        <p>4) <b>Select City* :</b> Select city where service is provided.</p>
+                                        <p>5) <b>Select Location* :</b> Select location where service is provided.</p>
+                                        <p>6) <b>Address* :</b> Add venue/address of service.</p>
+                                        <p>7) <b>Get Direction Map Link :</b> You can add map link to get direction of service location.</p>
+                                        <p>8) <b> Description* :</b> Add description about service.</p>
+                                        <p>9) <b>Select Days* :</b> Select your working days for service. If you provide service on single day you can select single day. </p>
+                                        <p>10) <b>Slot Time * ( In Min. ) :</b> Slot time is total amount of time require for that service, you have to add value in minute.</p>
+                                        <p>11) <b>Start Time (In 24hr format)* :</b> Select start time of service from like 8:00 (morning).</p>
+                                        <p>12) <b>End Time (In 24hr format)* :</b> Selecr end time of service. You have to enter value in 24 hr format only.</p>
+                                        <p>13) <b>Padding Time ( In Min. ) :</b> You can add padding time between two consecutive time slot. Like if your first slot is of 45 min then if you add 15 min as a padding time then your next slot will be generate by adding 15 min.</p>
+                                        <p>14) <b>Do You want to allow multiple booking on same slot? * :</b> You can allowe customer to book same slot multiple time. If you select yes it will ask you "Multiple Slot Booking Limit" so you have to add total number of user can book same slot.</p>
+                                        <p>15) <b>Type * :</b> Service can be of two type free and paid.</p>
+                                        <ul>
+                                            <li>
+                                                <b>Free</b>
+                                            </li>
+                                            <li>
+                                                <b>Paid*</b>
+                                                <p>- Price *: Price that you want to set for service.</p>
+                                                <p>- Discount in Percentage: If you want to add discount of service then you can add here.</p>
+                                                <p>- From Date: You can add discount start date from where amount of discount will be consider.</p>
+                                                <p>- To Date: You can add end date for discount. After that discount will not be applied on service.</p>
+                                            </li>
+                                        </ul>
+                                        <p>16) <b>Service Image * :</b> Select images represent your service. </p>
+                                        <p>17) <b>Service FAQs :</b> If you have list of FAQ, then you can add it from here.</p>
+                                        <p>18) <b>SEO :</b>  You can add SEO details like Keyword,Description,Sog Image for that particular service.</p>
+                                    </li>                                    
+                                </ol>
+                                <hr/>
+                                <b>Service Category</b>
+                                <p>- Admin/Vendor can able to create category of service. Vendor can able to create if it is granted by admin to create category.</p>
+
+                                <b>Discount Coupon</b>
+                                <p>- Admin/Vendor can able to create discount coupon for the service that they have created.</p>
+
+                                <b>Appointment</b>
+                                <p>- Admin/Vendor can able to manage appointment from here.</p>
+                                <p>- Admin/Vendor can approve rejecte appointment.</p>
+                                <p>- Admin/Vendor can able to send reminder email to customer.</p>
+                                <p>- Admin/Vendor can able to update booking date from "Details" page.</p>
+                                <p>- Admin/Vendor can able to appointment as completed once service is completed and appointment date has been pased.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="event" class="section_cover">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    Event
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                                <img alt="Login" src="images/manage_event.png" class="image_with_padding">                                
+                                <ol>
+                                    <li>
+                                        <b>Event</b>
+                                        <p>From manage event page admin can able to create new Event and able to manage existing events. Below point you have to consider while creating new event</p>
+                                        <p>1) <b>Title*: Set event title that you want to add.</b></p>
+                                        <p>2) <b>Select Event Category*: Select cateory of event. Like Business, Meetup, Party etc.</b></p>
+                                        <p>3) <b>From Date: </b>Select date from where event will be begin.</p>
+                                        <p>4) <b>To Date: </b>Select date when event will be expired.</p>
+                                        <p>5) <b>Select City*: Select city of event.</b></p>
+                                        <p>6) <b>Select Location*: </b>Select location of event.</p>
+                                        <p>7) <b>Venue*: </b> Add venue of event.</p>
+                                        <p>8) <b>Get Direction Map Link: </b>You can add direction map link here.</p>
+                                        <p>9) <b>Description*: </b>Add description of your event, so user can get to know more about event.</p>
+                                        <p>10) <b>Ticket*: </b>In ticket section you can add multiple ticket type.</p>
+
+                                        <p>- You can create diffent ticket with different price.</p>
+                                        <p>- One added ticket will be booked then given ticket type will not be show and can not available for booking.</p>
+
+                                        <p>11) <b>Media*: </b> Upload media that shows and describe about your event.</p>
+                                        <p>12) <b>Sponsor Information: </b> You can add sponsor for that particular evemt</p>
+                                        <p>13) <b>SEO: </b>You can add SEO Keyword, description, OG Images for event.</p>
+                                        <p>14) <b>FAQs: </b> If you like to add FAQs for event you can do that from here.</p>
+
+                                    </li>                                    
+                                </ol>
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <section id="report" class="section_cover">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    Report
+                                </h3>
+
+                            </div>
+                            <div class="panel-body">
+                                <p><b> Reports section is useful for graphical visualization of information</b></p>
+                                <ol>
+                                    <li>
+                                        <b>1) Vendor Report</b>
+                                        <p> Using Vendor View report admin will quickly review the statistics about how many Vendor created on a daily basis over selected month.</p>
+                                    </li>                                    
+                                    <li>
+                                        <b>2) Customer Report</b>
+                                        <p>  Using Customer report admin will quickly review the statistics about how many new customer will be created on daily basis over selected month.</p>
+                                    </li>                                    
+                                    <li>
+                                        <b>3) Appointment Report</b>
+                                        <p>Using Appointment report admin will quickly review the statistics about how many new appointments will be created by customer on daily basis over selected month.</p>
+                                    </li>                                    
+                                </ol>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="cms_pages" class="section_cover">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    Content Management
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                                <img alt="cms_pages" src="images/manage_cms.png" class="image_with_padding">                                
+                                <ol>
+                                    <li>
+                                        <b>We have CMS pages Module on admin side. From there admin can able to create New CMS page, update CMS page content.</b>
+                                        <p>Only Active CMS pages will be displayed on front side.</p>
+                                    </li>                                    
+                                </ol>
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <section id="admin_contact" class="section_cover">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    Contact Us
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                                <ol>
+                                    <li>
+                                        <b>For admin we have contact us page which list the request that got from customer</b>
+                                        <p>Contact request is of two type.</p>
+                                        <ul>
+                                            <li>General Contact Request</li>
+                                            <li>Event/Service Inquiry Request</li>
+                                        </ul>
+                                    </li>                                    
+                                </ol>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="site_setting" class="section_cover">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    Site Setting
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                                <img alt="Login" src="images/site_setting.png" class="image_with_padding">
+                                <ol>
+                                    <li><b>Site Setting</b>.
+                                        <p>Using this module admin can setup site detail like as site name, email, phone, logo, home page and social media detail that you want to setup</p>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </section>
+
+
+
+
+
+                    <section id="email_setting" class="section_cover">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    Email Setting
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                                <img alt="Login" src="images/email_setting.png" class="image_with_padding">
+                                <ol>
+                                    <li><b>Email Setting</b>.
+                                        <p>Using this module admin can setup your email detail like as SMTP Host, Username, Password, Port and SMTP Secure</p>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="business_setting" class="section_cover">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    Business Setting
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                                <img alt="Login" src="images/business_setting.png" class="image_with_padding">
+                                <ol>
+                                    <li><b>Business Setting</b>.
+                                        <p>Using this module admin can setup commission in percentage and minimum vendor payout.</p>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="display_setting" class="section_cover">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    Display Setting
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                                <img alt="Login" src="images/display_setting.png" class="image_with_padding">
+                                <ol>
+                                    <li><b>Display Setting</b>.
+                                        <p>Using this module admin can enable/disable functionality for the  module as well as  update display setting for header / footer color, no. of records display on load more etc...</p>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="payment-setting" class="section_cover">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    Payment Setting
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                                <img alt="Login" src="images/payment_setting.png" class="image_with_padding">
+                                <ol>
+                                    <li><b>Payment Setting</b>.
+                                        <p>Using this module admin can setup your payment detail like as Stripe, Paypal and Cash(Offline).</p>
+                                    </li>
+                                    <li>2Checkout:</li>
+                                    <li>If you like register sandbox account then <a href="https://sandbox.2checkout.com" target="_blank">https://sandbox.2checkout.com</a> or You can create live account by creating account on <a href="https://www.2checkout.com">https://www.2checkout.com</a></li>
+                                    <li>Please follow steps according to shown image to generate key details.</li>
+                                    <li><img src="images/checkout1.png"/></li>
+                                    <li><img src="images/2checkout_api_key.png"/></li>
+                                    <li><img src="images/2checkout_set_url.png"/></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </section>
+
+
+
+                    <section id="integrate_on_web" class="section_cover">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    Integrate On Your Web
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                                <img alt="Login" src="images/integrate_on_web.png" class="image_with_padding">
+                                <ol>
+                                    <li><b>Integrate On Your Web</b>.
+                                        <p>Its become easy to integrate BookMySlot on web application. You just have to copy paste code to you HTML, PHP page.</p>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <section id="language" class="section_cover">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    Language
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                                <img alt="Login" src="images/language.png" class="image_with_padding">
+                                <p>BookMySlot is language compatible, thus can be translated into multiple languages.
+                                    Whatever language you want to setup You must need to add this language from admin side
+                                </p>
+                                <p>As well as you need to translate all word for the language that you want to setup in the site</p>
+
+                            </div>
+                        </div>  
+                    </section>
+
+                    <section id="master" class="section_cover">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    Master
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                                <img alt="Login" src="images/master.png" class="image_with_padding">
+                                <br/>
+                                <b>Currency</b>
+                                <p>You can add your custom currency if you want to add. But you can't pay by Stripe or PayPal for that currency.</p>
+                                <b>City & Location</b>
+                                <p>Admin/Vendor can able to create new city & Location from master module. Vendor can able to create if it has given permission to create.</p>
+                                <b>FAQs</b>
+                                <p>Vendor can able to create FAQs for website from master module.</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

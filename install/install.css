@@ -1,0 +1,125 @@
+body{
+    background-color: #BCBDBD;
+    color: #4e5e6a;
+}
+.install-box {
+    max-width: 1000px;
+    margin: 30px auto;
+}
+.panel {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+.panel-heading, .panel-body{
+    padding: 20px;
+}
+table{
+    width: 100%;
+}
+th, td{
+    padding:5px 0;
+}
+.section{
+    padding: 15px;
+    background-color: #fff;
+    margin-bottom: 15px;
+    width: 100%;
+}
+.tab-content{
+    margin-top: 20px;
+}
+hr{
+    margin: 10px 0 0;
+}
+.status{
+    font-size: 20px;
+}
+.status{
+    font-size: 20px;
+}
+.status.fa-check-circle-o{
+    color: #00b393;
+}
+.status.fa-times-circle-o{
+    color: #d73b3b;
+}
+.loader{
+    background: url('../assets/images/loader2.gif') no-repeat;
+    height: 16px;
+    display: inline-block;
+    padding-left: 20px;
+}
+.form-group.md-form.has-error > input, .form-group.md-form.has-error > textarea.md-textarea, .form-group.md-form.has-error > .file-field input {
+    border-bottom: 1px solid #f44336;
+    box-shadow: 0 1px 0 0 #f44336;
+}
+
+
+
+
+/*wizard style*/
+.steps-form-2 {
+    display: table;
+    width: 100%;
+    position: relative; 
+}
+.steps-form-2 .steps-row-2 {
+    display: table-row; 
+}
+.steps-form-2 .steps-row-2:before {
+    top: 17px;
+    bottom: 0;
+    position: absolute;
+    content: " ";
+    width: 90%;
+    height: 2px;
+    background-color: #7283a7; 
+}
+.steps-form-2 .steps-row-2 .steps-step-2 {
+    display: table-cell;
+    text-align: center;
+    position: relative; 
+}
+.steps-form-2 .steps-row-2 .steps-step-2 p {
+    margin-top: 0.5rem; 
+}
+.steps-form-2 .steps-row-2 .steps-step-2 button[disabled] {
+    opacity: 1 !important;
+    filter: alpha(opacity=100) !important; 
+}
+.steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2 {
+    width: 70px;
+    height: 70px;
+    border: 2px solid #59698D;
+    background-color: white !important;
+    color: #59698D !important;
+    border-radius: 50%;
+    padding: 22px 18px 15px 18px;
+    margin-top: -22px; 
+}
+.steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2:hover {
+    border: 2px solid #4285F4;
+    color: #4285F4 !important;
+    background-color: white !important; 
+}
+.steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2 .fa {
+    font-size: 1.7rem; 
+}
+.fleft_side{
+    float: left;
+    width: 100%;
+}
+.loadingmessage{
+    position:fixed;
+    opacity:.7;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    z-index:9999999;
+    background:url("../assets/images/loader.gif") 50% 50% no-repeat #f9f9f9;display:none
+}
