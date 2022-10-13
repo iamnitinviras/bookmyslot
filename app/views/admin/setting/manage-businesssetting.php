@@ -55,11 +55,10 @@ if ($enable_membership == 'Y') {
                 <div class="col-md-9">
                     <?php $this->load->view('message'); ?>
 
-                    <div class="header bg-color-base p-3">
-                        <h3 class="black-text font-bold mb-0"><?php echo translate('manage'); ?> <?php echo translate('business'); ?> <?php echo translate('setting'); ?></h3>
-                    </div>
-
                     <div class="card">
+                        <div class="card-header">
+                            <h5 class="black-text font-bold mb-0"><?php echo translate('manage'); ?> <?php echo translate('business'); ?> <?php echo translate('setting'); ?></h5>
+                        </div>
                         <div class="card-body resp_mx-0">
                             <?php echo form_open('admin/save-business-setting', array('name' => 'site_business_form', 'id' => 'site_business_form')); ?>
                             <div class="row">

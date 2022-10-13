@@ -70,11 +70,12 @@ if (isset($company_data->fevicon_icon) && $company_data->fevicon_icon != "") {
                 <div class="col-md-9">
                     <?php $this->load->view('message'); ?>
 
-                    <div class="header bg-color-base p-3">
-                        <h3 class="black-text font-bold mb-0"><?php echo translate('site_setting'); ?></h3>                        
-                    </div>
-
                     <div class="card">
+
+                        <div class="card-header">
+                            <h5 class="black-text font-bold mb-0"><?php echo translate('site_setting'); ?></h5>
+                        </div>
+
                         <div class="card-body">
                             <div class="steps-form-2">
                                 <div class="steps-row-2 setup-panel-2 d-flex justify-content-between">
