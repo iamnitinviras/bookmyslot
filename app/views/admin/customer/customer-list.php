@@ -10,16 +10,19 @@
                     <div class="col-md-12 m-auto">
                         <?php $this->load->view('message'); ?>
                         <div class="header bg-color-base p-3">
-                            <div class="row">
-                                <span class="col-md-9 col-9 m-0">
-                                    <h3 class="black-text font-bold mb-0"><?php echo translate('manage'); ?> <?php echo translate('customer'); ?></h3>
-                                </span>  
-                                <span class="col-md-3 col-3 text-right m-0">
-                                    <a href='<?php echo base_url('admin/add-customer'); ?>' class="btn-floating btn-sm btn-success m-0"><i class="fa fa-plus-circle"></i></a>
-                                </span>
-                            </div>
+
                         </div>
                         <div class="card">
+                            <div class="card-header">
+                                <div class="row">
+                                <span class="col-md-9 col-9 m-0">
+                                    <h5 class="black-text font-bold mb-0"><?php echo translate('manage'); ?> <?php echo translate('customer'); ?></h5>
+                                </span>
+                                    <span class="col-md-3 col-3 text-right m-0">
+                                    <a href='<?php echo base_url('admin/add-customer'); ?>' class="btn btn-outline-success"><i class="fa fa-plus"></i></a>
+                                </span>
+                                </div>
+                            </div>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table mdl-data-table" id="example">

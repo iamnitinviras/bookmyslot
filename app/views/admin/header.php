@@ -64,7 +64,6 @@
         <div id="loadingmessage" class="loadingmessage"></div>
         <?php
         include VIEWPATH . 'admin/sidebar.php';
-///////////////////////////////////////////////////////////
         $url_segment = trim($this->uri->segment(1));
         $profile_active = "";
         $wallet_active = "";

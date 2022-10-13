@@ -7,24 +7,14 @@
             <!--Section-->
             <section class="form-light px-2 sm-margin-b-20 ">
                 <?php $this->load->view('message'); ?>
-                <div class="alert alert-info alert-dismissable mt-3">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <span class="d-block"><b> <?php echo translate('info'); ?> - </b></span>
-                    <span class="d-block">- <?php echo translate('password_length'); ?></span>
-                    <span class="d-block">- <?php echo translate('password_lowercase'); ?></span>
-                    <span class="d-block">- <?php echo translate('password_uppercase'); ?></span>
-                    <span class="d-block">- <?php echo translate('password_numeric'); ?></span>
-                </div>
 
-                <!--Header-->
-                <div class="header bg-color-base p-3">
-                    <h3 class="black-text font-bold mb-0">
-                        <?php echo translate('change'); ?> <?php echo translate('password'); ?>
-                    </h3>
-                </div>
-                <!--Header-->
 
-                <div class="card">
+
+
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h5 class="black-text font-bold mb-0"><?php echo translate('change'); ?> <?php echo translate('password'); ?></h5>
+                    </div>
                     <div class="card-body resp_mx-0">
                         <?php
                         $hidden = array("id" => $id);

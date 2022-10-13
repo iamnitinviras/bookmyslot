@@ -2,7 +2,7 @@
 
 //set the environment to production after installation
 if (!defined('ENVIRONMENT'))
-    define('ENVIRONMENT', 'pre_installation');
+    define('ENVIRONMENT', 'development');
 
 $domain = $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'];
 $domain = preg_replace('/index.php.*/', '', $domain); //remove everything after index.php
@@ -13,7 +13,7 @@ if (!empty($_SERVER['HTTPS'])) {
 }
 
 //database content
-$hostname = "enter_hostname";
-$username = "enter_db_username";
-$password = "enter_db_password";
-$database = "enter_database_name";
+$hostname = "localhost";
+$username = "root";
+$password = "";
+$database = "bookmyslot";

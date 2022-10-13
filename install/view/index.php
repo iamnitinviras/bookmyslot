@@ -240,75 +240,62 @@ $new_domain = str_replace('install/', 'admin/', $domain);
                                 <p>1. Please enter your database connection details.</p>
                                 <hr>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <div class="form-group mt-3">
                                             <label for="host">Database Host</label>
                                             <input autocomplete="off" type="text" required="required" value="" id="host"  name="host" class="form-control validate" />                                    
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <div class="form-group mt-3">
                                             <label for="dbuser">Database User</label>
                                             <input autocomplete="off"  type="text" required="required" value="" name="dbuser" class="form-control validate" autocomplete="off"/>                                    
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
+                                    <div class="col-md-3">
+                                        <div class="form-group mt-3">
                                             <label for="dbpassword">Password</label>
-                                            <input autocomplete="off"  type="password"  value="" name="dbpassword" class="form-control" autocomplete="off"/>                                    
+                                            <input autocomplete="off"  type="text"  value="" name="dbpassword" class="form-control" autocomplete="off"/>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
+                                    <div class="col-md-3">
+                                        <div class="form-group mt-3">
                                             <label for="dbname">Database Name</label>
-                                            <input autocomplete="off"  type="text" required="required" value="" name="dbname" class="form-control validate"/>                                    
+                                            <input autocomplete="off"  type="text" required="required" value="" name="dbname" class="form-control validate"/>
                                         </div>
                                     </div>
                                 </div>
-
-
-
                             </div>
 
                             <div class="section clearfix">
                                 <p>2. Please enter your account details for administration.</p>
                                 <hr />
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <div class="form-group mt-3">
                                             <label for="first_name">First Name</label>
                                             <input  autocomplete="off" type="text" required="required" value=""  id="first_name"  name="first_name" class="form-control validate" />                                    
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <div class="form-group mt-3">
                                             <label for="last_name">Last Name</label>
                                             <input autocomplete="off"  type="text" required="required"  value="" id="last_name"  name="last_name" class="form-control validate" />                                    
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
+                                    <div class="col-md-3">
+                                        <div class="form-group mt-3">
                                             <label for="email">Email</label>
-                                            <input autocomplete="off"  type="email" required="required" value="" name="email" class="form-control validate"  />                                    
+                                            <input autocomplete="off"  type="email" required="required" value="" name="email" class="form-control validate"  />
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
+                                    <div class="col-md-3">
+                                        <div class="form-group mt-3">
                                             <label for="password">Password</label>
-                                            <input autocomplete="off"  type="password" required="required" value="" name="password" class="form-control validate" />                                    
+                                            <input autocomplete="off"  type="text" required="required" value="" name="password" class="form-control validate" />
                                         </div>
                                     </div>
                                 </div>
-
-
-
-
 
                                 <button class="btn btn-kb-color btn-rounded prevBtn-2 float-left" type="button">Previous</button>
                                 <button class="btn btn-kb-color btn-rounded nextBtn-2 float-right" type="button">Next</button>

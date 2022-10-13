@@ -556,7 +556,7 @@ input[type="date"] + label::after, input[type="datetime-local"] + label::after, 
     transition: .2s opacity ease-out,.2s color ease-out;
 }
 
-/*Select*/ 
+/*Select*/
 .select-wrapper {
     position: relative;
 }
@@ -591,7 +591,7 @@ select {
 .dropdown-content {
     background-color: #fff;
     margin: 0;
-    display: none; 
+    display: none;
     min-width: 100px;
     max-height: 650px;
     overflow-y: auto;
@@ -664,7 +664,7 @@ select {
     transform-origin: 100% 100%;
 }
 .custom-control-input:checked~.custom-control-label::before {
-    color: #fff; 
+    color: #fff;
     background-color: transparent;
 }
 [type="radio"] + label {
@@ -793,10 +793,7 @@ input[type="text"].valid, input[type="text"]:focus.valid, input[type="email"].va
     word-wrap: break-word;
     cursor: pointer;
 }
-.btn.btn-sm, .btn.wishlist {
-    font-size: .6rem;
-    padding: .5rem 1.6rem;
-}
+
 .btn-floating.btn-large, .btn-floating.btn-lg {
     width: 61.1px;
     height: 61.1px;
@@ -839,10 +836,6 @@ input[type="text"].valid, input[type="text"]:focus.valid, input[type="email"].va
 .btn-floating.btn-sm i, .btn-floating.btn-small i, .btn-floating.wishlist i {
     font-size: .96154rem;
     line-height: 36.15385px;
-}
-.btn[class*="btn-outline-"] {
-    padding-top: .76rem;
-    padding-bottom: .76rem;
 }
 
 /*Fonts*/
@@ -1151,7 +1144,7 @@ table.table a {
 .modal {
     padding-right: 0 !important;
     padding-left: 0 !important;
-}   
+}
 .modal-dialog .modal-content {
     border-radius: 2px;
     border: 0;
@@ -1393,4 +1386,7 @@ table.table a {
 }
 .font_size_12{
     font-size: 12px;
+}
+.mandatory_update_section .btn{
+    margin-top: -5px !important;
 }
