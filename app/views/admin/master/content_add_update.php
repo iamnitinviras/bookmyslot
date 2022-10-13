@@ -18,15 +18,15 @@ $id = (set_value("id")) ? set_value("id") : (!empty($content) ? $content['id'] :
         <!-- Start Container -->
         <div class="container-fluid">
             <section class="form-light px-2 sm-margin-b-20 ">
-                <?php $this->load->view('message'); ?>                  
+                <?php $this->load->view('message'); ?>
 
-                <div class="header bg-color-base p-3">
-                    <h3 class="black-text font-bold mb-0">
-                        <?php echo isset($id) && $id > 0 ? translate('update') : translate('add'); ?> <?php echo translate('content_management'); ?>
-                    </h3>
-                </div>
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h5 class="black-text font-bold mb-0">
+                            <?php echo isset($id) && $id > 0 ? translate('update') : translate('add'); ?> <?php echo translate('content_management'); ?>
+                        </h5>
+                    </div>
 
-                <div class="card">
                     <div class="card-body resp_mx-0">
                         <?php
                         $form_url = $folder_name . '/save-content';

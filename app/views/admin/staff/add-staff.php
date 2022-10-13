@@ -40,15 +40,14 @@ if ($this->session->userdata('Type_' . ucfirst($this->uri->segment(1))) == 'V') 
                     <div class="col-md-12 m-auto">
                         <?php $this->load->view('message'); ?>
 
-                        <div class="header bg-color-base p-3">
-                            <?php if (isset($staff_data['id']) && $staff_data['id'] > 0): ?>
-                                <h3 class="black-text mb-0 font-bold"><?php echo translate('update'); ?> <?php echo translate('staff'); ?></h3>
-                            <?php else: ?>
-                                <h3 class="black-text mb-0 font-bold"><?php echo translate('add'); ?> <?php echo translate('staff'); ?></h3>
-                            <?php endif; ?>
-                        </div>
-
-                        <div class="card">
+                        <div class="card mt-4">
+                            <div class="card-header">
+                                <?php if (isset($staff_data['id']) && $staff_data['id'] > 0): ?>
+                                    <h5 class="black-text mb-0 font-bold"><?php echo translate('update'); ?> <?php echo translate('staff'); ?></h5>
+                                <?php else: ?>
+                                    <h5 class="black-text mb-0 font-bold"><?php echo translate('add'); ?> <?php echo translate('staff'); ?></h5>
+                                <?php endif; ?>
+                            </div>
                             <div class="card-body resp_mx-0">
                                 <?php
                                 $attributes = array('id' => 'frmStaff', 'name' => 'frmCustomer', 'method' => "post");
@@ -57,7 +56,7 @@ if ($this->session->userdata('Type_' . ucfirst($this->uri->segment(1))) == 'V') 
                                 <input type="hidden" id="folder_name" value="<?php echo $folder_name; ?>"/>
                                 <input type="hidden" name="staff_id" id="staff_id" value="<?php echo isset($staff_data['id']) ? $staff_data['id'] : 0; ?>"/>
                                 <div class="row">
-                                    <div class="col-md-6 ">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <?php echo form_label(translate('first_name') . ' : <small class ="required">*</small>', 'first_name', array('class' => 'control-label')); ?>
                                             <?php echo form_input(array('autocomplete'=>'off','id' => 'first_name', 'class' => 'form-control', 'name' => 'first_name', 'value' => $first_name, 'placeholder' => translate('first_name'))); ?>
@@ -65,7 +64,7 @@ if ($this->session->userdata('Type_' . ucfirst($this->uri->segment(1))) == 'V') 
                                         </div>
                                         <div class="error" id="first_name_validate"></div>
                                     </div>
-                                    <div class="col-md-6 ">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <?php echo form_label(translate('last_name') . ' : <small class ="required">*</small>', 'last_name', array('class' => 'control-label')); ?>
                                             <?php echo form_input(array('autocomplete'=>'off','id' => 'last_name', 'class' => 'form-control', 'name' => 'last_name', 'value' => $last_name, 'placeholder' => translate('last_name'))); ?>
@@ -73,9 +72,7 @@ if ($this->session->userdata('Type_' . ucfirst($this->uri->segment(1))) == 'V') 
                                         </div>
                                         <div class="error" id="last_name_validate"></div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6 ">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <?php echo form_label(translate('email') . ' : <small class ="required">*</small>', 'email', array('class' => 'control-label')); ?>
                                             <?php echo form_input(array('autocomplete'=>'off','type' => 'email', 'id' => 'email', 'class' => 'form-control', 'name' => 'email', 'value' => $email, 'placeholder' => translate('email'))); ?>
@@ -83,17 +80,15 @@ if ($this->session->userdata('Type_' . ucfirst($this->uri->segment(1))) == 'V') 
                                         </div>
                                         <div class="error" id="email_validate"></div>
                                     </div>
-                                    <div class="col-md-6 ">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <?php echo form_label(translate('phone') . ' :', 'phone', array('class' => 'control-label')); ?>
                                             <?php echo form_input(array('autocomplete'=>'off','minlength' => "10", 'maxlength' => "10", 'id' => 'phone', 'class' => 'form-control', 'name' => 'phone', 'value' => $phone, 'placeholder' => translate('phone'))); ?>
                                             <?php echo form_error('phone'); ?>
                                         </div>
                                         <div class="error" id="phone_validate"></div>
-                                    </div> 
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6 ">
+                                    </div>
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <?php echo form_label(translate('designation') . ' : <small class ="required">*</small>', 'email', array('class' => 'control-label')); ?>
                                             <?php echo form_input(array('autocomplete'=>'off','type' => 'text','required' => "true", 'id' => 'designation', 'class' => 'form-control', 'name' => 'designation', 'value' => $designation, 'placeholder' => translate('designation'))); ?>
@@ -101,10 +96,7 @@ if ($this->session->userdata('Type_' . ucfirst($this->uri->segment(1))) == 'V') 
                                         </div>
                                         <div class="error" id="email_validate"></div>
                                     </div>
-                                    
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="title" class="mt-2"> <?php echo translate('profile_image'); ?></label><br/>
                                             <div class="d-inline-block">
@@ -124,6 +116,10 @@ if ($this->session->userdata('Type_' . ucfirst($this->uri->segment(1))) == 'V') 
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+
+                                <div class="row">
+
                                     <div class="col-md-6">
                                         <label style="color: #757575;" > <?php echo translate('status'); ?> <small class="required">*</small></label>
                                         <div class="form-group form-inline">
