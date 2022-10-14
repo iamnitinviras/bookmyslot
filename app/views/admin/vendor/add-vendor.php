@@ -30,15 +30,14 @@ if ($this->session->userdata('Type_' . ucfirst($this->uri->segment(1))) == 'V') 
                     <div class="col-md-12 m-auto">
                         <?php $this->load->view('message'); ?>
 
-                        <div class="header bg-color-base p-3">
-                            <?php if (isset($vendor_data['id']) && $vendor_data['id'] > 0): ?>
-                                <h3 class="black-text mb-0 font-bold"><?php echo translate('update'); ?> <?php echo translate('vendor'); ?></h3>
-                            <?php else: ?>
-                                <h3 class="black-text mb-0 font-bold"><?php echo translate('add'); ?> <?php echo translate('vendor'); ?></h3>
-                            <?php endif; ?>
-                        </div>
-
-                        <div class="card">
+                        <div class="card mt-4">
+                            <div class="card-header">
+                                <?php if (isset($vendor_data['id']) && $vendor_data['id'] > 0): ?>
+                                    <h5 class="black-text mb-0 font-bold"><?php echo translate('update'); ?> <?php echo translate('vendor'); ?></h5>
+                                <?php else: ?>
+                                    <h5 class="black-text mb-0 font-bold"><?php echo translate('add'); ?> <?php echo translate('vendor'); ?></h5>
+                                <?php endif; ?>
+                            </div>
                             <div class="card-body resp_mx-0">
                                 <?php $this->load->view('message'); ?>
                                 <?php

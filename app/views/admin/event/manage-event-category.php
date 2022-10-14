@@ -31,11 +31,10 @@ if (isset($event_category_image) && $event_category_image != "") {
             <section class="form-light px-2 sm-margin-b-20 ">
                 <?php $this->load->view('message'); ?>
 
-                <div class="header bg-color-base p-3">
-                    <h3 class="black-text font-bold mb-0"><?php echo isset($id) && $id > 0 ? translate('update') : translate('add'); ?> <?php echo translate('event_category'); ?></h3>
-                </div>
-
-                <div class="card">
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h5 class="black-text font-bold mb-0"><?php echo isset($id) && $id > 0 ? translate('update') : translate('add'); ?> <?php echo translate('event_category'); ?></h5>
+                    </div>
                     <div class="card-body resp_mx-0">
                         <?php
                         if ($this->session->userdata('Type_' . ucfirst($this->uri->segment(1))) == 'V') {

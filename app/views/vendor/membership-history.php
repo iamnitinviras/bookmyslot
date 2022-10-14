@@ -13,13 +13,12 @@ include VIEWPATH . 'vendor/header.php';
                     <div class="col-md-12 m-auto">
                         <?php $this->load->view('message'); ?>
 
-                        <div class="header bg-color-base p-3">
-                            <h3 class="black-text font-bold mb-0">
-                                <?php echo translate('membership')." ".translate('payment') ?>
-                            </h3>
-                        </div>
-
-                        <div class="card">
+                        <div class="card mt-4">
+                            <div class="card-header">
+                                <h5 class="black-text font-bold mb-0">
+                                    <?php echo translate('membership')." ".translate('payment') ?>
+                                </h5>
+                            </div>
                             <div class="card-body">
                             <a class="btn btn-success pull-right" href="<?php echo base_url('vendor/membership-purchase'); ?>"><?php echo translate('purchase')." ".translate('now'); ?></a>
                                 <div class="table-responsive">

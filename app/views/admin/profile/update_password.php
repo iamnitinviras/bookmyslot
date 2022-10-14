@@ -8,9 +8,6 @@
             <section class="form-light px-2 sm-margin-b-20 ">
                 <?php $this->load->view('message'); ?>
 
-
-
-
                 <div class="card mt-4">
                     <div class="card-header">
                         <h5 class="black-text font-bold mb-0"><?php echo translate('change'); ?> <?php echo translate('password'); ?></h5>

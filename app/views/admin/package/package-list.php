@@ -9,14 +9,10 @@
                 <div class="row">
                     <div class="col-md-12 m-auto">
                         <?php $this->load->view('message'); ?>
-                        <div class="header bg-color-base">
-                            <div class="d-flex">
-                                <span style="width: 70%;" class="text-left">
-                                    <h3 class="black-text font-bold pt-3"><?php echo translate('manage'); ?> <?php echo translate('package'); ?></h3>
-                                </span> 
+                        <div class="card mt-4">
+                            <div class="card-header">
+                                <h5 class="black-text font-bold pt-3"><?php echo translate('manage'); ?> <?php echo translate('package'); ?></h5>
                             </div>
-                        </div>
-                        <div class="card">
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table mdl-data-table">

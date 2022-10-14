@@ -11,11 +11,11 @@
 
                 <div class="card my-3">
                     <?php $this->load->view('message'); ?>
-                    <!--Header-->
-                    <div class="header">
-                        <h3 class="my-3 text-center"><?php echo translate('reset_password'); ?></h3>
+
+                    <div class="card-header">
+                        <h5 class="my-3 text-center"><?php echo translate('reset_password'); ?></h5>
                     </div>
-                    <!--Header-->
+
                     <div class="card-body resp_mx-0">
                         <?php
                         $hidden = array("id" => $id);

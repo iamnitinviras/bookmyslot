@@ -11,14 +11,10 @@ include VIEWPATH . 'admin/header.php';
                 <div class="row">
                     <div class="col-md-12 m-auto">
                         <?php $this->load->view('message'); ?>
-                        <div class="header bg-color-base">
-                            <div class="d-flex">
-                                <span style="width: 70%;" class="text-left">
-                                    <h3 class="white-black font-bold pt-3"><?php echo translate('membership') . " " . translate('payment') ?></h3>
-                                </span>  
+                        <div class="card mt-4">
+                            <div class="card-header">
+                                <h5 class="white-black font-bold pt-3"><?php echo translate('membership') . " " . translate('payment') ?></h5>
                             </div>
-                        </div>
-                        <div class="card">
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table mdl-data-table" id="example">

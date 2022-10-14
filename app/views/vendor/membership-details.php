@@ -12,14 +12,12 @@ include VIEWPATH . 'vendor/header.php';
                 <div class="row">
                     <div class="col-md-6 m-auto">
                         <?php $this->load->view('message'); ?>
-
-                        <div class="header bg-color-base p-3">
-                            <h3 class="black-text font-bold mb-0">
-                                <?php echo translate('membership_details') ?>
-                            </h3>
-                        </div>
-
-                        <div class="card">
+                        <div class="card mt-4">
+                            <div class="card-header">
+                                <h5 class="black-text font-bold mb-0">
+                                    <?php echo translate('membership_details') ?>
+                                </h5>
+                            </div>
                             <div class="card-body">
                                 <?php
                                 echo form_open_multipart('vendor/package-purchase', array('name' => 'PackageForm', 'id' => 'PackageForm'));

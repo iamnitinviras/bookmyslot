@@ -19,22 +19,21 @@ if ($this->session->userdata('Type_' . ucfirst($this->uri->segment(1))) == 'V') 
                     <div class="col-md-12 m-auto">
                         <?php $this->load->view('message'); ?>
 
-                        <div class="header bg-color-base p-3">
-                            <div class="row">
+                        <div class="card mt-4">
+                            <div class="card-header">
+                                <div class="row">
                                 <span class="col-md-9 col-9 m-0">
                                     <h3 class="black-text font-bold mb-0"><?php echo translate('manage_event_category'); ?></h3>
-                                </span>  
-                                <span class="col-md-3 col-3 text-right m-0">
+                                </span>
+                                    <span class="col-md-3 col-3 text-right m-0">
                                     <?php if ($this->session->userdata('Type_' . ucfirst($this->uri->segment(1))) == 'V') { ?>
                                         <a  href='<?php echo base_url('vendor/add-category'); ?>' class="btn-floating btn-sm btn-success m-0"><i class="fa fa-plus-circle"></i></a>
                                     <?php } else { ?>
                                         <a  href='<?php echo base_url('admin/add-category'); ?>' class="btn-floating btn-sm btn-success m-0"><i class="fa fa-plus-circle"></i></a>
                                     <?php } ?>
                                 </span>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="card">
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table mdl-data-table" id="example">

@@ -17,15 +17,13 @@ $id = (set_value("id")) ? set_value("id") : (!empty($package_data) ? $package_da
                 <div class="row">
                     <div class="col-md-12 m-auto">
                         <?php $this->load->view('message'); ?>
-                        <div class="header pt-3 bg-color-base">
-                            <div class="d-flex">
-                                <h3 class="black-text mb-3 font-bold">
-                                    <?php echo isset($id) && $id > 0 ? translate('update') : translate('add'); ?> <?php echo translate('package'); ?>
-                                </h3>
-                            </div>
-                        </div>
 
-                        <div class="card">
+                        <div class="card mt-4">
+                            <div class="card-header">
+                                <h5 class="black-text mb-3 font-bold">
+                                    <?php echo isset($id) && $id > 0 ? translate('update') : translate('add'); ?> <?php echo translate('package'); ?>
+                                </h5>
+                            </div>
                             <div class="card-body mx-4 mt-4 resp_mx-0">
                                 <?php
                                 $form_url = 'admin/save-package';
