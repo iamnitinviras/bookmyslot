@@ -22,11 +22,10 @@ $get_current_currency = get_current_currency();
                     <div class="col-md-12 m-auto">
                         <?php $this->load->view('message'); ?>
 
-                        <div class="header bg-color-base p-3">
-                            <h3 class="black-text font-bold mb-0"><?php echo translate('manage'); ?> <?php echo translate('appointment'); ?></h3>
-                        </div>
-
-                        <div class="card">
+                        <div class="card mt-4">
+                            <div class="card-header">
+                                <h3 class="black-text font-bold mb-0"><?php echo translate('manage'); ?> <?php echo translate('appointment'); ?></h3>
+                            </div>
                             <div class="card-body">
                                 <div class="">
                                     <form class="form" role="form" method="GET" id="appointment_filter" action="<?php echo base_url($folder_name . '/manage-appointment') ?>">

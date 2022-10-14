@@ -13,19 +13,19 @@ $folder_name = 'admin';
                 <div class="row">
                     <div class="col-md-12 m-auto">
                         <?php $this->load->view('message'); ?>
-                        <div class="header bg-color-base p-3">
-                            <div class="row">
+
+                        <div class="card mt-4">
+                            <div class="card-header">
+                                <div class="row">
                                 <span class="col-md-9 m-0">
-                                    <h3 class="black-text font-bold mb-0"><?php echo translate('translate') . " " . ($language_data['title']) . " " . translate('words'); ?></h3>
-                                </span>  
-                                <span class="col-md-3 text-right m-0">
+                                    <h5 class="black-text font-bold mb-0"><?php echo translate('translate') . " " . ($language_data['title']) . " " . translate('words'); ?></h5>
+                                </span>
+                                    <span class="col-md-3 text-right m-0">
                                     <a href='#' data-toggle="modal" data-target="#exampleModal" class="btn btn-primary"><?php echo translate('add') . " " . translate('new') . " " . translate('word') ?></a>
                                     <a href='<?php echo base_url('admin/manage-language'); ?>' class="btn-floating btn-sm btn-success m-0"><i class="fa fa-backward"></i></a>
                                 </span>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="card">
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table mdl-data-table" id="example">

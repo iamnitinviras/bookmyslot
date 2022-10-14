@@ -27,16 +27,14 @@ $folder_name = 'admin';
                 <div class="row">
                     <div class="col-md-12 m-auto">
                         <?php $this->load->view('message'); ?>
-
-                        <div class="header bg-color-base p-3">
-                            <?php if (isset($currency_data['id']) && $currency_data['id'] > 0): ?>
-                                <h3 class="black-text mb-0 font-bold"><?php echo translate('update'); ?> <?php echo translate('currency'); ?></h3>
-                            <?php else: ?>
-                                <h3 class="black-text mb-0 font-bold"><?php echo translate('add'); ?> <?php echo translate('currency'); ?></h3>
-                            <?php endif; ?>
-                        </div>
-
-                        <div class="card">
+                        <div class="card mt-4">
+                            <div class="card-header">
+                                <?php if (isset($currency_data['id']) && $currency_data['id'] > 0): ?>
+                                    <h5 class="black-text mb-0 font-bold"><?php echo translate('update'); ?> <?php echo translate('currency'); ?></h5>
+                                <?php else: ?>
+                                    <h5 class="black-text mb-0 font-bold"><?php echo translate('add'); ?> <?php echo translate('currency'); ?></h5>
+                                <?php endif; ?>
+                            </div>
                             <div class="card-body resp_mx-0">
                                 <?php
                                 $attributes = array('id' => 'frmStaff', 'name' => 'frmCustomer', 'method' => "post");
