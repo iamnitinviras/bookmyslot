@@ -17,13 +17,9 @@ $folder_name = 'admin';
                         <div class="card mt-4">
                             <div class="card-header">
                                 <div class="row">
-                                <span class="col-md-9 m-0">
-                                    <h5 class="black-text font-bold mb-0"><?php echo translate('translate') . " " . ($language_data['title']) . " " . translate('words'); ?></h5>
-                                </span>
-                                    <span class="col-md-3 text-right m-0">
-                                    <a href='#' data-toggle="modal" data-target="#exampleModal" class="btn btn-primary"><?php echo translate('add') . " " . translate('new') . " " . translate('word') ?></a>
-                                    <a href='<?php echo base_url('admin/manage-language'); ?>' class="btn btn-outline-success"><i class="fa fa-backward"></i></a>
-                                </span>
+                                    <span class="col-md-9 m-0">
+                                        <h5 class="black-text font-bold mb-0"><?php echo translate('translate') . " " . ($language_data['title']) . " " . translate('words'); ?></h5>
+                                    </span>
                                 </div>
                             </div>
                             <div class="card-body">

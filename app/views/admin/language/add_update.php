@@ -24,7 +24,7 @@ $id = (set_value("id")) ? set_value("id") : (!empty($language_data) ? $language_
                         echo form_input(array('type' => 'hidden', 'name' => 'id', 'id' => 'id', 'value' => $id));
                         ?>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="name"> <?php echo translate('title'); ?><small class="required">*</small></label>
                                     <input type="text" autocomplete="off" id="title" name="title" required="" value="<?php echo $title; ?>" class="form-control" placeholder="<?php echo translate('title'); ?>">                                    
@@ -32,7 +32,7 @@ $id = (set_value("id")) ? set_value("id") : (!empty($language_data) ? $language_
                                 </div>
                             </div>
 
-                            <div class="col-md-6">    
+                            <div class="col-md-4">
                                 <label> <?php echo translate('status'); ?> <small class="required">*</small></label>
                                 <div class="form-inline">
                                     <?php

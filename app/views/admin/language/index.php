@@ -13,9 +13,6 @@ $folder_name = 'admin';
                 <div class="row">
                     <div class="col-md-12 m-auto">
                         <?php $this->load->view('message'); ?>
-
-
-
                         <div class="card mt-4">
                             <div class="card-header">
                                 <div class="row">

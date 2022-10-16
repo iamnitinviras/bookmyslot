@@ -17,7 +17,7 @@ class Language extends MY_Controller {
         $language_data = $this->model_event->getData('app_language', '*');
         $data['language_data'] = $language_data;
         $data['title'] = translate('manage') . " " . translate('language');
-        $this->load->view('admin/language/language_list', $data);
+        $this->load->view('admin/language/index', $data);
     }
 
     //show add language form
@@ -25,7 +25,7 @@ class Language extends MY_Controller {
 
         if (is_writeable(FCPATH . "app/language")) {
             $data['title'] = translate('add') . " " . translate('language');
-            $this->load->view('admin/language/add_update_language', $data);
+            $this->load->view('admin/language/add_update', $data);
         } else {
             $this->session->set_flashdata('msg', "You folder app/language is not writable. Please update permission to proceed further.");
             $this->session->set_flashdata('msg_class', 'failure');
@@ -40,7 +40,7 @@ class Language extends MY_Controller {
             if (count($language_data) > 0) {
                 $data['language_data'] = $language_data[0];
                 $data['title'] = translate('update') . " " . translate('language');
-                $this->load->view('admin/language/add_update_language', $data);
+                $this->load->view('admin/language/add_update', $data);
             } else {
                 redirect('admin/manage-language');
             }
@@ -65,7 +65,7 @@ class Language extends MY_Controller {
                 $data['title'] = translate('translate') . " " . translate('words');
                 $data['language_data'] = $language_data[0];
                 $data['act_language_data'] = $act_language_data;
-                $this->load->view('admin/language/language_translate', $data);
+                $this->load->view('admin/language/translate', $data);
             } else {
                 $this->session->set_flashdata('msg', translate('invalid_request'));
                 $this->session->set_flashdata('msg_class', 'failure');
