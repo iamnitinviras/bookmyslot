@@ -656,7 +656,7 @@ class Service extends MY_Controller {
                 $data['service_id'] = $service_id;
                 $data['service_data'] = $service_data[0];
                 $data['title'] = translate('manage') . " " . translate('service') . " " . translate('add_ons');
-                $this->load->view('admin/service/service_addons_list', $data);
+                $this->load->view('admin/service/addons/index', $data);
             } else {
                 if ($this->login_type == 'V') {
                     redirect('vendor/manage-service');
@@ -683,7 +683,7 @@ class Service extends MY_Controller {
         if (count($service) > 0) {
             $data['title'] = translate('add') . " " . translate('service') . " " . translate('add_ons');
             $data['service_id'] = $service_id;
-            $this->load->view('admin/service/service_addons_add_update', $data);
+            $this->load->view('admin/service/addons/add_update', $data);
         } else {
             if ($this->login_type == 'V') {
                 redirect('vendor/manage-service');
@@ -707,7 +707,7 @@ class Service extends MY_Controller {
                 $data['app_service_addons'] = $app_service_addons[0];
                 $data['service_id'] = $service_id;
                 $data['title'] = translate('update') . " " . translate('service') . " " . translate('add_ons');
-                $this->load->view('admin/service/service_addons_add_update', $data);
+                $this->load->view('admin/service/addons/add_update', $data);
             } else {
                 if ($this->login_type == 'V') {
                     redirect('vendor/manage-service');
