@@ -18,24 +18,20 @@ if ($this->session->userdata('Type_' . ucfirst($this->uri->segment(1))) == 'V') 
                 <div class="row">
                     <div class="col-md-12 m-auto">
                         <?php $this->load->view('message'); ?>
-
-                        <div class="header bg-color-base p-3">
-                            <div class="row">
-                                <span class="col-md-9 col-9 m-0">
-                                    <h3 class="black-text font-bold mb-0"><?php echo translate('manage') . " " . translate('service') . " " . translate('add_ons'); ?></h3>
-                                </span>
-                                <span class="col-md-3 col-3 text-right m-0">
-                                    <?php if ($this->session->userdata('Type_' . ucfirst($this->uri->segment(1))) == 'V') { ?>
-                                        <a  href='<?php echo base_url('vendor/add-service-addons/' . $service_id); ?>' title="<?php echo translate('add') . " " . translate('service') . " " . translate('add_ons'); ?>" data-toggle="tooltip" data-placement="top" class="btn btn-outline-success"><i class="fa fa-plus-circle"></i></a>
-                                    <?php } else { ?>
-                                        <a  href='<?php echo base_url('admin/add-service-addons/' . $service_id); ?>' title="<?php echo translate('add') . " " . translate('service') . " " . translate('add_ons'); ?>" data-toggle="tooltip" data-placement="top" class="btn btn-outline-success"><i class="fa fa-plus-circle"></i></a>
-                                    <?php } ?>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="card">
+                        <div class="card mt-4">
                             <div class="card-header">
-                                <?php echo translate('service') . " " . translate('details'); ?>
+                                <div class="row">
+                                    <span class="col-md-9 col-9 m-0">
+                                        <h3 class="black-text font-bold mb-0"><?php echo translate('manage') . " " . translate('service') . " " . translate('add_ons'); ?></h3>
+                                    </span>
+                                        <span class="col-md-3 col-3 text-right m-0">
+                                        <?php if ($this->session->userdata('Type_' . ucfirst($this->uri->segment(1))) == 'V') { ?>
+                                            <a  href='<?php echo base_url('vendor/add-service-addons/' . $service_id); ?>' title="<?php echo translate('add') . " " . translate('service') . " " . translate('add_ons'); ?>" data-toggle="tooltip" data-placement="top" class="btn btn-outline-success"><i class="fa fa-plus-circle"></i></a>
+                                        <?php } else { ?>
+                                            <a  href='<?php echo base_url('admin/add-service-addons/' . $service_id); ?>' title="<?php echo translate('add') . " " . translate('service') . " " . translate('add_ons'); ?>" data-toggle="tooltip" data-placement="top" class="btn btn-outline-success"><i class="fa fa-plus-circle"></i></a>
+                                        <?php } ?>
+                                    </span>
+                                </div>
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title"><b><?php echo translate('title'); ?> : </b> <?php echo isset($service_data['title']) ? $service_data['title'] : ""; ?></h5>
@@ -76,8 +72,8 @@ if ($this->session->userdata('Type_' . ucfirst($this->uri->segment(1))) == 'V') 
                                                             <img src = "<?php echo check_admin_image(UPLOAD_PATH . "event/" . $row['image']); ?>" class = "img-thumbnail mr-10 mb-10 height-100" width = "100px"/>
                                                         </td>
                                                         <td class="td-actions text-center">
-                                                            <a href="<?php echo base_url($update_url); ?>" class="btn-danger btn-floating btn-sm blue-gradient" title="<?php echo translate('edit'); ?>" data-toggle="tooltip" data-placement="top"><i class="fa fa-pencil"></i></a>
-                                                            <span class="d-inline-block" title="<?php echo translate('delete'); ?>" data-toggle="tooltip" data-placement="top"><a id="" data-toggle="modal" onclick='DeleteRecord(this)' data-target="#delete-record" data-id="<?php echo (int) $row['add_on_id']; ?>" class="btn-danger btn-floating btn-sm red-gradient" title="<?php echo translate('delete'); ?>"><i class="fa fa-trash"></i></a></span>
+                                                            <a href="<?php echo base_url($update_url); ?>" class="btn btn-primary font_size_12" title="<?php echo translate('edit'); ?>" data-toggle="tooltip" data-placement="top"><i class="fa fa-pencil"></i></a>
+                                                            <span class="d-inline-block" title="<?php echo translate('delete'); ?>" data-toggle="tooltip" data-placement="top"><a id="" data-toggle="modal" onclick='DeleteRecord(this)' data-target="#delete-record" data-id="<?php echo (int) $row['add_on_id']; ?>" class="btn btn-danger font_size_12" title="<?php echo translate('delete'); ?>"><i class="fa fa-trash"></i></a></span>
                                                         </td>
                                                     </tr>
                                                     <?php

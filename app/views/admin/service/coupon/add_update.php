@@ -41,7 +41,7 @@ $status = (set_value("status")) ? set_value("status") : (!empty($coupon_data) ? 
                         echo form_input(array('type' => 'hidden', 'name' => 'id', 'id' => 'id', 'value' => $id));
                         ?>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group mb-0">
                                     <label for="title"> <?php echo translate('coupon_title'); ?><small class="required">*</small></label>
                                     <input type="text" autocomplete="off" required="" id="title" name="title" value="<?php echo $title; ?>" class="form-control" placeholder="<?php echo translate('coupon_title'); ?>">                                    
@@ -49,25 +49,23 @@ $status = (set_value("status")) ? set_value("status") : (!empty($coupon_data) ? 
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group mb-0">
                                     <label for="title"> <?php echo translate('expiry_date'); ?><small class="required">*</small></label>
                                     <input type="date" autocomplete="off" min="<?php echo date("m-d-Y") ?>" required="" id="valid_till" name="valid_till" value="<?php echo $valid_till; ?>" class="form-control" placeholder="<?php echo translate('expiry_date'); ?>">                                    
                                     <?php echo form_error('valid_till'); ?>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group mb-0">
                                     <label for="title"> <?php echo translate('code'); ?><small class="required">*</small></label>
-                                    <input type="text" autocomplete="off" required="" id="code" name="code" value="<?php echo $code; ?>" class="form-control" placeholder="<?php echo translate('code'); ?>">                                    
+                                    <input type="text" autocomplete="off" required="" id="code" name="code" value="<?php echo $code; ?>" class="form-control" placeholder="<?php echo translate('code'); ?>">
                                     <?php echo form_error('code'); ?>
                                 </div>
                             </div>
-
-                            <div class="col-md-6">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
                                 <div class="form-group mb-0">
                                     <label for="title"> <?php echo translate('coupon_discount_on'); ?><small class="required">*</small></label><br/>
                                     <select id="event_id" name="event_id[]" required="" class="form-control" multiple="multiple" style="width: 100%">
@@ -78,10 +76,7 @@ $status = (set_value("status")) ? set_value("status") : (!empty($coupon_data) ? 
                                     <?php echo form_error('event_id'); ?>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group mb-0">
                                     <label for="title"> <?php echo translate('discount_type'); ?><small class="required">*</small></label>
                                     <select name="discount_type" id="discount_type" class="form-control" required="" style="display: block !important;">
@@ -92,7 +87,7 @@ $status = (set_value("status")) ? set_value("status") : (!empty($coupon_data) ? 
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group mb-0">
                                     <label for="title"> <?php echo translate('discount_value'); ?><small class="required">*</small></label>
                                     <input type="number" required="" autocomplete="off" id="discount_value" name="discount_value" value="<?php echo $discount_value; ?>" class="form-control" placeholder="<?php echo translate('discount_value'); ?>">                                    
@@ -101,29 +96,41 @@ $status = (set_value("status")) ? set_value("status") : (!empty($coupon_data) ? 
                             </div>
                         </div>
 
-                        <label> <?php echo translate('status'); ?> <small class="required">*</small></label>
-                        <div class="form-inline">
-                            <?php
-                            $active = $inactive = '';
-                            if ($status == "I") {
-                                $inactive = "checked";
-                            } else {
-                                $active = "checked";
-                            }
-                            ?>
-                            <div class="form-group">
-                                <input name='status' value="A" type='radio' id='active'   <?php echo $active; ?>>
-                                <label for="active"><?php echo translate('active'); ?></label>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label> <?php echo translate('status'); ?> <small class="required">*</small></label>
+                                <div class="form-inline">
+                                    <?php
+                                    $active = $inactive = '';
+                                    if ($status == "I") {
+                                        $inactive = "checked";
+                                    } else {
+                                        $active = "checked";
+                                    }
+                                    ?>
+                                    <div class="form-group">
+                                        <input name='status' value="A" type='radio' id='active'   <?php echo $active; ?>>
+                                        <label for="active"><?php echo translate('active'); ?></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input name='status' type='radio'  value='I' id='inactive'  <?php echo $inactive; ?>>
+                                        <label for='inactive'><?php echo translate('inactive'); ?></label>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <input name='status' type='radio'  value='I' id='inactive'  <?php echo $inactive; ?>>
-                                <label for='inactive'><?php echo translate('inactive'); ?></label>
-                            </div>
+
                         </div>
 
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-success waves-effect" style="margin-top: 25px;"><?php echo translate('save'); ?></button>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success waves-effect"><?php echo translate('save'); ?></button>
+                                    <a href="<?php echo base_url($folder_name . '/manage-coupon'); ?>" class="btn btn-info waves-effect"><?php echo translate('cancel'); ?></a>
+                                </div>
+                            </div>
+
                         </div>
+
                         <?php echo form_close(); ?>
                     </div>
                     <!--/Form with header-->

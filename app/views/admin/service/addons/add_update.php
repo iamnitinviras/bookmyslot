@@ -51,30 +51,31 @@ if (isset($app_service_addons['image']) && $app_service_addons['image'] != "") {
                         echo form_input(array('type' => 'hidden', 'name' => 'service_id', 'id' => 'service_id', 'value' => $service_id));
                         ?>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="title"> <?php echo translate('title'); ?><small class="required">*</small></label>
                                     <input type="text" autocomplete="off"  id="title" required="" name="title" value="<?php echo $title; ?>" class="form-control" placeholder="<?php echo translate('title'); ?>">                                    
                                     <?php echo form_error('title'); ?>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="details"> <?php echo translate('description'); ?><small class="required">*</small></label>
                                     <textarea id="details"name="details" required=""  placeholder="<?php echo translate('description'); ?>" class="form-control"><?php echo $title; ?></textarea>
                                     <?php echo form_error('details'); ?>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="price"> <?php echo translate('price'); ?><small class="required">*</small></label>
                                     <input type="number"  autocomplete="off" id="price" min="1" required="" name="price" value="<?php echo $price; ?>" class="form-control" placeholder="<?php echo translate('price'); ?>">
                                     <?php echo form_error('price'); ?>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                        </div>
+                        <div class="row">
+
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="title" class="mt-2"> <?php echo translate('image'); ?><small class="required">*</small></label><br/>
                                     <div class="d-inline-block">
