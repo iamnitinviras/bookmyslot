@@ -61,7 +61,7 @@ class Service extends MY_Controller {
         $data['event_data'] = $event;
         $data['vendor_list'] = $vendor_list;
         $data['title'] = translate('manage') . " " . translate('service');
-        $this->load->view('admin/service/service-list', $data);
+        $this->load->view('admin/service/index', $data);
     }
 
     //show add service form
@@ -75,7 +75,7 @@ class Service extends MY_Controller {
         $data['category_data'] = $this->model_event->getData('app_event_category', '*', $where);
         $data['city_data'] = $this->model_event->getData('app_city', '*', "city_status='A'");
         $data['title'] = translate('add') . " " . translate('service');
-        $this->load->view('admin/service/manage-service', $data);
+        $this->load->view('admin/service/add_update', $data);
     }
 
     //show edit service form
@@ -99,7 +99,7 @@ class Service extends MY_Controller {
             $data['staff_data'] = $staff_data;
 
             $data['title'] = translate('update') . " " . translate('service');
-            $this->load->view('admin/service/manage-service', $data);
+            $this->load->view('admin/service/add_update', $data);
         } else {
             show_404();
         }
