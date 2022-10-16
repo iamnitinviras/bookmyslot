@@ -16,13 +16,13 @@ class Page_content extends MY_Controller {
         $app_faq = $this->model_city->getData('app_content', '*');
         $data['app_faq'] = $app_faq;
         $data['title'] = translate('manage') . " " . translate('content_management');
-        $this->load->view('admin/master/content_list', $data);
+        $this->load->view('admin/master/content/index', $data);
     }
 
     //show add event form
     public function add_content() {
         $data['title'] = translate('add') . " " . translate('content_management');
-        $this->load->view('admin/master/content_add_update', $data);
+        $this->load->view('admin/master/content/add_update', $data);
     }
 
     //show edit event form
@@ -32,7 +32,7 @@ class Page_content extends MY_Controller {
         if (isset($app_content[0]) && !empty($app_content[0])) {
             $data['content'] = $app_content[0];
             $data['title'] = translate('update') . " " . translate('content_management');
-            $this->load->view('admin/master/content_add_update', $data);
+            $this->load->view('admin/master/content/add_update', $data);
         } else {
             show_404();
         }

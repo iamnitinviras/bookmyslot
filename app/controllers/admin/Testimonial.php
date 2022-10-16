@@ -19,13 +19,13 @@ class Testimonial extends MY_Controller {
         $event = $this->model_dashboard->getData('app_testimonial', '*');
         $data['testimonial_data'] = $event;
         $data['title'] = translate('manage') . " " . translate('testimonial');
-        $this->load->view('admin/master/manage-testimonial', $data);
+        $this->load->view('admin/master/testimonial/index', $data);
     }
 
     //show add event form
     public function add_testimonial() {
         $data['title'] = translate('add') . " " . translate('testimonial');
-        $this->load->view('admin/master/add-update-testimonial', $data);
+        $this->load->view('admin/master/testimonial/add_update', $data);
     }
 
     //show edit event form
@@ -35,7 +35,7 @@ class Testimonial extends MY_Controller {
         if (isset($event[0]) && !empty($event[0])) {
             $data['app_testimonial'] = $event[0];
             $data['title'] = translate('update') . " " . translate('testimonial');
-            $this->load->view('admin/master/add-update-testimonial', $data);
+            $this->load->view('admin/master/testimonial/add_update', $data);
         } else {
             $this->session->set_flashdata('msg', translate('invalid_request'));
             $this->session->set_flashdata('msg_class', 'failure');

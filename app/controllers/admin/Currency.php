@@ -16,13 +16,13 @@ class Currency extends MY_Controller {
         $currency = $this->model_slider->getData('app_currency', '*','display_status="A"','','id desc');
         $data['currency_data'] = $currency;
         $data['title'] = translate('manage') . " " . translate('currency');
-        $this->load->view('admin/currency/currency-list', $data);
+        $this->load->view('admin/master/currency/index', $data);
     }
 
     //show add currency form
     public function add_currency() {
         $data['title'] = translate('add') . " " . translate('currency');
-        $this->load->view('admin/currency/add-currency', $data);
+        $this->load->view('admin/master/currency/add_update', $data);
     }
 
     //show edit currency form
@@ -33,7 +33,7 @@ class Currency extends MY_Controller {
             if (isset($currency[0]) && !empty($currency[0])) {
                 $data['currency_data'] = $currency[0];
                 $data['title'] = translate('update') . " " . translate('currency');
-                $this->load->view('admin/currency/add-currency', $data);
+                $this->load->view('admin/master/currency/add_update', $data);
             } else {
                 redirect('admin/currency', 'redirect');
             }

@@ -16,13 +16,13 @@ class Faq extends MY_Controller {
         $app_faq = $this->model_city->getData('app_faq', '*');
         $data['app_faq'] = $app_faq;
         $data['title'] = translate('manage') . " " . translate('faqs');
-        $this->load->view('admin/master/faq_list', $data);
+        $this->load->view('admin/master/faq/index', $data);
     }
 
     //show add event form
     public function add_faq() {
         $data['title'] = translate('add') . " " . translate('faqs');
-        $this->load->view('admin/master/faq_add_update', $data);
+        $this->load->view('admin/master/faq/add_update', $data);
     }
 
     //show edit event form
@@ -32,7 +32,7 @@ class Faq extends MY_Controller {
         if (isset($app_faq[0]) && !empty($app_faq[0])) {
             $data['app_faq'] = $app_faq[0];
             $data['title'] = translate('update') . " " . translate('faqs');
-            $this->load->view('admin/master/faq_add_update', $data);
+            $this->load->view('admin/master/faq/add_update', $data);
         } else {
             show_404();
         }

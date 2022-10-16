@@ -16,13 +16,13 @@ class Slider extends MY_Controller {
         $slider = $this->model_slider->getData('', '*', "created_by='$this->login_id'");
         $data['slider_data'] = $slider;
         $data['title'] = translate('manage') . " " . translate('gallery_image');
-        $this->load->view('admin/master/slider-list', $data);
+        $this->load->view('admin/master/slider/index', $data);
     }
 
     //show add slider form
     public function add_slider() {
         $data['title'] = translate('add') . " " . translate('gallery_image');
-        $this->load->view('admin/master/manage-slider', $data);
+        $this->load->view('admin/master/slider/add_update', $data);
     }
 
     //show edit slider form
@@ -31,7 +31,7 @@ class Slider extends MY_Controller {
         if (isset($slider[0]) && !empty($slider[0])) {
             $data['slider_data'] = $slider[0];
             $data['title'] = translate('update') . " " . translate('gallery_image');
-            $this->load->view('admin/master/manage-slider', $data);
+            $this->load->view('admin/master/slider/add_update', $data);
         } else {
             show_404();
         }
