@@ -615,12 +615,15 @@ class Event extends MY_Controller {
         $title = trim($this->input->post('title', TRUE));
 
         if (isset($id) && $id > 0) {
-            $where = "title='$title' AND id!='$id' AND type='E'";
-        } else {
-            $where = "title='$title' AND type='E'";
+            $this->db->where('id!=',$id);
         }
-        $check_title = $this->model_event->getData("app_event_category", "title", $where);
-        if (isset($check_title) && count($check_title) > 0) {
+
+        $this->db->where('title', $title);
+        $this->db->where('type', 'E');
+        $this->db->from('app_event_category');
+        $check_title=$this->db->count_all_results();
+
+        if (isset($check_title) && ($check_title) > 0) {
             $this->form_validation->set_message('check_event_category_title', 'Title already exist.');
             return false;
         } else {

@@ -415,7 +415,7 @@ class Service extends MY_Controller {
         $event = $this->model_event->getData('app_event_category', '*', $where);
         $data['category_data'] = $event;
         $data['title'] = translate('manage_service_category');
-        $this->load->view('admin/service/service-category-list', $data);
+        $this->load->view('admin/service/service_category/index', $data);
     }
 
     //show add service category form
@@ -427,7 +427,7 @@ class Service extends MY_Controller {
             endif;
         }
         $data['title'] = translate('add_service_category');
-        $this->load->view('admin/service/manage-service-category', $data);
+        $this->load->view('admin/service/service_category/add_update', $data);
     }
 
     //show edit service category form
@@ -446,7 +446,7 @@ class Service extends MY_Controller {
         if (isset($category) && count($category) > 0) {
             $data['category_data'] = $category[0];
             $data['title'] = translate('update') . " " . translate('service');
-            $this->load->view('admin/service/manage-service-category', $data);
+            $this->load->view('admin/service/service_category/add_update', $data);
         } else {
             show_404();
         }
@@ -583,13 +583,15 @@ class Service extends MY_Controller {
         $title = trim($this->input->post('title', TRUE));
 
         if (isset($id) && $id > 0) {
-            $where = "title='$title' AND id!='$id' AND type='S'";
-        } else {
-            $where = "title='$title' AND type='S'";
+            $this->db->where('id!=',$id);
         }
 
-        $check_title = $this->model_event->getData("app_event_category", "title", $where);
-        if (isset($check_title) && count($check_title) > 0) {
+        $this->db->where('title', $title);
+        $this->db->where('type', 'S');
+        $this->db->from('app_event_category');
+        $check_title=$this->db->count_all_results();
+
+        if (isset($check_title) && ($check_title) > 0) {
             $this->form_validation->set_message('check_service_category_title', 'Title already exist.');
             return false;
         } else {
