@@ -16,14 +16,14 @@ class Coupon extends MY_Controller {
         $coupon_data = $this->model_event->getData('app_coupon', '*', "created_by=" . $this->login_id);
         $data['coupon_data'] = $coupon_data;
         $data['title'] = translate('manage') . " " . translate('coupon');
-        $this->load->view('admin/coupon/coupon-list', $data);
+        $this->load->view('admin/service/coupon/index', $data);
     }
 
     //show add event form
     public function add_coupon() {
         $data['event_data'] = $this->model_event->getData('app_event', '*', "status='A' AND type='S' AND created_by=" . $this->login_id);
         $data['title'] = translate('add') . " " . translate('coupon');
-        $this->load->view('admin/coupon/coupon-add-update', $data);
+        $this->load->view('admin/service/coupon/add_update', $data);
     }
 
     //show edit event form
@@ -33,7 +33,7 @@ class Coupon extends MY_Controller {
             $data['coupon_data'] = $coupon[0];
             $data['event_data'] = $this->model_event->getData('app_event', '*', "status='A' AND type='S' AND created_by=" . $this->login_id);
             $data['title'] = translate('update') . " " . translate('coupon');
-            $this->load->view('admin/coupon/coupon-add-update', $data);
+            $this->load->view('admin/service/coupon/add_update', $data);
         } else {
             show_404();
         }
