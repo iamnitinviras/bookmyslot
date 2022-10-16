@@ -329,7 +329,7 @@ $id = (set_value("id")) ? set_value("id") : (!empty($event_data) ? $event_data['
                                             </div>
                                             <div class="card-body">
                                                 <div class="row">
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-12">
                                                         <label style="color: #757575;" > <?php echo translate('type'); ?> <small class="required">*</small></label>
                                                         <div class="form-group form-inline">
                                                             <?php
@@ -350,41 +350,38 @@ $id = (set_value("id")) ? set_value("id") : (!empty($event_data) ? $event_data['
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-4">
                                                         <div class="form-group <?php echo isset($payment_type) && $payment_type == 'F' ? 'd-none' : ''; ?>" style="padding-top: <?php isset($id) && $id > 0 ? "10px" : ""; ?>;" id="price-box">
                                                             <label for="price"> <?php echo translate('price'); ?> <small class="required">*</small></label>
                                                             <input tabindex="23"  autocomplete="off" onblur="calc_final_price(this);" type="number" placeholder="<?php echo translate('price'); ?>" id="price" name="price" value="<?php echo $price; ?>" class="form-control" <?php echo isset($payment_type) && $payment_type == 'F' ? 'min="0"' : 'min="1"'; ?>>
                                                             <?php echo form_error('price'); ?>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-4">
                                                         <div class="price-box form-group <?php echo isset($payment_type) && $payment_type == 'F' ? 'd-none' : ''; ?>" style="padding-top: <?php isset($id) && $id > 0 ? "10px" : ""; ?>;">
                                                             <label  for="discount"> <?php echo translate('discount') . " " . translate('in') . " " . translate('percentage'); ?></label>
                                                             <input tabindex="24"  autocomplete="off" onblur="calc_final_price(this);" type="number" placeholder="<?php echo translate('discount') . " " . translate('in') . " " . translate('percentage'); ?>" id="discount" name="discount" value="<?php echo $discount; ?>" class="form-control integers" <?php echo isset($payment_type) && $payment_type == 'F' ? 'min="0"' : 'min="1" max="100";'; ?>>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-4">
                                                         <div class="form-group <?php echo isset($payment_type) && $payment_type == 'F' ? 'd-none' : ''; ?>" style="padding-top: <?php isset($id) && $id > 0 ? "10px" : ""; ?>;" id="price-box">
                                                             <label for="discounted_price"> <?php echo translate('price_after_discount'); ?></label>
                                                             <input tabindex="25"  autocomplete="off" readonly="" type="number" placeholder="<?php echo translate('discount') . " " . translate('price'); ?>" id="discounted_price" name="discounted_price" value="<?php echo $discounted_price; ?>" class="form-control">
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-4">
                                                         <div class="price-box form-group <?php echo isset($payment_type) && $payment_type == 'F' ? 'd-none' : ''; ?>" style="padding-top: <?php isset($id) && $id > 0 ? "10px" : ""; ?>;">
                                                             <label for="from_date"> <?php echo translate('from_date') ?></label>
                                                             <input tabindex="26"  autocomplete="off" type="text" placeholder="<?php echo translate('from_date') ?>" id="from_date" name="from_date" value="<?php echo $from_date; ?>" class="form-control bdatepicker">
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-4">
                                                         <div class="price-box form-group <?php echo isset($payment_type) && $payment_type == 'F' ? 'd-none' : ''; ?>" style="padding-top: <?php isset($id) && $id > 0 ? "10px" : ""; ?>;">
                                                             <label for="to_date"> <?php echo translate('to_date') ?></label>
                                                             <input tabindex="27"  autocomplete="off" type="text" placeholder="<?php echo translate('to_date'); ?>" id="to_date" name="to_date" value="<?php echo $to_date; ?>" class="form-control bdatepicker">
                                                         </div>
                                                     </div>
-
-
-
                                                 </div>
                                             </div>
                                         </div>
