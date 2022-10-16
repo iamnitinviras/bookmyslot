@@ -84,13 +84,16 @@ class Page_content extends MY_Controller {
     public function check_page_title() {
         $id = (int) $this->input->post('id', true);
         $title = $this->input->post('title');
+
         if (isset($id) && $id > 0) {
-            $where = "title='$title' AND id!='$id'";
-        } else {
-            $where = "title='$title'";
+            $this->db->where('id!=',$id);
         }
-        $check_title = $this->model_city->getData("app_content", "title", $where);
-        if (isset($check_title) && count($check_title) > 0) {
+
+        $this->db->where('title', $title);
+        $this->db->from('app_content');
+        $check_title=$this->db->count_all_results();
+
+        if (isset($check_title) && ($check_title) > 0) {
             echo "false";
             exit;
         } else {
@@ -98,7 +101,5 @@ class Page_content extends MY_Controller {
             exit;
         }
     }
-
 }
-
 ?>

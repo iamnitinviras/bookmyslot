@@ -26,9 +26,9 @@ if ($this->session->userdata('Type_' . ucfirst($this->uri->segment(1))) == 'V') 
                                     </span>
                                     <span class="col-md-3 col-3 text-right m-0">
                                         <?php if ($this->session->userdata('Type_' . ucfirst($this->uri->segment(1))) == 'V') { ?>
-                                            <a  href='<?php echo base_url('vendor/add-event'); ?>' class="btn-floating btn-sm btn-success m-0"><i class="fa fa-plus-circle"></i></a>
+                                            <a  href='<?php echo base_url('vendor/add-event'); ?>' class="btn btn-outline-success"><i class="fa fa-plus-circle"></i></a>
                                         <?php } else { ?>
-                                            <a  href='<?php echo base_url('admin/add-event'); ?>' class="btn-floating btn-sm btn-success m-0"><i class="fa fa-plus-circle"></i></a>
+                                            <a  href='<?php echo base_url('admin/add-event'); ?>' class="btn btn-outline-success"><i class="fa fa-plus-circle"></i></a>
                                         <?php } ?>
                                     </span>
                                 </div>

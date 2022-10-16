@@ -22,7 +22,7 @@ $folder_name = 'admin';
                                 </span>
                                     <span class="col-md-3 text-right m-0">
                                     <a href='#' data-toggle="modal" data-target="#exampleModal" class="btn btn-primary"><?php echo translate('add') . " " . translate('new') . " " . translate('word') ?></a>
-                                    <a href='<?php echo base_url('admin/manage-language'); ?>' class="btn-floating btn-sm btn-success m-0"><i class="fa fa-backward"></i></a>
+                                    <a href='<?php echo base_url('admin/manage-language'); ?>' class="btn btn-outline-success"><i class="fa fa-backward"></i></a>
                                 </span>
                                 </div>
                             </div>

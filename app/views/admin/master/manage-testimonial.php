@@ -20,7 +20,7 @@ include VIEWPATH . 'admin/header.php';
                                         <h5 class="black-text font-bold mb-0"><?php echo translate('manage'); ?> <?php echo translate('testimonial'); ?></h5>
                                     </span>
                                     <span class="col-md-3 col-3 text-right m-0">
-                                        <a title="<?php echo translate('add') . " " . translate('testimonial'); ?>" href='<?php echo base_url('admin/add-testimonial'); ?>' class="btn-floating btn-sm btn-success m-0"><i class="fa fa-plus-circle"></i></a>
+                                        <a title="<?php echo translate('add') . " " . translate('testimonial'); ?>" href='<?php echo base_url('admin/add-testimonial'); ?>' class="btn btn-outline-success"><i class="fa fa-plus-circle"></i></a>
                                     </span>
                                 </div>
                             </div>

@@ -104,14 +104,17 @@ class city extends MY_Controller {
 
     public function check_city_title() {
         $id = (int) $this->input->post('id', true);
-        $title = $this->input->post('city_title');
+        $title = trim($this->input->post('city_title'));
+
         if (isset($id) && $id > 0) {
-            $where = "city_title='$title' AND city_id!='$id'";
-        } else {
-            $where = "city_title='$title'";
+            $this->db->where('city_id!=',$id);
         }
-        $check_title = $this->model_city->getData("app_city", "city_title", $where);
-        if (isset($check_title) && count($check_title) > 0) {
+
+        $this->db->where('city_title', $title);
+        $this->db->from('app_city');
+        $check_title=$this->db->count_all_results();
+
+        if (isset($check_title) && ($check_title) > 0) {
             echo "false";
             exit;
         } else {
