@@ -8,7 +8,7 @@ if ($this->session->userdata('Type_' . ucfirst($this->uri->segment(1))) == 'V') 
 }
 $title_e = (set_value("title")) ? set_value("title") : (!empty($holiday) ? $holiday['title'] : '');
 $holiday_date = (set_value("holiday_date")) ? date("m/d/Y", strtotime(set_value("holiday_date"))) : (!empty($holiday) ? date("m/d/Y", strtotime($holiday['holiday_date'])) : '');
-$status = (set_value("status")) ? set_value("status") : (!empty($holiday) ? $holiday['status'] : '');
+$status = (set_value("status")) ? set_value("status") : (!empty($holiday) ? $holiday['status'] : 'A');
 $id = !empty($holiday) ? $holiday['id'] : 0;
 ?>
 <input id="folder_name" name="folder_name" type="hidden" value="<?php echo isset($folder_name) && $folder_name != '' ? $folder_name : ''; ?>"/>
@@ -36,7 +36,7 @@ $id = !empty($holiday) ? $holiday['id'] : 0;
                         echo form_input(array('type' => 'hidden', 'name' => 'id', 'id' => 'id', 'value' => $id));
                         ?>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="title"> <?php echo translate('title'); ?><small class="required">*</small></label>
                                     <input type="text" required="" autocomplete="off" id="title" maxlength="40" name="title" value="<?php echo $title_e; ?>" class="form-control" placeholder="<?php echo translate('title'); ?>">                                    
@@ -44,34 +44,37 @@ $id = !empty($holiday) ? $holiday['id'] : 0;
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="holiday_date"> <?php echo translate('date'); ?><small class="required">*</small></label>
                                     <input type="text"  required=""  autocomplete="off" id="holiday_date" name="holiday_date" value="<?php echo $holiday_date; ?>" class="form-control" placeholder="<?php echo translate('date'); ?>">                                    
                                     <?php echo form_error('holiday_date'); ?>
                                 </div>
                             </div>
+                            <div class="col-md-4">
+                                <label style="color: #757575;" > <?php echo translate('status'); ?> <small class="required">*</small></label>
+                                <div class="form-group form-inline">
+                                    <?php
+                                    $active = $inactive = '';
+                                    if ($status == "I") {
+                                        $inactive = "checked";
+                                    } else {
+                                        $active = "checked";
+                                    }
+                                    ?>
+                                    <div class="form-group">
+                                        <input name='status' value="A" type='radio' id='active'   <?php echo $active; ?>>
+                                        <label for="active"><?php echo translate('active'); ?></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input name='status' type='radio'  value='I' id='inactive'  <?php echo $inactive; ?>>
+                                        <label for='inactive'><?php echo translate('inactive'); ?></label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
-                        <label style="color: #757575;" > <?php echo translate('status'); ?> <small class="required">*</small></label>
-                        <div class="form-group form-inline">
-                            <?php
-                            $active = $inactive = '';
-                            if ($status == "I") {
-                                $inactive = "checked";
-                            } else {
-                                $active = "checked";
-                            }
-                            ?>
-                            <div class="form-group">
-                                <input name='status' value="A" type='radio' id='active'   <?php echo $active; ?>>
-                                <label for="active"><?php echo translate('active'); ?></label>
-                            </div>
-                            <div class="form-group">
-                                <input name='status' type='radio'  value='I' id='inactive'  <?php echo $inactive; ?>>
-                                <label for='inactive'><?php echo translate('inactive'); ?></label>
-                            </div>
-                        </div>
+
                         <div class="form-group">
                             <button type="submit" class="btn btn-success waves-effect"><?php echo translate('save'); ?></button>
                             <a href="<?php echo base_url($folder_name . '/holiday'); ?>" class="btn btn-info waves-effect"><?php echo translate('cancel'); ?></a>

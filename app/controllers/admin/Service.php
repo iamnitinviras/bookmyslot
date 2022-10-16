@@ -890,14 +890,14 @@ class Service extends MY_Controller {
         $holiday = $this->model_event->getData('app_holidays', '*', "created_by=" . $this->login_id);
         $data['title'] = translate('manage') . " " . translate('holiday');
         $data['holiday'] = $holiday;
-        $this->load->view('admin/service/manage_holidays', $data);
+        $this->load->view('admin/service/holiday/index', $data);
     }
 
     public function add_holiday() {
 
         $data['title'] = translate('add') . " " . translate('holiday');
         $data['holiday'] = array();
-        $this->load->view('admin/service/add_update_holiday', $data);
+        $this->load->view('admin/service/holiday/add_update', $data);
     }
 
     public function update_holiday($id) {
@@ -909,7 +909,7 @@ class Service extends MY_Controller {
             if (isset($app_holidays[0]) && !empty($app_holidays[0])) {
                 $data['title'] = translate('update') . " " . translate('holiday');
                 $data['holiday'] = $app_holidays[0];
-                $this->load->view('admin/service/add_update_holiday', $data);
+                $this->load->view('admin/service/holiday/add_update', $data);
             } else {
                 $this->session->set_flashdata('msg_class', 'failure');
                 $this->session->set_flashdata('msg', translate('invalid_request'));
