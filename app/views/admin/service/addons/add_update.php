@@ -86,9 +86,9 @@ if (isset($app_service_addons['image']) && $app_service_addons['image'] != "") {
                                         <?php
                                         echo form_input(array('type' => 'hidden', 'name' => 'hidden_add_on_image', 'id' => 'hidden_add_on_image', 'value' => $event_add_on_image));
                                         if ($add_on_id == 0) {
-                                            echo form_input(array('type' => 'file', 'required' => "true", 'id' => 'event_add_on_image', 'class' => '', 'name' => 'event_add_on_image', 'accept' => 'image/x-png,image/gif,image/jpeg,image/png'));
+                                            echo form_input(array('type' => 'file', 'required' => "true", 'id' => 'event_add_on_image', 'class' => 'form-control', 'name' => 'event_add_on_image', 'accept' => 'image/x-png,image/gif,image/jpeg,image/png'));
                                         } else {
-                                            echo form_input(array('type' => 'file', 'id' => 'event_add_on_image', 'class' => '', 'name' => 'event_add_on_image', 'accept' => 'image/x-png,image/gif,image/jpeg,image/png'));
+                                            echo form_input(array('type' => 'file', 'id' => 'event_add_on_image', 'class' => 'form-control', 'name' => 'event_add_on_image', 'accept' => 'image/x-png,image/gif,image/jpeg,image/png'));
                                         }
                                         ?><br/>
                                         <?php echo form_error('event_add_on_image'); ?>

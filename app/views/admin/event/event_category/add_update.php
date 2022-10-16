@@ -50,16 +50,16 @@ if (isset($event_category_image) && $event_category_image != "") {
                         echo form_input(array('type' => 'hidden', 'name' => 'image_validate', 'id' => 'image_validate', 'value' => 0));
                         ?>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="title"> <?php echo translate('title'); ?><small class="required">*</small></label>
                                     <input type="text" autocomplete="off" id="title" maxlength="40" name="title" value="<?php echo $title_e; ?>" class="form-control" placeholder="<?php echo translate('title'); ?>">                                    
                                     <?php echo form_error('title'); ?>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="title" class="mt-2"> <?php echo translate('event_category_image'); ?>  (Image size must be 256X143.)<small class="required">*</small></label><br/>
+                                    <label for="title" class="mt-2"> <?php echo translate('event_category_image'); ?><small class="required">*</small></label><br/>
                                     <div class="d-inline-block">
                                         <img id="preview"  src="<?php echo $image; ?>"  style="height: 50px;width: 50px"/>
                                     </div>
@@ -68,9 +68,9 @@ if (isset($event_category_image) && $event_category_image != "") {
                                         <?php
                                         echo form_input(array('type' => 'hidden', 'name' => 'hidden_category_image', 'id' => 'hidden_category_image', 'value' => $event_category_image));
                                         if ($id == 0) {
-                                            echo form_input(array('type' => 'file', 'required' => "true", 'id' => 'event_category_image', 'class' => '', 'name' => 'event_category_image', 'accept' => 'image/x-png,image/gif,image/jpeg,image/png'));
+                                            echo form_input(array('type' => 'file', 'required' => "true", 'id' => 'event_category_image', 'class' => 'form-control', 'name' => 'event_category_image', 'accept' => 'image/x-png,image/gif,image/jpeg,image/png'));
                                         } else {
-                                            echo form_input(array('type' => 'file', 'id' => 'event_category_image', 'class' => '', 'name' => 'event_category_image', 'accept' => 'image/x-png,image/gif,image/jpeg,image/png'));
+                                            echo form_input(array('type' => 'file', 'id' => 'event_category_image', 'class' => 'form-control', 'name' => 'event_category_image', 'accept' => 'image/x-png,image/gif,image/jpeg,image/png'));
                                         }
                                         ?><br/>
                                         <?php echo form_error('event_category_image'); ?>
@@ -80,7 +80,7 @@ if (isset($event_category_image) && $event_category_image != "") {
                                 </div>
 
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label style="color: #757575;" > <?php echo translate('status'); ?> <small class="required">*</small></label>
                                     <div class="form-inline">
@@ -105,6 +105,11 @@ if (isset($event_category_image) && $event_category_image != "") {
                             </div>
                         </div>
 
+                        <div class="row">
+                            <div class="col-md-12">
+                                <small>Image size must be 256X143.</small>
+                            </div>
+                        </div>
 
 
                         <div class="form-group">

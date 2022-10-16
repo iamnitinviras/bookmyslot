@@ -60,7 +60,7 @@ class Event extends MY_Controller {
         $data['vendor_list'] = $vendor_list;
         $data['event_data'] = $event;
         $data['title'] = translate('manage') . " " . translate('event');
-        $this->load->view('admin/event/event-list', $data);
+        $this->load->view('admin/event/index', $data);
     }
 
     //show add event form
@@ -72,7 +72,7 @@ class Event extends MY_Controller {
         $data['category_data'] = $this->model_event->getData('app_event_category', '*', $where);
         $data['city_data'] = $this->model_event->getData('app_city', '*', "city_status='A'");
         $data['title'] = translate('add') . " " . translate('event');
-        $this->load->view('admin/event/manage-event', $data);
+        $this->load->view('admin/event/add_update', $data);
     }
 
     //show edit event form
@@ -101,7 +101,7 @@ class Event extends MY_Controller {
                 $data['location_data'] = $this->model_event->getData('app_location', '*', "loc_city_id='$loc_city_id' AND loc_status='A'");
 
                 $data['title'] = translate('update') . " " . translate('event');
-                $this->load->view('admin/event/manage-event', $data);
+                $this->load->view('admin/event/add_update', $data);
             } else {
                 $this->session->set_flashdata('msg_class', 'failure');
                 $this->session->set_flashdata('msg', translate('invalid_request'));
@@ -413,7 +413,7 @@ class Event extends MY_Controller {
         $event = $this->model_event->getData('app_event_category', '*', $where);
         $data['category_data'] = $event;
         $data['title'] = translate('manage_event_category');
-        $this->load->view('admin/event/event-category-list', $data);
+        $this->load->view('admin/event/event_category/index', $data);
     }
 
     //show add event category form
@@ -427,7 +427,7 @@ class Event extends MY_Controller {
                 endif;
             }
             $data['title'] = translate('add_event_category');
-            $this->load->view('admin/event/manage-event-category', $data);
+            $this->load->view('admin/event/event_category/add_update', $data);
         }else {
             $this->session->set_flashdata('msg', "Please make sure you have set the writeable permission to 'assets/uploads/category'.");
             $this->session->set_flashdata('msg_class', 'failure');
@@ -458,7 +458,7 @@ class Event extends MY_Controller {
                 $data['category_data'] = $category[0];
                 $data['title'] = translate('update') . " " . translate('category');
 
-                $this->load->view('admin/event/manage-event-category', $data);
+                $this->load->view('admin/event/event_category/add_update', $data);
             } else {
                 show_404();
             }
