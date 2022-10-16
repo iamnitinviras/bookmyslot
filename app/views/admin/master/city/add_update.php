@@ -38,7 +38,7 @@ $id = (set_value("city_id")) ? set_value("city_id") : (!empty($city_data) ? $cit
                         echo form_input(array('type' => 'hidden', 'name' => 'id', 'id' => 'id', 'value' => $id));
                         ?>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="city_title"> <?php echo translate('title'); ?><small class="required">*</small></label>
                                     <input type="text" autocomplete="off" id="city_title" name="city_title" value="<?php echo $city_title; ?>" class="form-control" placeholder="<?php echo translate('title'); ?>">                                    
@@ -46,7 +46,7 @@ $id = (set_value("city_id")) ? set_value("city_id") : (!empty($city_data) ? $cit
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label> <?php echo translate('status'); ?> <small class="required">*</small></label>
                                 <div class="form-inline">
                                     <?php

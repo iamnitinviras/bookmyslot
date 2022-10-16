@@ -40,7 +40,7 @@ $id = (set_value("loc_id")) ? set_value("loc_id") : (!empty($loc_data) ? $loc_da
                         ?>
 
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <p class="grey-text"><?php echo translate('select'); ?> <?php echo translate('city'); ?> <small class="required">*</small></p>
                                     <?php
@@ -57,17 +57,15 @@ $id = (set_value("loc_id")) ? set_value("loc_id") : (!empty($loc_data) ? $loc_da
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="loc_title"> <?php echo translate('title'); ?><small class="required">*</small></label>
                                     <input type="text" autocomplete="off" id="loc_title" name="loc_title" value="<?php echo $loc_title; ?>" class="form-control" placeholder="<?php echo translate('title'); ?>">                                    
                                     <?php echo form_error('loc_title'); ?>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-4">
                                 <label> <?php echo translate('status'); ?> <small class="required">*</small></label>
                                 <div class="form-inline">
                                     <?php

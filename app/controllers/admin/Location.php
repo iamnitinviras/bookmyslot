@@ -20,7 +20,7 @@ class location extends MY_Controller {
         $event = $this->model_location->getData('', '*', $cond, $join);
         $data['loc_data'] = $event;
         $data['title'] = translate('manage') . " " . translate('location');
-        $this->load->view('admin/master/location-list', $data);
+        $this->load->view('admin/master/location/index', $data);
     }
 
     //show add event form
@@ -28,7 +28,7 @@ class location extends MY_Controller {
         $data['title'] = translate('add') . " " . translate('location');
         $city = $this->model_location->getData("app_city", "*", 'city_status = "A"');
         $data['city_list'] = $city;
-        $this->load->view('admin/master/manage-location', $data);
+        $this->load->view('admin/master/location/add_update', $data);
     }
 
     //show edit event form
@@ -43,7 +43,7 @@ class location extends MY_Controller {
             $city = $this->model_location->getData("app_city", "*", 'city_status = "A"');
             $data['city_list'] = $city;
             $data['title'] = translate('update') . " " . translate('location');
-            $this->load->view('admin/master/manage-location', $data);
+            $this->load->view('admin/master/location/add_update', $data);
         } else {
             show_404();
         }
@@ -107,12 +107,14 @@ class location extends MY_Controller {
         $title = $this->input->post('loc_title');
 
         if (isset($id) && $id > 0) {
-            $where = "loc_title='$title' AND loc_id!='$id'";
-        } else {
-            $where = "loc_title='$title'";
+            $this->db->where('loc_id!=',$id);
         }
-        $check_title = $this->model_location->getData("app_location", "loc_title", $where);
-        if (isset($check_title) && count($check_title) > 0) {
+
+        $this->db->where('loc_title', $title);
+        $this->db->from('app_location');
+        $check_title=$this->db->count_all_results();
+
+        if (isset($check_title) && ($check_title) > 0) {
             echo "false";
             exit;
         } else {

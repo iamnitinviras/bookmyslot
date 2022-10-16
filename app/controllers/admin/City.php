@@ -19,13 +19,13 @@ class city extends MY_Controller {
         $event = $this->model_city->getData('', '*');
         $data['city_data'] = $event;
         $data['title'] = translate('manage') . " " . translate('city');
-        $this->load->view('admin/master/city-list', $data);
+        $this->load->view('admin/master/city/index', $data);
     }
 
     //show add event form
     public function add_city() {
         $data['title'] = translate('add') . " " . translate('city');
-        $this->load->view('admin/master/manage-city', $data);
+        $this->load->view('admin/master/city/add_update', $data);
     }
 
     //show edit event form
@@ -38,7 +38,7 @@ class city extends MY_Controller {
         if (isset($event[0]) && !empty($event[0])) {
             $data['city_data'] = $event[0];
             $data['title'] = translate('update') . " " . translate('city');
-            $this->load->view('admin/master/manage-city', $data);
+            $this->load->view('admin/master/city/add_update', $data);
         } else {
             show_404();
         }
