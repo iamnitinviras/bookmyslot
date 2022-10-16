@@ -35,7 +35,7 @@ $id = (set_value("id")) ? set_value("id") : (!empty($app_faq) ? $app_faq['id'] :
                         echo form_input(array('type' => 'hidden', 'name' => 'id', 'id' => 'id', 'value' => $id));
                         ?>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group mb-0">
                                     <label for="title"> <?php echo translate('title'); ?><small class="required">*</small></label>
                                     <input type="text" autocomplete="off" id="title" name="title" value="<?php echo $title; ?>" class="form-control" placeholder="<?php echo translate('title'); ?>">                                    
@@ -43,17 +43,14 @@ $id = (set_value("id")) ? set_value("id") : (!empty($app_faq) ? $app_faq['id'] :
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group mb-0">
                                     <label for="description"> <?php echo translate('description'); ?><small class="required">*</small></label>
                                     <textarea id="description" class="form-control" placeholder="<?php echo translate('description'); ?>" name="description"><?php echo $description; ?></textarea>
                                     <?php echo form_error('description'); ?>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-4">
                                 <label> <?php echo translate('status'); ?> <small class="required">*</small></label>
                                 <div class="form-inline">
                                     <?php
