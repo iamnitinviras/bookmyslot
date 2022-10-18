@@ -38,7 +38,7 @@ $profile_cover_image = $vendor_data['profile_cover_image'];
                                 echo form_open_multipart('vendor/profile-save', $attributes);
                                 ?>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="first_name"> <?php echo translate('first_name'); ?> <small class="required">*</small></label>
                                             <input type="text" id="first_name" name="first_name" value="<?php echo $first_name; ?>" class="form-control" placeholder="<?php echo translate('first'); ?><?php echo translate('name'); ?>">                                            
@@ -47,7 +47,7 @@ $profile_cover_image = $vendor_data['profile_cover_image'];
                                         </div>
                                         <div class="error" id="first_name_validate"></div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="last_name"> <?php echo translate('last_name'); ?> <small class="required">*</small></label>
                                             <input type="text" id="last_name" name="last_name" value="<?php echo $last_name; ?>" class="form-control" placeholder="<?php echo translate('last'); ?><?php echo translate('name'); ?>">                                            
@@ -55,35 +55,34 @@ $profile_cover_image = $vendor_data['profile_cover_image'];
                                         </div>
                                         <div class="error" id="last_name_validate"></div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="email"> <?php echo translate('email'); ?> <small class="required">*</small></label>
-                                            <input type="email" placeholder="<?php echo translate('email'); ?>" id="email" name="email" value="<?php echo $email; ?>" class="form-control">                                            
+                                            <input type="email" placeholder="<?php echo translate('email'); ?>" id="email" name="email" value="<?php echo $email; ?>" class="form-control">
                                             <?php echo form_error('email'); ?>
 
                                         </div>
                                         <div class="error" id="email_validate"></div>
                                     </div>
-                                    <div class="col-md-6">
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="phone"> <?php echo translate('phone'); ?> <small class="required">*</small></label>
-                                            <input type="text" id="phone" name="phone" value="<?php echo $phone; ?>" class="form-control" placeholder="<?php echo translate('phone'); ?>">                                            
+                                            <input type="text" id="phone" name="phone" value="<?php echo $phone; ?>" class="form-control" placeholder="<?php echo translate('phone'); ?>">
                                             <?php echo form_error('phone'); ?>
                                         </div>
                                         <div class="error" id="phone_validate"></div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="company_name"> <?php echo translate('company_name'); ?> <small class="required">*</small></label>
                                             <input type="text" placeholder="<?php echo translate('company_name'); ?>" id="company_name" name="company_name" value="<?php echo $company_name; ?>" class="form-control" required="">                                            
                                             <?php echo form_error('company_name'); ?>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="website"> <?php echo translate('website'); ?></label>
                                             <input type="url" placeholder="<?php echo translate('website'); ?>" id="website" name="website" value="<?php echo $website; ?>" class="form-control">                                            
@@ -91,40 +90,43 @@ $profile_cover_image = $vendor_data['profile_cover_image'];
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="fb_link"> <?php echo translate('facebook_link'); ?></label>
                                             <input type="url" placeholder="<?php echo translate('facebook_link'); ?>" id="fb_link" name="fb_link" value="<?php echo $fb_link; ?>" class="form-control">                                            
                                             <?php echo form_error('fb_link'); ?>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="twitter_link"> <?php echo translate('twitter_link'); ?></label>
                                             <input type="url" placeholder="<?php echo translate('twitter_link'); ?>" id="twitter_link" name="twitter_link" value="<?php echo $twitter_link; ?>" class="form-control">                                            
                                             <?php echo form_error('twitter_link'); ?>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="google_link"> <?php echo translate('google_link'); ?></label>
-                                            <input type="url" placeholder="<?php echo translate('google_link'); ?>" id="google_link" name="google_link" value="<?php echo $google_link; ?>" class="form-control">                                            
+                                            <input type="url" placeholder="<?php echo translate('google_link'); ?>" id="google_link" name="google_link" value="<?php echo $google_link; ?>" class="form-control">
                                             <?php echo form_error('google_link'); ?>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                </div>
+                                <div class="row">
+
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="instagram_link"> <?php echo translate('instagram_link'); ?></label>
-                                            <input type="url" placeholder="<?php echo translate('instagram_link'); ?>" id="instagram_link" name="instagram_link" value="<?php echo $instagram_link; ?>" class="form-control">                                            
+                                            <input type="url" placeholder="<?php echo translate('instagram_link'); ?>" id="instagram_link" name="instagram_link" value="<?php echo $instagram_link; ?>" class="form-control">
                                             <?php echo form_error('instagram_link'); ?>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="profile_text"> <?php echo translate('profile_text'); ?></label>
                                             <textarea type="text" id="profile_text" name="profile_text" class="form-control" placeholder="<?php echo translate('profile_text'); ?>"><?php echo $profile_text; ?></textarea>                                         
@@ -134,7 +136,7 @@ $profile_cover_image = $vendor_data['profile_cover_image'];
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <label for="select_image"> <?php echo translate('select'); ?> <?php echo translate('image'); ?> </label>
                                         <div class="file-field">
                                             <div class="btn btn-primary btn-sm">
@@ -148,7 +150,7 @@ $profile_cover_image = $vendor_data['profile_cover_image'];
                                         </div>
                                         <div class="error" id="Pro_img_validate"></div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <label for="select_cover_image"> <?php echo translate('select'); ?> <?php echo translate('profile_cover'); ?> <?php echo translate('image'); ?> <strong>(<?php echo translate('valid_profile_cover_size'); ?>)</strong></label>
                                         <div class="file-field">
                                             <div class="btn btn-primary btn-sm">
@@ -165,7 +167,7 @@ $profile_cover_image = $vendor_data['profile_cover_image'];
 
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <?php
                                         if (file_exists(dirname(BASEPATH) . "/" . uploads_path . "/profiles/" . $vendor_data['profile_image']) && $vendor_data['profile_image'] != '') {
                                             $img_src = base_url() . uploads_path . "/profiles/" . $vendor_data['profile_image'];
@@ -176,7 +178,7 @@ $profile_cover_image = $vendor_data['profile_cover_image'];
                                         <h5 style="font-size: .8rem; color: #757575"><?php echo translate('profile_image'); ?> </h5>
                                         <img id="imageurl"  class="img"  style="border-radius:50%;" src="<?php echo $img_src; ?>" alt="<?php echo translate('profile'); ?> <?php echo translate('image'); ?>" width="100" height="100">
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <?php
                                         if (file_exists(dirname(BASEPATH) . "/" . uploads_path . "/profiles/" . $vendor_data['profile_cover_image']) && $vendor_data['profile_cover_image'] != '') {
                                             $cover_img_src = base_url() . uploads_path . "/profiles/" . $vendor_data['profile_cover_image'];

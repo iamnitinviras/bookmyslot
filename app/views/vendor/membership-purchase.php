@@ -47,50 +47,41 @@ include VIEWPATH . 'vendor/header.php';
                 <div class="row">
                     <div class="col-md-12 m-auto">
                         <?php $this->load->view('message'); ?>
-
-                        <div class="card mt-4">
-                            <div class="card-header">
-                                <h5 class="black-text font-bold mb-0">
-                                    <?php echo translate('membership_purchase') ?>
-                                </h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <?php
-                                    if (isset($package_data) && count($package_data) > 0) {
-                                        foreach ($package_data as $key => $value) {
-                                            ?>
-                                            <div class="col-md-4 text-center package_card">
-                                                <div class="card pt-0 basic_price">
-                                                    <div class="card-body">
-                                                        <div class="package_list mb-3">
-                                                            <i class="fa fa-home"></i>
-                                                            <h3><?php echo $value['title']; ?></h3>
-                                                        </div>
-                                                        <ul class="list-group list-inline text-center">
-                                                            <li class="list-group-item mb-3 borderx-none"><strong><?php echo translate('amount'); ?> <?php echo price_format($value['price']); ?></strong></li>
-                                                        </ul>
-                                                        <ul class="list-group list-inline text-center">
-                                                            <li class="list-group-item mb-3 borderx-none"><?php echo translate('validity'); ?> - <b><?php echo $value['package_month']; ?> <?php echo translate('month'); ?></b></li>
-                                                        </ul>
-                                                        <?php if(isset($value['description']) && $value['description']!=""): ?>
-                                                            <ul class="list-group list-inline text-center">
-                                                                <li class="list-group-item mb-3 borderx-none"><?php echo $value['description']; ?></li>
-                                                            </ul>
-                                                        <?php endif; ?>
-                                                        
-                                                        <a href="<?php echo base_url('vendor/purchase-details/' . $value['id']); ?>" class="btn btn-info waves-effect"><?php echo translate('purchase')." ".translate('now'); ?></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        <?php }
-                                        ?>
-                                    <?php } ?>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <!--col-md-12-->
+                </div>
+
+                <div class="row">
+                    <?php
+                    if (isset($package_data) && count($package_data) > 0) {
+                        foreach ($package_data as $key => $value) {
+                            ?>
+                            <div class="col-md-4 text-center package_card">
+                                <div class="card pt-0 basic_price">
+                                    <div class="card-body">
+                                        <div class="package_list mb-3">
+                                            <i class="fa fa-home"></i>
+                                            <h3><?php echo $value['title']; ?></h3>
+                                        </div>
+                                        <ul class="list-group list-inline text-center">
+                                            <li class="list-group-item mb-3 borderx-none"><strong><?php echo translate('amount'); ?> <?php echo price_format($value['price']); ?></strong></li>
+                                        </ul>
+                                        <ul class="list-group list-inline text-center">
+                                            <li class="list-group-item mb-3 borderx-none"><?php echo translate('validity'); ?> - <b><?php echo $value['package_month']; ?> <?php echo translate('month'); ?></b></li>
+                                        </ul>
+                                        <?php if(isset($value['description']) && $value['description']!=""): ?>
+                                            <ul class="list-group list-inline text-center">
+                                                <li class="list-group-item mb-3 borderx-none"><?php echo $value['description']; ?></li>
+                                            </ul>
+                                        <?php endif; ?>
+
+                                        <a href="<?php echo base_url('vendor/purchase-details/' . $value['id']); ?>" class="btn btn-info waves-effect"><?php echo translate('purchase')." ".translate('now'); ?></a>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php }
+                        ?>
+                    <?php } ?>
                 </div>
                 <!--Row-->
             </section>

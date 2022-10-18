@@ -27,20 +27,19 @@ $profile_cover_image = $staff_data['profile_cover_image'];
                     <div class="col-md-12 m-auto">
                         <?php $this->load->view('message'); ?>
 
-                        <div class="header bg-color-base p-3">
-                            <h3 class="black-text font-bold mb-0">
-                                <?php echo translate('profile'); ?> <?php echo translate('update'); ?>
-                            </h3>
-                        </div>
-
-                        <div class="card">
+                        <div class="card mt-4">
+                            <div class="card-header">
+                                <h5 class="black-text font-bold mb-0">
+                                    <?php echo translate('profile'); ?> <?php echo translate('update'); ?>
+                                </h5>
+                            </div>
                             <div class="card-body resp_mx-0">
                                 <?php
                                 $attributes = array('id' => 'Profile', 'name' => 'Profile', 'method' => "post");
                                 echo form_open_multipart('staff/profile-save', $attributes);
                                 ?>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="first_name"> <?php echo translate('first_name'); ?> <small class="required">*</small></label>
                                             <input type="text" id="first_name" name="first_name" value="<?php echo $first_name; ?>" class="form-control" placeholder="<?php echo translate('first'); ?><?php echo translate('name'); ?>">                                            
@@ -49,7 +48,7 @@ $profile_cover_image = $staff_data['profile_cover_image'];
                                         </div>
                                         <div class="error" id="first_name_validate"></div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="last_name"> <?php echo translate('last_name'); ?> <small class="required">*</small></label>
                                             <input type="text" id="last_name" name="last_name" value="<?php echo $last_name; ?>" class="form-control" placeholder="<?php echo translate('last'); ?><?php echo translate('name'); ?>">                                            
@@ -57,31 +56,27 @@ $profile_cover_image = $staff_data['profile_cover_image'];
                                         </div>
                                         <div class="error" id="last_name_validate"></div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="email"> <?php echo translate('email'); ?> <small class="required">*</small></label>
-                                            <input type="email" placeholder="<?php echo translate('email'); ?>" id="email" name="email" value="<?php echo $email; ?>" class="form-control">                                            
+                                            <input type="email" placeholder="<?php echo translate('email'); ?>" id="email" name="email" value="<?php echo $email; ?>" class="form-control">
                                             <?php echo form_error('email'); ?>
 
                                         </div>
                                         <div class="error" id="email_validate"></div>
                                     </div>
-                                    <div class="col-md-6">
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="phone"> <?php echo translate('phone'); ?> <small class="required">*</small></label>
-                                            <input type="text" id="phone" name="phone" value="<?php echo $phone; ?>" class="form-control" placeholder="<?php echo translate('phone'); ?>">                                            
+                                            <input type="text" id="phone" name="phone" value="<?php echo $phone; ?>" class="form-control" placeholder="<?php echo translate('phone'); ?>">
                                             <?php echo form_error('phone'); ?>
                                         </div>
                                         <div class="error" id="phone_validate"></div>
                                     </div>
-                                </div>
-
-
-
-                                <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <label for="select_image"> <?php echo translate('select'); ?> <?php echo translate('image'); ?> </label>
                                         <div class="file-field">
                                             <div class="btn btn-primary btn-sm">
@@ -95,7 +90,7 @@ $profile_cover_image = $staff_data['profile_cover_image'];
                                         </div>
                                         <div class="error" id="Pro_img_validate"></div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <?php
                                         if (file_exists(dirname(BASEPATH) . "/" . uploads_path . "/profiles/" . $staff_data['profile_image']) && $staff_data['profile_image'] != '') {
                                             $img_src = base_url() . uploads_path . "/profiles/" . $staff_data['profile_image'];
