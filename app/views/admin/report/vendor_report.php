@@ -88,7 +88,7 @@ foreach ($productPoints as $key => $val) {
                                     </select>
                                 </div>
                                 <div class="col-md-4">
-                                    <select class="kb-select initialized" name="year">
+                                    <select class="form-control" name="year">
                                         <option value=""><?php echo translate('select_month'); ?></option>
                                         <?php
                                         if (isset($year_data) && count(array_filter($year_data)) > 0) {

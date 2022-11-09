@@ -50,7 +50,7 @@ $id = (set_value("loc_id")) ? set_value("loc_id") : (!empty($loc_data) ? $loc_da
                                             $options[$row['city_id']] = $row['city_title'];
                                         }
                                     }
-                                    $attributes = array('class' => 'kb-select initialized', 'id' => 'loc_city_id', '');
+                                    $attributes = array('class' => 'form-control', 'id' => 'loc_city_id', '');
                                     echo form_dropdown('loc_city_id', $options, $loc_city_id, $attributes);
                                     echo form_error('loc_city_id');
                                     ?>

@@ -71,7 +71,7 @@ foreach ($productPoints as $key => $val) {
                             ?>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <select class="kb-select initialized" name="month">
+                                    <select class="form-control" name="month">
                                         <option value=""><?php echo translate('select_month'); ?></option>
                                         <option value='1' <?php echo isset($month) && $month == '1' ? 'selected' : ''; ?>><?php echo translate('January'); ?></option>
                                         <option value='2' <?php echo isset($month) && $month == '2' ? 'selected' : ''; ?>><?php echo translate('february'); ?></option>
@@ -88,7 +88,7 @@ foreach ($productPoints as $key => $val) {
                                     </select>
                                 </div>
                                 <div class="col-md-4">
-                                    <select class="kb-select initialized" name="year">
+                                    <select class="form-control" name="year">
                                         <option value=""><?php echo translate('select_month'); ?></option>
                                         <?php
                                         if (isset($year_data) && count(array_filter($year_data)) > 0) {

@@ -52,7 +52,7 @@ include VIEWPATH . 'vendor/header.php';
                                 </div> 
                                 <div class="form-group">
                                     <label class="black-text"><?php echo translate('select'); ?> <?php echo translate('payment_method'); ?><small class="required">*</small></label>
-                                    <select class="kb-select initialized" id="payment_method" name="payment_method" onchange="get_stripe(this.value);"> 
+                                    <select class="form-control" id="payment_method" name="payment_method" onchange="get_stripe(this.value);"> 
                                         <option value=""><?php echo translate('select') . " " . translate('payment_method'); ?></option>
                                         <?php if (check_payment_method('stripe')) { ?>
                                             <option value="stripe"><?php echo translate('stripe'); ?></option>

@@ -40,7 +40,7 @@ $minimum_vendor_payout = isset($business_data->minimum_vendor_payout) ? $busines
                                             $options['E'] = translate('event') . " " . translate('list');
                                             $options['S'] = translate('service') . " " . translate('list');
 
-                                            $attributes = array('class' => 'kb-select initialized', 'id' => 'webpage', 'required' => 'required', 'onchange' => 'get_webpage(this)');
+                                            $attributes = array('class' => 'form-control', 'id' => 'webpage', 'required' => 'required', 'onchange' => 'get_webpage(this)');
                                             echo form_dropdown('webpage', $options, $this->input->post('webpage'), $attributes);
                                             ?>
                                         </div>

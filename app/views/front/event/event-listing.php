@@ -30,7 +30,7 @@ $location = $this->input->get('location', true);
                             <form class="filter_form" id="service_filter_form" name="service_filter_form" method="get">
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <select class="kb-select initialized" onchange="this.form.submit()" name="category" id="category">
+                                        <select class="form-control" onchange="this.form.submit()" name="category" id="category">
                                             <option value="0"><?php echo translate('all') . " " . translate('category'); ?></option>
                                             <?php foreach ($event_category as $val): ?>
                                                 <option <?php echo ($category == $val['id']) ? "selected='selected'" : ""; ?> value="<?php echo $val['id'] ?>"><?php echo $val['title'] ?></option>
@@ -38,7 +38,7 @@ $location = $this->input->get('location', true);
                                         </select>
                                     </div>
                                     <div class="col-md-3">
-                                        <select class="kb-select initialized" onchange="this.form.submit()" name="location" id="location">
+                                        <select class="form-control" onchange="this.form.submit()" name="location" id="location">
                                             <option value="0"><?php echo translate('all') . " " . translate('location'); ?></option>
                                             <?php foreach ($app_location as $val): ?>
                                                 <option <?php echo ($location == $val['loc_id']) ? "selected='selected'" : ""; ?> value="<?php echo $val['loc_id'] ?>"><?php echo $val['loc_title'] ?></option>
@@ -46,7 +46,7 @@ $location = $this->input->get('location', true);
                                         </select>
                                     </div>
                                     <div class="col-md-3">
-                                        <select class="kb-select initialized" onchange="this.form.submit()" name="duration" id="duration">
+                                        <select class="form-control" onchange="this.form.submit()" name="duration" id="duration">
                                             <option value=""><?php echo translate('all'); ?></option>
                                             <option <?php echo ($duration == 'W') ? "selected='selected'" : ""; ?> value="W">This Week</option>
                                             <option <?php echo ($duration == 'M') ? "selected='selected'" : ""; ?> value="M">This Month</option>

@@ -109,7 +109,7 @@ $sponser_id = (set_value("sid")) ? set_value("sid") : (!empty($event_data) ? $ev
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label class="black-text"><?php echo translate('select'); ?> <?php echo translate('event_category'); ?><small class="required">*</small></label>
-                                                            <select required tabindex="7" class="kb-select initialized" id="days" name="category_id">
+                                                            <select required tabindex="7" class="form-control" id="days" name="category_id">
                                                                 <option value=""><?php echo translate('select') . " " . translate('event_category'); ?></option>
                                                                 <?php
                                                                 if (isset($category_data) && count($category_data)) {
@@ -143,7 +143,7 @@ $sponser_id = (set_value("sid")) ? set_value("sid") : (!empty($event_data) ? $ev
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label class="black-text"><?php echo translate('select_city'); ?><small class="required">*</small></label>
-                                                            <select tabindex="5" class="kb-select initialized" id="city" name="city" onchange="get_location(this.value);">
+                                                            <select tabindex="5" class="form-control" id="city" name="city" onchange="get_location(this.value);">
                                                                 <option value=""><?php echo translate('select_city'); ?></option>
                                                                 <?php
                                                                 if (isset($city_data) && count($city_data) > 0) {
@@ -161,7 +161,7 @@ $sponser_id = (set_value("sid")) ? set_value("sid") : (!empty($event_data) ? $ev
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label class="black-text"><?php echo translate('select_location'); ?><small class="required">*</small></label>
-                                                            <select required tabindex="6" class="kb-select initialized" id="location" name="location">
+                                                            <select required tabindex="6" class="form-control" id="location" name="location">
                                                                 <?php if (isset($location_data) && count($location_data) > 0) { ?>
                                                                     <option value=""><?php echo translate('select_location'); ?></option>
                                                                     <?php foreach ($location_data as $value) {

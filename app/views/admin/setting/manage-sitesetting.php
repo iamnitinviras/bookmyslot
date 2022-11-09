@@ -141,7 +141,7 @@ if (isset($company_data->fevicon_icon) && $company_data->fevicon_icon != "") {
                                                     }
                                                 }
 
-                                                $attributes = array('class' => 'kb-select initialized', 'id' => 'language', 'required' => 'required');
+                                                $attributes = array('class' => 'form-control', 'id' => 'language', 'required' => 'required');
                                                 echo form_dropdown('language', $options, $language, $attributes);
                                                 echo form_error('language');
                                                 ?>
@@ -150,7 +150,7 @@ if (isset($company_data->fevicon_icon) && $company_data->fevicon_icon != "") {
                                         <div class="col-md-6 ">
                                             <div class="form-group">
                                                 <label class="black-text"><?php echo translate('select'); ?> <?php echo translate('time_zone'); ?></label>
-                                                <select class="kb-select initialized" id="time_zone" name="time_zone">
+                                                <select class="form-control" id="time_zone" name="time_zone">
                                                     <option value=""><?php echo translate('select') . " " . translate('time_zone'); ?></option>
                                                     <?php foreach (tz_list() as $t) { ?>
                                                         <option value="<?php echo $t['zone']; ?>" <?php echo $time_zone == $t['zone'] ? 'selected' : ''; ?>><?php echo $t['diff_from_GMT'] . ' - ' . $t['zone']; ?></option>

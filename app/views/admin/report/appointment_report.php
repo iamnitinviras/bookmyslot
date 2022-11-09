@@ -50,7 +50,7 @@ foreach ($productPoints as $key => $val) {
                             <div class="row">
                                 <?php if (isset($folder_name) && $folder_name == 'admin') { ?>
                                     <div class="col-md-4">
-                                        <select class="kb-select initialized" name="vendor_id">
+                                        <select class="form-control" name="vendor_id">
                                             <option value=""><?php echo translate('select_vendor'); ?></option>
                                             <?php
                                             if (isset($vendor_list) && count($vendor_list) > 0) {
@@ -65,7 +65,7 @@ foreach ($productPoints as $key => $val) {
                                     </div>
                                 <?php } ?>
                                 <div class="col-md-4">
-                                    <select class="kb-select initialized" name="year">
+                                    <select class="form-control" name="year">
                                         <option value=""><?php echo translate('select_year'); ?></option>
                                         <?php
                                         if (isset($year_data) && count(array_filter($year_data)) > 0) {
