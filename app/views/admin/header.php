@@ -1,124 +1,363 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-        <meta name="viewport" content="width=device-width">
-        <link rel="icon" type="image/x-icon" href="<?php echo get_fevicon(); ?>"/>
-        <title><?php
-            echo (get_CompanyName());
-            if (!empty($title))
-                echo " | " . $title;
-            ?></title>
-        <link href="<?php echo $this->config->item('css_url'); ?>bootstrap.css" rel="stylesheet">
-        <link href="<?php echo $this->config->item('css_url'); ?>font-awesome.css" rel="stylesheet">
-        <link href="<?php echo $this->config->item('css_url'); ?>line-awesome.min.css" rel="stylesheet">
-        <link href="<?php echo $this->config->item('css_url'); ?>module/bookmyslot.css" rel="stylesheet">
-        <link href="<?php echo $this->config->item('css_url'); ?>module/sidebar.css" rel="stylesheet">
-        <link href="<?php echo $this->config->item('css_url'); ?>module/admin_panel.css" rel="stylesheet">
-        <link href="<?php echo $this->config->item('css_url'); ?>datepicker.css" rel="stylesheet">
-        <link href="<?php echo $this->config->item('css_url'); ?>timepicker.css" rel="stylesheet">
-        <link href="<?php echo $this->config->item('css_url'); ?>slidePanel.css" rel="stylesheet">
-        <link href="<?php echo $this->config->item('css_url'); ?>module/custom.css" rel="stylesheet">
-        <link href="https://cdn.datatables.net/plug-ins/1.10.19/integration/font-awesome/dataTables.fontAwesome.css" rel="stylesheet">
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title><?php echo (get_CompanyName());
+        if (!empty($title))
+            echo " | " . $title;
+        ?></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <script>
-            var site_url = "<?php echo $this->config->item('site_url'); ?>";
-            var userid = '<?php echo $this->session->userdata('ADMIN_ID'); ?>';
-        </script> 
-        <script src="<?php echo $this->config->item('js_url'); ?>jquery-3.2.1.min.js"></script>        
-        <script type="text/javascript" src="<?php echo $this->config->item('js_url'); ?>jquery.dataTables.min.js"></script>
-        <script type="text/javascript" src="<?php echo $this->config->item('js_url'); ?>datatables.min.js"></script>
+    <!-- App favicon -->
+    <link rel="icon" type="image/x-icon" href="<?php echo get_fevicon(); ?>"/>
 
-        <script src="<?php echo $this->config->item('js_url'); ?>jquery.validate.min.js" type="text/javascript"></script>
+    <!-- plugin css -->
+    <link href="<?php echo base_url('assets/admin/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css'); ?>" rel="stylesheet" type="text/css" />
 
-        <!--loader-->
-        <link href="<?php echo $this->config->item('assets_url'); ?>loader/css/preloader.css" rel="stylesheet">
-        <script src="<?php echo $this->config->item('assets_url'); ?>loader/js/jquery.preloader.min.js"></script>
-        <script>
-            var base_url = '<?php echo base_url() ?>';
-            var csrf_token_name = '<?php echo $this->security->get_csrf_hash(); ?>';
+    <!-- preloader css -->
+    <link rel="stylesheet" href="<?php echo base_url('assets/admin/css/preloader.min.css');?>" type="text/css" />
+
+    <!-- Bootstrap Css -->
+    <link href="<?php echo base_url('assets/admin/css/bootstrap.min.css');?>" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="<?php echo base_url('assets/admin/css/icons.min.css');?>" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="<?php echo base_url('assets/admin/css/app.min.css');?>" id="app-style" rel="stylesheet" type="text/css" />
+
+    <script>
+        var site_url = "<?php echo $this->config->item('site_url'); ?>";
+        var userid = '<?php echo $this->session->userdata('ADMIN_ID'); ?>';
+    </script>
+    <script src="<?php echo base_url('assets/admin/libs/jquery/jquery.min.js');?>"></script>
+    <script>
+        var base_url = '<?php echo base_url() ?>';
+        var csrf_token_name = '<?php echo $this->security->get_csrf_hash(); ?>';
+        $.ajaxSetup({
+            data: {
+                '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
+            }
+        });
+        $(document).ajaxComplete(function () {
             $.ajaxSetup({
                 data: {
                     '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
                 }
             });
-            $(document).ajaxComplete(function () {
-                $.ajaxSetup({
-                    data: {
-                        '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
-                    }
-                });
-            });
-        </script>
+        });
+    </script>
 
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-    </head>
-    <body>
-        <div id="loadingmessage" class="loadingmessage"></div>
-        <?php
-        include VIEWPATH . 'admin/sidebar.php';
-        $url_segment = trim($this->uri->segment(1));
-        $profile_active = "";
-        $wallet_active = "";
-        $change_password_active = "";
-        $profile_Arr = array("admin-profile",);
-        $wallet_Arr = array("wallet");
+</head>
 
-        $admin_id = (int) $this->session->userdata('ADMIN_ID');
-        $this->db->select('my_wallet as total');
-        $this->db->where('id', $admin_id);
-        $my_wallet = $this->db->get('app_admin')->row_array();
+<body data-topbar="dark">
+
+<!-- <body data-layout="horizontal"> -->
+
+<!-- Begin page -->
+<div id="layout-wrapper">
 
 
-        $change_passwordArr = array("admin-update-password-action");
-        if (isset($url_segment) && in_array($url_segment, $profile_Arr)) {
-            $profile_active = "active";
-        } elseif (isset($url_segment) && in_array($url_segment, $change_passwordArr)) {
-            $change_password_active = "active";
-        } elseif (isset($url_segment) && in_array($url_segment, $wallet_Arr)) {
-            $wallet_active = "active";
-        }
-        ?>
-        <!-- Start Topbar -->
-        <nav class="nav navbar py-3 white">
-            <div class="container-fluid pr-0">
-                <a href="" class="db-close-button"></a>
-                <a href="<?php echo base_url('admin/logout') ?>" class="db-options-button">
-                    <img src="<?php echo base_url() . img_path; ?>/svg/back-icon.png" alt="db-list-right">
-                </a>
-                <div class="db-item">
-                    <div class="db-side-bar-handler">
-                        <img src="<?php echo base_url() . img_path; ?>/sidebar/db-list-left.png" alt="db-list-left">
+    <header id="page-topbar">
+        <div class="navbar-header">
+            <div class="d-flex">
+                <!-- LOGO -->
+                <div class="navbar-brand-box">
+                    <a href="<?php echo base_url('admin/dashboard') ?>" class="logo logo-dark">
+                        <span class="logo-sm">
+                            <img src="<?php echo get_CompanyLogo(); ?>" alt="" height="30">
+                        </span>
+                        <span class="logo-lg">
+                            <img src="<?php echo get_CompanyLogo(); ?>" alt="" height="24"> <span class="logo-txt"></span>
+                        </span>
+                    </a>
+
+                    <a href="<?php echo base_url('admin/dashboard') ?>" class="logo logo-light">
+                        <span class="logo-sm">
+                            <img src="<?php echo get_CompanyLogo(); ?>" alt="" height="30">
+                        </span>
+                        <span class="logo-lg">
+                            <img src="<?php echo get_CompanyLogo(); ?>" alt="" height="24"> <span class="logo-txt"></span>
+                        </span>
+                    </a>
+                </div>
+
+                <button type="button" class="btn btn-sm px-3 font-size-16 header-item" id="vertical-menu-btn">
+                    <i class="fa fa-fw fa-bars"></i>
+                </button>
+            </div>
+
+            <div class="d-flex">
+
+                <div class="dropdown d-none d-sm-inline-block">
+                    <button type="button" class="btn header-item"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img id="header-lang-img" src="<?php echo base_url('assets/admin/images/flags/us.jpg') ?>" alt="Header Language" height="16">
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end">
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="en">
+                            <img src="<?php echo base_url('assets/admin/images/flags/us.jpg');?>" alt="user-image" class="me-1" height="12"> <span class="align-middle">English</span>
+                        </a>
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="sp">
+                            <img src="<?php echo base_url('assets/admin/images/flags/spain.jpg');?>" alt="user-image" class="me-1" height="12"> <span class="align-middle">Spanish</span>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="gr">
+                            <img src="<?php echo base_url('assets/admin/images/flags/germany.jpg');?>" alt="user-image" class="me-1" height="12"> <span class="align-middle">German</span>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="it">
+                            <img src="<?php echo base_url('assets/admin/images/flags/italy.jpg');?>" alt="user-image" class="me-1" height="12"> <span class="align-middle">Italian</span>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="ru">
+                            <img src="<?php echo base_url('assets/admin/images/flags/russia.jpg');?>" alt="user-image" class="me-1" height="12"> <span class="align-middle">Russian</span>
+                        </a>
                     </div>
                 </div>
-                <ul class="nav navbar-nav nav-flex-icons ml-auto sidbar_ulnav top_navbar">
-                    <!-- Dropdown -->
-                    <li class="nav-item" style="border: 1px solid #1f3f68;padding-right: 10px;border-radius: 50px;">
-                        <a  href="<?php echo base_url() ?>" target="_blank" class="<?php echo $profile_active; ?>  nav-link waves-effect"><i class="fa fa-globe"></i> <span class="clearfix d-none d-sm-inline-block"><?php echo translate('view_website'); ?></span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a  href="<?php echo base_url('admin/profile') ?>" class="<?php echo $profile_active; ?>  nav-link waves-effect"><i class="fa fa-user"></i> <span class="clearfix d-none d-sm-inline-block"><?php echo translate('profile_setting'); ?></span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a  href="javascript:void(0)" class="<?php echo $wallet_active; ?>  nav-link waves-effect"><i class="fa fa-dollar"></i> <span class="clearfix d-none d-sm-inline-block"><?php echo translate('earnings'); ?> $<?php echo isset($my_wallet['total']) ? $my_wallet['total'] : 0 ?></span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a  href="<?php echo base_url('admin/update-password-action') ?>" class="<?php echo $change_password_active; ?> nav-link waves-effect"><i class="fa fa-key"></i> <span class="clearfix d-none d-sm-inline-block"><?php echo translate('change_password'); ?></span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="<?php echo base_url('admin/logout') ?>" class="nav-link waves-effect">
-                            <i class="fa fa-sign-out"></i>
-                            <span class="clearfix d-none d-sm-inline-block"><?php echo translate('logout'); ?></span>
+
+                <div class="dropdown d-none d-sm-inline-block">
+                    <button type="button" class="btn header-item" id="mode-setting-btn">
+                        <i data-feather="moon" class="icon-lg layout-mode-dark"></i>
+                        <i data-feather="sun" class="icon-lg layout-mode-light"></i>
+                    </button>
+                </div>
+
+                <div class="dropdown d-none d-lg-inline-block ms-1">
+                    <button type="button" class="btn header-item"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i data-feather="grid" class="icon-lg"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
+                        <div class="p-2">
+                            <div class="row g-0">
+                                <div class="col">
+                                    <a class="dropdown-icon-item" href="#">
+                                        <img src="<?php echo base_url('assets/admin/images/brands/github.png');?>" alt="Github">
+                                        <span>GitHub</span>
+                                    </a>
+                                </div>
+                                <div class="col">
+                                    <a class="dropdown-icon-item" href="#">
+                                        <img src="<?php echo base_url('assets/admin/images/brands/bitbucket.png');?>" alt="bitbucket">
+                                        <span>Bitbucket</span>
+                                    </a>
+                                </div>
+                                <div class="col">
+                                    <a class="dropdown-icon-item" href="#">
+                                        <img src="<?php echo base_url('assets/admin/images/brands/dribbble.png');?>" alt="dribbble">
+                                        <span>Dribbble</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="row g-0">
+                                <div class="col">
+                                    <a class="dropdown-icon-item" href="#">
+                                        <img src="<?php echo base_url('assets/admin/images/brands/dropbox.png');?>" alt="dropbox">
+                                        <span>Dropbox</span>
+                                    </a>
+                                </div>
+                                <div class="col">
+                                    <a class="dropdown-icon-item" href="#">
+                                        <img src="<?php echo base_url('assets/admin/images/brands/mail_chimp.png');?>" alt="mail_chimp">
+                                        <span>Mail Chimp</span>
+                                    </a>
+                                </div>
+                                <div class="col">
+                                    <a class="dropdown-icon-item" href="#">
+                                        <img src="<?php echo base_url('assets/admin/images/brands/slack.png');?>" alt="slack">
+                                        <span>Slack</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dropdown d-inline-block">
+                    <button type="button" class="btn header-item noti-icon position-relative" id="page-header-notifications-dropdown"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i data-feather="bell" class="icon-lg"></i>
+                        <span class="badge bg-danger rounded-pill">5</span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+                         aria-labelledby="page-header-notifications-dropdown">
+                        <div class="p-3">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h6 class="m-0"> Notifications </h6>
+                                </div>
+                                <div class="col-auto">
+                                    <a href="#!" class="small text-reset text-decoration-underline"> Unread (3)</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-simplebar style="max-height: 230px;">
+                            <a href="#!" class="text-reset notification-item">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0 me-3">
+                                        <img src="<?php echo base_url('assets/admin/images/users/avatar-3.jpg');?>" class="rounded-circle avatar-sm" alt="user-pic">
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-1">James Lemire</h6>
+                                        <div class="font-size-13 text-muted">
+                                            <p class="mb-1">It will seem like simplified English.</p>
+                                            <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span>1 hours ago</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#!" class="text-reset notification-item">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0 avatar-sm me-3">
+                                        <span class="avatar-title bg-primary rounded-circle font-size-16">
+                                            <i class="bx bx-cart"></i>
+                                        </span>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-1">Your order is placed</h6>
+                                        <div class="font-size-13 text-muted">
+                                            <p class="mb-1">If several languages coalesce the grammar</p>
+                                            <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span>3 min ago</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#!" class="text-reset notification-item">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0 avatar-sm me-3">
+                                        <span class="avatar-title bg-success rounded-circle font-size-16">
+                                            <i class="bx bx-badge-check"></i>
+                                        </span>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-1">Your item is shipped</h6>
+                                        <div class="font-size-13 text-muted">
+                                            <p class="mb-1">If several languages coalesce the grammar</p>
+                                            <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span>3 min ago</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="#!" class="text-reset notification-item">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0 me-3">
+                                        <img src="<?php echo base_url('assets/admin/images/users/avatar-6.jpg');?>" class="rounded-circle avatar-sm" alt="user-pic">
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-1">Salena Layfield</h6>
+                                        <div class="font-size-13 text-muted">
+                                            <p class="mb-1">As a skeptical Cambridge friend of mine occidental.</p>
+                                            <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span>1 hours ago</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="p-2 border-top d-grid">
+                            <a class="btn btn-sm btn-link font-size-14 text-center" href="javascript:void(0)">
+                                <i class="mdi mdi-arrow-right-circle me-1"></i> <span>View More..</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dropdown d-inline-block">
+                    <button type="button" class="btn header-item right-bar-toggle me-2">
+                        <i data-feather="settings" class="icon-lg"></i>
+                    </button>
+                </div>
+
+                <div class="dropdown d-inline-block">
+                    <button type="button" class="btn header-item bg-soft-light border-start border-end" id="page-header-user-dropdown"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="d-none d-xl-inline-block ms-1 fw-medium">Admin</span>
+                        <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <!-- item-->
+                        <a class="dropdown-item" href="<?php echo base_url('admin/profile') ?>"><i class="mdi mdi-face-profile font-size-16 align-middle me-1"></i> <?php echo translate('profile_setting'); ?></a>
+                        <a class="dropdown-item" href="<?php echo base_url('admin/update-password-action') ?>"><i class="mdi mdi-key-change font-size-16 align-middle me-1"></i> <?php echo translate('change_password'); ?></a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="<?php echo base_url('admin/logout') ?>"><i class="mdi mdi-logout font-size-16 align-middle me-1"></i> <?php echo translate('logout'); ?></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== Left Sidebar Start ========== -->
+    <div class="vertical-menu">
+
+        <div data-simplebar class="h-100">
+
+            <!--- Sidemenu -->
+            <div id="sidebar-menu">
+                <!-- Left Menu Start -->
+                <ul class="metismenu list-unstyled" id="side-menu">
+                    <li class="menu-title" data-key="t-menu">Menu</li>
+
+                    <li>
+                        <a href="<?php echo base_url('admin/dashboard') ?>">
+                            <i data-feather="home"></i>
+                            <span class="badge rounded-pill bg-soft-success text-success float-end">9+</span>
+                            <span data-key="t-dashboard"> <?php echo translate('dashboard'); ?></span>
                         </a>
                     </li>
+
+                    <li>
+                        <a href="<?php echo base_url('admin/manage-appointment'); ?>">
+                            <i data-feather="calendar"></i>
+                            <span data-key="t-calendar"><?php echo translate('appointment'); ?></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url('admin/customer'); ?>">
+                            <i data-feather="calendar"></i>
+                            <span data-key="t-calendar"><?php echo translate('customer'); ?></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url('admin/staff'); ?>">
+                            <i data-feather="calendar"></i>
+                            <span data-key="t-calendar"><?php echo translate('my_staff'); ?></span>
+                        </a>
+                    </li>
+                    <?php if (get_site_setting('is_display_vendor') == 'Y'): ?>
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow">
+                                <i data-feather="users"></i>
+                                <span data-key="t-contacts"><?php echo translate('vendor'); ?></span>
+                            </a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li><a href="<?php echo base_url('admin/vendor'); ?>" data-key="t-user-grid"><?php echo translate('vendor'); ?></a></li>
+                                <li><a href="<?php echo base_url('admin/unverified-vendor'); ?>" data-key="t-user-list"><?php echo translate('unverified') . " " . translate('vendor'); ?></a></li>
+                                <li><a href="<?php echo base_url('admin/payout-request'); ?>" data-key="t-profile"><?php echo translate('payout_request'); ?></a></li>
+                            </ul>
+                        </li>
+                    <?php endif; ?>
+
+
                 </ul>
             </div>
-        </nav>
-        <div style="min-height: 500px">
+            <!-- Sidebar -->
+        </div>
+    </div>
+    <!-- Left Sidebar End -->
+
+
+
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="main-content">
+
+        <div class="page-content">
+

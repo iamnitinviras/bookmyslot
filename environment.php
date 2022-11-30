@@ -2,7 +2,7 @@
 
 //set the environment to production after installation
 if (!defined('ENVIRONMENT'))
-    define('ENVIRONMENT', 'development');
+    define('ENVIRONMENT', 'production');
 
 $domain = $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'];
 $domain = preg_replace('/index.php.*/', '', $domain); //remove everything after index.php

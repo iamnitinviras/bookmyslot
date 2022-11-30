@@ -309,40 +309,43 @@ $new_domain = str_replace('install/', 'admin/', $domain);
                                 <p>1. Please enter your site details.</p>
                                 <hr>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <div class="form-group mt-3">
                                             <label for="sitename">Site Name</label>
                                             <input  autocomplete="off" type="text" required="required" value="" id="sitename"  name="sitename" class="form-control validate" />                                    
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <div class="form-group mt-3">
                                             <label for="siteemail">Site Email</label>
                                             <input autocomplete="off"  type="email" required="required" value="" name="siteemail" class="form-control validate" autocomplete="off"/>                                    
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <h6 style="color: #757575;">Site Logo <strong>(Size must be minimum of 241*61)</strong></h6>
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <div class="file-field">
-                                                <div class="btn btn-primary btn-sm">
-                                                    <span>Select Image</span>
-                                                    <input onchange="readURL(this)" id="imageurl" required="required"  type="file" name="logo" accept="image/x-png,image/gif,image/jpeg,image/png"  extension="jpg|png|gif|jpeg" />
+                                    <div class="col-md-6">
+                                        <div class="form-group mt-3">
+                                            <h6 style="color: #757575;">Site Logo <strong>(Size must be minimum of 241*61)</strong></h6>
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <div class="file-field">
+                                                        <div class="btn btn-primary btn-sm">
+                                                            <span>Select Image</span>
+                                                            <input onchange="readURL(this)" id="imageurl" required="required"  type="file" name="logo" accept="image/x-png,image/gif,image/jpeg,image/png"  extension="jpg|png|gif|jpeg" />
+                                                        </div>
+                                                        <div class="file-path-wrapper" >
+                                                            <input class="file-path validate form-control" type="text" placeholder="Upload your file" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="error" id="logo_validate"></div>
                                                 </div>
-                                                <div class="file-path-wrapper" >
-                                                    <input class="file-path validate form-control" type="text" placeholder="Upload your file" >
+                                                <div class="col-md-4">
+                                                    <img id="imageurl"  class="img-fluid d-none" src="../assets/images/no-image.png" alt="Image">
                                                 </div>
                                             </div>
-                                            <div class="error" id="logo_validate"></div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <img id="imageurl"  class="img-fluid d-none" src="../assets/images/no-image.png" alt="Image">
                                         </div>
                                     </div>
                                 </div>
+
+
                                 <button class="btn btn-kb-color btn-rounded prevBtn-2 float-left" type="button">Previous</button>
                                 <button class="btn btn-kb-color btn-rounded nextBtn-2 float-right" type="button">Next</button>
                             </div>
@@ -380,39 +383,38 @@ $new_domain = str_replace('install/', 'admin/', $domain);
                                 </div>
                                 <div id="smtp_block">
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="smtp_host">SMTP Host</label>
                                                 <input autocomplete="off"  type="text" required="required" value="" id="smtp_host"  name="smtp_host" class="form-control validate" />                                    
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="smtp_username">SMTP Username</label>
                                                 <input  autocomplete="off" type="text" required="required" value="" name="smtp_username" class="form-control validate"/>                                    
                                             </div>
                                         </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="smtp_password">SMTP Password</label>
+                                                <input  autocomplete="off" type="password" required="required" value="" name="smtp_password" class="form-control validate" autocomplete="off"/>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="smtp_password">SMTP Password</label>
-                                                <input  autocomplete="off" type="password" required="required" value="" name="smtp_password" class="form-control validate" autocomplete="off"/>                                    
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
+
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="smtp_port">SMTP Port</label>
                                                 <input  autocomplete="off" type="number" required="required" value="" name="smtp_port" class="form-control validate"/>                                    
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-md-6">
                                             <div class="md-form">
                                                 <h6 style="color: #757575;">Select SMTP Secure</h6>
-                                                <select name="smtp_secure" id="smtp_secure" class="kb-select">
+                                                <select name="smtp_secure" id="smtp_secure" class="form-control">
                                                     <option value="tls">TLS</option>
                                                     <option value="ssl">SSL</option>
                                                 </select>
