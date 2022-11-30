@@ -344,6 +344,96 @@
                         </li>
                     <?php endif; ?>
 
+                    <?php if (get_site_setting('enable_service') == 'Y'): ?>
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow">
+                                <i data-feather="layout"></i>
+                                <span data-key="t-pages"><?php echo translate('service'); ?></span>
+                            </a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li><a href="<?php echo base_url('admin/manage-service'); ?>" data-key="t-user-grid"><?php echo translate('service'); ?></a></li>
+                                <li><a href="<?php echo base_url('admin/service-category'); ?>" data-key="t-user-list"><?php echo translate('service_category'); ?></a></li>
+                                <li><a href="<?php echo base_url('admin/manage-coupon'); ?>" data-key="t-profile"><?php echo translate('event_coupon'); ?></a></li>
+                                <li><a href="<?php echo base_url('admin/payment-history'); ?>" data-key="t-profile"><?php echo translate('appointment_payment_history'); ?></a></li>
+                                <li><a href="<?php echo base_url('admin/holiday'); ?>" data-key="t-profile"><?php echo translate('holiday'); ?></a></li>
+                            </ul>
+                        </li>
+                    <?php endif; ?>
+
+                    <?php if (get_site_setting('enable_event') == 'Y'): ?>
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow">
+                                <i data-feather="briefcase"></i>
+                                <span data-key="t-components"><?php echo translate('event'); ?></span>
+                            </a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li><a href="<?php echo base_url('admin/manage-event'); ?>" data-key="t-user-grid"><?php echo translate('event'); ?></a></li>
+                                <li><a href="<?php echo base_url('admin/event-category'); ?>" data-key="t-user-list"><?php echo translate('event_category'); ?></a></li>
+                                <li><a href="<?php echo base_url('admin/event-booking'); ?>" data-key="t-profile"><?php echo translate('event') . " " . translate('booking'); ?></a></li>
+                                <li><a href="<?php echo base_url('admin/event-payment'); ?>" data-key="t-profile"><?php echo translate('event') . " " . translate('payment'); ?></a></li>
+                            </ul>
+                        </li>
+                    <?php endif; ?>
+
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow">
+                            <i data-feather="gift"></i>
+                            <span data-key="t-ui-elements"><?php echo translate('contact-us'); ?></span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="<?php echo base_url('admin/contact-us'); ?>" data-key="t-user-grid"><?php echo translate('contact-us-request'); ?></a></li>
+                            <li><a href="<?php echo base_url('admin/event-inquiry'); ?>" data-key="t-user-list"><?php echo translate('event_inquiry'); ?></a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="<?php echo base_url('admin/sitesetting'); ?>">
+                            <i data-feather="settings"></i>
+                            <span data-key="t-settings"><?php echo translate('site_setting'); ?></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url('admin/manage-content'); ?>">
+                            <i data-feather="file"></i>
+                            <span data-key="t-file"><?php echo translate('content_management'); ?></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url('admin/manage-language'); ?>">
+                            <i data-feather="language"></i>
+                            <span data-key="t-language"><?php echo translate('language_setting'); ?></span>
+                        </a>
+                    </li>
+
+                    <?php if (get_site_setting('enable_membership') == 'Y'): ?>
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow">
+                                <i data-feather="gift"></i>
+                                <span data-key="t-ui-elements"><?php echo translate('package'); ?></span>
+                            </a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li><a href="<?php echo base_url('admin/manage-package'); ?>" data-key="t-user-grid"><?php echo translate('manage') . " " . translate('package'); ?></a></li>
+                                <li><a href="<?php echo base_url('admin/package-payment'); ?>" data-key="t-user-list"><?php echo translate('package') . " " . translate('payment'); ?></a></li>
+                            </ul>
+                        </li>
+                    <?php endif; ?>
+
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow">
+                            <i data-feather="trello"></i>
+                            <span data-key="t-tasks"><?php echo translate('master'); ?></span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="<?php echo base_url('admin/currency'); ?>" data-key="t-user-grid"><?php echo translate('currency'); ?></a></li>
+                            <li><a href="<?php echo base_url('admin/city'); ?>" data-key="t-user-list"><?php echo translate('city'); ?></a></li>
+                            <li><a href="<?php echo base_url('admin/location'); ?>" data-key="t-user-list"><?php echo translate('location'); ?></a></li>
+                            <?php if (get_site_setting('enable_testimonial') == 'Y'): ?>
+                                <li><a href="<?php echo base_url('admin/testimonial'); ?>" data-key="t-user-list"><?php echo translate('testimonial'); ?></a></li>
+                            <?php endif; ?>
+                            <li><a href="<?php echo base_url('admin/manage-slider'); ?>" data-key="t-user-list"><?php echo translate('gallery_image'); ?></a></li>
+                            <li><a href="<?php echo base_url('admin/manage-faq'); ?>" data-key="t-user-list"><?php echo translate('faqs'); ?></a></li>
+                        </ul>
+                    </li>
 
                 </ul>
             </div>

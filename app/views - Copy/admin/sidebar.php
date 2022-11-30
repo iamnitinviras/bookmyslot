@@ -485,6 +485,7 @@ if (isset($url_segment) && in_array($url_segment, $customerArr)) {
                 </ul>
             </li>
         <?php endif; ?>
+        
         <li class="<?php echo $city_active . $testimonial_active . $currency_active . $location_active . $slider_active . $faq_active; ?>">
             <a href="javascript:void(0)" class="border-color">
                 <i class="fa fa-gears"></i>
