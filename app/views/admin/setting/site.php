@@ -41,63 +41,72 @@ if (isset($company_data->fevicon_icon) && $company_data->fevicon_icon != "") {
 }
 ?>
 <script src="<?php echo $this->config->item('js_url'); ?>module/additional-methods.js" type="text/javascript"></script>
+<div class="container-fluid">
 
-<div class="dashboard-body">
-    <!-- Start Content -->
-    <div class="content">
-        <!-- Start Container -->
-        <div class="container-fluid">            
-            <div class="row mt-3">
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="p-3">
-                            <div class="sidebar_section">
-                                <ul class="list-inline">
-                                    <li class="active"><a href="<?php echo base_url('admin/sitesetting'); ?>"><?php echo translate('site_setting'); ?></a></li>
-                                    <li><a href="<?php echo base_url('admin/email-setting'); ?>"><?php echo translate('email_setting'); ?></a></li>
-                                    <li>
-                                        <a href="<?php echo base_url('admin/currency-setting'); ?>"><?php echo translate('currency') . ' ' . translate('setting'); ?></a>
-                                    </li>
-                                    <li><a href="<?php echo base_url('admin/business-setting'); ?>"><?php echo translate('business') . ' ' . translate('setting'); ?></a></li>
-                                    <li><a href="<?php echo base_url('admin/display-setting'); ?>"><?php echo translate('display_setting'); ?></a></li>
-                                    <li><a href="<?php echo base_url('admin/payment-setting'); ?>"><?php echo translate('payment_setting'); ?></a></li>
-                                    <li><a href="<?php echo base_url('admin/vendor-setting'); ?>"><?php echo translate('vendor') . ' ' . translate('setting'); ?></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Basic Information</h4>
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Ecommerce</a></li>
+                        <li class="breadcrumb-item active">Add Product</li>
+                    </ol>
                 </div>
-                <div class="col-md-9">
-                    <?php $this->load->view('message'); ?>
+                <div class="card-body">
 
-                    <div class="card">
 
-                        <div class="card-header">
-                            <h5 class="black-text font-bold mb-0"><?php echo translate('site_setting'); ?></h5>
-                        </div>
-
-                        <div class="card-body">
-                            <div class="steps-form-2">
-                                <div class="steps-row-2 setup-panel-2 d-flex justify-content-between">
-                                    <div class="steps-step-2">
-                                        <a href="#step-4" type="button" class="btn kb-color waves-effect ml-0" data-toggle="tooltip" data-placement="top" title="<?php echo translate('basic'); ?> <?php echo translate('information'); ?>">
-                                            <?php echo translate('basic'); ?> <?php echo translate('information'); ?>
-                                        </a>
-                                    </div>
-                                    <div class="steps-step-2">
-                                        <a href="#step-5" type="button" class="btn btn-blue-grey waves-effect" data-toggle="tooltip" data-placement="top" title=" <?php echo translate('social'); ?> <?php echo translate('media'); ?>">
-                                            <?php echo translate('social'); ?> <?php echo translate('media'); ?>
-                                        </a>
-                                    </div>
-                                    <div class="steps-step-2">
-                                        <a href="#step-6" type="button" class="btn btn-blue-grey waves-effect" data-toggle="tooltip" data-placement="top" title=" <?php echo translate('media'); ?>">
-                                            <?php echo translate('media'); ?>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active"  href="<?php echo base_url('admin/setting/site'); ?>" role="tab">
+                                <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
+                                <span class="d-none d-sm-block"><?php echo translate('site_setting'); ?></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  href="<?php echo base_url('admin/setting/email'); ?>" role="tab">
+                                <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+                                <span class="d-none d-sm-block"><?php echo translate('email_setting'); ?></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  href="<?php echo base_url('admin/setting/currency'); ?>" role="tab">
+                                <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
+                                <span class="d-none d-sm-block"><?php echo translate('currency'); ?></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  href="<?php echo base_url('admin/setting/business'); ?>" role="tab">
+                                <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
+                                <span class="d-none d-sm-block"><?php echo translate('business'); ?></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  href="<?php echo base_url('admin/setting/display'); ?>" role="tab">
+                                <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
+                                <span class="d-none d-sm-block"><?php echo translate('display_setting'); ?></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  href="<?php echo base_url('admin/setting/payment'); ?>" role="tab">
+                                <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
+                                <span class="d-none d-sm-block"><?php echo translate('payment_setting'); ?></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  href="<?php echo base_url('admin/setting/vendor'); ?>" role="tab">
+                                <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
+                                <span class="d-none d-sm-block"><?php echo translate('vendor') . ' ' . translate('setting'); ?></span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content p-3 text-muted">
+                        <div class="tab-pane active" role="tabpanel">
+                            <?php $this->load->view('message'); ?>
                             <?php echo form_open_multipart('admin/save-sitesetting', array('name' => 'site_form', 'id' => 'site_form')); ?>
-                            <div class="row setup-content-2" id="step-4">
+                            <div class="row">
                                 <div class="col-md-12">
                                     <h3 class="font-bold pl-0 my-4"><strong><?php echo translate('company'); ?> <?php echo translate('information'); ?></strong></h3>
                                     <div class="row">
@@ -112,7 +121,7 @@ if (isset($company_data->fevicon_icon) && $company_data->fevicon_icon != "") {
                                             <div class="form-group">
                                                 <?php echo form_label(translate('site_email') . ' : <small class ="required">*</small>', 'company_email1', array('class' => 'control-label')); ?>
                                                 <?php echo form_input(array('autocomplete'=>'off','id' => 'company_email1', 'class' => 'form-control validate', 'name' => 'company_email1', 'value' => $company_email1, 'required' => 'required', 'type' => 'email', 'placeholder' => translate('site_email'))); ?>
-                                                <?php echo form_error('company_email1'); ?> 
+                                                <?php echo form_error('company_email1'); ?>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -126,7 +135,7 @@ if (isset($company_data->fevicon_icon) && $company_data->fevicon_icon != "") {
                                                 <?php echo form_label(translate('address') . ' :', 'company_address1', array('class' => 'control-label')); ?>
                                                 <?php echo form_textarea(array('id' => 'company_address1', 'class' => 'form-control validate', 'name' => 'company_address1', 'type' => 'text', 'rows' => 3, 'value' => $company_address1, 'placeholder' => translate('address'))); ?>
                                             </div>
-                                        </div> 
+                                        </div>
 
                                         <div class="col-md-6 ">
                                             <div class="form-group">
@@ -166,7 +175,7 @@ if (isset($company_data->fevicon_icon) && $company_data->fevicon_icon != "") {
                                     <button class="btn btn-kb-color btn-rounded nextBtn-2 float-right" type="button"><?php echo translate('next'); ?></button>
                                 </div>
                             </div>
-                            <div class="row setup-content-2" id="step-5">
+                            <div class="row">
                                 <div class="col-md-12">
                                     <h3 class="font-bold pl-0 my-4"><strong><?php echo translate('social'); ?> <?php echo translate('media'); ?></strong></h3>
                                     <div class="row">
@@ -210,7 +219,7 @@ if (isset($company_data->fevicon_icon) && $company_data->fevicon_icon != "") {
                                     <button class="btn btn-kb-color btn-rounded nextBtn-2 float-right" type="button"><?php echo translate('next'); ?></button>
                                 </div>
                             </div>
-                            <div class="row setup-content-2" id="step-6">
+                            <div class="row">
                                 <div class="col-md-12">
                                     <h3 class="font-bold pl-0 my-4"><strong><?php echo translate('media'); ?></strong></h3>
                                     <div class="row">
@@ -259,9 +268,10 @@ if (isset($company_data->fevicon_icon) && $company_data->fevicon_icon != "") {
                         </div>
                     </div>
                 </div>
-            </div>            
+            </div>
         </div>
     </div>
+    <!-- end row -->
 </div>
 <script src="<?php echo $this->config->item('js_url'); ?>module/sitesetting.js" type="text/javascript"></script>
 <?php include VIEWPATH . 'admin/footer.php'; ?>

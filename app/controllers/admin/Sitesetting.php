@@ -19,7 +19,7 @@ class Sitesetting extends MY_Controller {
         $data['company_data'] = $company_data[0];
         $data['language_data'] = $language_data;
 
-        $this->load->view('admin/setting/manage-sitesetting', $data);
+        $this->load->view('admin/setting/site', $data);
     }
 
     //add/edit site setting
@@ -136,7 +136,7 @@ class Sitesetting extends MY_Controller {
         $company_data = $this->model_sitesetting->get_email();
         $data['title'] = translate('email') . " " . translate('details');
         $data['email_data'] = $company_data;
-        $this->load->view('admin/setting/manage-emailsetting', $data);
+        $this->load->view('admin/setting/email', $data);
     }
 
     //add/edit email data
@@ -176,7 +176,7 @@ class Sitesetting extends MY_Controller {
             $this->model_sitesetting->edit_email(1, $data);
             $this->session->set_flashdata('msg', translate('smtp_update'));
             $this->session->set_flashdata('msg_class', "success");
-            redirect('admin/email-setting');
+            redirect('admin/setting/email');
         }
     }
 
@@ -185,7 +185,7 @@ class Sitesetting extends MY_Controller {
         $data['title'] = translate('payment_setting');
         $payment_data = $this->model_sitesetting->getData('app_payment_setting', '*');
         $data['payment_data'] = isset($payment_data[0]) ? $payment_data[0] : '';
-        $this->load->view('admin/setting/manage-payment-setting', $data);
+        $this->load->view('admin/setting/payment', $data);
     }
 
     public function currency_setting() {
@@ -195,7 +195,7 @@ class Sitesetting extends MY_Controller {
 
         $data['app_currency'] = isset($app_currency) ? $app_currency : array();
         $data['currency_data'] = $c_data;
-        $this->load->view('admin/setting/currency-setting', $data);
+        $this->load->view('admin/setting/currency', $data);
     }
 
     public function save_curenncy_setting() {
@@ -208,7 +208,7 @@ class Sitesetting extends MY_Controller {
 
         $this->session->set_flashdata('msg', "Currency has been updated.");
         $this->session->set_flashdata('msg_class', "success");
-        redirect('admin/currency-setting');
+        redirect('admin/setting/currency');
     }
 
     //save payment setting
@@ -261,7 +261,7 @@ class Sitesetting extends MY_Controller {
             }
             $this->session->set_flashdata('msg', translate('payment_setting_update'));
             $this->session->set_flashdata('msg_class', "success");
-            redirect('admin/payment-setting');
+            redirect('admin/setting/payment');
         }
     }
 
@@ -312,7 +312,7 @@ class Sitesetting extends MY_Controller {
         $data['title'] = translate('Display') . " " . translate('site_setting');
         $company_data = $this->model_sitesetting->get();
         $data['company_data'] = $company_data[0];
-        $this->load->view('admin/setting/manage-displaysetting', $data);
+        $this->load->view('admin/setting/display', $data);
     }
 
     //add/edit email data
@@ -347,7 +347,7 @@ class Sitesetting extends MY_Controller {
         $company_data = $this->model_sitesetting->get();
         $data['title'] = translate('manage') . " " . translate('business') . " " . translate('setting');
         $data['business_data'] = $company_data[0];
-        $this->load->view('admin/setting/manage-businesssetting', $data);
+        $this->load->view('admin/setting/business', $data);
     }
 
     public function save_businesss_setting() {
@@ -372,7 +372,7 @@ class Sitesetting extends MY_Controller {
             $this->model_sitesetting->edit(1, $data);
             $this->session->set_flashdata('msg', translate('business_setting_update'));
             $this->session->set_flashdata('msg_class', "success");
-            redirect('admin/business-setting', 'redirect');
+            redirect('admin/setting/business', 'redirect');
         }
     }
 
@@ -411,9 +411,9 @@ class Sitesetting extends MY_Controller {
         $vendor_data = $this->model_sitesetting->getData('app_vendor_setting', '*', 'id=1');
         if (count($vendor_data) > 0) {
             $data['vendor_data'] = $vendor_data[0];
-            $this->load->view('admin/setting/vendor-setting', $data);
+            $this->load->view('admin/setting/vendor', $data);
         } else {
-            redirect('admin/sitesetting');
+            redirect('admin/setting/site');
         }
     }
 
@@ -432,7 +432,7 @@ class Sitesetting extends MY_Controller {
 
         $this->session->set_flashdata('msg', translate('vendor_setting_updated'));
         $this->session->set_flashdata('msg_class', "success");
-        redirect('admin/vendor-setting');
+        redirect('admin/setting/vendor');
     }
 
 }

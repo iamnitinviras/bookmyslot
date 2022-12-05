@@ -368,20 +368,27 @@ $route['admin/send-remainder'] = 'admin/appointment/send_remainder';
 $route['vendor/manage-event-appointment/(:num)'] = 'admin/appointment/event_appointment/$1';
 /* Site Setting */
 
-$route['admin/sitesetting'] = 'admin/sitesetting/index';
+$route['admin/setting/site'] = 'admin/sitesetting/index';
 $route['admin/save-sitesetting'] = 'admin/sitesetting/save_sitesetting';
-$route['admin/email-setting'] = 'admin/sitesetting/email_setting';
+
+$route['admin/setting/email'] = 'admin/sitesetting/email_setting';
 $route['admin/save-email-setting'] = 'admin/sitesetting/save_email_setting';
-$route['admin/display-setting'] = 'admin/sitesetting/display_setting';
+
+$route['admin/setting/display'] = 'admin/sitesetting/display_setting';
 $route['admin/save-display-setting'] = 'admin/sitesetting/save_display_setting';
-$route['admin/business-setting'] = 'admin/sitesetting/business_setting';
-$route['admin/currency-setting'] = 'admin/sitesetting/currency_setting';
+
+$route['admin/setting/business'] = 'admin/sitesetting/business_setting';
+
+$route['admin/setting/currency'] = 'admin/sitesetting/currency_setting';
 $route['admin/save-business-setting'] = 'admin/sitesetting/save_businesss_setting';
-$route['admin/payment-setting'] = 'admin/sitesetting/payment_setting';
+
+$route['admin/setting/payment'] = 'admin/sitesetting/payment_setting';
 $route['admin/save-payment-setting'] = 'admin/sitesetting/save_payment_setting';
-$route['admin/vendor-setting'] = 'admin/sitesetting/vendor_setting';
+
+$route['admin/setting/vendor'] = 'admin/sitesetting/vendor_setting';
 $route['admin/save-vendor-setting'] = 'admin/sitesetting/save_vendor_setting';
-$route['admin/update-display-setting'] = 'admin/sitesetting/update_display_setting';
+
+$route['admin/setting/display'] = 'admin/sitesetting/update_display_setting';
 $route['admin/integrateon-webpage'] = 'admin/sitesetting/integrateon_webpage';
 
 
