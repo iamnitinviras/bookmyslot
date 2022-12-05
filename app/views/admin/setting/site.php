@@ -108,7 +108,6 @@ if (isset($company_data->fevicon_icon) && $company_data->fevicon_icon != "") {
                             <?php echo form_open_multipart('admin/save-sitesetting', array('name' => 'site_form', 'id' => 'site_form')); ?>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h3 class="font-bold pl-0 my-4"><strong><?php echo translate('company'); ?> <?php echo translate('information'); ?></strong></h3>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -172,12 +171,10 @@ if (isset($company_data->fevicon_icon) && $company_data->fevicon_icon != "") {
                                             </div>
                                         </div>
                                     </div>
-                                    <button class="btn btn-kb-color btn-rounded nextBtn-2 float-right" type="button"><?php echo translate('next'); ?></button>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h3 class="font-bold pl-0 my-4"><strong><?php echo translate('social'); ?> <?php echo translate('media'); ?></strong></h3>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -215,13 +212,10 @@ if (isset($company_data->fevicon_icon) && $company_data->fevicon_icon != "") {
                                             </div>
                                         </div>
                                     </div>
-                                    <button class="btn btn-kb-color btn-rounded prevBtn-2 float-left" type="button"><?php echo translate('previous'); ?></button>
-                                    <button class="btn btn-kb-color btn-rounded nextBtn-2 float-right" type="button"><?php echo translate('next'); ?></button>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h3 class="font-bold pl-0 my-4"><strong><?php echo translate('media'); ?></strong></h3>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -260,7 +254,6 @@ if (isset($company_data->fevicon_icon) && $company_data->fevicon_icon != "") {
                                             </div>
                                         </div>
                                     </div>
-                                    <button class="btn btn-kb-color btn-rounded prevBtn-2 float-left" type="button"><?php echo translate('previous'); ?></button>
                                     <button class="btn btn-success btn-rounded float-right" type="submit"><?php echo translate('submit'); ?></button>
                                 </div>
                             </div>
