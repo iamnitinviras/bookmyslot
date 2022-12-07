@@ -298,7 +298,7 @@
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
                                 <li><a href="<?php echo base_url('admin/vendor'); ?>" data-key="t-user-grid"><?php echo translate('vendor'); ?></a></li>
-                                <li><a href="<?php echo base_url('admin/unverified-vendor'); ?>" data-key="t-user-list"><?php echo translate('unverified') . " " . translate('vendor'); ?></a></li>
+                                <li><a href="<?php echo base_url('admin/vendor/unverified'); ?>" data-key="t-user-list"><?php echo translate('unverified') . " " . translate('vendor'); ?></a></li>
                                 <li><a href="<?php echo base_url('admin/payout-request'); ?>" data-key="t-profile"><?php echo translate('payout_request'); ?></a></li>
                             </ul>
                         </li>
@@ -311,9 +311,9 @@
                                 <span data-key="t-pages"><?php echo translate('service'); ?></span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="<?php echo base_url('admin/manage-service'); ?>" data-key="t-user-grid"><?php echo translate('service'); ?></a></li>
-                                <li><a href="<?php echo base_url('admin/service-category'); ?>" data-key="t-user-list"><?php echo translate('service_category'); ?></a></li>
-                                <li><a href="<?php echo base_url('admin/manage-coupon'); ?>" data-key="t-profile"><?php echo translate('event_coupon'); ?></a></li>
+                                <li><a href="<?php echo base_url('admin/service'); ?>" data-key="t-user-grid"><?php echo translate('service'); ?></a></li>
+                                <li><a href="<?php echo base_url('admin/service/category'); ?>" data-key="t-user-list"><?php echo translate('service_category'); ?></a></li>
+                                <li><a href="<?php echo base_url('admin/coupon'); ?>" data-key="t-profile"><?php echo translate('event_coupon'); ?></a></li>
                                 <li><a href="<?php echo base_url('admin/payment-history'); ?>" data-key="t-profile"><?php echo translate('appointment_payment_history'); ?></a></li>
                                 <li><a href="<?php echo base_url('admin/holiday'); ?>" data-key="t-profile"><?php echo translate('holiday'); ?></a></li>
                             </ul>
@@ -327,10 +327,10 @@
                                 <span data-key="t-components"><?php echo translate('event'); ?></span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="<?php echo base_url('admin/manage-event'); ?>" data-key="t-user-grid"><?php echo translate('event'); ?></a></li>
-                                <li><a href="<?php echo base_url('admin/event-category'); ?>" data-key="t-user-list"><?php echo translate('event_category'); ?></a></li>
-                                <li><a href="<?php echo base_url('admin/event-booking'); ?>" data-key="t-profile"><?php echo translate('event') . " " . translate('booking'); ?></a></li>
-                                <li><a href="<?php echo base_url('admin/event-payment'); ?>" data-key="t-profile"><?php echo translate('event') . " " . translate('payment'); ?></a></li>
+                                <li><a href="<?php echo base_url('admin/event'); ?>" data-key="t-user-grid"><?php echo translate('event'); ?></a></li>
+                                <li><a href="<?php echo base_url('admin/event/category'); ?>" data-key="t-user-list"><?php echo translate('event_category'); ?></a></li>
+                                <li><a href="<?php echo base_url('admin/event/booking'); ?>" data-key="t-profile"><?php echo translate('event') . " " . translate('booking'); ?></a></li>
+                                <li><a href="<?php echo base_url('admin/event/payment'); ?>" data-key="t-profile"><?php echo translate('event') . " " . translate('payment'); ?></a></li>
                             </ul>
                         </li>
                     <?php endif; ?>
@@ -390,8 +390,8 @@
                             <?php if (get_site_setting('enable_testimonial') == 'Y'): ?>
                                 <li><a href="<?php echo base_url('admin/testimonial'); ?>" data-key="t-user-list"><?php echo translate('testimonial'); ?></a></li>
                             <?php endif; ?>
-                            <li><a href="<?php echo base_url('admin/manage-slider'); ?>" data-key="t-user-list"><?php echo translate('gallery_image'); ?></a></li>
-                            <li><a href="<?php echo base_url('admin/manage-faq'); ?>" data-key="t-user-list"><?php echo translate('faqs'); ?></a></li>
+                            <li><a href="<?php echo base_url('admin/slider'); ?>" data-key="t-user-list"><?php echo translate('gallery_image'); ?></a></li>
+                            <li><a href="<?php echo base_url('admin/faq'); ?>" data-key="t-user-list"><?php echo translate('faqs'); ?></a></li>
                         </ul>
                     </li>
 

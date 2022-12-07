@@ -197,35 +197,35 @@ $route['admin/mandatory-update'] = 'admin/dashboard/mandatory_update';
 /* Customer */
 
 $route['admin/customer'] = 'admin/customer/index';
-$route['admin/add-customer'] = 'admin/customer/add_customer';
-$route['admin/update-customer/(:num)'] = 'admin/customer/update_customer/$1';
-$route['admin/save-customer'] = 'admin/customer/save_customer';
-$route['admin/delete-customer/(:any)'] = 'admin/customer/delete_customer/$1';
-$route['admin/customer-booking/(:any)'] = 'admin/customer/customer_booking/$1';
+$route['admin/customer/add'] = 'admin/customer/add_customer';
+$route['admin/customer/edit/(:num)'] = 'admin/customer/update_customer/$1';
+$route['admin/customer/save'] = 'admin/customer/save_customer';
+$route['admin/customer/delete/(:any)'] = 'admin/customer/delete_customer/$1';
+$route['admin/customer/booking/(:any)'] = 'admin/customer/customer_booking/$1';
 
 
 $route['admin/currency'] = 'admin/currency/index';
-$route['admin/add-currency'] = 'admin/currency/add_currency';
-$route['admin/update-currency/(:num)'] = 'admin/currency/update_currency/$1';
-$route['admin/save-currency'] = 'admin/currency/save_currency';
-$route['admin/delete-currency/(:any)'] = 'admin/currency/delete_currency/$1';
+$route['admin/currency/add'] = 'admin/currency/add_currency';
+$route['admin/currency/edit/(:num)'] = 'admin/currency/update_currency/$1';
+$route['admin/currency/save'] = 'admin/currency/save_currency';
+$route['admin/currency/delete/(:any)'] = 'admin/currency/delete_currency/$1';
 
 /* Staff */
 
 $route['admin/staff'] = 'admin/staff/index';
-$route['admin/add-staff'] = 'admin/staff/add_staff';
-$route['admin/update-staff/(:num)'] = 'admin/staff/update_staff/$1';
-$route['admin/save-staff'] = 'admin/staff/save_staff';
-$route['admin/delete-staff/(:any)'] = 'admin/staff/delete_staff/$1';
-$route['admin/staff-booking/(:any)'] = 'admin/staff/staff_booking/$1';
+$route['admin/staff/add'] = 'admin/staff/add_staff';
+$route['admin/staff/edit/(:num)'] = 'admin/staff/update_staff/$1';
+$route['admin/staff/save'] = 'admin/staff/save_staff';
+$route['admin/staff/delete/(:any)'] = 'admin/staff/delete_staff/$1';
+$route['admin/staff/booking/(:any)'] = 'admin/staff/staff_booking/$1';
 
 
 $route['vendor/staff'] = 'admin/staff/index';
-$route['vendor/add-staff'] = 'admin/staff/add_staff';
-$route['vendor/update-staff/(:num)'] = 'admin/staff/update_staff/$1';
-$route['vendor/save-staff'] = 'admin/staff/save_staff';
-$route['vendor/delete-staff/(:any)'] = 'admin/staff/delete_staff/$1';
-$route['vendor/staff-booking/(:any)'] = 'admin/staff/staff_booking/$1';
+$route['vendor/staff/add'] = 'admin/staff/add_staff';
+$route['vendor/staff/edit/(:num)'] = 'admin/staff/update_staff/$1';
+$route['vendor/staff/save'] = 'admin/staff/save_staff';
+$route['vendor/staff/delete/(:any)'] = 'admin/staff/delete_staff/$1';
+$route['vendor/staff/booking/(:any)'] = 'admin/staff/staff_booking/$1';
 
 
 $route['vendor/view-event-booking-details/(:num)'] = 'admin/event/view_event_booking_details/$1';
@@ -242,24 +242,23 @@ $route['admin/payout-request'] = 'admin/dashboard/payout_request';
 $route['admin/payment_update/(:num)'] = 'admin/dashboard/payment_update/$1';
 
 /* Event */
-$route['admin/manage-event'] = 'admin/event/index';
-$route['admin/event-booking'] = 'admin/event/event_booking';
-$route['admin/event-payment'] = 'admin/event/event_payment';
-
-$route['admin/add-event'] = 'admin/event/add_event';
-$route['admin/update-event/(:num)'] = 'admin/event/update_event/$1';
-$route['admin/save-event'] = 'admin/event/save_event';
-$route['admin/delete-event/(:num)'] = 'admin/event/delete_event/$1';
+$route['admin/event'] = 'admin/event/index';
+$route['admin/event/booking'] = 'admin/event/event_booking';
+$route['admin/event/payment'] = 'admin/event/event_payment';
+$route['admin/event/add'] = 'admin/event/add_event';
+$route['admin/event/edit/(:num)'] = 'admin/event/update_event/$1';
+$route['admin/event/save'] = 'admin/event/save_event';
+$route['admin/event/delete/(:num)'] = 'admin/event/delete_event/$1';
 $route['admin/delete-ticket-type'] = 'admin/event/delete_ticket_type/';
 $route['vendor/delete-ticket-type'] = 'admin/event/delete_ticket_type/';
 
 /* Services */
 
-$route['admin/manage-service'] = 'admin/service/index';
-$route['admin/add-service'] = 'admin/service/add_service';
-$route['admin/update-service/(:num)'] = 'admin/service/update_service/$1';
+$route['admin/service'] = 'admin/service/index';
+$route['admin/service/add'] = 'admin/service/add_service';
+$route['admin/service/edit/(:num)'] = 'admin/service/update_service/$1';
 $route['admin/save-service'] = 'admin/service/save_service';
-$route['admin/delete-service/(:num)'] = 'admin/service/delete_service/$1';
+$route['admin/service/destroy/(:num)'] = 'admin/service/delete_service/$1';
 
 $route['admin/service-booking-update'] = "admin/service/service_booking_update";
 $route['vendor/service-booking-update'] = "admin/service/service_booking_update";
@@ -268,81 +267,81 @@ $route['admin/view-booking-details/(:any)'] = 'admin/service/view_booking_detail
 $route['vendor/view-booking-details/(:any)'] = 'admin/service/view_booking_details/$1';
 
 /* Manage Service Addons */
-$route['admin/manage-service-addons/(:num)'] = 'admin/service/addons/$1';
-$route['admin/add-service-addons/(:num)'] = 'admin/service/add_service_addons/$1';
-$route['admin/update-service-addons/(:num)/(:num)'] = 'admin/service/update_addons_service/$1/$2';
-$route['admin/save-service-addons'] = 'admin/service/save_service_addons';
-$route['admin/delete-service-addons/(:num)'] = 'admin/service/delete_service_addons/$1';
+$route['admin/service/addons/(:num)'] = 'admin/service/addons/$1';
+$route['admin/service/addons/add/(:num)'] = 'admin/service/add_service_addons/$1';
+$route['admin/service/addons/edit/(:num)/(:num)'] = 'admin/service/update_addons_service/$1/$2';
+$route['admin/service/addons/save'] = 'admin/service/save_service_addons';
+$route['admin/service/addons/delete/(:num)'] = 'admin/service/delete_service_addons/$1';
 
 $route['admin/service-payment-details/(:num)'] = 'admin/service/service_payment_details/$1';
 $route['vendor/service-payment-details/(:num)'] = 'admin/service/service_payment_details/$1';
 
 /* Manage Vendor Service Addons */
-$route['vendor/manage-service-addons/(:num)'] = 'admin/service/addons/$1';
-$route['vendor/add-service-addons/(:num)'] = 'admin/service/add_service_addons/$1';
-$route['vendor/update-service-addons/(:num)/(:num)'] = 'admin/service/update_addons_service/$1/$2';
+$route['vendor/service/addons/(:num)'] = 'admin/service/addons/$1';
+$route['vendor/service/add-addons/(:num)'] = 'admin/service/add_service_addons/$1';
+$route['vendor/service/edit-addons/(:num)/(:num)'] = 'admin/service/update_addons_service/$1/$2';
 $route['vendor/save-service-addons'] = 'admin/service/save_service_addons';
-$route['vendor/delete-service-addons/(:num)'] = 'admin/service/delete_service_addons/$1';
+$route['vendor/service/delete-addons/(:num)'] = 'admin/service/delete_service_addons/$1';
 
 /* FAQ FOR ADMIN */
-$route['admin/add-faq'] = 'admin/faq/add_faq';
-$route['admin/update-faq/(:num)'] = 'admin/faq/update_faq/$1';
-$route['admin/manage-faq'] = 'admin/faq/index';
-$route['admin/delete-faq/(:num)'] = 'admin/faq/delete_faq/$1';
+$route['admin/faq'] = 'admin/faq/index';
+$route['admin/faq/add'] = 'admin/faq/add_faq';
+$route['admin/faq/edit/(:num)'] = 'admin/faq/update_faq/$1';
+$route['admin/faq/delete/(:num)'] = 'admin/faq/delete_faq/$1';
 $route['admin/save-faq'] = 'admin/faq/save_faq';
 $route['admin/get-location/(:num)'] = 'content/get_location/$1';
 $route['admin/delete-event-image'] = 'admin/event/delete_event_image';
 $route['admin/delete-event-seo-image'] = 'admin/event/delete_event_seo_image';
 
 /* Event Category */
-$route['admin/event-category'] = 'admin/event/event_category';
-$route['admin/add-category'] = 'admin/event/add_category';
-$route['admin/update-category/(:num)'] = 'admin/event/update_category/$1';
-$route['admin/save-category'] = 'admin/event/save_category';
+$route['admin/event/category'] = 'admin/event/event_category';
+$route['admin/event/category/add'] = 'admin/event/add_category';
+$route['admin/event/category/edit/(:num)'] = 'admin/event/update_category/$1';
+$route['admin/event/save'] = 'admin/event/save_category';
 $route['admin/check-event-category-title'] = 'admin/event/check_event_category_title';
 $route['admin/delete-category/(:num)'] = 'admin/event/delete_category/$1';
 
 /* Service Category */
-$route['admin/service-category'] = 'admin/service/service_category';
-$route['admin/add-service-category'] = 'admin/service/add_category';
-$route['admin/update-service-category/(:num)'] = 'admin/service/update_category/$1';
-$route['admin/save-service-category'] = 'admin/service/save_category';
+$route['admin/service/category'] = 'admin/service/service_category';
+$route['admin/service/category/add-'] = 'admin/service/add_category';
+$route['admin/service/category/edit/(:num)'] = 'admin/service/update_category/$1';
+$route['admin/service/category/save'] = 'admin/service/save_category';
 $route['admin/check-service-category-title'] = 'admin/service/check_service_category_title';
-$route['admin/delete-service-category/(:num)'] = 'admin/service/delete_service_category/$1';
+$route['admin/service/delete-category/(:num)'] = 'admin/service/delete_service_category/$1';
 
 /* Service Holiday */
 $route['admin/holiday'] = 'admin/service/holiday';
-$route['admin/add-holiday'] = 'admin/service/add_holiday';
-$route['admin/update-holiday/(:num)'] = 'admin/service/update_holiday/$1';
-$route['admin/save-holiday'] = 'admin/service/save_holiday';
+$route['admin/holiday/add'] = 'admin/service/add_holiday';
+$route['admin/holiday/edit/(:num)'] = 'admin/service/update_holiday/$1';
+$route['admin/holiday/save'] = 'admin/service/save_holiday';
 $route['admin/delete-holiday/(:num)'] = 'admin/service/delete_holiday/$1';
 
 
 /* Slider */
-$route['admin/manage-slider'] = 'admin/slider/index';
-$route['admin/add-slider'] = 'admin/slider/add_slider';
-$route['admin/update-slider/(:num)'] = 'admin/slider/update_slider/$1';
-$route['admin/save-slider'] = 'admin/slider/save_slider';
-$route['admin/delete-slider/(:num)'] = 'admin/slider/delete_slider/$1';
+$route['admin/slider'] = 'admin/slider/index';
+$route['admin/slider/add'] = 'admin/slider/add_slider';
+$route['admin/slider/edit/(:num)'] = 'admin/slider/update_slider/$1';
+$route['admin/slider/save'] = 'admin/slider/save_slider';
+$route['admin/slider/delete/(:num)'] = 'admin/slider/delete_slider/$1';
 
 /* Package */
-$route['admin/manage-package'] = 'admin/package/index';
-$route['admin/add-package'] = 'admin/package/add_package';
-$route['admin/save-package'] = 'admin/package/save_package';
-$route['admin/update-package/(:num)'] = 'admin/package/update_package/$1';
-$route['admin/delete-package/(:num)'] = 'admin/package/delete_package/$1';
-$route['admin/package-payment'] = 'admin/package/package_payment/$1';
+$route['admin/package'] = 'admin/package/index';
+$route['admin/package/add'] = 'admin/package/add_package';
+$route['admin/package/save'] = 'admin/package/save_package';
+$route['admin/package/edit/(:num)'] = 'admin/package/update_package/$1';
+$route['admin/package/delete/(:num)'] = 'admin/package/delete_package/$1';
+$route['admin/package/payment'] = 'admin/package/package_payment/$1';
 
 /* Vendor */
 $route['admin/vendor'] = 'admin/vendor/index';
-$route['admin/unverified-vendor'] = 'admin/vendor/unverified_vendor';
-$route['admin/delete-vendor/(:any)'] = 'admin/vendor/delete_vendor/$1';
+$route['admin/vendor/unverified'] = 'admin/vendor/unverified_vendor';
+$route['admin/vendor/delete/(:any)'] = 'admin/vendor/delete_vendor/$1';
 $route['admin/change-vendor-status/(:any)'] = 'admin/vendor/change_vendor_tatus/$1';
-$route['admin/vendor-payment'] = 'admin/vendor/vendor_payment';
+$route['admin/vendor/payment'] = 'admin/vendor/vendor_payment';
 $route['admin/send-vendor-payment/(:num)'] = 'admin/vendor/send_vendor_payment/$1';
-$route['admin/add-vendor'] = 'admin/vendor/add_vendor';
-$route['admin/update-vendor/(:num)'] = 'admin/vendor/update_vendor/$1';
-$route['admin/save-vendor'] = 'admin/vendor/save_vendor';
+$route['admin/vendor/add'] = 'admin/vendor/add_vendor';
+$route['admin/vendor/edit/(:num)'] = 'admin/vendor/update_vendor/$1';
+$route['admin/vendor/save'] = 'admin/vendor/save_vendor';
 
 /* Report */
 $route['admin/report'] = 'admin/report/index';
