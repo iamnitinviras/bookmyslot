@@ -25,7 +25,7 @@ $currency_position = isset($currency_data['currency_position']) ? $currency_data
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active"  href="<?php echo base_url('admin/setting/site'); ?>" role="tab">
+                            <a class="nav-link"  href="<?php echo base_url('admin/setting/site'); ?>" role="tab">
                                 <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
                                 <span class="d-none d-sm-block"><?php echo translate('site_setting'); ?></span>
                             </a>
@@ -37,7 +37,7 @@ $currency_position = isset($currency_data['currency_position']) ? $currency_data
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link"  href="<?php echo base_url('admin/setting/currency'); ?>" role="tab">
+                            <a class="nav-link active"  href="<?php echo base_url('admin/setting/currency'); ?>" role="tab">
                                 <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
                                 <span class="d-none d-sm-block"><?php echo translate('currency'); ?></span>
                             </a>

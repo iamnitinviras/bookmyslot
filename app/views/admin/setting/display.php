@@ -189,7 +189,6 @@ $enable_testimonial = isset($company_data->enable_testimonial) ? $company_data->
                                 <div class="col-md-4">
                                     <!-- Switch -->
                                     <?php echo form_label(translate('enable') . ' ' . translate('testimonial') . ' : ', 'enable_testimonial', array('class' => 'control-label')); ?>
-
                                     <div class="switch round blue-white-switch">
                                         <label>
                                             No
@@ -202,46 +201,58 @@ $enable_testimonial = isset($company_data->enable_testimonial) ? $company_data->
 
                             </div>
                             <hr/>
-                            <div class="row mb-5">
-                                <div class="col-md-6 ">
-                                    <?php echo form_label(translate('display_datetime_form') . ' : ', 'display_record_per_page', array('class' => 'control-label')); ?>
-                                    <select  onchange="update_date_time(this.value);" style="display: block !important;" name="time_format" id="time_format" class="form-control" >
+                            <div class="row mb-2">
+                                <div class="col-md-4 ">
+                                    <div class="form-group">
+                                        <?php echo form_label(translate('display_datetime_form') . ' : ', 'display_record_per_page', array('class' => 'control-label')); ?>
+                                        <select  onchange="update_date_time(this.value);" style="display: block !important;" name="time_format" id="time_format" class="form-control" >
+                                            <optgroup label="12hr format">
+                                                <option <?php echo ($time_format == "d/m/y h:i") ? "selected='selected'" : ""; ?> value="d/m/Y h:i"><?php echo date('d/m/Y h:i'); ?></option>
+                                                <option <?php echo ($time_format == "d-m-Y h:i") ? "selected='selected'" : ""; ?> value="d-m-Y h:i"><?php echo date('d-m-Y h:i'); ?></option>
+                                                <option <?php echo ($time_format == "m-d-Y h:i") ? "selected='selected'" : ""; ?>  value="m-d-Y h:i"><?php echo date('m-d-Y h:i'); ?></option>
+                                                <option <?php echo ($time_format == "m/d/Y h:i") ? "selected='selected'" : ""; ?>  value="m/d/Y h:i"><?php echo date('m/d/Y h:i'); ?></option>
+                                                <option <?php echo ($time_format == "Y/m/d h:i") ? "selected='selected'" : ""; ?>  value="Y/m/d h:i"><?php echo date('Y/m/d h:i'); ?></option>
+                                                <option <?php echo ($time_format == "Y-m-d h:i") ? "selected='selected'" : ""; ?>  value="Y-m-d h:i"><?php echo date('Y-m-d h:i'); ?></option>
+                                            </optgroup>
 
-                                        <optgroup label="12hr format">
-                                            <option <?php echo ($time_format == "d/m/y h:i") ? "selected='selected'" : ""; ?> value="d/m/Y h:i"><?php echo date('d/m/Y h:i'); ?></option>
-                                            <option <?php echo ($time_format == "d-m-Y h:i") ? "selected='selected'" : ""; ?> value="d-m-Y h:i"><?php echo date('d-m-Y h:i'); ?></option>
-                                            <option <?php echo ($time_format == "m-d-Y h:i") ? "selected='selected'" : ""; ?>  value="m-d-Y h:i"><?php echo date('m-d-Y h:i'); ?></option>
-                                            <option <?php echo ($time_format == "m/d/Y h:i") ? "selected='selected'" : ""; ?>  value="m/d/Y h:i"><?php echo date('m/d/Y h:i'); ?></option>
-                                            <option <?php echo ($time_format == "Y/m/d h:i") ? "selected='selected'" : ""; ?>  value="Y/m/d h:i"><?php echo date('Y/m/d h:i'); ?></option>
-                                            <option <?php echo ($time_format == "Y-m-d h:i") ? "selected='selected'" : ""; ?>  value="Y-m-d h:i"><?php echo date('Y-m-d h:i'); ?></option>
-                                        </optgroup>
+                                            <optgroup label="24hr formar">
+                                                <option <?php echo ($time_format == "d-m-Y H:i") ? "selected='selected'" : ""; ?> value="d-m-Y H:i"><?php echo date('d-m-Y H:i'); ?></option>
+                                                <option <?php echo ($time_format == "d/m/Y H:i") ? "selected='selected'" : ""; ?> value="d/m/Y H:i"><?php echo date('d/m/Y H:i'); ?></option>
+                                                <option <?php echo ($time_format == "m-d-Y H:i") ? "selected='selected'" : ""; ?> value="m-d-Y H:i"><?php echo date('m-d-Y H:i'); ?></option>
+                                                <option <?php echo ($time_format == "m/d/Y H:i") ? "selected='selected'" : ""; ?> value="m/d/Y H:i"><?php echo date('m/d/Y H:i'); ?></option>
+                                                <option <?php echo ($time_format == "Y/m/d H:i") ? "selected='selected'" : ""; ?>  value="Y/m/d H:i"><?php echo date('Y/m/d H:i'); ?></option>
+                                                <option <?php echo ($time_format == "Y-m-d H:i") ? "selected='selected'" : ""; ?>  value="Y-m-d H:i"><?php echo date('Y-m-d H:i'); ?></option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <?php echo form_label(translate('display') . ' ' . translate('records') . ' ' . translate('per_page') . ' : ', 'display_record_per_page', array('class' => 'control-label')); ?>
+                                        <?php echo form_input(array('type' => 'number', 'id' => 'display_record_per_page', 'class' => 'form-control', 'name' => 'display_record_per_page', 'value' => $display_record_per_page, 'placeholder' => translate('display') . ' ' . translate('records') . ' ' . translate('per_page'), 'onblur' => 'update_display_setting(this)')); ?>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <?php echo form_label(translate('header') . ' ' . translate('color') . ' ' . translate('code') . ' : ', 'header_color_code', array('class' => 'control-label')); ?>
+                                        <?php echo form_input(array('type' => 'text', 'id' => 'header_color_code', 'class' => 'form-control demo check-color ', 'name' => 'header_color_code', 'value' => $header_color_code, 'placeholder' => translate('header') . ' ' . translate('color') . ' ' . translate('code'), 'onblur' => 'update_display_setting(this)')); ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <?php echo form_label(translate('footer') . ' ' . translate('color') . ' ' . translate('code') . ' : ', 'footer_color_code', array('class' => 'control-label')); ?>
+                                        <?php echo form_input(array('type' => 'text', 'id' => 'footer_color_code', 'class' => 'demo check-color form-control', 'name' => 'footer_color_code', 'value' => $footer_color_code, 'placeholder' => translate('footer') . ' ' . translate('color') . ' ' . translate('code'), 'onblur' => 'update_display_setting(this)')); ?>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <?php echo form_label(translate('footer') . ' ' . translate('text') . ' : ', 'footer_text', array('class' => 'control-label')); ?>
+                                        <textarea class="form-control" id="footer_text" name="footer_text" placeholder="<?php echo translate("footer") . " " . translate("text"); ?>" onblur="update_display_setting(this);"><?php echo $footer_text; ?></textarea>
+                                        <span id="spnCharLeft"></span>
+                                    </div>
 
-                                        <optgroup label="24hr formar">
-                                            <option <?php echo ($time_format == "d-m-Y H:i") ? "selected='selected'" : ""; ?> value="d-m-Y H:i"><?php echo date('d-m-Y H:i'); ?></option>
-                                            <option <?php echo ($time_format == "d/m/Y H:i") ? "selected='selected'" : ""; ?> value="d/m/Y H:i"><?php echo date('d/m/Y H:i'); ?></option>
-                                            <option <?php echo ($time_format == "m-d-Y H:i") ? "selected='selected'" : ""; ?> value="m-d-Y H:i"><?php echo date('m-d-Y H:i'); ?></option>
-                                            <option <?php echo ($time_format == "m/d/Y H:i") ? "selected='selected'" : ""; ?> value="m/d/Y H:i"><?php echo date('m/d/Y H:i'); ?></option>
-                                            <option <?php echo ($time_format == "Y/m/d H:i") ? "selected='selected'" : ""; ?>  value="Y/m/d H:i"><?php echo date('Y/m/d H:i'); ?></option>
-                                            <option <?php echo ($time_format == "Y-m-d H:i") ? "selected='selected'" : ""; ?>  value="Y-m-d H:i"><?php echo date('Y-m-d H:i'); ?></option>
-                                        </optgroup>
-                                    </select>
-                                </div>
-                                <div class="col-md-6 ">
-                                    <?php echo form_label(translate('display') . ' ' . translate('records') . ' ' . translate('per_page') . ' : ', 'display_record_per_page', array('class' => 'control-label')); ?>
-                                    <?php echo form_input(array('type' => 'number', 'id' => 'display_record_per_page', 'class' => 'form-control', 'name' => 'display_record_per_page', 'value' => $display_record_per_page, 'placeholder' => translate('display') . ' ' . translate('records') . ' ' . translate('per_page'), 'onblur' => 'update_display_setting(this)')); ?>
-                                </div>
-                                <div class="col-md-6 ">
-                                    <?php echo form_label(translate('header') . ' ' . translate('color') . ' ' . translate('code') . ' : ', 'header_color_code', array('class' => 'control-label')); ?>
-                                    <?php echo form_input(array('type' => 'text', 'id' => 'header_color_code', 'class' => 'form-control demo check-color ', 'name' => 'header_color_code', 'value' => $header_color_code, 'placeholder' => translate('header') . ' ' . translate('color') . ' ' . translate('code'), 'onblur' => 'update_display_setting(this)')); ?>
-                                </div>
-                                <div class="col-md-6 ">
-                                    <?php echo form_label(translate('footer') . ' ' . translate('color') . ' ' . translate('code') . ' : ', 'footer_color_code', array('class' => 'control-label')); ?>
-                                    <?php echo form_input(array('type' => 'text', 'id' => 'footer_color_code', 'class' => 'demo check-color form-control', 'name' => 'footer_color_code', 'value' => $footer_color_code, 'placeholder' => translate('footer') . ' ' . translate('color') . ' ' . translate('code'), 'onblur' => 'update_display_setting(this)')); ?>
-                                </div>
-                                <div class="col-md-6 ">
-                                    <?php echo form_label(translate('footer') . ' ' . translate('text') . ' : ', 'footer_text', array('class' => 'control-label')); ?>
-                                    <textarea id="footer_text" name="footer_text" placeholder="<?php echo translate("footer") . " " . translate("text"); ?>" onblur="update_display_setting(this);"><?php echo $footer_text; ?></textarea>
-                                    <span id="spnCharLeft"></span>
                                 </div>
                             </div>
                             <?php echo form_close(); ?>

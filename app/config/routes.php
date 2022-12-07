@@ -388,10 +388,6 @@ $route['admin/save-payment-setting'] = 'admin/sitesetting/save_payment_setting';
 $route['admin/setting/vendor'] = 'admin/sitesetting/vendor_setting';
 $route['admin/save-vendor-setting'] = 'admin/sitesetting/save_vendor_setting';
 
-$route['admin/setting/display'] = 'admin/sitesetting/update_display_setting';
-$route['admin/integrateon-webpage'] = 'admin/sitesetting/integrateon_webpage';
-
-
 /* testimonial */
 $route['admin/manage-testimonial'] = 'admin/city/index';
 $route['admin/add-testimonial'] = 'admin/testimonial/add_testimonial';

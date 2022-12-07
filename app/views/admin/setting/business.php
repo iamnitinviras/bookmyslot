@@ -82,11 +82,10 @@ if ($enable_membership == 'Y') {
                         <div class="tab-pane active" role="tabpanel">
                             <?php $this->load->view('message'); ?>
                             <?php echo form_open('admin/save-business-setting', array('name' => 'site_business_form', 'id' => 'site_business_form')); ?>
-                            <div class="row">
-                                <div class="col-md-6 ">
+                            <div class="row mb-2">
+                                <div class="col-md-4">
                                     <?php echo form_label(translate('enable') . ' ' . translate('membership') . ' : <small class ="required">*</small>', 'commission_percentage', array('class' => 'control-label')); ?>
                                     <div class="form-group form-inline">
-
                                         <div class="form-group">
                                             <input name='membership' value="Y" type='radio' id='package_yes'   <?php echo isset($package_yes) ? $package_yes : ''; ?> onchange="check_package_val(this.value);">
                                             <label for="package_yes"><?php echo translate('yes'); ?></label>
@@ -98,7 +97,7 @@ if ($enable_membership == 'Y') {
                                     </div>
 
                                 </div>
-                                <div class="col-md-6 ">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <?php echo form_label(translate('minimum') . ' ' . translate('vendor') . ' ' . translate('payout') . ' : <small class ="required">*</small>', 'minimum_vendor_payout', array('class' => 'control-label')); ?>
                                         <?php echo form_input(array('id' => 'minimum_vendor_payout', 'class' => 'form-control integers', 'name' => 'minimum_vendor_payout', 'value' => $minimum_vendor_payout, 'placeholder' => translate('minimum') . ' ' . translate('vendor') . ' ' . translate('payout'))); ?>
@@ -108,8 +107,8 @@ if ($enable_membership == 'Y') {
                                 </div>
                             </div>
 
-                            <div class="row" id="commission_percentage_div">
-                                <div class="col-md-6 ">
+                            <div class="row mb-2" id="commission_percentage_div">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <?php echo form_label(translate('comission') . ' ' . translate('in') . ' ' . translate('percentage') . ' : <small class ="required">*</small>', 'commission_percentage', array('class' => 'control-label')); ?>
                                         <?php echo form_input(array('id' => 'commission_percentage', "min" => 1, 'class' => 'form-control integers', 'name' => 'commission_percentage', 'value' => $commission_percentage, 'placeholder' => translate('comission') . ' ' . translate('in') . ' ' . translate('percentage'))); ?>
@@ -118,8 +117,8 @@ if ($enable_membership == 'Y') {
                                     <div class="error" id="commission_percentage"></div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
+                            <div class="row mb-5">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Display Booking Slot for Next X Days</label>
                                         <?php echo form_input(array("max" => 365, "maxlength" => 3, 'type' => "number", "min" => 1, 'id' => 'slot_display_days', 'class' => 'form-control integers', 'name' => 'slot_display_days', 'value' => $slot_display_days, 'placeholder' => "Booking Slot Days")); ?>
@@ -128,8 +127,9 @@ if ($enable_membership == 'Y') {
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-success waves-effect"><?php echo translate('update'); ?></button>
+                            <div class="d-flex flex-wrap gap-2">
+                                <button type="submit" class="btn btn-primary waves-effect waves-light"><?php echo translate('update'); ?></button>
+                                <button type="button" class="btn btn-secondary waves-effect waves-light"><?php echo translate('cancel'); ?></button>
                             </div>
                             <?php echo form_close(); ?>
                         </div>

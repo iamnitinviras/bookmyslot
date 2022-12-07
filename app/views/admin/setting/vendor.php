@@ -10,8 +10,6 @@ $allow_event_category = isset($vendor_data['allow_event_category']) ? $vendor_da
         color: black;
     }
 </style>
-
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
@@ -24,7 +22,6 @@ $allow_event_category = isset($vendor_data['allow_event_category']) ? $vendor_da
                     </ol>
                 </div>
                 <div class="card-body">
-
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
@@ -75,41 +72,47 @@ $allow_event_category = isset($vendor_data['allow_event_category']) ? $vendor_da
                         <div class="tab-pane active" role="tabpanel">
                             <?php $this->load->view('message'); ?>
                             <?php echo form_open('admin/save-vendor-setting', array('name' => 'vendor_setting_form', 'id' => 'vendor_setting_form')); ?>
-                            <div class="row">
+                            <div class="row mb-2">
                                 <div class="col-md-6 ">
-                                    <!-- Switch -->
-                                    <?php echo form_label(translate('allow_city_location') . ' : <small class ="required">*</small>', 'is_display_vendor', array('class' => 'control-label')); ?>
-                                    <div class="switch round blue-white-switch">
-                                        <label>
-                                            No
-                                            <input type="checkbox" <?php echo $allow_city_location == 'Y' ? "checked='checked'" : ""; ?> id="allow_city_location" value="Y" name="allow_city_location">
-                                            <span class="lever"></span>
-                                            Yes
-                                        </label>
+                                    <div class="form-group">
+                                        <!-- Switch -->
+                                        <?php echo form_label(translate('allow_city_location') . ' : <small class ="required">*</small>', 'is_display_vendor', array('class' => 'control-label')); ?>
+                                        <div class="switch round blue-white-switch">
+                                            <label>
+                                                No
+                                                <input type="checkbox" <?php echo $allow_city_location == 'Y' ? "checked='checked'" : ""; ?> id="allow_city_location" value="Y" name="allow_city_location">
+                                                <span class="lever"></span>
+                                                Yes
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6 ">
-                                    <!-- Switch -->
-                                    <?php echo form_label(translate('allow_service_category') . ' : <small class ="required">*</small>', 'is_display_category', array('class' => 'control-label')); ?>
-                                    <div class="switch round blue-white-switch">
-                                        <label>
-                                            No
-                                            <input type="checkbox"  <?php echo $allow_service_category == 'Y' ? "checked='checked'" : ""; ?> id="allow_service_category" value="Y" name="allow_service_category">
-                                            <span class="lever"></span>
-                                            Yes
-                                        </label>
+                                    <div class="form-group">
+                                        <!-- Switch -->
+                                        <?php echo form_label(translate('allow_service_category') . ' : <small class ="required">*</small>', 'is_display_category', array('class' => 'control-label')); ?>
+                                        <div class="switch round blue-white-switch">
+                                            <label>
+                                                No
+                                                <input type="checkbox"  <?php echo $allow_service_category == 'Y' ? "checked='checked'" : ""; ?> id="allow_service_category" value="Y" name="allow_service_category">
+                                                <span class="lever"></span>
+                                                Yes
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6 ">
-                                    <!-- Switch -->
-                                    <?php echo form_label(translate('allow_event_category') . ' : <small class ="required">*</small>', 'is_display_location', array('class' => 'control-label')); ?>
-                                    <div class="switch round blue-white-switch">
-                                        <label>
-                                            No
-                                            <input type="checkbox"  <?php echo $allow_event_category == 'Y' ? "checked='checked'" : ""; ?> id="allow_event_category" value="Y" name="allow_event_category">
-                                            <span class="lever"></span>
-                                            Yes
-                                        </label>
+                                    <div class="form-group">
+                                        <!-- Switch -->
+                                        <?php echo form_label(translate('allow_event_category') . ' : <small class ="required">*</small>', 'is_display_location', array('class' => 'control-label')); ?>
+                                        <div class="switch round blue-white-switch">
+                                            <label>
+                                                No
+                                                <input type="checkbox"  <?php echo $allow_event_category == 'Y' ? "checked='checked'" : ""; ?> id="allow_event_category" value="Y" name="allow_event_category">
+                                                <span class="lever"></span>
+                                                Yes
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -117,9 +120,7 @@ $allow_event_category = isset($vendor_data['allow_event_category']) ? $vendor_da
                                         <button type="submit" class="btn btn-success waves-effect"><?php echo translate('update'); ?></button>
                                     </div>
                                 </div>
-
                             </div>
-                            <hr/>
                             <?php echo form_close(); ?>
                         </div>
                     </div>
