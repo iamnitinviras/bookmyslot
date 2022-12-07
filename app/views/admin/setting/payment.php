@@ -48,39 +48,70 @@ if ($on_cash == 'Y') {
 }
 ?>
 <input id="folder_name" name="folder_name" type="hidden" value="<?php echo isset($folder_name) && $folder_name != '' ? $folder_name : ''; ?>"/>
-<div class="dashboard-body">
-    <!-- Start Content -->
-    <div class="content">
-        <!-- Start Container -->
-        <div class="container-fluid">
-            <div class="row mt-3">
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="p-3">
-                            <div class="sidebar_section">
-                                <ul class="list-inline">
-                                    <li><a href="<?php echo base_url('admin/sitesetting'); ?>"><?php echo translate('site_setting'); ?></a></li>
-                                    <li><a href="<?php echo base_url('admin/email-setting'); ?>"><?php echo translate('email_setting'); ?></a></li>
-                                    <li>
-                                        <a href="<?php echo base_url('admin/currency-setting'); ?>"><?php echo translate('currency') . ' ' . translate('setting'); ?></a>
-                                    </li>
-                                    <li><a href="<?php echo base_url('admin/business-setting'); ?>"><?php echo translate('business') . ' ' . translate('setting'); ?></a></li>
-                                    <li><a href="<?php echo base_url('admin/display-setting'); ?>"><?php echo translate('display_setting'); ?></a></li>
-                                    <li class="active"><a href="<?php echo base_url('admin/payment-setting'); ?>"><?php echo translate('payment_setting'); ?></a></li>
-                                    <li><a href="<?php echo base_url('admin/vendor-setting'); ?>"><?php echo translate('vendor') . ' ' . translate('setting'); ?></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-9">
-                    <?php $this->load->view('message'); ?>
 
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="black-text font-bold mb-0"><?php echo translate('update_payment_setting'); ?></h5>
-                        </div>
-                        <div class="card-body resp_mx-0">
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title"><?php echo translate('update_payment_setting'); ?> </h4>
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="<?php echo base_url('admin/dashboard'); ?>"><?php echo translate('dashboard'); ?></a></li>
+                        <li class="breadcrumb-item active"><?php echo translate('payment'); ?> <?php echo translate('setting'); ?></li>
+                    </ol>
+                </div>
+                <div class="card-body">
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link "  href="<?php echo base_url('admin/setting/site'); ?>" role="tab">
+                                <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
+                                <span class="d-none d-sm-block"><?php echo translate('site_setting'); ?></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  href="<?php echo base_url('admin/setting/email'); ?>" role="tab">
+                                <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+                                <span class="d-none d-sm-block"><?php echo translate('email_setting'); ?></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  href="<?php echo base_url('admin/setting/currency'); ?>" role="tab">
+                                <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
+                                <span class="d-none d-sm-block"><?php echo translate('currency'); ?></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  href="<?php echo base_url('admin/setting/business'); ?>" role="tab">
+                                <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
+                                <span class="d-none d-sm-block"><?php echo translate('business'); ?></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  href="<?php echo base_url('admin/setting/display'); ?>" role="tab">
+                                <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
+                                <span class="d-none d-sm-block"><?php echo translate('display_setting'); ?></span>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link active"  href="<?php echo base_url('admin/setting/payment'); ?>" role="tab">
+                                <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
+                                <span class="d-none d-sm-block"><?php echo translate('payment_setting'); ?></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  href="<?php echo base_url('admin/setting/vendor'); ?>" role="tab">
+                                <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
+                                <span class="d-none d-sm-block"><?php echo translate('vendor') . ' ' . translate('setting'); ?></span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content p-3 text-muted">
+                        <div class="tab-pane active" role="tabpanel">
+                            <?php $this->load->view('message'); ?>
                             <?php
                             echo form_open('admin/save-payment-setting', array('name' => 'PaymentForm', 'id' => 'PaymentForm'));
                             echo form_input(array('type' => 'hidden', 'name' => 'id', 'id' => 'id', 'value' => $id));
@@ -98,12 +129,12 @@ if ($on_cash == 'Y') {
                             </div>
                             <div class="form-group stripe-html d-none">
                                 <label for="stripe_secret"> <?php echo translate('stripe_secret_key'); ?><small class="required">*</small></label>
-                                <input type="text" autocomplete="off" id="stripe_secret" name="stripe_secret" value="<?php echo $stripe_secret; ?>" class="form-control" placeholder="<?php echo translate('stripe_secret_key'); ?>">                                    
+                                <input type="text" autocomplete="off" id="stripe_secret" name="stripe_secret" value="<?php echo $stripe_secret; ?>" class="form-control" placeholder="<?php echo translate('stripe_secret_key'); ?>">
                                 <?php echo form_error('stripe_secret'); ?>
                             </div>
                             <div class="form-group stripe-html d-none">
                                 <label for="stripe_publish"> <?php echo translate('stripe_publish_key'); ?><small class="required">*</small></label>
-                                <input type="text" autocomplete="off" id="stripe_publish" name="stripe_publish" value="<?php echo $stripe_publish; ?>" class="form-control" placeholder="<?php echo translate('stripe_publish_key'); ?>">                                    
+                                <input type="text" autocomplete="off" id="stripe_publish" name="stripe_publish" value="<?php echo $stripe_publish; ?>" class="form-control" placeholder="<?php echo translate('stripe_publish_key'); ?>">
                                 <?php echo form_error('stripe_publish'); ?>
                             </div>
                             <hr/>
@@ -129,7 +160,7 @@ if ($on_cash == 'Y') {
                                 </div>
                                 <div class="form-group">
                                     <label for="paypal_merchant_email"> <?php echo translate('paypal_merchant_email'); ?></label>
-                                    <input type="email" id="paypal_merchant_email" name="paypal_merchant_email" value="<?php echo $paypal_merchant_email; ?>" class="form-control" placeholder="<?php echo translate('paypal_merchant_email'); ?>">                                    
+                                    <input type="email" id="paypal_merchant_email" name="paypal_merchant_email" value="<?php echo $paypal_merchant_email; ?>" class="form-control" placeholder="<?php echo translate('paypal_merchant_email'); ?>">
                                     <?php echo form_error('paypal_merchant_email'); ?>
                                 </div>
                             </div>
@@ -151,17 +182,17 @@ if ($on_cash == 'Y') {
                             <div class="twoCheckout-html d-none">
                                 <div class="form-group">
                                     <label for="2checkout_account_no">2Checkout Account Number<small class="required">*</small></label>
-                                    <input type="text" id="2checkout_account_no" autocomplete="off" name="2checkout_account_no" value="<?php echo $two_checkout_account_no; ?>" class="form-control" placeholder="2Checkout Account Number">                                    
+                                    <input type="text" id="2checkout_account_no" autocomplete="off" name="2checkout_account_no" value="<?php echo $two_checkout_account_no; ?>" class="form-control" placeholder="2Checkout Account Number">
                                     <?php echo form_error('2checkout_account_no'); ?>
                                 </div>
                                 <div class="form-group">
                                     <label for="2checkout_publishable_key">2Checkout Publishable Key<small class="required">*</small></label>
-                                    <input type="text" id="2checkout_publishable_key" autocomplete="off" name="2checkout_publishable_key" value="<?php echo $two_checkout_publishable_key; ?>" class="form-control" placeholder="2Checkout Publishable Key">                                    
+                                    <input type="text" id="2checkout_publishable_key" autocomplete="off" name="2checkout_publishable_key" value="<?php echo $two_checkout_publishable_key; ?>" class="form-control" placeholder="2Checkout Publishable Key">
                                     <?php echo form_error('2checkout_publishable_key'); ?>
                                 </div>
                                 <div class="form-group">
                                     <label for="2checkout_private_key">2Checkout Private Key<small class="required">*</small></label>
-                                    <input type="text" id="2checkout_private_key" autocomplete="off" name="2checkout_private_key" value="<?php echo $two_checkout_private_key; ?>" class="form-control" placeholder="2Checkout Private Key">                                    
+                                    <input type="text" id="2checkout_private_key" autocomplete="off" name="2checkout_private_key" value="<?php echo $two_checkout_private_key; ?>" class="form-control" placeholder="2Checkout Private Key">
                                     <?php echo form_error('2checkout_private_key'); ?>
                                 </div>
                                 <div class="form-group">
@@ -192,53 +223,15 @@ if ($on_cash == 'Y') {
                             <?php echo form_close(); ?>
                         </div>
                     </div>
-                    <!--/Form with header-->
                 </div>
             </div>
-
         </div>
     </div>
+    <!-- end row -->
 </div>
 <script>
     check_stripe_val('<?php echo $stripe; ?>');
     check_paypal_val('<?php echo $paypal; ?>');
     check_twoCheckout_val('<?php echo $two_checkout; ?>');
-
-    function check_stripe_val(e) {
-        if (e == 'Y') {
-            $('.stripe-html').removeClass('d-none');
-            $('#stripe_secret').attr('required', true);
-            $('#stripe_publish').attr('required', true);
-        } else {
-            $('.stripe-html').addClass('d-none');
-            $('#stripe_secret').attr('required', false);
-            $('#stripe_publish').attr('required', false);
-        }
-    }
-    function check_paypal_val(e) {
-        if (e == 'Y') {
-            $('.palpal-html').removeClass('d-none');
-            $('#paypal_merchant_email').attr('required', true);
-        } else {
-            $('.palpal-html').addClass('d-none');
-            $('#paypal_merchant_email').attr('required', false);
-        }
-    }
-
-    function check_twoCheckout_val(e) {
-        if (e == 'Y') {
-            $('.twoCheckout-html').removeClass('d-none');
-            $('#2checkout_account_no').attr('required', true);
-            $('#2checkout_publishable_key').attr('required', true);
-            $('#2checkout_private_key').attr('required', true);
-        } else {
-            $('.twoCheckout-html').addClass('d-none');
-            $('#2checkout_account_no').attr('required', false);
-            $('#2checkout_publishable_key').attr('required', false);
-            $('#2checkout_private_key').attr('required', false);
-        }
-    }
 </script>
-<?php
-include VIEWPATH . 'admin/footer.php';
-?>
+<?php include VIEWPATH . 'admin/footer.php'; ?>

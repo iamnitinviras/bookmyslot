@@ -17,49 +17,70 @@ if ($enable_membership == 'Y') {
         color: black;
     }
 </style>
-<div class="dashboard-body">
-    <!-- Start Content -->
-    <div class="content">
-        <!-- Start Container -->
-        <div class="container-fluid">
-            <div class="row mt-3">
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="p-3">
-                            <div class="sidebar_section">
-                                <ul class="list-inline">
-                                    <li>
-                                        <a href="<?php echo base_url('admin/sitesetting'); ?>"><?php echo translate('site_setting'); ?></a>
-                                    </li>
-                                    <li>
-                                        <a href="<?php echo base_url('admin/email-setting'); ?>"><?php echo translate('email_setting'); ?></a>
-                                    </li>
-                                    <li>
-                                        <a href="<?php echo base_url('admin/currency-setting'); ?>"><?php echo translate('currency') . ' ' . translate('setting'); ?></a>
-                                    </li>
-                                    <li class="active">
-                                        <a href="<?php echo base_url('admin/business-setting'); ?>"><?php echo translate('business') . ' ' . translate('setting'); ?></a>
-                                    </li>
-                                    <li>
-                                        <a href="<?php echo base_url('admin/display-setting'); ?>"><?php echo translate('display_setting'); ?></a>
-                                    </li>
-                                    <li>
-                                        <a href="<?php echo base_url('admin/payment-setting'); ?>"><?php echo translate('payment_setting'); ?></a>
-                                    </li>
-                                    <li><a href="<?php echo base_url('admin/vendor-setting'); ?>"><?php echo translate('vendor') . ' ' . translate('setting'); ?></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-9">
-                    <?php $this->load->view('message'); ?>
 
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="black-text font-bold mb-0"><?php echo translate('manage'); ?> <?php echo translate('business'); ?> <?php echo translate('setting'); ?></h5>
-                        </div>
-                        <div class="card-body resp_mx-0">
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title"><?php echo translate('business'); ?> <?php echo translate('setting'); ?></h4>
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="<?php echo base_url('admin/dashboard'); ?>"><?php echo translate('dashboard'); ?></a></li>
+                        <li class="breadcrumb-item active"><?php echo translate('business'); ?> <?php echo translate('setting'); ?></li>
+                    </ol>
+                </div>
+                <div class="card-body">
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link "  href="<?php echo base_url('admin/setting/site'); ?>" role="tab">
+                                <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
+                                <span class="d-none d-sm-block"><?php echo translate('site_setting'); ?></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  href="<?php echo base_url('admin/setting/email'); ?>" role="tab">
+                                <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+                                <span class="d-none d-sm-block"><?php echo translate('email_setting'); ?></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  href="<?php echo base_url('admin/setting/currency'); ?>" role="tab">
+                                <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
+                                <span class="d-none d-sm-block"><?php echo translate('currency'); ?></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active"  href="<?php echo base_url('admin/setting/business'); ?>" role="tab">
+                                <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
+                                <span class="d-none d-sm-block"><?php echo translate('business'); ?></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  href="<?php echo base_url('admin/setting/display'); ?>" role="tab">
+                                <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
+                                <span class="d-none d-sm-block"><?php echo translate('display_setting'); ?></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  href="<?php echo base_url('admin/setting/payment'); ?>" role="tab">
+                                <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
+                                <span class="d-none d-sm-block"><?php echo translate('payment_setting'); ?></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  href="<?php echo base_url('admin/setting/vendor'); ?>" role="tab">
+                                <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
+                                <span class="d-none d-sm-block"><?php echo translate('vendor') . ' ' . translate('setting'); ?></span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content p-3 text-muted">
+                        <div class="tab-pane active" role="tabpanel">
+                            <?php $this->load->view('message'); ?>
                             <?php echo form_open('admin/save-business-setting', array('name' => 'site_business_form', 'id' => 'site_business_form')); ?>
                             <div class="row">
                                 <div class="col-md-6 ">
@@ -86,7 +107,7 @@ if ($enable_membership == 'Y') {
                                     <div class="error" id="minimum_vendor_payout"></div>
                                 </div>
                             </div>
-                            
+
                             <div class="row" id="commission_percentage_div">
                                 <div class="col-md-6 ">
                                     <div class="form-group">
@@ -113,28 +134,14 @@ if ($enable_membership == 'Y') {
                             <?php echo form_close(); ?>
                         </div>
                     </div>
-                    <!--/Form with header-->
                 </div>
             </div>
         </div>
-        <!--Row-->
-        <!-- End Login-->
     </div>
+    <!-- end row -->
 </div>
 <script src="<?php echo $this->config->item('js_url'); ?>module/sitesetting.js" type="text/javascript"></script>
 <?php include VIEWPATH . 'admin/footer.php'; ?>
 <script>
-                                                check_package_val('<?php echo $enable_membership; ?>');
-                                                function check_package_val(e) {
-                                                    if (e == 'Y') {
-                                                        $('#commission_percentage_div').hide();
-                                                        $("#commission_percentage").removeClass("error");
-                                                        $('#commission_percentage').attr('required', false);
-                                                        $('#commission_percentage').attr('aria-invalid', false);
-                                                        $('#commission_percentage').attr('aria-required', false);
-                                                    } else {
-                                                        $('#commission_percentage_div').show();
-                                                        $('#commission_percentage').attr('required', true);
-                                                    }
-                                                }
+    check_package_val('<?php echo $enable_membership; ?>');
 </script>

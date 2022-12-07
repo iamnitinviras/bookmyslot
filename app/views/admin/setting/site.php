@@ -55,7 +55,6 @@ if (isset($company_data->fevicon_icon) && $company_data->fevicon_icon != "") {
                 </div>
                 <div class="card-body">
 
-
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">

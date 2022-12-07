@@ -21,43 +21,71 @@ $enable_testimonial = isset($company_data->enable_testimonial) ? $company_data->
         color: black;
     }
 </style>
-<div class="dashboard-body">
-    <!-- Start Content -->
-    <div class="content">
-        <!-- Start Container -->
-        <div class="container-fluid">
-
-            <div class="row mt-3">
-
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="p-3">
-                            <div class="sidebar_section">
-                                <ul class="list-inline">
-                                    <li><a href="<?php echo base_url('admin/sitesetting'); ?>"><?php echo translate('site_setting'); ?></a></li>
-                                    <li><a href="<?php echo base_url('admin/email-setting'); ?>"><?php echo translate('email_setting'); ?></a></li>
-                                    <li>
-                                        <a href="<?php echo base_url('admin/currency-setting'); ?>"><?php echo translate('currency') . ' ' . translate('setting'); ?></a>
-                                    </li>
-                                    <li><a href="<?php echo base_url('admin/business-setting'); ?>"><?php echo translate('business') . ' ' . translate('setting'); ?></a></li>
-                                    <li class="active"><a href="<?php echo base_url('admin/display-setting'); ?>"><?php echo translate('display_setting'); ?></a></li>
-                                    <li><a href="<?php echo base_url('admin/payment-setting'); ?>"><?php echo translate('payment_setting'); ?></a></li>
-                                    <li><a href="<?php echo base_url('admin/vendor-setting'); ?>"><?php echo translate('vendor') . ' ' . translate('setting'); ?></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title"><?php echo translate('display'); ?> <?php echo translate('site_setting'); ?></h4>
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="<?php echo base_url('admin/dashboard'); ?>"><?php echo translate('dashboard'); ?></a></li>
+                        <li class="breadcrumb-item active"><?php echo translate('display'); ?> <?php echo translate('site_setting'); ?></li>
+                    </ol>
                 </div>
-                <div class="col-md-9">
-                    <?php $this->load->view('message'); ?>
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="black-text font-bold mb-0"><?php echo translate('manage'); ?> <?php echo translate('display'); ?> <?php echo translate('site_setting'); ?></h5>
-                        </div>
-                        <div class="card-body resp_mx-0">
+                <div class="card-body">
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link "  href="<?php echo base_url('admin/setting/site'); ?>" role="tab">
+                                <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
+                                <span class="d-none d-sm-block"><?php echo translate('site_setting'); ?></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  href="<?php echo base_url('admin/setting/email'); ?>" role="tab">
+                                <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+                                <span class="d-none d-sm-block"><?php echo translate('email_setting'); ?></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  href="<?php echo base_url('admin/setting/currency'); ?>" role="tab">
+                                <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
+                                <span class="d-none d-sm-block"><?php echo translate('currency'); ?></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  href="<?php echo base_url('admin/setting/business'); ?>" role="tab">
+                                <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
+                                <span class="d-none d-sm-block"><?php echo translate('business'); ?></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active"  href="<?php echo base_url('admin/setting/display'); ?>" role="tab">
+                                <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
+                                <span class="d-none d-sm-block"><?php echo translate('display_setting'); ?></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  href="<?php echo base_url('admin/setting/payment'); ?>" role="tab">
+                                <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
+                                <span class="d-none d-sm-block"><?php echo translate('payment_setting'); ?></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  href="<?php echo base_url('admin/setting/vendor'); ?>" role="tab">
+                                <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
+                                <span class="d-none d-sm-block"><?php echo translate('vendor') . ' ' . translate('setting'); ?></span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content p-3 text-muted">
+                        <div class="tab-pane active" role="tabpanel">
+                            <?php $this->load->view('message'); ?>
                             <?php echo form_open('admin/save-display-setting', array('name' => 'site_email_form', 'id' => 'site_email_form')); ?>
-                            <div class="row">
-                                
+                            <div class="row mb-2">
+
                                 <div class="col-md-4 ">
                                     <!-- Switch -->
                                     <?php echo form_label(translate('enable') . ' ' . translate('service') . ' : ', 'enable_service', array('class' => 'control-label')); ?>
@@ -82,7 +110,7 @@ $enable_testimonial = isset($company_data->enable_testimonial) ? $company_data->
                                         </label>
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-md-4 ">
                                     <!-- Switch -->
                                     <?php echo form_label(translate('enable') . ' ' . translate('vendor') . ' ' . translate('module') . ' : ', 'is_display_vendor', array('class' => 'control-label')); ?>
@@ -174,7 +202,7 @@ $enable_testimonial = isset($company_data->enable_testimonial) ? $company_data->
 
                             </div>
                             <hr/>
-                            <div class="row">
+                            <div class="row mb-5">
                                 <div class="col-md-6 ">
                                     <?php echo form_label(translate('display_datetime_form') . ' : ', 'display_record_per_page', array('class' => 'control-label')); ?>
                                     <select  onchange="update_date_time(this.value);" style="display: block !important;" name="time_format" id="time_format" class="form-control" >
@@ -219,14 +247,12 @@ $enable_testimonial = isset($company_data->enable_testimonial) ? $company_data->
                             <?php echo form_close(); ?>
                         </div>
                     </div>
-                    <!--/Form with header-->
                 </div>
             </div>
-            <!--Row-->
-        </div>        
+        </div>
     </div>
+    <!-- end row -->
 </div>
 <script src="<?php echo $this->config->item('js_url'); ?>jquery.minicolors.js"></script>
 <script src="<?php echo $this->config->item('js_url'); ?>module/sitesetting.js" type="text/javascript"></script>
-
 <?php include VIEWPATH . 'admin/footer.php'; ?>

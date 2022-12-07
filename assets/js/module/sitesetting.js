@@ -325,3 +325,60 @@ function copy_code(e) {
          toastr.error("Please first select choice");
     }
 }
+function func_php() {
+    $("#php_block").show();
+    $("#smtp_block").hide();
+    $("#email_from").attr("required", true);
+}
+function func_smtp() {
+    $("#php_block").hide();
+    $("#smtp_block").show();
+    $("#email_from").attr("required", false);
+}
+function check_package_val(e) {
+    if (e == 'Y') {
+        $('#commission_percentage_div').hide();
+        $("#commission_percentage").removeClass("error");
+        $('#commission_percentage').attr('required', false);
+        $('#commission_percentage').attr('aria-invalid', false);
+        $('#commission_percentage').attr('aria-required', false);
+    } else {
+        $('#commission_percentage_div').show();
+        $('#commission_percentage').attr('required', true);
+    }
+}
+
+function check_stripe_val(e) {
+    if (e == 'Y') {
+        $('.stripe-html').removeClass('d-none');
+        $('#stripe_secret').attr('required', true);
+        $('#stripe_publish').attr('required', true);
+    } else {
+        $('.stripe-html').addClass('d-none');
+        $('#stripe_secret').attr('required', false);
+        $('#stripe_publish').attr('required', false);
+    }
+}
+function check_paypal_val(e) {
+    if (e == 'Y') {
+        $('.palpal-html').removeClass('d-none');
+        $('#paypal_merchant_email').attr('required', true);
+    } else {
+        $('.palpal-html').addClass('d-none');
+        $('#paypal_merchant_email').attr('required', false);
+    }
+}
+
+function check_twoCheckout_val(e) {
+    if (e == 'Y') {
+        $('.twoCheckout-html').removeClass('d-none');
+        $('#2checkout_account_no').attr('required', true);
+        $('#2checkout_publishable_key').attr('required', true);
+        $('#2checkout_private_key').attr('required', true);
+    } else {
+        $('.twoCheckout-html').addClass('d-none');
+        $('#2checkout_account_no').attr('required', false);
+        $('#2checkout_publishable_key').attr('required', false);
+        $('#2checkout_private_key').attr('required', false);
+    }
+}
