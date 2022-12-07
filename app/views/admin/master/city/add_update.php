@@ -45,7 +45,7 @@ $id = (set_value("city_id")) ? set_value("city_id") : (!empty($city_data) ? $cit
                         echo form_open($form_url, array('name' => 'CityForm', 'id' => 'CityForm'));
                         echo form_input(array('type' => 'hidden', 'name' => 'id', 'id' => 'id', 'value' => $id));
                         ?>
-                        <div class="row">
+                        <div class="row mb-5">
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="city_title"> <?php echo translate('title'); ?><small class="required">*</small></label>
@@ -77,9 +77,9 @@ $id = (set_value("city_id")) ? set_value("city_id") : (!empty($city_data) ? $cit
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-success waves-effect"><?php echo translate('save'); ?></button>
-                            <a href="<?php echo base_url($folder_name.'/city'); ?>" class="btn btn-info waves-effect"><?php echo translate('cancel'); ?></a>
+                        <div class="d-flex flex-wrap gap-2">
+                            <button type="submit" class="btn btn-primary"><?php echo translate('save'); ?></button>
+                            <a href="<?php echo base_url($folder_name.'/city'); ?>" class="btn btn-secondary"><?php echo translate('cancel'); ?></a>
                         </div>
                         <?php echo form_close(); ?>
                     </div>

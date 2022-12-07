@@ -360,7 +360,7 @@
                     </li>
                     <li>
                         <a href="<?php echo base_url('admin/manage-language'); ?>">
-                            <i data-feather="language"></i>
+                            <i data-feather="globe"></i>
                             <span data-key="t-language"><?php echo translate('language_setting'); ?></span>
                         </a>
                     </li>
@@ -368,7 +368,7 @@
                     <?php if (get_site_setting('enable_membership') == 'Y'): ?>
                         <li>
                             <a href="javascript: void(0);" class="has-arrow">
-                                <i data-feather="gift"></i>
+                                <i data-feather="dollar-sign"></i>
                                 <span data-key="t-ui-elements"><?php echo translate('package'); ?></span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
@@ -380,7 +380,7 @@
 
                     <li>
                         <a href="javascript: void(0);" class="has-arrow">
-                            <i data-feather="trello"></i>
+                            <i data-feather="layers"></i>
                             <span data-key="t-tasks"><?php echo translate('master'); ?></span>
                         </a>
                         <ul class="sub-menu" aria-expanded="false">
