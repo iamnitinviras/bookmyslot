@@ -1,11 +1,10 @@
 <?php
 if ($this->session->flashdata('msg_class') == "success") {
     ?>
-    <div class="alert alert-success alert-message mt-10">
-        <strong><?php echo $this->session->flashdata('msg'); ?></strong>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
+    <div class="alert alert-success alert-dismissible  alert-message mt-10">
+        <i class="mdi mdi-check-all me-2"></i>
+        <?php echo $this->session->flashdata('msg'); ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     <script>
         window.setTimeout(function () {
@@ -19,7 +18,9 @@ if ($this->session->flashdata('msg_class') == "success") {
 } else if ($this->session->flashdata('msg_class') == "failure") {
     ?>
     <div class="alert alert-danger alert-message mt-10">
+        <i class="mdi mdi-block-helper me-2"></i>
         <?php echo $this->session->flashdata('msg'); ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     <script>
         window.setTimeout(function () {

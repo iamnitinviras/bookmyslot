@@ -27,7 +27,7 @@ $id = (set_value("city_id")) ? set_value("city_id") : (!empty($city_data) ? $cit
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
                                             <li class="breadcrumb-item"><a href="<?php echo base_url('admin/dashboard'); ?>"><?php echo translate('dashboard'); ?></a></li>
-                                            <li class="breadcrumb-item"><a href="<?php echo base_url('admin/city'); ?>"<?php echo translate('city'); ?></a></li>
+                                            <li class="breadcrumb-item"><a href="<?php echo base_url('admin/city'); ?>"><?php echo translate('city'); ?></a></li>
                                             <li class="breadcrumb-item active"><?php echo isset($id) && $id > 0 ? translate('update') : translate('add'); ?> <?php echo translate('city'); ?></li>
                                         </ol>
                                     </div>
@@ -42,8 +42,8 @@ $id = (set_value("city_id")) ? set_value("city_id") : (!empty($city_data) ? $cit
                             </div>
                         </div>
                         <?php
-                        echo form_open($form_url, array('name' => 'CityForm', 'id' => 'CityForm'));
-                        echo form_input(array('type' => 'hidden', 'name' => 'id', 'id' => 'id', 'value' => $id));
+                            echo form_open($form_url, array('name' => 'CityForm', 'id' => 'CityForm'));
+                            echo form_input(array('type' => 'hidden', 'name' => 'id', 'id' => 'id', 'value' => $id));
                         ?>
                         <div class="row mb-5">
                             <div class="col-md-4">
@@ -53,25 +53,25 @@ $id = (set_value("city_id")) ? set_value("city_id") : (!empty($city_data) ? $cit
                                     <?php echo form_error('city_title'); ?>
                                 </div>
                             </div>
-
+                            <?php
+                            $active = $inactive = '';
+                            if ($city_status == "I") {
+                                $inactive = "checked";
+                            } else {
+                                $active = "checked";
+                            }
+                            ?>
                             <div class="col-md-4">
-                                <label> <?php echo translate('status'); ?> <small class="required">*</small></label>
-                                <div class="form-inline">
-                                    <?php
-                                    $active = $inactive = '';
-                                    if ($city_status == "I") {
-                                        $inactive = "checked";
-                                    } else {
-                                        $active = "checked";
-                                    }
-                                    ?>
-                                    <div class="form-group">
-                                        <input name='city_status' value="A" type='radio' id='active'   <?php echo $active; ?>>
-                                        <label for="active"><?php echo translate('active'); ?></label>
+                                <label><?php echo translate('status'); ?> <small class="required">*</small></label>
+                                <div class="form-group">
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="city_status" id="active" value="A" <?php echo $active; ?>>
+                                        <label class="form-check-label" for="active"><?php echo translate('active'); ?></label>
                                     </div>
-                                    <div class="form-group">
-                                        <input name='city_status' type='radio'  value='I' id='inactive'  <?php echo $inactive; ?>>
-                                        <label for='inactive'><?php echo translate('inactive'); ?></label>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="city_status" id="inactive"  value='I' <?php echo $inactive; ?>>
+                                        <label class="form-check-label" for="inactive"><?php echo translate('inactive'); ?></label>
                                     </div>
                                 </div>
                             </div>
@@ -79,7 +79,7 @@ $id = (set_value("city_id")) ? set_value("city_id") : (!empty($city_data) ? $cit
 
                         <div class="d-flex flex-wrap gap-2">
                             <button type="submit" class="btn btn-primary"><?php echo translate('save'); ?></button>
-                            <a href="<?php echo base_url($folder_name.'/city'); ?>" class="btn btn-secondary"><?php echo translate('cancel'); ?></a>
+                            <a href="<?php echo base_url($folder_name.'/city'); ?>" class="btn btn-outline-secondary"><?php echo translate('cancel'); ?></a>
                         </div>
                         <?php echo form_close(); ?>
                     </div>
