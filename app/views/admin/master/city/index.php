@@ -15,7 +15,7 @@ if ($this->session->userdata('Type_' . ucfirst($this->uri->segment(1))) == 'V') 
                 <div class="card-header">
                     <div class="row">
                         <div class="col-md-6 col-xl-6">
-                            <h4 class="card-title"><?php echo translate('manage'); ?> <?php echo translate('city'); ?></h4>
+                            <h4 class="card-title"><?php echo translate('city'); ?></h4>
                             <div class="page-title-box pb-0 d-sm-flex">
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
@@ -38,7 +38,7 @@ if ($this->session->userdata('Type_' . ucfirst($this->uri->segment(1))) == 'V') 
                             <?php $this->load->view('message'); ?>
 
                             <div class="table-responsive">
-                                <table class="table mdl-data-table" id="example">
+                                <table class="table table-bordered dt-responsive nowrap w-100" id="datatable">
                                     <thead>
                                     <tr>
                                         <th class="text-center font-bold dark-grey-text">#</th>
@@ -78,16 +78,16 @@ if ($this->session->userdata('Type_' . ucfirst($this->uri->segment(1))) == 'V') 
                                                         $created_by = $this->session->userdata('Vendor_ID');
                                                         if ($created_by == $row['city_created_by']) {
                                                             ?>
-                                                            <a href="<?php echo base_url('vendor/update-city/' . $row['city_id']); ?>" class="btn btn-primary font_size_12" title="<?php echo translate('edit'); ?>"><i class="fa fa-pencil"></i></a>
-                                                            <a id="" data-toggle="modal" onclick='DeleteRecord(this)' data-target="#delete-record" data-id="<?php echo (int) $row['city_id']; ?>" class="btn btn-danger font_size_12" title="<?php echo translate('delete'); ?>"><i class="fa fa-trash"></i></a>
+                                                            <a href="<?php echo base_url('admin/update-city/' . $row['city_id']); ?>" class="text-success"><i class="mdi mdi-pencil font-size-18"></i></a>
+                                                            <a href="javascript:void(0);" data-toggle="modal" onclick='DeleteRecord(this)' data-target="#delete-record" data-id="<?php echo (int) $row['city_id']; ?>"  class="text-danger"><i class="mdi mdi-delete font-size-18"></i></a>
                                                             <?php
                                                         } else {
                                                             echo '-';
                                                         }
                                                     } else {
                                                         ?>
-                                                        <a href="<?php echo base_url('admin/update-city/' . $row['city_id']); ?>" class="btn btn-primary font_size_12" title="<?php echo translate('edit'); ?>" data-toggle="tooltip" data-placement="top"><i class="fa fa-pencil"></i></a>
-                                                        <span class="d-inline-block" title="<?php echo translate('delete'); ?>" data-toggle="tooltip" data-placement="top"><a id="" data-toggle="modal" onclick='DeleteRecord(this)' data-target="#delete-record" data-id="<?php echo (int) $row['city_id']; ?>" class="btn btn-danger font_size_12"><i class="fa fa-trash"></i></a></span>
+                                                        <a href="<?php echo base_url('admin/update-city/' . $row['city_id']); ?>" class="text-success"><i class="mdi mdi-pencil font-size-18"></i></a>
+                                                        <a href="javascript:void(0);" data-toggle="modal" onclick='DeleteRecord(this)' data-target="#delete-record" data-id="<?php echo (int) $row['city_id']; ?>"  class="text-danger"><i class="mdi mdi-delete font-size-18"></i></a>
                                                     <?php } ?>
                                                 </td>
                                             </tr>

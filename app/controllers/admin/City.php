@@ -54,13 +54,14 @@ class city extends MY_Controller {
     //add/edit an event
     public function save_city() {
         $city_id = (int) $this->input->post('id', true);
+
         $this->form_validation->set_rules('city_title', 'title', 'trim|required|is_unique[app_city.city_title.city_id.' . $city_id . ']');
         $this->form_validation->set_rules('city_status', '', 'required');
         $this->form_validation->set_message('required', translate('required_message'));
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
         if ($this->form_validation->run() == false) {
             if ($city_id > 0) {
-                $this->update_city();
+                $this->update_city($city_id);
             } else {
                 $this->add_city();
             }

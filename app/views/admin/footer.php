@@ -163,6 +163,10 @@
 <script src="<?php echo base_url('assets/admin/libs/simplebar/simplebar.min.js');?>"></script>
 <script src="<?php echo base_url('assets/admin/libs/node-waves/waves.min.js');?>"></script>
 <script src="<?php echo base_url('assets/admin/libs/feather-icons/feather.min.js');?>"></script>
+
+<!-- Required datatable js -->
+<script src="<?php echo base_url('assets/admin/libs/datatables.net/js/jquery.dataTables.min.js');?>"></script>
+<script src="<?php echo base_url('assets/admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js');?>"></script>
 <!-- pace js -->
 <script src="<?php echo base_url('assets/admin/libs/pace-js/pace.min.js');?>"></script>
 
@@ -176,5 +180,10 @@
 <!-- dashboard init -->
 <script src="<?php echo base_url('assets/admin/js/pages/dashboard.init.js');?>"></script>
 <script src="<?php echo base_url('assets/admin/js/app.js');?>"></script>
+<script>
+    $(document).ready(function() {
+        $("#datatable").DataTable();
+    });
+</script>
 </body>
 </html>
