@@ -62,9 +62,9 @@ if ($this->session->userdata('Type_' . ucfirst($this->uri->segment(1))) == 'V') 
                                             }
                                             ?>
                                             <tr>
-                                                <td class="text-center"><?php echo $key + 1; ?></td>
-                                                <td class="text-center"><?php echo $row['city_title']; ?></td>
-                                                <td class="text-center"><?php echo $status_string; ?></td>
+                                                <td class="text-left"><?php echo $key + 1; ?></td>
+                                                <td class="text-left"><?php echo $row['city_title']; ?></td>
+                                                <td class="text-left"><?php echo $status_string; ?></td>
                                                 <?php if ($folder_name == 'admin'): ?>
                                                     <td class="text-center">
                                                         <input type="checkbox" onchange="updateDefaultCity(this)" <?php echo ($row['is_default'] == 1) ? "checked='checked'" : ""; ?> style="visibility: visible !important;left: 0px !important;position: relative;" name="is_default" data-id="<?php echo $row['city_id']; ?>"/>
