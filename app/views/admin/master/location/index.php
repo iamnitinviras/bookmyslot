@@ -75,7 +75,7 @@ if ($this->session->userdata('Type_' . ucfirst($this->uri->segment(1))) == 'V') 
                                                         if ($created_by == $row['loc_created_by']) {
                                                             ?>
                                                             <a href="<?php echo base_url('vendor/update-location/' . $row['loc_id']); ?>" class="text-success" title="<?php echo translate('edit'); ?>"><i class="mdi mdi-pencil font-size-18"></i></a>
-                                                            <a id="" data-toggle="modal" onclick='DeleteRecord(this)' data-target="#delete-record" data-id="<?php echo (int) $row['loc_id']; ?>" class="text-danger" title="<?php echo translate('delete'); ?>"><i class="mdi mdi-delete font-size-18"></i></a>
+                                                            <a data-bs-toggle="modal" onclick='DeleteRecord(this)' data-bs-target="#delete-record" data-id="<?php echo (int) $row['loc_id']; ?>" class="text-danger" title="<?php echo translate('delete'); ?>"><i class="mdi mdi-delete font-size-18"></i></a>
                                                             <?php
                                                         } else {
                                                             echo '-';
@@ -83,7 +83,7 @@ if ($this->session->userdata('Type_' . ucfirst($this->uri->segment(1))) == 'V') 
                                                     } else {
                                                         ?>
                                                         <a href="<?php echo base_url('admin/update-location/' . $row['loc_id']); ?>" class="text-success" title="<?php echo translate('edit'); ?>" data-toggle="tooltip" data-placement="top"><i class="mdi mdi-pencil font-size-18"></i></a>
-                                                        <span class="d-inline-block" title="<?php echo translate('delete'); ?>" data-toggle="tooltip" data-placement="top"><a id="" data-toggle="modal" onclick='DeleteRecord(this)' data-target="#delete-record" data-id="<?php echo (int) $row['loc_id']; ?>" class="text-danger"><i class="mdi mdi-delete font-size-18"></i></a></span>
+                                                        <a data-bs-toggle="modal" onclick='DeleteRecord(this)' data-bs-target="#delete-record" data-id="<?php echo (int) $row['loc_id']; ?>" class="text-danger"><i class="mdi mdi-delete font-size-18"></i></a>
                                                     <?php } ?>
                                                 </td>
                                             </tr>
