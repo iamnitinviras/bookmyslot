@@ -105,19 +105,19 @@
                             <div class="row g-0">
                                 <div class="col-md-4">
                                     <a class="dropdown-icon-item" href="<?php echo base_url('admin/city'); ?>">
-                                        <img src="<?php echo base_url('assets/admin/images/brands/github.png');?>" alt="Github">
+                                        <img src="<?php echo base_url('assets/admin/images/icon/city.png') ?>">
                                         <span><?php echo translate('city') ?></span>
                                     </a>
                                 </div>
                                 <div class="col-md-4">
                                     <a class="dropdown-icon-item" href="<?php echo base_url('admin/location'); ?>">
-                                        <img src="<?php echo base_url('assets/admin/images/brands/bitbucket.png');?>" alt="bitbucket">
+                                        <img src="<?php echo base_url('assets/admin/images/icon/location.png') ?>">
                                         <span><?php echo translate('location') ?></span>
                                     </a>
                                 </div>
                                 <div class="col-md-4">
                                     <a class="dropdown-icon-item" href="<?php echo base_url('admin/currency'); ?>">
-                                        <img src="<?php echo base_url('assets/admin/images/brands/dribbble.png');?>" alt="dribbble">
+                                        <img src="<?php echo base_url('assets/admin/images/icon/currency.png') ?>">
                                         <span><?php echo translate('currency'); ?></span>
                                     </a>
                                 </div>
@@ -125,20 +125,20 @@
                                 <?php if (get_site_setting('enable_testimonial') == 'Y'): ?>
                                     <div class="col-md-4">
                                         <a class="dropdown-icon-item" href="<?php echo base_url('admin/testimonial'); ?>">
-                                            <img src="<?php echo base_url('assets/admin/images/brands/github.png');?>" alt="Github">
+                                            <img src="<?php echo base_url('assets/admin/images/icon/testimonial.png') ?>">
                                             <span><?php echo translate('testimonial') ?></span>
                                         </a>
                                     </div>
                                 <?php endif; ?>
                                 <div class="col-md-4">
                                     <a class="dropdown-icon-item" href="<?php echo base_url('admin/slider'); ?>">
-                                        <img src="<?php echo base_url('assets/admin/images/brands/bitbucket.png');?>" alt="bitbucket">
+                                        <img src="<?php echo base_url('assets/admin/images/icon/gallery_image.png');?>">
                                         <span><?php echo translate('gallery_image') ?></span>
                                     </a>
                                 </div>
                                 <div class="col-md-4">
                                     <a class="dropdown-icon-item" href="<?php echo base_url('admin/faq'); ?>">
-                                        <img src="<?php echo base_url('assets/admin/images/brands/dribbble.png');?>" alt="dribbble">
+                                        <img src="<?php echo base_url('assets/admin/images/icon/faqs.png');?>">
                                         <span><?php echo translate('faqs'); ?></span>
                                     </a>
                                 </div>
@@ -160,38 +160,38 @@
                             <div class="row g-0">
                                 <div class="col-md-4">
                                     <a class="dropdown-icon-item" href="<?php echo base_url('admin/sitesetting'); ?>">
-                                        <i class="fas fa-home fa-2x"></i>
+                                        <img src="<?php echo base_url('assets/admin/images/icon/setting.png') ?>">
                                         <span><?php echo translate('site_setting') ?></span>
                                     </a>
                                 </div>
                                 <div class="col-md-4">
                                     <a class="dropdown-icon-item" href="<?php echo base_url('admin/setting/email'); ?>">
-                                        <i class="fas fa-home fa-2x"></i>
+                                        <img src="<?php echo base_url('assets/admin/images/icon/email.png') ?>">
                                         <span><?php echo translate('email_setting') ?></span>
                                     </a>
                                 </div>
                                 <div class="col-md-4">
                                     <a class="dropdown-icon-item" href="<?php echo base_url('admin/setting/currency'); ?>">
-                                        <i class="fas fa-credit-card fa-2x"></i>
+                                        <img src="<?php echo base_url('assets/admin/images/icon/currency.png') ?>">
                                         <span><?php echo translate('currency'); ?></span>
                                     </a>
                                 </div>
 
                                 <div class="col-md-4">
                                     <a class="dropdown-icon-item" href="<?php echo base_url('admin/setting/display'); ?>">
-                                        <i class="fas fa-home fa-2x"></i>
+                                        <img src="<?php echo base_url('assets/admin/images/icon/display.png') ?>">
                                         <span><?php echo translate('display_setting') ?></span>
                                     </a>
                                 </div>
                                 <div class="col-md-4">
                                     <a class="dropdown-icon-item" href="<?php echo base_url('admin/setting/payment'); ?>">
-                                        <i class="fas fa-credit-card fa-2x"></i>
+                                        <img src="<?php echo base_url('assets/admin/images/icon/payment.png') ?>">
                                         <span><?php echo translate('payment') ?></span>
                                     </a>
                                 </div>
                                 <div class="col-md-4">
                                     <a class="dropdown-icon-item" href="<?php echo base_url('admin/setting/vendor'); ?>">
-                                        <i class="fas fa-user-secret fa-2x"></i>
+                                        <img src="<?php echo base_url('assets/admin/images/icon/vendor.png') ?>">
                                         <span><?php echo translate('vendor'); ?></span>
                                     </a>
                                 </div>
@@ -202,8 +202,7 @@
                 </div>
 
                 <div class="dropdown d-inline-block">
-                    <button type="button" class="btn header-item bg-soft-light border-start border-end" id="page-header-user-dropdown"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button type="button" class="btn header-item bg-soft-light border-start border-end" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="d-none d-xl-inline-block ms-1 fw-medium">Admin</span>
                         <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                     </button>
