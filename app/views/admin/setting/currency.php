@@ -94,8 +94,8 @@ $currency_position = isset($currency_data['currency_position']) ? $currency_data
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-success waves-effect"><?php echo translate('update'); ?></button>
+                            <div class="d-flex flex-wrap gap-2">
+                                <button type="submit" class="btn btn-primary"><?php echo translate('save'); ?></button>
                             </div>
                             <?php echo form_close(); ?>
                         </div>

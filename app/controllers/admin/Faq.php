@@ -47,7 +47,7 @@ class Faq extends MY_Controller {
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
         if ($this->form_validation->run() == false) {
             if ($id > 0) {
-                $this->update_faq();
+                $this->update_faq($id);
             } else {
                 $this->add_faq();
             }
@@ -66,7 +66,7 @@ class Faq extends MY_Controller {
                 $this->session->set_flashdata('msg', translate('faq_insert'));
                 $this->session->set_flashdata('msg_class', 'success');
             }
-            redirect('admin/manage-faq', 'redirect');
+            redirect('admin/faq', 'redirect');
         }
     }
 
