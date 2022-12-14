@@ -52,7 +52,7 @@ $id = (set_value("id")) ? set_value("id") : (!empty($slider_data) ? $slider_data
                                         <input type="file" id="imageurl" name="image" class="form-control" value="<?php echo $image_data; ?>" onchange="readURL(this)" <?php echo isset($image_data) && $image_data != '' ? '' : 'required'; ?> >
                                         <?php echo form_error('image'); ?>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-2">
                                         <?php if (isset($image_data) && $image_data != '') { ?>
                                             <img id="imageurl"  class="img"  style="border-radius:2%;" src="<?php echo check_admin_image(UPLOAD_PATH . "slider/" . $image_data); ?>" alt="No Image" width="100" height="100">
                                         <?php } else { ?>
