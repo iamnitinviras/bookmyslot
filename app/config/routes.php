@@ -203,13 +203,6 @@ $route['admin/customer/save'] = 'admin/customer/save_customer';
 $route['admin/customer/delete/(:any)'] = 'admin/customer/delete_customer/$1';
 $route['admin/customer/booking/(:any)'] = 'admin/customer/customer_booking/$1';
 
-
-$route['admin/currency'] = 'admin/currency/index';
-$route['admin/currency/add'] = 'admin/currency/add_currency';
-$route['admin/currency/edit/(:num)'] = 'admin/currency/update_currency/$1';
-$route['admin/currency/save'] = 'admin/currency/save_currency';
-$route['admin/currency/delete/(:any)'] = 'admin/currency/delete_currency/$1';
-
 /* Staff */
 
 $route['admin/staff'] = 'admin/staff/index';

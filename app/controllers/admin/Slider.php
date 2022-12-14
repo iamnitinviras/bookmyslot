@@ -49,7 +49,7 @@ class Slider extends MY_Controller {
 
         if ($this->form_validation->run() == false) {
             if ($slider_id > 0) {
-                $this->update_slider();
+                $this->update_slider($slider_id);
             } else {
                 $this->add_slider();
             }
@@ -99,7 +99,7 @@ class Slider extends MY_Controller {
                 $this->session->set_flashdata('msg_class', 'success');
             }
             $folder_url = isset($this->login_type) && $this->login_type == 'V' ? 'vendor' : 'admin';
-            redirect($folder_url . '/manage-slider', 'redirect');
+            redirect($folder_url . '/slider', 'redirect');
         }
     }
 

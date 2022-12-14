@@ -115,12 +115,6 @@
                                         <span><?php echo translate('location') ?></span>
                                     </a>
                                 </div>
-                                <div class="col-md-4">
-                                    <a class="dropdown-icon-item" href="<?php echo base_url('admin/currency'); ?>">
-                                        <img src="<?php echo base_url('assets/admin/images/icon/currency.png') ?>">
-                                        <span><?php echo translate('currency'); ?></span>
-                                    </a>
-                                </div>
 
                                 <?php if (get_site_setting('enable_testimonial') == 'Y'): ?>
                                     <div class="col-md-4">
