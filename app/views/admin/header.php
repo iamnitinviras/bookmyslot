@@ -94,6 +94,7 @@
 
             <div class="d-flex">
 
+                <!-- master Module-->
                 <div class="dropdown d-inline-block">
                     <button type="button" class="btn header-item"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -147,10 +148,57 @@
                     </div>
                 </div>
 
+
+                <!-- Site Settings-->
                 <div class="dropdown d-inline-block">
-                    <button type="button" class="btn header-item right-bar-toggle me-2">
+                    <button type="button" class="btn header-item"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i data-feather="settings" class="icon-lg"></i>
                     </button>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
+                        <div class="p-2">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <a class="dropdown-icon-item" href="<?php echo base_url('admin/sitesetting'); ?>">
+                                        <i class="fas fa-home fa-2x"></i>
+                                        <span><?php echo translate('site_setting') ?></span>
+                                    </a>
+                                </div>
+                                <div class="col-md-4">
+                                    <a class="dropdown-icon-item" href="<?php echo base_url('admin/setting/email'); ?>">
+                                        <i class="fas fa-home fa-2x"></i>
+                                        <span><?php echo translate('email_setting') ?></span>
+                                    </a>
+                                </div>
+                                <div class="col-md-4">
+                                    <a class="dropdown-icon-item" href="<?php echo base_url('admin/setting/currency'); ?>">
+                                        <i class="fas fa-credit-card fa-2x"></i>
+                                        <span><?php echo translate('currency'); ?></span>
+                                    </a>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <a class="dropdown-icon-item" href="<?php echo base_url('admin/setting/display'); ?>">
+                                        <i class="fas fa-home fa-2x"></i>
+                                        <span><?php echo translate('display_setting') ?></span>
+                                    </a>
+                                </div>
+                                <div class="col-md-4">
+                                    <a class="dropdown-icon-item" href="<?php echo base_url('admin/setting/payment'); ?>">
+                                        <i class="fas fa-credit-card fa-2x"></i>
+                                        <span><?php echo translate('payment') ?></span>
+                                    </a>
+                                </div>
+                                <div class="col-md-4">
+                                    <a class="dropdown-icon-item" href="<?php echo base_url('admin/setting/vendor'); ?>">
+                                        <i class="fas fa-user-secret fa-2x"></i>
+                                        <span><?php echo translate('vendor'); ?></span>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
 
                 <div class="dropdown d-inline-block">
@@ -181,8 +229,6 @@
             <div id="sidebar-menu">
                 <!-- Left Menu Start -->
                 <ul class="metismenu list-unstyled" id="side-menu">
-                    <li class="menu-title" data-key="t-menu">Menu</li>
-
                     <li>
                         <a href="<?php echo base_url('admin/dashboard') ?>">
                             <i data-feather="home"></i>
@@ -265,12 +311,7 @@
                         </ul>
                     </li>
 
-                    <li>
-                        <a href="<?php echo base_url('admin/sitesetting'); ?>">
-                            <i data-feather="settings"></i>
-                            <span data-key="t-settings"><?php echo translate('site_setting'); ?></span>
-                        </a>
-                    </li>
+
                     <li>
                         <a href="<?php echo base_url('admin/manage-content'); ?>">
                             <i data-feather="file"></i>
