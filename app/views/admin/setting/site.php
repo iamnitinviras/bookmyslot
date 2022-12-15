@@ -47,11 +47,20 @@ if (isset($company_data->fevicon_icon) && $company_data->fevicon_icon != "") {
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Basic Information</h4>
-                    <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Ecommerce</a></li>
-                        <li class="breadcrumb-item active">Add Product</li>
-                    </ol>
+                    <div class="row">
+                        <div class="col-md-6 col-xl-6">
+                            <h4 class="card-title"><?php echo translate('site_setting'); ?></h4>
+                            <div class="page-title-box pb-0 d-sm-flex">
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="<?php echo base_url('admin/dashboard'); ?>"><?php echo translate('dashboard'); ?></a></li>
+                                        <li class="breadcrumb-item active"><?php echo translate('site_setting'); ?></li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-6 text-end add-new-btn-parent"></div>
+                    </div>
                 </div>
                 <div class="card-body">
 
@@ -101,41 +110,45 @@ if (isset($company_data->fevicon_icon) && $company_data->fevicon_icon != "") {
                         </li>
                     </ul>
                     <!-- Tab panes -->
-                    <div class="tab-content p-3 text-muted">
+                    <div class="tab-content text-muted">
                         <div class="tab-pane active" role="tabpanel">
                             <?php $this->load->view('message'); ?>
                             <?php echo form_open_multipart('admin/save-sitesetting', array('name' => 'site_form', 'id' => 'site_form')); ?>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="row">
-                                        <div class="col-md-6">
+
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row mb-2">
+                                        <div class="col-md-4">
                                             <div class="form-group">
-                                                <?php echo form_label(translate('site_name') . ' : <small class ="required">*</small>', 'company_name', array('class' => 'control-label', 'data-error' => 'wrong', 'data-success' => 'right')); ?>
+                                                <?php echo form_label(translate('site_name') . '<small class ="required">*</small>', 'company_name', array('class' => 'control-label', 'data-error' => 'wrong', 'data-success' => 'right')); ?>
                                                 <?php echo form_input(array('autocomplete'=>'off','id' => 'company_name', 'class' => 'form-control validate', 'name' => 'company_name', 'value' => $company_name, 'required' => 'required', 'placeholder' => translate('site_name'))); ?>
                                                 <?php echo form_error('company_name'); ?>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="form-group">
-                                                <?php echo form_label(translate('site_email') . ' : <small class ="required">*</small>', 'company_email1', array('class' => 'control-label')); ?>
+                                                <?php echo form_label(translate('site_email') . '<small class ="required">*</small>', 'company_email1', array('class' => 'control-label')); ?>
                                                 <?php echo form_input(array('autocomplete'=>'off','id' => 'company_email1', 'class' => 'form-control validate', 'name' => 'company_email1', 'value' => $company_email1, 'required' => 'required', 'type' => 'email', 'placeholder' => translate('site_email'))); ?>
                                                 <?php echo form_error('company_email1'); ?>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="form-group">
-                                                <?php echo form_label(translate('site_phone') . ' :', 'company_phone1', array('class' => 'control-label')); ?>
+                                                <?php echo form_label(translate('site_phone'), 'company_phone1', array('class' => 'control-label')); ?>
                                                 <?php echo form_input(array('autocomplete'=>'off','id' => 'company_phone1', 'class' => 'form-control validate', 'name' => 'company_phone1', 'value' => $company_phone1, 'placeholder' => translate('site_phone'))); ?>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 ">
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col-md-4">
                                             <div class="form-group">
-                                                <?php echo form_label(translate('address') . ' :', 'company_address1', array('class' => 'control-label')); ?>
+                                                <?php echo form_label(translate('address'), 'company_address1', array('class' => 'control-label')); ?>
                                                 <?php echo form_textarea(array('id' => 'company_address1', 'class' => 'form-control validate', 'name' => 'company_address1', 'type' => 'text', 'rows' => 3, 'value' => $company_address1, 'placeholder' => translate('address'))); ?>
                                             </div>
                                         </div>
 
-                                        <div class="col-md-6 ">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="black-text"><?php echo translate('select'); ?> <?php echo translate('language'); ?><small class="required">*</small></label>
                                                 <?php
@@ -154,7 +167,7 @@ if (isset($company_data->fevicon_icon) && $company_data->fevicon_icon != "") {
                                                 ?>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 ">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="black-text"><?php echo translate('select'); ?> <?php echo translate('time_zone'); ?></label>
                                                 <select class="form-control" id="time_zone" name="time_zone">
@@ -172,40 +185,47 @@ if (isset($company_data->fevicon_icon) && $company_data->fevicon_icon != "") {
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="row">
-                                        <div class="col-md-6">
+
+
+
+                            <!-- Social Media Link -->
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row mb-2">
+                                        <div class="col-md-4">
                                             <div class="form-group">
-                                                <?php echo form_label(translate('facebook') . ' ' . translate('link') . ' : ', 'fb_link', array('class' => 'control-label')); ?>
+                                                <?php echo form_label(translate('facebook') . ' ' . translate('link'), 'fb_link', array('class' => 'control-label')); ?>
                                                 <?php echo form_input(array('autocomplete'=>'off','id' => 'fb_link', 'class' => 'form-control', 'name' => 'fb_link', 'value' => $fb_link, 'type' => 'url', 'placeholder' => translate('facebook') . ' ' . translate('link'))); ?>
                                                 <?php echo form_error('fb_link'); ?>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="form-group">
-                                                <?php echo form_label(translate('google+') . ' ' . translate('link') . ' : ', 'google_link', array('class' => 'control-label')); ?>
+                                                <?php echo form_label(translate('google+') . ' ' . translate('link'), 'google_link', array('class' => 'control-label')); ?>
                                                 <?php echo form_input(array('autocomplete'=>'off','id' => 'google_link', 'class' => 'form-control', 'name' => 'google_link', 'value' => $google_link, 'type' => 'url', 'placeholder' => translate('google+') . ' ' . translate('link'))); ?>
                                                 <?php echo form_error('google_link'); ?>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="form-group">
-                                                <?php echo form_label(translate('twitter') . ' ' . translate('link') . ' : ', 'twitter_link', array('class' => 'control-label')); ?>
+                                                <?php echo form_label(translate('twitter') . ' ' . translate('link'), 'twitter_link', array('class' => 'control-label')); ?>
                                                 <?php echo form_input(array('autocomplete'=>'off','id' => 'twitter_link', 'class' => 'form-control', 'name' => 'twitter_link', 'value' => $twitter_link, 'type' => 'url', 'placeholder' => translate('twitter') . ' ' . translate('link'))); ?>
                                                 <?php echo form_error('twitter_link'); ?>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                    </div>
+
+                                    <div class="row mb-2">
+                                        <div class="col-md-4">
                                             <div class="form-group">
-                                                <?php echo form_label(translate('instagram') . ' ' . translate('link') . ' : ', 'insta_link', array('class' => 'control-label')); ?>
+                                                <?php echo form_label(translate('instagram') . ' ' . translate('link'), 'insta_link', array('class' => 'control-label')); ?>
                                                 <?php echo form_input(array('autocomplete'=>'off','id' => 'insta_link', 'class' => 'form-control', 'name' => 'insta_link', 'value' => $insta_link, 'type' => 'url', 'placeholder' => translate('instagram') . ' ' . translate('link'))); ?>
                                                 <?php echo form_error('insta_link'); ?>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 ">
+                                        <div class="col-md-4">
                                             <div class="form-group">
-                                                <?php echo form_label(translate('linkdin') . ' ' . translate('link') . ' : ', 'linkdin_link', array('class' => 'control-label')); ?>
+                                                <?php echo form_label(translate('linkdin') . ' ' . translate('link'), 'linkdin_link', array('class' => 'control-label')); ?>
                                                 <?php echo form_input(array('autocomplete'=>'off','id' => 'linkdin_link', 'class' => 'form-control', 'name' => 'linkdin_link', 'value' => $linkdin_link, 'type' => 'url', 'placeholder' => translate('linkdin') . ' ' . translate('link'))); ?>
                                                 <?php echo form_error('linkdin_link'); ?>
                                             </div>
@@ -213,49 +233,41 @@ if (isset($company_data->fevicon_icon) && $company_data->fevicon_icon != "") {
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="row">
-                                        <div class="col-md-6">
+
+
+                            <!-- Logo -->
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row mb-5">
+                                        <div class="col-md-4">
                                             <div class="form-group">
-                                                <h5 style="font-size: .8rem; color: #757575; margin-bottom: 1.5rem;"><?php echo translate('company'); ?> <?php echo translate('logo'); ?> <small class="required">*</small> <strong>(<?php echo translate('valid_logo_size'); ?>)</strong></h5>
-                                                <div class="col-md-6">
+                                                <label class="control-label"><?php echo translate('company'); ?> <?php echo translate('logo'); ?> <small class="required">*</small> <strong>(<?php echo translate('valid_logo_size'); ?>)</strong></label>
+                                                <input class="form-control" onchange="readURL(this)" id="imageurl" <?php if ($logo_check == false) echo "required"; ?>  type="file" name="company_logo" accept="image/x-png,image/gif,image/jpeg,image/png"  extension="jpg|png|gif|jpeg" />
+                                                <div class="col-md-6 mt-2">
                                                     <img id="imageurl"  class="img-fluid"  src="<?php echo $logo_image; ?>" alt="Image" height="100">
-                                                </div>
-                                                <div class="file-field">
-                                                    <div class="btn btn-primary btn-sm">
-                                                        <span><?php echo translate('select'); ?> <?php echo translate('image'); ?></span>
-                                                        <input onchange="readURL(this)" id="imageurl" <?php if ($logo_check == false) echo "required"; ?>  type="file" name="company_logo" accept="image/x-png,image/gif,image/jpeg,image/png"  extension="jpg|png|gif|jpeg" />
-                                                    </div>
-                                                    <div class="file-path-wrapper" >
-                                                        <input class="file-path form-control validate readonly" readonly type="text" placeholder="<?php echo translate('upload'); ?> <?php echo translate('your'); ?> <?php echo translate('file'); ?>" >
-                                                    </div>
                                                 </div>
                                                 <?php echo form_error('company_logo'); ?>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="form-group">
-                                                <h5 style="font-size: .8rem; color: #757575; margin-bottom: 1.5rem;"><?php echo translate('fevicon_icon'); ?> <small class="required">*</small> </h5>
-                                                <div class="col-md-6">
+                                                <label class="control-label"><?php echo translate('fevicon_icon'); ?> <small class="required">*</small> </label>
+                                                <input class="form-control" onchange="readURLIcon(this)" id="imageurl2" <?php if ($icon_check == false) echo "required"; ?>  type="file" name="fevicon_icon" accept="image/x-png,image/gif,image/jpeg,image/png"/>
+
+                                                <div class="col-md-6 mt-2">
                                                     <img id="imageurl2"   src="<?php echo $icon_image; ?>" alt="Image" height="50" width="50">
-                                                </div>
-                                                <div class="file-field">
-                                                    <div class="btn btn-primary btn-sm">
-                                                        <span><?php echo translate('select'); ?> <?php echo translate('image'); ?></span>
-                                                        <input onchange="readURLIcon(this)" id="imageurl2" <?php if ($icon_check == false) echo "required"; ?>  type="file" name="fevicon_icon" accept="image/x-png,image/gif,image/jpeg,image/png"/>
-                                                    </div>
-                                                    <div class="file-path-wrapper" >
-                                                        <input class="file-path form-control readonly" readonly type="text" placeholder="<?php echo translate('upload'); ?> <?php echo translate('your'); ?> <?php echo translate('file'); ?>" >
-                                                    </div>
                                                 </div>
                                                 <?php echo form_error('fevicon_icon'); ?>
                                             </div>
                                         </div>
                                     </div>
-                                    <button class="btn btn-success btn-rounded float-right" type="submit"><?php echo translate('submit'); ?></button>
                                 </div>
                             </div>
+
+                            <div class="d-flex flex-wrap gap-2">
+                                <button type="submit" class="btn btn-primary"><?php echo translate('submit'); ?></button>
+                            </div>
+
                             <?php echo form_close(); ?>
                         </div>
                     </div>
