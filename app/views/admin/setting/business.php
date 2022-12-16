@@ -127,7 +127,7 @@ if ($enable_membership == 'Y') {
                         </div>
                         <div class="card-footer">
                             <div class="d-flex flex-wrap gap-2">
-                                <button type="submit" class="btn btn-primary waves-effect waves-light"><?php echo translate('save'); ?></button>
+                                <button type="submit" class="btn btn-primary"><?php echo translate('submit'); ?></button>
                             </div>
                         </div>
                     </div>

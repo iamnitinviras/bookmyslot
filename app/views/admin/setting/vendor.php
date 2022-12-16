@@ -67,11 +67,12 @@ $allow_event_category = isset($vendor_data['allow_event_category']) ? $vendor_da
                             </a>
                         </li>
                     </ul>
-                    <!-- Tab panes -->
-                    <div class="tab-content p-3 text-muted">
-                        <div class="tab-pane active" role="tabpanel">
-                            <?php $this->load->view('message'); ?>
-                            <?php echo form_open('admin/save-vendor-setting', array('name' => 'vendor_setting_form', 'id' => 'vendor_setting_form')); ?>
+
+                    <?php $this->load->view('message'); ?>
+                    <?php echo form_open('admin/save-vendor-setting', array('name' => 'vendor_setting_form', 'id' => 'vendor_setting_form')); ?>
+
+                    <div class="card">
+                        <div class="card-body">
                             <div class="row mb-2">
                                 <div class="col-md-6 ">
                                     <div class="form-group">
@@ -115,15 +116,17 @@ $allow_event_category = isset($vendor_data['allow_event_category']) ? $vendor_da
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-success waves-effect"><?php echo translate('update'); ?></button>
-                                    </div>
-                                </div>
+
                             </div>
-                            <?php echo form_close(); ?>
+                        </div>
+                        <div class="card-footer">
+                            <div class="d-flex flex-wrap gap-2">
+                                <button type="submit" class="btn btn-primary"><?php echo translate('submit'); ?></button>
+                            </div>
                         </div>
                     </div>
+
+                    <?php echo form_close(); ?>
                 </div>
             </div>
         </div>

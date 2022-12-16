@@ -108,14 +108,16 @@ if ($on_cash == 'Y') {
                             </a>
                         </li>
                     </ul>
-                    <!-- Tab panes -->
-                    <div class="tab-content p-3 text-muted">
-                        <div class="tab-pane active" role="tabpanel">
-                            <?php $this->load->view('message'); ?>
-                            <?php
-                            echo form_open('admin/save-payment-setting', array('name' => 'PaymentForm', 'id' => 'PaymentForm'));
-                            echo form_input(array('type' => 'hidden', 'name' => 'id', 'id' => 'id', 'value' => $id));
-                            ?>
+
+                    <?php $this->load->view('message'); ?>
+                    <?php
+                    echo form_open('admin/save-payment-setting', array('name' => 'PaymentForm', 'id' => 'PaymentForm'));
+                    echo form_input(array('type' => 'hidden', 'name' => 'id', 'id' => 'id', 'value' => $id));
+                    ?>
+
+                    <div class="card">
+                        <div class="card-body">
+
                             <label style="color: #757575;" > <?php echo translate('stripe'); ?></label>
                             <div class="form-group form-inline">
                                 <div class="form-group">
@@ -217,12 +219,16 @@ if ($on_cash == 'Y') {
                                     <label for='on_cash_no'><?php echo translate('no'); ?></label>
                                 </div>
                             </div>
-                            <div class="form-group mb-0">
-                                <button type="submit" class="btn btn-success waves-effect"><?php echo translate('save'); ?></button>
-                            </div>
-                            <?php echo form_close(); ?>
+
                         </div>
+                        <div class="card-footer">
+                            <div class="d-flex flex-wrap gap-2">
+                                <button type="submit" class="btn btn-primary"><?php echo translate('submit'); ?></button>
+                            </div>
+                        </div>
+
                     </div>
+                    <?php echo form_close(); ?>
                 </div>
             </div>
         </div>

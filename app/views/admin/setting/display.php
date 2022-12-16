@@ -79,11 +79,12 @@ $enable_testimonial = isset($company_data->enable_testimonial) ? $company_data->
                             </a>
                         </li>
                     </ul>
-                    <!-- Tab panes -->
-                    <div class="tab-content p-3 text-muted">
-                        <div class="tab-pane active" role="tabpanel">
-                            <?php $this->load->view('message'); ?>
-                            <?php echo form_open('admin/save-display-setting', array('name' => 'site_email_form', 'id' => 'site_email_form')); ?>
+
+                    <?php $this->load->view('message'); ?>
+                    <?php echo form_open('admin/save-display-setting', array('name' => 'site_email_form', 'id' => 'site_email_form')); ?>
+
+                    <div class="card">
+                        <div class="card-body">
                             <div class="row mb-2">
 
                                 <div class="col-md-4 ">
@@ -255,9 +256,14 @@ $enable_testimonial = isset($company_data->enable_testimonial) ? $company_data->
 
                                 </div>
                             </div>
-                            <?php echo form_close(); ?>
+                        </div>
+                        <div class="card-footer">
+                            <div class="d-flex flex-wrap gap-2">
+                                <button type="submit" class="btn btn-primary"><?php echo translate('submit'); ?></button>
+                            </div>
                         </div>
                     </div>
+                    <?php echo form_close(); ?>
                 </div>
             </div>
         </div>
