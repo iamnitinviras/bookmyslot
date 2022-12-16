@@ -26,11 +26,19 @@ $enable_testimonial = isset($company_data->enable_testimonial) ? $company_data->
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title"><?php echo translate('display'); ?> <?php echo translate('site_setting'); ?></h4>
-                    <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="<?php echo base_url('admin/dashboard'); ?>"><?php echo translate('dashboard'); ?></a></li>
-                        <li class="breadcrumb-item active"><?php echo translate('display'); ?> <?php echo translate('site_setting'); ?></li>
-                    </ol>
+                    <div class="row">
+                        <div class="col-md-12 col-xl-12">
+                            <h4 class="card-title"><?php echo translate('display'); ?> <?php echo translate('setting'); ?></h4>
+                            <div class="page-title-box pb-0 d-sm-flex">
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="<?php echo base_url('admin/dashboard'); ?>"><?php echo translate('dashboard'); ?></a></li>
+                                        <li class="breadcrumb-item active"><?php echo translate('display'); ?> <?php echo translate('setting'); ?></li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
 

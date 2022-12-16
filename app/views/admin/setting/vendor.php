@@ -15,11 +15,19 @@ $allow_event_category = isset($vendor_data['allow_event_category']) ? $vendor_da
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title"><?php echo translate('vendor'); ?> <?php echo translate('setting'); ?></h4>
-                    <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="<?php echo base_url('admin/dashboard'); ?>"><?php echo translate('dashboard'); ?></a></li>
-                        <li class="breadcrumb-item active"><?php echo translate('vendor'); ?></li>
-                    </ol>
+                    <div class="row">
+                        <div class="col-md-12 col-xl-12">
+                            <h4 class="card-title"><?php echo translate('vendor'); ?> <?php echo translate('setting'); ?></h4>
+                            <div class="page-title-box pb-0 d-sm-flex">
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="<?php echo base_url('admin/dashboard'); ?>"><?php echo translate('dashboard'); ?></a></li>
+                                        <li class="breadcrumb-item active"><?php echo translate('vendor'); ?> <?php echo translate('setting'); ?></li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
                     <!-- Nav tabs -->

@@ -48,7 +48,7 @@ if (isset($company_data->fevicon_icon) && $company_data->fevicon_icon != "") {
             <div class="card">
                 <div class="card-header">
                     <div class="row">
-                        <div class="col-md-6 col-xl-6">
+                        <div class="col-md-12 col-xl-12">
                             <h4 class="card-title"><?php echo translate('site_setting'); ?></h4>
                             <div class="page-title-box pb-0 d-sm-flex">
                                 <div class="page-title-right">
@@ -59,7 +59,6 @@ if (isset($company_data->fevicon_icon) && $company_data->fevicon_icon != "") {
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-xl-6 text-end add-new-btn-parent"></div>
                     </div>
                 </div>
                 <div class="card-body">
