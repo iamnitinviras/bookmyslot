@@ -21,7 +21,6 @@
                     <div class="row">
                         <div class="col-md-12 m-auto">
                             <?php $this->load->view('message'); ?>
-
                             <div class="table-responsive">
 
                             </div>
@@ -31,5 +30,4 @@
             </div>
         </div>
     </div>
-    <!-- end row -->
 </div>
