@@ -18,7 +18,6 @@ if ($enable_membership == 'Y') {
     }
 </style>
 
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
