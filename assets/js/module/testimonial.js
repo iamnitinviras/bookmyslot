@@ -1,5 +1,11 @@
 $(document).ready(function () {
     folder_name = $('#folder_name').val();
+
+
+    $("#image").change(function () {
+        readURL(this);
+    });
+
     $("#testimonial_form").validate({
         ignore: [],
         rules: {
@@ -42,6 +48,14 @@ function DeleteRecord(element) {
     var id = $(element).attr('data-id');
     var title = $(element).attr('title');
     $("#some_name").html(title);
-    $("#confirm_msg").html("Are you sure you want to delete this record?");
     $("#record_id").val(id);
+}
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#preview').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
 }
