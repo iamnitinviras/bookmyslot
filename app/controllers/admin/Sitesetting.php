@@ -143,16 +143,12 @@ class Sitesetting extends MY_Controller {
     public function save_email_setting() {
         $mail_type = $this->input->post('mail_type');
 
-        if ($mail_type == 'S') {
-            $this->form_validation->set_rules('smtp_host', '', 'trim|required');
-            $this->form_validation->set_rules('smtp_username', '', 'trim|required');
-            $this->form_validation->set_rules('smtp_password', '', 'trim|required');
-            $this->form_validation->set_rules('smtp_port', '', 'trim|required');
-            $this->form_validation->set_rules('smtp_secure', '', 'trim|required');
-            $this->form_validation->set_rules('email_from_smtp', 'From email', 'trim|required|valid_email');
-        } else {
-            $this->form_validation->set_rules('email_from', 'From email', 'trim|required|valid_email');
-        }
+        $this->form_validation->set_rules('smtp_host', '', 'trim|required');
+        $this->form_validation->set_rules('smtp_username', '', 'trim|required');
+        $this->form_validation->set_rules('smtp_password', '', 'trim|required');
+        $this->form_validation->set_rules('smtp_port', '', 'trim|required');
+        $this->form_validation->set_rules('smtp_secure', '', 'trim|required');
+        $this->form_validation->set_rules('email_from_smtp', 'From email', 'trim|required|valid_email');
 
         $this->form_validation->set_message('required', translate('required_message'));
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
@@ -167,12 +163,8 @@ class Sitesetting extends MY_Controller {
             $data['smtp_username'] = $this->input->post('smtp_username', true);
             $data['smtp_port'] = $this->input->post('smtp_port', true);
             $data['smtp_secure'] = $this->input->post('smtp_secure', true);
+            $data['email_from'] = $this->input->post('email_from_smtp', true);
 
-            if ($mail_type == 'S') {
-                $data['email_from'] = $this->input->post('email_from_smtp', true);
-            } else {
-                $data['email_from'] = $this->input->post('email_from', true);
-            }
             $this->model_sitesetting->edit_email(1, $data);
             $this->session->set_flashdata('msg', translate('smtp_update'));
             $this->session->set_flashdata('msg_class', "success");
@@ -191,7 +183,7 @@ class Sitesetting extends MY_Controller {
     public function currency_setting() {
         $data['title'] = translate('currency') . " " . translate('setting');
         $c_data = $this->model_sitesetting->getData('app_site_setting', 'currency_id,currency_position')[0];
-        $app_currency = $this->model_sitesetting->getData('app_currency', '*', 'display_status="A"');
+        $app_currency = $this->model_sitesetting->getData('app_currency', '*');
 
         $data['app_currency'] = isset($app_currency) ? $app_currency : array();
         $data['currency_data'] = $c_data;

@@ -78,7 +78,7 @@ $currency_position = isset($currency_data['currency_position']) ? $currency_data
                                         <?php echo form_label(translate('currency'), 'currency', array('class' => 'control-label')); ?>
                                         <select style="display:block !important;" class="form-control" id="currency_id" name="currency_id">
                                             <?php foreach($app_currency as $val): ?>
-                                                <option <?php echo ($currency_id==$val['id'])?'selected="selected"':"";?> value="<?php echo $val['id']; ?>"><?php echo $val['title']." (".$val['currency_code'].")"; ?></option>
+                                                <option <?php echo ($currency_id==$val['id'])?'selected="selected"':"";?> value="<?php echo $val['id']; ?>"><?php echo $val['code']." (".$val['symbol'].")"; ?></option>
                                             <?php endforeach; ?>
                                         </select>
 

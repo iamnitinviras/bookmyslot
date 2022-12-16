@@ -1,15 +1,7 @@
 ! function(n) {
     "use strict";
-    var e, t, a, o = localStorage.getItem("Dason-language"),
+    var e, t, a, o ="en",
         r = "en";
-
-    function d(t) {
-        document.getElementById("header-lang-img") && ("en" == t ? document.getElementById("header-lang-img").src = "assets/images/flags/us.jpg" : "sp" == t ? document.getElementById("header-lang-img").src = "assets/images/flags/spain.jpg" : "gr" == t ? document.getElementById("header-lang-img").src = "assets/images/flags/germany.jpg" : "it" == t ? document.getElementById("header-lang-img").src = "assets/images/flags/italy.jpg" : "ru" == t && (document.getElementById("header-lang-img").src = "assets/images/flags/russia.jpg"), localStorage.setItem("Dason-language", t), null == (o = localStorage.getItem("Dason-language")) && d(r), n.getJSON("assets/lang/" + o + ".json", function(t) {
-            n("html").attr("lang", o), n.each(t, function(t, e) {
-                "head" === t && n(document).attr("title", e.title), n("[data-key='" + t + "']").text(e)
-            })
-        }))
-    }
 
     function i() {
         var t = document.querySelectorAll(".counter-value");
@@ -28,7 +20,7 @@
     }
 
     function l(t) {
-        null !== t && (document.getElementById(t).checked = !0)
+        null !== t
     }
 
     function c() {
