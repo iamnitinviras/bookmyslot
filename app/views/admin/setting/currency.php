@@ -67,11 +67,11 @@ $currency_position = isset($currency_data['currency_position']) ? $currency_data
                             </a>
                         </li>
                     </ul>
-                    <!-- Tab panes -->
-                    <div class="tab-content p-3 text-muted">
-                        <div class="tab-pane active" role="tabpanel">
-                            <?php $this->load->view('message'); ?>
-                            <?php echo form_open('admin/sitesetting/save_curenncy_setting', array('name' => 'site_business_form', 'id' => 'site_business_form')); ?>
+                    <?php $this->load->view('message'); ?>
+                    <?php echo form_open('admin/sitesetting/save_curenncy_setting', array('name' => 'site_business_form', 'id' => 'site_business_form')); ?>
+
+                    <div class="card">
+                        <div class="card-body">
                             <div class="row mb-5">
                                 <div class="col-md-3">
                                     <div class="form-group">
@@ -93,13 +93,14 @@ $currency_position = isset($currency_data['currency_position']) ? $currency_data
                                     </select>
                                 </div>
                             </div>
-
+                        </div>
+                        <div class="card-footer">
                             <div class="d-flex flex-wrap gap-2">
                                 <button type="submit" class="btn btn-primary"><?php echo translate('save'); ?></button>
                             </div>
-                            <?php echo form_close(); ?>
                         </div>
                     </div>
+                    <?php echo form_close(); ?>
                 </div>
             </div>
         </div>

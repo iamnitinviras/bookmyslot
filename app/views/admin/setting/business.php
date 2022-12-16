@@ -77,11 +77,12 @@ if ($enable_membership == 'Y') {
                             </a>
                         </li>
                     </ul>
-                    <!-- Tab panes -->
-                    <div class="tab-content p-3 text-muted">
-                        <div class="tab-pane active" role="tabpanel">
-                            <?php $this->load->view('message'); ?>
-                            <?php echo form_open('admin/save-business-setting', array('name' => 'site_business_form', 'id' => 'site_business_form')); ?>
+
+                    <?php $this->load->view('message'); ?>
+                    <?php echo form_open('admin/save-business-setting', array('name' => 'site_business_form', 'id' => 'site_business_form')); ?>
+
+                    <div class="card">
+                        <div class="card-body">
                             <div class="row mb-2">
                                 <div class="col-md-4">
                                     <?php echo form_label(translate('enable') . ' ' . translate('membership') . ' : <small class ="required">*</small>', 'commission_percentage', array('class' => 'control-label')); ?>
@@ -105,8 +106,14 @@ if ($enable_membership == 'Y') {
                                     </div>
                                     <div class="error" id="minimum_vendor_payout"></div>
                                 </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Display Booking Slot for Next X Days</label>
+                                        <?php echo form_input(array("max" => 365, "maxlength" => 3, 'type' => "number", "min" => 1, 'id' => 'slot_display_days', 'class' => 'form-control integers', 'name' => 'slot_display_days', 'value' => $slot_display_days, 'placeholder' => "Booking Slot Days")); ?>
+                                        <?php echo form_error('slot_display_days'); ?>
+                                    </div>
+                                </div>
                             </div>
-
                             <div class="row mb-2" id="commission_percentage_div">
                                 <div class="col-md-4">
                                     <div class="form-group">
@@ -117,23 +124,14 @@ if ($enable_membership == 'Y') {
                                     <div class="error" id="commission_percentage"></div>
                                 </div>
                             </div>
-                            <div class="row mb-5">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>Display Booking Slot for Next X Days</label>
-                                        <?php echo form_input(array("max" => 365, "maxlength" => 3, 'type' => "number", "min" => 1, 'id' => 'slot_display_days', 'class' => 'form-control integers', 'name' => 'slot_display_days', 'value' => $slot_display_days, 'placeholder' => "Booking Slot Days")); ?>
-                                        <?php echo form_error('slot_display_days'); ?>
-                                    </div>
-                                </div>
-                            </div>
-
+                        </div>
+                        <div class="card-footer">
                             <div class="d-flex flex-wrap gap-2">
-                                <button type="submit" class="btn btn-primary waves-effect waves-light"><?php echo translate('update'); ?></button>
-                                <button type="button" class="btn btn-secondary waves-effect waves-light"><?php echo translate('cancel'); ?></button>
+                                <button type="submit" class="btn btn-primary waves-effect waves-light"><?php echo translate('save'); ?></button>
                             </div>
-                            <?php echo form_close(); ?>
                         </div>
                     </div>
+                    <?php echo form_close(); ?>
                 </div>
             </div>
         </div>
