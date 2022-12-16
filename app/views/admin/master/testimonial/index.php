@@ -31,7 +31,7 @@ include VIEWPATH . 'admin/header.php';
                             <?php $this->load->view('message'); ?>
 
                             <div class="table-responsive">
-                                <table class="table mdl-data-table" id="example">
+                                <table class="table table-bordered dt-responsive nowrap w-100" id="datatable">
                                     <thead>
                                     <tr>
                                         <th class="text-left font-bold dark-grey-text">#</th>
@@ -48,9 +48,9 @@ include VIEWPATH . 'admin/header.php';
                                     if (isset($testimonial_data) && count($testimonial_data) > 0) {
                                         foreach ($testimonial_data as $key => $row) {
                                             if ($row['status'] == "A") {
-                                                $status_string = '<span class="badge badge-success">' . translate('active') . '</span>';
+                                                $status_string = '<span class="badge bg-success">' . translate('active') . '</span>';
                                             } else {
-                                                $status_string = '<span class="badge badge-danger">' . translate('inactive') . '</span>';
+                                                $status_string = '<span class="badge bg-danger">' . translate('inactive') . '</span>';
                                             }
 
 

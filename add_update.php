@@ -16,14 +16,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-xl-6 text-end add-new-btn-parent">
-                            <div class="text-sm-end">
-                                <a href='<?php echo base_url('/add-city'); ?>'class="btn btn-success btn-rounded waves-effect waves-light mb-2 me-2">
-                                    <i class="mdi mdi-plus me-1"></i>
-                                    <?php echo translate('add'); ?> <?php echo translate('city'); ?>
-                                </a>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
                 <div class="card-body">
