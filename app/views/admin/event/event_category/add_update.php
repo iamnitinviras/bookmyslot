@@ -8,6 +8,7 @@ if ($this->session->userdata('Type_' . ucfirst($this->uri->segment(1))) == 'V') 
     $folder_name = 'admin';
     $form_url = 'admin/save-category';
 }
+
 $title_e = (set_value("title")) ? set_value("title") : (!empty($category_data) ? $category_data['title'] : '');
 $status = (set_value("status")) ? set_value("status") : (!empty($category_data) ? $category_data['status'] : '');
 $event_category_image = (set_value("event_category_image")) ? set_value("event_category_image") : (!empty($category_data) ? $category_data['event_category_image'] : '');
@@ -114,7 +115,6 @@ if (isset($event_category_image) && $event_category_image != "") {
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="row">
                                         <div class="col-md-12">
                                             <small>Image size must be 256X143.</small>
