@@ -34,19 +34,20 @@ $id = (set_value("id")) ? set_value("id") : (!empty($slider_data) ? $slider_data
                         </div>
                     </div>
                 </div>
+                <?php
+                echo form_open_multipart($form_url, array('name' => 'SliderForm', 'id' => 'SliderForm'));
+                echo form_input(array('type' => 'hidden', 'name' => 'id', 'id' => 'id', 'value' => $id));
+                echo form_input(array('type' => 'hidden', 'name' => 'old_slider_image', 'id' => 'old_slider_image', 'value' => $image_data));
+                echo form_input(array('type' => 'hidden', 'name' => 'folder_name', 'id' => 'folder_name', 'value' => isset($folder_name) && $folder_name != '' ? $folder_name : ''));
+                ?>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12 m-auto">
                             <?php $this->load->view('message'); ?>
-                            <?php
-                            echo form_open_multipart($form_url, array('name' => 'SliderForm', 'id' => 'SliderForm'));
-                            echo form_input(array('type' => 'hidden', 'name' => 'id', 'id' => 'id', 'value' => $id));
-                            echo form_input(array('type' => 'hidden', 'name' => 'old_slider_image', 'id' => 'old_slider_image', 'value' => $image_data));
-                            echo form_input(array('type' => 'hidden', 'name' => 'folder_name', 'id' => 'folder_name', 'value' => isset($folder_name) && $folder_name != '' ? $folder_name : ''));
-                            ?>
 
-                            <div class="row mb-5">
-                                <div class="col-md-6">
+
+                            <div class="row">
+                                <div class="col-md-4">
                                     <div class="form-group" id="image-data">
                                         <label for="image"><?php echo translate('image'); ?> <small class="required">*</small></label>
                                         <input type="file" id="imageurl" name="image" class="form-control" value="<?php echo $image_data; ?>" onchange="readURL(this)" <?php echo isset($image_data) && $image_data != '' ? '' : 'required'; ?> >
@@ -60,7 +61,7 @@ $id = (set_value("id")) ? set_value("id") : (!empty($slider_data) ? $slider_data
                                         <?php } ?>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <label class="control-label"><?php echo translate('status'); ?> <small class="required">*</small></label>
                                     <div class="form-group">
                                         <?php
@@ -84,14 +85,18 @@ $id = (set_value("id")) ? set_value("id") : (!empty($slider_data) ? $slider_data
                                 </div>
                             </div>
 
-                            <div class="d-flex flex-wrap gap-2">
-                                <button type="submit" class="btn btn-primary"><?php echo translate('save'); ?></button>
-                                <a href="<?php echo base_url($folder_name.'/slider'); ?>" class="btn btn-outline-secondary"><?php echo translate('cancel'); ?></a>
-                            </div>
-                            <?php echo form_close(); ?>
+
+
                         </div>
                     </div>
                 </div>
+                <div class="card-footer">
+                    <div class="d-flex flex-wrap gap-2">
+                        <button type="submit" class="btn btn-primary"><?php echo translate('save'); ?></button>
+                        <a href="<?php echo base_url($folder_name.'/slider'); ?>" class="btn btn-outline-secondary"><?php echo translate('cancel'); ?></a>
+                    </div>
+                </div>
+                <?php echo form_close(); ?>
             </div>
         </div>
     </div>

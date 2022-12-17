@@ -24,12 +24,12 @@
 
 </head>
 
-<body data-topbar="dark">
+<body class="bg-white">
 
 <!-- <body data-layout="horizontal"> -->
 <div class="auth-page">
     <div class="container-fluid p-0">
-        <div class="row g-0">
+        <div class="row g-0 justify-content-center">
             <div class="col-xxl-3 col-lg-4 col-md-5">
 
                 <div class="auth-full-page-content d-flex p-sm-5 p-4">
@@ -86,14 +86,14 @@
                             </div>
                             <div class="mt-4 mt-md-5 text-center">
                                 <p class="mb-0">© <script>document.write(new Date().getFullYear())</script>  <?php echo get_CompanyName();?></p>
-5                            </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <!-- end auth full page content -->
             </div>
             <!-- end col -->
-                <?php include VIEWPATH . 'admin/auth_sidebar.php';?>
+
             <!-- end col -->
         </div>
         <!-- end row -->

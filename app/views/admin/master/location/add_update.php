@@ -34,18 +34,18 @@ $id = (set_value("loc_id")) ? set_value("loc_id") : (!empty($loc_data) ? $loc_da
                         </div>
                     </div>
                 </div>
+
+                <?php
+                echo form_open($form_url, array('name' => 'LocationForm', 'id' => 'LocationForm'));
+                echo form_input(array('type' => 'hidden', 'name' => 'id', 'id' => 'id', 'value' => $id));
+                ?>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12 m-auto">
                             <?php $this->load->view('message'); ?>
                         </div>
                     </div>
-                    <?php
-                    echo form_open($form_url, array('name' => 'LocationForm', 'id' => 'LocationForm'));
-                    echo form_input(array('type' => 'hidden', 'name' => 'id', 'id' => 'id', 'value' => $id));
-                    ?>
-
-                    <div class="row mb-5">
+                    <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="control-label"><?php echo translate('select'); ?> <?php echo translate('city'); ?> <small class="required">*</small></label>
@@ -94,13 +94,14 @@ $id = (set_value("loc_id")) ? set_value("loc_id") : (!empty($loc_data) ? $loc_da
                             </div>
                         </div>
                     </div>
-
+                </div>
+                <div class="card-footer">
                     <div class="d-flex flex-wrap gap-2">
                         <button type="submit" class="btn btn-primary"><?php echo translate('save'); ?></button>
                         <a href="<?php echo base_url($folder_name.'/location'); ?>" class="btn btn-outline-secondary"><?php echo translate('cancel'); ?></a>
                     </div>
-                    <?php echo form_close(); ?>
                 </div>
+                <?php echo form_close(); ?>
             </div>
         </div>
     </div>
