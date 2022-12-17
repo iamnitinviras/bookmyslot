@@ -74,12 +74,6 @@ $mail_type = isset($email_data->mail_type) ? $email_data->mail_type : set_value(
                                     <span class="d-none d-sm-block"><?php echo translate('payment_setting'); ?></span>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link"  href="<?php echo base_url('admin/setting/vendor'); ?>" role="tab">
-                                    <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
-                                    <span class="d-none d-sm-block"><?php echo translate('vendor') . ' ' . translate('setting'); ?></span>
-                                </a>
-                            </li>
                         </ul>
                         <!-- Tab panes -->
                         <?php $this->load->view('message'); ?>

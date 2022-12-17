@@ -80,12 +80,6 @@ $enable_testimonial = isset($company_data->enable_testimonial) ? $company_data->
                                 <span class="d-none d-sm-block"><?php echo translate('payment_setting'); ?></span>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link"  href="<?php echo base_url('admin/setting/vendor'); ?>" role="tab">
-                                <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
-                                <span class="d-none d-sm-block"><?php echo translate('vendor') . ' ' . translate('setting'); ?></span>
-                            </a>
-                        </li>
                     </ul>
 
                     <?php $this->load->view('message'); ?>
@@ -93,17 +87,17 @@ $enable_testimonial = isset($company_data->enable_testimonial) ? $company_data->
 
                     <div class="card">
                         <div class="card-body">
-                            <div class="row mb-2">
+                            <div class="row mb-3">
 
                                 <div class="col-md-4 ">
                                     <!-- Switch -->
                                     <?php echo form_label(translate('enable') . ' ' . translate('service') . ' : ', 'enable_service', array('class' => 'control-label')); ?>
                                     <div class="switch round blue-white-switch">
                                         <label>
-                                            No
+                                            <?php echo translate('no'); ?>
                                             <input type="checkbox" <?php echo $enable_service == 'Y' ? "checked='checked'" : ""; ?> id="enable_service" name="enable_service" onchange="update_display_setting(this);">
                                             <span class="lever"></span>
-                                            Yes
+                                            <?php echo translate('yes'); ?>
                                         </label>
                                     </div>
                                 </div>
@@ -112,7 +106,7 @@ $enable_testimonial = isset($company_data->enable_testimonial) ? $company_data->
                                     <?php echo form_label(translate('enable') . ' ' . translate('event') . ' : ', 'is_display_vendor', array('class' => 'control-label')); ?>
                                     <div class="switch round blue-white-switch">
                                         <label>
-                                            No
+                                            <?php echo translate('no'); ?>
                                             <input type="checkbox" <?php echo $enable_event == 'Y' ? "checked='checked'" : ""; ?> id="enable_event" name="enable_event" onchange="update_display_setting(this);">
                                             <span class="lever"></span>
                                             Yes
@@ -125,22 +119,26 @@ $enable_testimonial = isset($company_data->enable_testimonial) ? $company_data->
                                     <?php echo form_label(translate('enable') . ' ' . translate('vendor') . ' ' . translate('module') . ' : ', 'is_display_vendor', array('class' => 'control-label')); ?>
                                     <div class="switch round blue-white-switch">
                                         <label>
-                                            No
+                                            <?php echo translate('no'); ?>
                                             <input type="checkbox" <?php echo $is_display_vendor == 'Y' ? "checked='checked'" : ""; ?> id="is_display_vendor" name="is_display_vendor" onchange="update_display_setting(this);">
                                             <span class="lever"></span>
-                                            Yes
+                                            <?php echo translate('yes'); ?>
                                         </label>
                                     </div>
                                 </div>
+                            </div>
+
+
+                            <div class="row mb-3">
                                 <div class="col-md-4 ">
                                     <!-- Switch -->
                                     <?php echo form_label(translate('enable') . ' ' . translate('category') . ' ' . translate('module') . ' : ', 'is_display_category', array('class' => 'control-label')); ?>
                                     <div class="switch round blue-white-switch">
                                         <label>
-                                            No
+                                            <?php echo translate('no'); ?>
                                             <input type="checkbox"  <?php echo $is_display_category == 'Y' ? "checked='checked'" : ""; ?> id="is_display_category" name="is_display_category" onchange="update_display_setting(this);">
                                             <span class="lever"></span>
-                                            Yes
+                                            <?php echo translate('yes'); ?>
                                         </label>
                                     </div>
                                 </div>
@@ -149,10 +147,10 @@ $enable_testimonial = isset($company_data->enable_testimonial) ? $company_data->
                                     <?php echo form_label(translate('enable') . ' ' . translate('location') . ' ' . translate('module') . ' : ', 'is_display_location', array('class' => 'control-label')); ?>
                                     <div class="switch round blue-white-switch">
                                         <label>
-                                            No
+                                            <?php echo translate('no'); ?>
                                             <input type="checkbox"  <?php echo $is_display_location == 'Y' ? "checked='checked'" : ""; ?> id="is_display_location" name="is_display_location" onchange="update_display_setting(this);">
                                             <span class="lever"></span>
-                                            Yes
+                                            <?php echo translate('yes'); ?>
                                         </label>
                                     </div>
                                 </div>
@@ -162,23 +160,26 @@ $enable_testimonial = isset($company_data->enable_testimonial) ? $company_data->
 
                                     <div class="switch round blue-white-switch">
                                         <label>
-                                            No
+                                            <?php echo translate('no'); ?>
                                             <input type="checkbox"  <?php echo $is_display_searchbar == 'Y' ? "checked='checked'" : ""; ?> id="is_display_searchbar" name="is_display_searchbar" onchange="update_display_setting(this);">
                                             <span class="lever"></span>
-                                            Yes
+                                            <?php echo translate('yes'); ?>
                                         </label>
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="row mb-3">
                                 <div class="col-md-4">
                                     <!-- Switch -->
                                     <?php echo form_label(translate('enable') . ' ' . translate('language') . ' ' . translate('module') . ' : ', 'is_display_language', array('class' => 'control-label')); ?>
 
                                     <div class="switch round blue-white-switch">
                                         <label>
-                                            No
+                                            <?php echo translate('no'); ?>
                                             <input type="checkbox"  <?php echo $is_display_language == 'Y' ? "checked='checked'" : ""; ?> id="is_display_language" name="is_display_language" onchange="update_display_setting(this);">
                                             <span class="lever"></span>
-                                            Yes
+                                            <?php echo translate('yes'); ?>
                                         </label>
                                     </div>
                                 </div>
@@ -188,10 +189,10 @@ $enable_testimonial = isset($company_data->enable_testimonial) ? $company_data->
 
                                     <div class="switch round blue-white-switch">
                                         <label>
-                                            No
+                                            <?php echo translate('no'); ?>
                                             <input type="checkbox"  <?php echo $is_maintenance_mode == 'Y' ? "checked='checked'" : ""; ?> id="is_maintenance_mode" name="is_maintenance_mode" onchange="update_display_setting(this);">
                                             <span class="lever"></span>
-                                            Yes
+                                            <?php echo translate('yes'); ?>
                                         </label>
                                     </div>
                                 </div>
@@ -200,10 +201,10 @@ $enable_testimonial = isset($company_data->enable_testimonial) ? $company_data->
                                     <?php echo form_label(translate('enable') . ' ' . translate('testimonial') . ' : ', 'enable_testimonial', array('class' => 'control-label')); ?>
                                     <div class="switch round blue-white-switch">
                                         <label>
-                                            No
+                                            <?php echo translate('no'); ?>
                                             <input type="checkbox"  <?php echo $enable_testimonial == 'Y' ? "checked='checked'" : ""; ?> id="enable_testimonial" name="enable_testimonial" onchange="update_display_setting(this);">
                                             <span class="lever"></span>
-                                            Yes
+                                            <?php echo translate('yes'); ?>
                                         </label>
                                     </div>
                                 </div>
@@ -243,31 +244,11 @@ $enable_testimonial = isset($company_data->enable_testimonial) ? $company_data->
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <?php echo form_label(translate('header') . ' ' . translate('color') . ' ' . translate('code') . ' : ', 'header_color_code', array('class' => 'control-label')); ?>
-                                        <?php echo form_input(array('type' => 'text', 'id' => 'header_color_code', 'class' => 'form-control demo check-color ', 'name' => 'header_color_code', 'value' => $header_color_code, 'placeholder' => translate('header') . ' ' . translate('color') . ' ' . translate('code'), 'onblur' => 'update_display_setting(this)')); ?>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row mb-2">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <?php echo form_label(translate('footer') . ' ' . translate('color') . ' ' . translate('code') . ' : ', 'footer_color_code', array('class' => 'control-label')); ?>
-                                        <?php echo form_input(array('type' => 'text', 'id' => 'footer_color_code', 'class' => 'demo check-color form-control', 'name' => 'footer_color_code', 'value' => $footer_color_code, 'placeholder' => translate('footer') . ' ' . translate('color') . ' ' . translate('code'), 'onblur' => 'update_display_setting(this)')); ?>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
                                         <?php echo form_label(translate('footer') . ' ' . translate('text') . ' : ', 'footer_text', array('class' => 'control-label')); ?>
                                         <textarea class="form-control" id="footer_text" name="footer_text" placeholder="<?php echo translate("footer") . " " . translate("text"); ?>" onblur="update_display_setting(this);"><?php echo $footer_text; ?></textarea>
                                         <span id="spnCharLeft"></span>
                                     </div>
-
                                 </div>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <div class="d-flex flex-wrap gap-2">
-                                <button type="submit" class="btn btn-primary"><?php echo translate('submit'); ?></button>
                             </div>
                         </div>
                     </div>

@@ -101,12 +101,6 @@ if (isset($company_data->fevicon_icon) && $company_data->fevicon_icon != "") {
                                 <span class="d-none d-sm-block"><?php echo translate('payment_setting'); ?></span>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link"  href="<?php echo base_url('admin/setting/vendor'); ?>" role="tab">
-                                <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
-                                <span class="d-none d-sm-block"><?php echo translate('vendor') . ' ' . translate('setting'); ?></span>
-                            </a>
-                        </li>
                     </ul>
                     <?php $this->load->view('message'); ?>
                     <?php echo form_open_multipart('admin/save-sitesetting', array('name' => 'site_form', 'id' => 'site_form')); ?>
@@ -261,7 +255,7 @@ if (isset($company_data->fevicon_icon) && $company_data->fevicon_icon != "") {
                     </div>
 
                     <div class="d-flex flex-wrap gap-2">
-                        <button type="submit" class="btn btn-primary"><?php echo translate('submit'); ?></button>
+                        <button type="submit" class="btn btn-primary"><?php echo translate('save'); ?></button>
                     </div>
 
                     <?php echo form_close(); ?>

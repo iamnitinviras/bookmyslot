@@ -337,8 +337,12 @@ class Sitesetting extends MY_Controller {
 
     public function business_setting() {
         $company_data = $this->model_sitesetting->get();
+
+        $vendor_data = $this->model_sitesetting->getData('app_vendor_setting', '*', 'id=1');
+
         $data['title'] = translate('manage') . " " . translate('business') . " " . translate('setting');
         $data['business_data'] = $company_data[0];
+        $data['vendor_data'] = $vendor_data[0];
         $this->load->view('admin/setting/business', $data);
     }
 
@@ -348,6 +352,11 @@ class Sitesetting extends MY_Controller {
             $this->form_validation->set_rules('commission_percentage', '', 'required');
         }
 
+        $allow_city_location = $this->input->post('allow_city_location', true);
+        $allow_service_category = $this->input->post('allow_service_category', true);
+        $allow_event_category = $this->input->post('allow_event_category', true);
+
+
         $this->form_validation->set_rules('minimum_vendor_payout', '', 'trim|required');
         $this->form_validation->set_rules('slot_display_days', '', 'trim|required|numeric');
         $this->form_validation->set_message('required', translate('required_message'));
@@ -356,12 +365,20 @@ class Sitesetting extends MY_Controller {
             $this->index();
         } else {
             $data = array();
-            $data['commission_percentage'] = $this->input->post('commission_percentage', true);
             $data['minimum_vendor_payout'] = $this->input->post('minimum_vendor_payout', true);
-            $data['enable_membership'] = $this->input->post('membership', true);
+            $data['enable_membership'] = "Y";
             $data['slot_display_days'] = $this->input->post('slot_display_days', true);
 
             $this->model_sitesetting->edit(1, $data);
+
+
+            $vendor_data['allow_city_location'] = isset($allow_city_location) ? $allow_city_location : "N";
+            $vendor_data['allow_service_category'] = isset($allow_service_category) ? $allow_service_category : "N";
+            $vendor_data['allow_event_category'] = isset($allow_event_category) ? $allow_event_category : "N";
+
+            $res = $this->model_sitesetting->edit_data('app_vendor_setting', 1, $vendor_data);
+
+
             $this->session->set_flashdata('msg', translate('business_setting_update'));
             $this->session->set_flashdata('msg_class', "success");
             redirect('admin/setting/business', 'redirect');
@@ -393,38 +410,6 @@ class Sitesetting extends MY_Controller {
         } else {
             $this->load->view($folder_url . '/manage_integrateon_webpage', $data);
         }
-    }
-
-    /* Vendor Setting */
-
-    public function vendor_setting() {
-        $company_data = $this->model_sitesetting->get_email();
-        $data['title'] = translate('vendor') . " " . translate('setting');
-        $vendor_data = $this->model_sitesetting->getData('app_vendor_setting', '*', 'id=1');
-        if (count($vendor_data) > 0) {
-            $data['vendor_data'] = $vendor_data[0];
-            $this->load->view('admin/setting/vendor', $data);
-        } else {
-            redirect('admin/setting/site');
-        }
-    }
-
-    //add/edit email data
-    public function save_vendor_setting() {
-
-        $allow_city_location = $this->input->post('allow_city_location', true);
-        $allow_service_category = $this->input->post('allow_service_category', true);
-        $allow_event_category = $this->input->post('allow_event_category', true);
-
-        $data['allow_city_location'] = isset($allow_city_location) ? $allow_city_location : "N";
-        $data['allow_service_category'] = isset($allow_service_category) ? $allow_service_category : "N";
-        $data['allow_event_category'] = isset($allow_event_category) ? $allow_event_category : "N";
-
-        $res = $this->model_sitesetting->edit_data('app_vendor_setting', 1, $data);
-
-        $this->session->set_flashdata('msg', translate('vendor_setting_updated'));
-        $this->session->set_flashdata('msg_class', "success");
-        redirect('admin/setting/vendor');
     }
 
 }

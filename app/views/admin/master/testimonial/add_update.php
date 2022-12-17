@@ -36,7 +36,7 @@ $form_url = 'admin/save-testimonial';
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="<?php echo base_url('admin/dashboard'); ?>"><?php echo translate('dashboard'); ?></a></li>
-                                        <li class="breadcrumb-item"><a href="<?php echo base_url('admin/dashboard'); ?>"><?php echo translate('testimonial'); ?></a></li>
+                                        <li class="breadcrumb-item"><a href="<?php echo base_url('admin/testimonial'); ?>"><?php echo translate('testimonial'); ?></a></li>
                                         <li class="breadcrumb-item active"><?php echo isset($id) && $id > 0 ? translate('update') : translate('add'); ?> <?php echo translate('testimonial'); ?></li>
                                     </ol>
                                 </div>
@@ -44,92 +44,86 @@ $form_url = 'admin/save-testimonial';
                         </div>
                     </div>
                 </div>
+                <?php
+                echo form_open_multipart($form_url, array('name' => 'testimonial_form', 'id' => 'testimonial_form'));
+                echo form_input(array('type' => 'hidden', 'name' => 'id', 'id' => 'id', 'value' => $id));
+                ?>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12 m-auto">
                             <?php $this->load->view('message'); ?>
 
-                            <?php
-                            echo form_open_multipart($form_url, array('name' => 'testimonial_form', 'id' => 'testimonial_form'));
-                            echo form_input(array('type' => 'hidden', 'name' => 'id', 'id' => 'id', 'value' => $id));
-                            ?>
-
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group mb-0">
-                                                <label for="title"> <?php echo translate('name'); ?><small class="required">*</small></label>
-                                                <input type="text" required="" autocomplete="off" id="title" name="name" value="<?php echo $name; ?>" class="form-control" placeholder="<?php echo translate('name'); ?>">
-                                                <?php echo form_error('name'); ?>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="form-group mb-0">
-                                                <label for="details"> <?php echo translate('details'); ?><small class="required">*</small></label>
-                                                <textarea id="details" required="" autocomplete="off"  class="form-control" placeholder="<?php echo translate('details'); ?>" name="details"><?php echo $details; ?></textarea>
-                                                <?php echo form_error('details'); ?>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="title" class="mt-2"> <?php echo translate('image'); ?></label><br/>
-                                                <div class="d-inline-block">
-                                                    <img id="preview"  src="<?php echo $image_path; ?>"  style="height: 50px;width: 50px"/>
-                                                </div>
-
-                                                <div class="d-inline-block">
-                                                    <?php
-                                                    echo form_input(array('type' => 'hidden', 'name' => 'hidden_testimonial_image', 'id' => 'hidden_testimonial_image', 'value' => $image));
-                                                    echo form_input(array('type' => 'file', 'id' => 'image', 'class' => '', 'name' => 'image', 'accept' => 'image/x-png,image/gif,image/jpeg,image/png'));
-                                                    ?><br/>
-                                                    <?php echo form_error('image'); ?>
-                                                </div>
-
-
-                                            </div>
-
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label> <?php echo translate('status'); ?> <small class="required">*</small></label>
-                                            <div class="form-inline">
-                                                <?php
-                                                $active = $inactive = '';
-                                                if ($status == "I") {
-                                                    $inactive = "checked";
-                                                } else {
-                                                    $active = "checked";
-                                                }
-                                                ?>
-                                                <div class="form-group mb-0">
-                                                    <input name='status' value="A" type='radio' id='active'   <?php echo $active; ?>>
-                                                    <label for="active"><?php echo translate('active'); ?></label>
-                                                </div>
-                                                <div class="form-group mb-0">
-                                                    <input name='status' type='radio'  value='I' id='inactive'  <?php echo $inactive; ?>>
-                                                    <label for='inactive'><?php echo translate('inactive'); ?></label>
-                                                </div>
-                                            </div>
-                                        </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group mb-0">
+                                        <label for="title"> <?php echo translate('name'); ?><small class="required">*</small></label>
+                                        <input type="text" required="" autocomplete="off" id="title" name="name" value="<?php echo $name; ?>" class="form-control" placeholder="<?php echo translate('name'); ?>">
+                                        <?php echo form_error('name'); ?>
                                     </div>
                                 </div>
-                                <div class="card-footer">
+
+                                <div class="col-md-4">
                                     <div class="form-group mb-0">
-                                        <button type="submit" class="btn btn-success waves-effect"><?php echo translate('save'); ?></button>
-                                        <a href="<?php echo base_url('admin/testimonial'); ?>" class="btn btn-info waves-effect"><?php echo translate('cancel'); ?></a>
+                                        <label for="details"> <?php echo translate('details'); ?><small class="required">*</small></label>
+                                        <textarea id="details" required="" autocomplete="off"  class="form-control" placeholder="<?php echo translate('details'); ?>" name="details"><?php echo $details; ?></textarea>
+                                        <?php echo form_error('details'); ?>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label><?php echo translate('status'); ?><small class="required">*</small></label>
+                                    <div class="form-group">
+                                        <?php
+                                        $active = $inactive = '';
+                                        if ($status == "I") {
+                                            $inactive = "checked";
+                                        } else {
+                                            $active = "checked";
+                                        }
+                                        ?>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="status" id="active" value="A" <?php echo $active; ?>>
+                                            <label class="form-check-label" for="active"><?php echo translate('active'); ?></label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="status" id="inactive"  value='I' <?php echo $inactive; ?>>
+                                            <label class="form-check-label" for="inactive"><?php echo translate('inactive'); ?></label>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
 
-                            <?php echo form_close(); ?>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="title"> <?php echo translate('image'); ?></label><br/>
+                                        <div class="d-inline-block">
+                                            <?php
+                                            echo form_input(array('type' => 'hidden', 'name' => 'hidden_testimonial_image', 'id' => 'hidden_testimonial_image', 'value' => $image));
+                                            echo form_input(array('type' => 'file', 'id' => 'image', 'class' => 'form-control', 'name' => 'image', 'accept' => 'image/x-png,image/gif,image/jpeg,image/png'));
+                                            ?><br/>
+                                            <?php echo form_error('image'); ?>
+                                            <img id="preview"  src="<?php echo $image_path; ?>"  style="height: 50px;width: 50px"/>
+                                        </div>
+                                        <div class="d-inline-block">
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
 
                         </div>
                     </div>
                 </div>
+                <div class="card-footer">
+                    <div class="form-group mb-0">
+                        <button type="submit" class="btn btn-primary"><?php echo translate('save'); ?></button>
+                        <a href="<?php echo base_url($folder_name.'/testimonial'); ?>" class="btn btn-outline-secondary"><?php echo translate('cancel'); ?></a>
+                    </div>
+                </div>
+                <?php echo form_close(); ?>
+
             </div>
         </div>
     </div>

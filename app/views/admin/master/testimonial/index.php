@@ -73,8 +73,8 @@ include VIEWPATH . 'admin/header.php';
                                                 <td class="text-left"><?php echo $status_string; ?></td>
                                                 <td class="text-left"><?php echo get_formated_date($row['created_date'], "N"); ?></td>
                                                 <td class="td-actions text-left">
-                                                    <a href="<?php echo base_url('admin/update-testimonial/' . $row['id']); ?>" class="btn btn-primary font_size_12" title="<?php echo translate('edit'); ?>" data-toggle="tooltip" data-placement="top"><i class="fa fa-pencil"></i></a>
-                                                    <span class="d-inline-block" title="<?php echo translate('delete'); ?>" data-toggle="tooltip" data-placement="top"> <a id="" data-toggle="modal" onclick='DeleteRecord(this)' data-target="#delete-record" data-id="<?php echo (int) $row['id']; ?>" class="btn btn-danger font_size_12"><i class="fa fa-trash"></i></a></span>
+                                                    <a href="<?php echo base_url('admin/update-testimonial/' . $row['id']); ?>" class="text-success" title="<?php echo translate('edit'); ?>" data-toggle="tooltip" data-placement="top"><i class="mdi mdi-pencil font-size-18"></i></a>
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal" onclick='DeleteRecord(this)' data-bs-target="#delete-record" data-id="<?php echo (int) $row['id']; ?>" class="text-danger"><i class="mdi mdi-delete font-size-18"></i></a>
                                                 </td>
                                             </tr>
                                             <?php

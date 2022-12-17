@@ -248,12 +248,6 @@ function update_display_setting(element) {
                 url: site_url + "admin/update-display-setting",
                 type: "post",
                 data: {token_id: csrf_token_name, up_data: up_data, name: id, action: 'perpage_setting'},
-                beforeSend: function () {
-                    $("body").preloader({
-                        percent: 10,
-                        duration: 15000
-                    });
-                },
                 success: function (data) {
                     if (data == true) {
                         window.location.reload();
@@ -273,12 +267,6 @@ function update_display_setting(element) {
             url: site_url + "admin/update-display-setting",
             type: "post",
             data: {token_id: csrf_token_name, action: 'display_setting', display: is_display, name: id},
-            beforeSend: function () {
-                $("body").preloader({
-                    percent: 10,
-                    duration: 15000
-                });
-            },
             success: function (data) {
                 if (data == true) {
                     window.location.reload();
@@ -295,12 +283,6 @@ function update_date_time(time_format) {
         url: site_url + "admin/update-display-setting",
         type: "post",
         data: {token_id: csrf_token_name, action: 'update_time', time_format: time_format},
-        beforeSend: function () {
-            $("body").preloader({
-                percent: 10,
-                duration: 15000
-            });
-        },
         success: function (data) {
             if (data == true) {
                 window.location.reload();

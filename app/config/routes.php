@@ -367,7 +367,7 @@ $route['admin/setting/email'] = 'admin/sitesetting/email_setting';
 $route['admin/save-email-setting'] = 'admin/sitesetting/save_email_setting';
 
 $route['admin/setting/display'] = 'admin/sitesetting/display_setting';
-$route['admin/save-display-setting'] = 'admin/sitesetting/save_display_setting';
+$route['admin/update-display-setting'] = 'admin/sitesetting/update_display_setting';
 
 $route['admin/setting/business'] = 'admin/sitesetting/business_setting';
 

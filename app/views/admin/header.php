@@ -184,9 +184,9 @@
                                     </a>
                                 </div>
                                 <div class="col-md-4">
-                                    <a class="dropdown-icon-item" href="<?php echo base_url('admin/setting/vendor'); ?>">
+                                    <a class="dropdown-icon-item" href="<?php echo base_url('admin/setting/business'); ?>">
                                         <img src="<?php echo base_url('assets/admin/images/icon/vendor.png') ?>">
-                                        <span><?php echo translate('vendor'); ?></span>
+                                        <span><?php echo translate('business'); ?></span>
                                     </a>
                                 </div>
                             </div>

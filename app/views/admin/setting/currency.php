@@ -68,19 +68,13 @@ $currency_position = isset($currency_data['currency_position']) ? $currency_data
                                 <span class="d-none d-sm-block"><?php echo translate('payment_setting'); ?></span>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link"  href="<?php echo base_url('admin/setting/vendor'); ?>" role="tab">
-                                <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
-                                <span class="d-none d-sm-block"><?php echo translate('vendor') . ' ' . translate('setting'); ?></span>
-                            </a>
-                        </li>
                     </ul>
                     <?php $this->load->view('message'); ?>
                     <?php echo form_open('admin/sitesetting/save_curenncy_setting', array('name' => 'site_business_form', 'id' => 'site_business_form')); ?>
 
                     <div class="card">
                         <div class="card-body">
-                            <div class="row mb-5">
+                            <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <?php echo form_label(translate('currency'), 'currency', array('class' => 'control-label')); ?>

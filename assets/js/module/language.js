@@ -18,12 +18,6 @@ $(document).ready(function () {
             url: site_url + "/admin/delete-language/" + id,
             type: "post",
             data: {token_id: csrf_token_name},
-            beforeSend: function () {
-                $("body").preloader({
-                    percent: 10,
-                    duration: 15000
-                });
-            },
             success: function (data) {
                 if (data == true) {
                     window.location.reload();
@@ -49,12 +43,6 @@ function save_translated_lang(element) {
         url: site_url + "admin/save-translated-language/" + id,
         type: "post",
         data: {token_id: csrf_token_name, id: id, field: field, text_value: text_value},
-        beforeSend: function () {
-            $("body").preloader({
-                percent: 10,
-                duration: 15000
-            });
-        },
         success: function (data) {
             if (data == true) {
                 $(".preloader").fadeOut();
@@ -70,7 +58,6 @@ function DeleteRecord(element) {
     var id = $(element).attr('data-id');
     var title = $(element).attr('title');
     $("#some_name").html(title);
-    $("#confirm_msg").html("Are you sure you want to delete this record?");
     $("#record_id").val(id);
 }
 function get_location(ci) {

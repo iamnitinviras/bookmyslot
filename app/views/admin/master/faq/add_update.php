@@ -6,6 +6,7 @@ if ($this->session->userdata('Type_' . ucfirst($this->uri->segment(1))) == 'V') 
     include VIEWPATH . 'admin/header.php';
     $folder_name = 'admin';
 }
+$form_url = 'admin/save-faq';
 $title = (set_value("title")) ? set_value("title") : (!empty($app_faq) ? $app_faq['title'] : '');
 $description = (set_value("description")) ? set_value("description") : (!empty($app_faq) ? $app_faq['description'] : '');
 $status = (set_value("status")) ? set_value("status") : (!empty($app_faq) ? $app_faq['status'] : '');
@@ -32,18 +33,16 @@ $id = (set_value("id")) ? set_value("id") : (!empty($app_faq) ? $app_faq['id'] :
                         </div>
                     </div>
                 </div>
+                <?php
+                echo form_open($form_url, array('name' => 'FaqForm', 'id' => 'FaqForm'));
+                echo form_input(array('type' => 'hidden', 'name' => 'id', 'id' => 'id', 'value' => $id));
+                ?>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12 m-auto">
                             <?php $this->load->view('message'); ?>
-                            <?php
-                            $form_url = 'admin/save-faq';
-                            ?>
-                            <?php
-                            echo form_open($form_url, array('name' => 'FaqForm', 'id' => 'FaqForm'));
-                            echo form_input(array('type' => 'hidden', 'name' => 'id', 'id' => 'id', 'value' => $id));
-                            ?>
-                            <div class="row mb-5">
+
+                            <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="control-label" for="title"> <?php echo translate('title'); ?><small class="required">*</small></label>
@@ -82,14 +81,18 @@ $id = (set_value("id")) ? set_value("id") : (!empty($app_faq) ? $app_faq['id'] :
                                 </div>
                             </div>
 
-                            <div class="d-flex flex-wrap gap-2">
-                                <button type="submit" class="btn btn-primary"><?php echo translate('save'); ?></button>
-                                <a href="<?php echo base_url('admin/faq'); ?>" class="btn btn-outline-secondary"><?php echo translate('cancel'); ?></a>
-                            </div>
-                            <?php echo form_close(); ?>
+
+
                         </div>
                     </div>
                 </div>
+                <div class="card-footer">
+                    <div class="d-flex flex-wrap gap-2">
+                        <button type="submit" class="btn btn-primary"><?php echo translate('save'); ?></button>
+                        <a href="<?php echo base_url('admin/faq'); ?>" class="btn btn-outline-secondary"><?php echo translate('cancel'); ?></a>
+                    </div>
+                </div>
+                <?php echo form_close(); ?>
             </div>
         </div>
     </div>
