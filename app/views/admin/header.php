@@ -238,13 +238,13 @@
                     </li>
                     <li>
                         <a href="<?php echo base_url('admin/customer'); ?>">
-                            <i data-feather="calendar"></i>
+                            <i data-feather="user"></i>
                             <span data-key="t-calendar"><?php echo translate('customer'); ?></span>
                         </a>
                     </li>
                     <li>
                         <a href="<?php echo base_url('admin/staff'); ?>">
-                            <i data-feather="calendar"></i>
+                            <i data-feather="user-check"></i>
                             <span data-key="t-calendar"><?php echo translate('my_staff'); ?></span>
                         </a>
                     </li>

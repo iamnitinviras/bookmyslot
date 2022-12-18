@@ -19,7 +19,7 @@
                         </div>
                         <div class="col-md-6 col-xl-6 text-end add-new-btn-parent">
                             <div class="text-sm-end">
-                                <a href='<?php echo base_url('/add-customer'); ?>'class="btn btn-success btn-rounded waves-effect waves-light mb-2 me-2">
+                                <a href='<?php echo base_url('admin/customer/add'); ?>'class="btn btn-success btn-rounded waves-effect waves-light mb-2 me-2">
                                     <i class="mdi mdi-plus me-1"></i>
                                     <?php echo translate('add'); ?> <?php echo translate('customer'); ?>
                                 </a>
@@ -35,13 +35,13 @@
                                 <table class="table table-bordered dt-responsive nowrap w-100" id="datatable">
                                     <thead>
                                     <tr>
-                                        <th class="text-center font-bold dark-grey-text">#</th>
-                                        <th class="text-center font-bold dark-grey-text"><?php echo translate('customer_name'); ?></th>
-                                        <th class="text-center font-bold dark-grey-text"><?php echo translate('customer_email'); ?></th>
-                                        <th class="text-center font-bold dark-grey-text"><?php echo translate('phone'); ?></th>
-                                        <th class="text-center font-bold dark-grey-text"><?php echo translate('status'); ?></th>
-                                        <th class="text-center font-bold dark-grey-text"><?php echo translate('created_date'); ?></th>
-                                        <th class="text-center font-bold dark-grey-text"><?php echo translate('action'); ?></th>
+                                        <th>#</th>
+                                        <th><?php echo translate('customer_name'); ?></th>
+                                        <th><?php echo translate('customer_email'); ?></th>
+                                        <th class="text-center"><?php echo translate('phone'); ?></th>
+                                        <th class="text-center"><?php echo translate('status'); ?></th>
+                                        <th class="text-center"><?php echo translate('created_date'); ?></th>
+                                        <th class="text-center"><?php echo translate('action'); ?></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -51,23 +51,16 @@
                                         foreach ($customer_data as $row) {
                                             ?>
                                             <tr>
-                                                <td class="text-center"><?php echo $i; ?></td>
-                                                <td class="text-center"><?php echo $row['first_name'] . ' ' . $row['last_name']; ?></td>
-                                                <td class="text-center"><?php echo $row['email']; ?></td>
+                                                <td><?php echo $i; ?></td>
+                                                <td><?php echo $row['first_name'] . ' ' . $row['last_name']; ?></td>
+                                                <td><?php echo $row['email']; ?></td>
                                                 <td class="text-center"><?php echo $row['phone']; ?></td>
                                                 <td class="text-center"><?php echo print_vendor_status($row['status']); ?></td>
                                                 <td class="text-center"><?php echo get_formated_date($row['created_on'], "N"); ?></td>
                                                 <td class="td-actions text-center">
-                                                    <a href="<?php echo base_url('admin/customer-booking/' . $row['id']); ?>" class="btn btn-info font_size_12" title="<?php echo translate('view_details'); ?>" data-toggle="tooltip" data-placement="top"><i class="fa fa-info"></i></a>
-                                                    <a href="<?php echo base_url('admin/update-customer/' . $row['id']); ?>" class="btn btn-primary font_size_12" title="<?php echo translate('edit'); ?>" data-toggle="tooltip" data-placement="top"><i class="fa fa-pencil"></i></a>
-                                                    <?php if ($row['status'] != "P") { ?>
-                                                        <span class="d-inline-block" title="<?php echo isset($row['status']) && $row['status'] == 'A' ? "Inactive Customer" : "Active Customer"; ?>" data-toggle="tooltip" data-placement="top">
-                                                                <a id="" data-toggle="modal" onclick='ChangeStatus(this)' data-target="#change-status" data-id="<?php echo (int) $row['id']; ?>" data-status="<?php echo isset($row['status']) && $row['status'] == 'A' ? "I" : "A"; ?>" class="btn btn-warning font_size_12"><i class="fa <?php echo isset($row['status']) && $row['status'] == 'A' ? "fa-eye" : "fa-eye-slash"; ?>"></i></a>
-                                                            </span>
-                                                    <?php } ?>
-                                                    <span class="d-inline-block" title="<?php echo translate('customer'); ?>" data-toggle="tooltip" data-placement="top">
-                                                            <a id="" data-toggle="modal" onclick='DeleteRecord(this)' data-target="#delete-record" data-id="<?php echo (int) $row['id']; ?>" class="btn btn-danger font_size_12"><i class="fa fa-close"></i></a>
-                                                        </span>
+                                                    <a href="<?php echo base_url('admin/customer/booking/' . $row['id']); ?>" class="text-primary" title="<?php echo translate('view_details'); ?>" data-toggle="tooltip" data-placement="top"><i class="mdi mdi-information font-size-18"></i></a>
+                                                    <a href="<?php echo base_url('admin/customer/edit/' . $row['id']); ?>" class="text-success" title="<?php echo translate('edit'); ?>" data-toggle="tooltip" data-placement="top"><i class="mdi mdi-pencil font-size-18"></i></a>
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal" onclick='DeleteRecord(this)' data-bs-target="#delete-record" data-id="<?php echo (int) $row['id']; ?>" class="text-danger"><i class="mdi mdi-delete font-size-18"></i></a>
                                                 </td>
                                             </tr>
                                             <?php

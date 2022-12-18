@@ -862,13 +862,13 @@ function get_last_seen($id) {
 function print_vendor_status($status) {
     $CI = & get_instance();
     if ($status == 'A') {
-        return '<span class="badge badge-success">' . translate('active') . '</span>';
+        return '<span class="badge bg-success">' . translate('active') . '</span>';
     } elseif ($status == 'P') {
-        return '<span class="badge badge-warning">' . translate('pending') . '</span>';
+        return '<span class="badge bg-warning">' . translate('pending') . '</span>';
     } elseif ($status == 'I') {
-        return '<span class="badge badge-info">' . translate('inactive') . '</span>';
+        return '<span class="badge bg-info">' . translate('inactive') . '</span>';
     } elseif ($status == 'D') {
-        return '<span class="badge badge-danger">' . translate('deleted') . '</span>';
+        return '<span class="badge bg-danger">' . translate('deleted') . '</span>';
     }
 }
 

@@ -41,8 +41,13 @@
 </div>
 
 
-<a href="<?php echo base_url('admin/update-city/' . $row['city_id']); ?>" class="text-success"><i class="mdi mdi-pencil font-size-18"></i></a>
-<a href="javascript:void(0);" data-bs-toggle="modal" onclick='DeleteRecord(this)' data-bs-target="#delete-record" data-id="<?php echo (int) $row['city_id']; ?>"  class="text-danger"><i class="mdi mdi-delete font-size-18"></i></a>
+<a href="<?php echo base_url('admin/update-city/' . $row['city_id']); ?>" class="text-success">
+    <i class="mdi mdi-pencil font-size-18"></i>
+</a>
+
+<a href="javascript:void(0);" data-bs-toggle="modal" onclick='DeleteRecord(this)' data-bs-target="#delete-record" data-id="<?php echo (int) $row['city_id']; ?>"  class="text-danger">
+    <i class="mdi mdi-delete font-size-18"></i>
+</a>
 
 
 <table class="table table-bordered dt-responsive nowrap w-100" id="datatable">

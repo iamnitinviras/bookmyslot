@@ -37,67 +37,59 @@ if ($this->session->userdata('Type_' . ucfirst($this->uri->segment(1))) == 'V') 
                         </div>
                     </div>
                 </div>
+                <?php $this->load->view('message'); ?>
+                <?php
+                $attributes = array('id' => 'frmCustomer', 'name' => 'frmCustomer', 'method' => "post");
+                echo form_open_multipart($folder_name . '/customer/save', $attributes);
+                ?>
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-12 m-auto">
-
-                            <?php $this->load->view('message'); ?>
-                            <?php
-                            $attributes = array('id' => 'frmCustomer', 'name' => 'frmCustomer', 'method' => "post");
-                            echo form_open_multipart($folder_name . '/save-customer', $attributes);
-                            ?>
-                            <div class="card">
-                                <div class="card-body">
-                                    <input type="hidden" name="customer_id" id="customer_id" value="<?php echo isset($customer_data['id']) ? $customer_data['id'] : 0; ?>"/>
-                                    <div class="row mb-2">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <?php echo form_label(translate('first_name') . ':<small class ="required">*</small>', 'first_name', array('class' => 'control-label')); ?>
-                                                <?php echo form_input(array('autocomplete' => "off", 'id' => 'first_name', 'class' => 'form-control', 'name' => 'first_name', 'value' => $first_name, 'placeholder' => translate('first_name'))); ?>
-                                                <?php echo form_error('first_name'); ?>
-                                            </div>
-                                            <div class="error" id="first_name_validate"></div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <?php echo form_label(translate('last_name') . ':<small class ="required">*</small>', 'last_name', array('class' => 'control-label')); ?>
-                                                <?php echo form_input(array('autocomplete' => "off",'id' => 'last_name', 'class' => 'form-control', 'name' => 'last_name', 'value' => $last_name, 'placeholder' => translate('last_name'))); ?>
-                                                <?php echo form_error('last_name'); ?>
-                                            </div>
-                                            <div class="error" id="last_name_validate"></div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <?php echo form_label(translate('email') . ':<small class ="required">*</small>', 'email', array('class' => 'control-label')); ?>
-                                                <?php echo form_input(array('autocomplete' => "off",'type' => 'email', 'id' => 'email', 'class' => 'form-control', 'name' => 'email', 'value' => $email, 'placeholder' => translate('email'))); ?>
-                                                <?php echo form_error('email'); ?>
-                                            </div>
-                                            <div class="error" id="email_validate"></div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-2">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <?php echo form_label(translate('phone') . ':', 'phone', array('class' => 'control-label')); ?>
-                                                <?php echo form_input(array('autocomplete' => "off",'minlength' => "10", 'maxlength' => "10", 'id' => 'phone', 'class' => 'form-control', 'name' => 'phone', 'value' => $phone, 'placeholder' => translate('phone') . ' ' . translate('phone'))); ?>
-                                                <?php echo form_error('phone'); ?>
-                                            </div>
-                                            <div class="error" id="phone_validate"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-success waves-effect"><?php echo translate('submit'); ?></button>
-                                        <a href="<?php echo base_url('admin/customer'); ?>" class="btn btn-info waves-effect"><?php echo translate('cancel'); ?></a>
-                                    </div>
-                                </div>
+                    <input type="hidden" name="customer_id" id="customer_id" value="<?php echo isset($customer_data['id']) ? $customer_data['id'] : 0; ?>"/>
+                    <div class="row mb-2">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <?php echo form_label(translate('first_name') . '<small class ="required">*</small>', 'first_name', array('class' => 'control-label')); ?>
+                                <?php echo form_input(array('autocomplete' => "off", 'id' => 'first_name', 'class' => 'form-control', 'name' => 'first_name', 'value' => $first_name, 'placeholder' => translate('first_name'))); ?>
+                                <?php echo form_error('first_name'); ?>
                             </div>
-                            <?php echo form_close(); ?>
-
+                            <div class="error" id="first_name_validate"></div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <?php echo form_label(translate('last_name') . '<small class ="required">*</small>', 'last_name', array('class' => 'control-label')); ?>
+                                <?php echo form_input(array('autocomplete' => "off",'id' => 'last_name', 'class' => 'form-control', 'name' => 'last_name', 'value' => $last_name, 'placeholder' => translate('last_name'))); ?>
+                                <?php echo form_error('last_name'); ?>
+                            </div>
+                            <div class="error" id="last_name_validate"></div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <?php echo form_label(translate('email') . '<small class ="required">*</small>', 'email', array('class' => 'control-label')); ?>
+                                <?php echo form_input(array('autocomplete' => "off",'type' => 'email', 'id' => 'email', 'class' => 'form-control', 'name' => 'email', 'value' => $email, 'placeholder' => translate('email'))); ?>
+                                <?php echo form_error('email'); ?>
+                            </div>
+                            <div class="error" id="email_validate"></div>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <?php echo form_label(translate('phone'), 'phone', array('class' => 'control-label')); ?>
+                                <?php echo form_input(array('autocomplete' => "off",'minlength' => "10", 'maxlength' => "10", 'id' => 'phone', 'class' => 'form-control', 'name' => 'phone', 'value' => $phone, 'placeholder' => translate('phone') . ' ' . translate('phone'))); ?>
+                                <?php echo form_error('phone'); ?>
+                            </div>
+                            <div class="error" id="phone_validate"></div>
                         </div>
                     </div>
                 </div>
+                <div class="card-footer">
+
+                    <div class="d-flex flex-wrap gap-2">
+                        <button type="submit" class="btn btn-primary"><?php echo translate('save'); ?></button>
+                        <a href="<?php echo base_url('admin/customer'); ?>" class="btn btn-outline-secondary"><?php echo translate('cancel'); ?></a>
+                    </div>
+                </div>
+                <?php echo form_close(); ?>
+
             </div>
         </div>
     </div>

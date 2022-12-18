@@ -17,7 +17,7 @@ class Customer extends MY_Controller {
         $order = "created_on DESC";
         $customer = $this->model_customer->getData("app_customer", "*", "", "", $order);
         $data['customer_data'] = $customer;
-        $this->load->view('admin/customer/customer-list', $data);
+        $this->load->view('admin/customer/index', $data);
     }
 
     //delete customer
@@ -59,7 +59,7 @@ class Customer extends MY_Controller {
 
     public function add_customer() {
         $data['title'] = translate('add_customer');
-        $this->load->view('admin/customer/add-customer', $data);
+        $this->load->view('admin/customer/add_update', $data);
     }
 
     public function update_customer($id) {
@@ -69,7 +69,7 @@ class Customer extends MY_Controller {
         if (isset($customer[0]) && !empty($customer[0])) {
             $data['customer_data'] = $customer[0];
             $data['title'] = translate('update') . " " . translate('customer');
-            $this->load->view('admin/customer/add-customer', $data);
+            $this->load->view('admin/customer/add_update', $data);
         } else {
             show_404();
         }
@@ -133,7 +133,7 @@ class Customer extends MY_Controller {
     }
 
     public function customer_booking($id) {
-
+        
         $data['title'] = translate('booking') . " " . translate('customer');
 
         $join = array(
@@ -175,7 +175,7 @@ class Customer extends MY_Controller {
         $e_condition = "app_event.type = 'E' AND app_event_book.customer_id=" . $id;
         $e_appointment = $this->model_customer->getData("app_event_book", "app_event_book.*,app_admin.id as aid ,app_event_book.price as final_price,app_admin.company_name,app_event.title,app_location.loc_title,app_city.city_title,app_event_category.title as category_title,app_customer.first_name,app_customer.last_name,app_customer.phone,app_event.price,app_admin.first_name,app_admin.last_name,app_admin.company_name,app_event.image,app_event.description as event_description, app_event.payment_type", $e_condition, $join);
         $data['event_appointment_data'] = $e_appointment;
-        $this->load->view('admin/customer/customer-booking', $data);
+        $this->load->view('admin/customer/booking', $data);
     }
 
     function view_event_booking_details($id) {
