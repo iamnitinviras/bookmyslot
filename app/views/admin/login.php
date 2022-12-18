@@ -24,7 +24,7 @@
 
 </head>
 
-<body class="bg-white">
+<body>
 
 <!-- <body data-layout="horizontal"> -->
 <div class="auth-page">
@@ -93,7 +93,9 @@
                 <!-- end auth full page content -->
             </div>
             <!-- end col -->
-
+            <?php
+            include VIEWPATH . 'admin/auth_sidebar.php';
+            ?>
             <!-- end col -->
         </div>
         <!-- end row -->

@@ -295,12 +295,12 @@ $route['admin/check-event-category-title'] = 'admin/event/check_event_category_t
 $route['admin/delete-category/(:num)'] = 'admin/event/delete_category/$1';
 
 /* Service Category */
-$route['admin/service/category'] = 'admin/service/service_category';
-$route['admin/service/category/add-'] = 'admin/service/add_category';
-$route['admin/service/category/edit/(:num)'] = 'admin/service/update_category/$1';
-$route['admin/service/category/save'] = 'admin/service/save_category';
-$route['admin/check-service-category-title'] = 'admin/service/check_service_category_title';
-$route['admin/service/delete-category/(:num)'] = 'admin/service/delete_service_category/$1';
+$route['admin/service/category'] = 'admin/ServiceCategory/index';
+$route['admin/service/category/add'] = 'admin/ServiceCategory/add_category';
+$route['admin/service/category/edit/(:num)'] = 'admin/ServiceCategory/update_category/$1';
+$route['admin/service/category/save'] = 'admin/ServiceCategory/save_category';
+$route['admin/check-service-category-title'] = 'admin/ServiceCategory/check_service_category_title';
+$route['admin/service/delete-category/(:num)'] = 'admin/ServiceCategory/delete_service_category/$1';
 
 /* Service Holiday */
 $route['admin/holiday'] = 'admin/service/holiday';

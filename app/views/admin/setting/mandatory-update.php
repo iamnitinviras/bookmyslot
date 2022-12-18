@@ -29,7 +29,7 @@ include VIEWPATH . 'admin/header.php';
             </div>
             <?php if (isset($total_event_category) && $total_event_category == 0) { ?>
                 <div class="col-md-12 mt-40">
-                    <h6 class="box-border"><?php echo translate('mandatory_category'); ?> <a href="<?php echo base_url('admin/add-service-category'); ?>" class="btn btn-primary btn-sm"><?php echo translate('add'); ?></a></h6>
+                    <h6 class="box-border"><?php echo translate('mandatory_category'); ?> <a href="<?php echo base_url('admin/service/category/add'); ?>" class="btn btn-primary btn-sm"><?php echo translate('add'); ?></a></h6>
                 </div>
             <?php } ?>
             <?php if (isset($total_city) && $total_city == 0) { ?>
