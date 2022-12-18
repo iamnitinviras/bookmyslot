@@ -21,7 +21,7 @@ class Vendor extends MY_Controller {
         $data['title'] = translate('manage') . " " . translate('vendor');
         $vendor = $this->model_vendor->getData("app_admin", '*', "type='V'");
         $data['vendor_data'] = $vendor;
-        $this->load->view('admin/vendor/vendor-list', $data);
+        $this->load->view('admin/vendor/index', $data);
     }
 
     //Show unverified vendor list
@@ -123,7 +123,7 @@ class Vendor extends MY_Controller {
 
     public function add_vendor() {
         $data['title'] = translate('add_vendor');
-        $this->load->view('admin/vendor/add-vendor', $data);
+        $this->load->view('admin/vendor/add_update', $data);
     }
 
     public function update_vendor($id) {
@@ -133,7 +133,7 @@ class Vendor extends MY_Controller {
         if (isset($vendor[0]) && !empty($vendor[0])) {
             $data['vendor_data'] = $vendor[0];
             $data['title'] = translate('update') . " " . translate('vendor');
-            $this->load->view('admin/vendor/add-vendor', $data);
+            $this->load->view('admin/vendor/add_update', $data);
         } else {
             show_404();
         }
