@@ -21,12 +21,12 @@ class Staff extends MY_Controller {
         $order = "created_on DESC";
         $staff = $this->model_customer->getData("app_admin", "*", "created_by=" . $created_by . " AND type='S'", "", $order);
         $data['staff_data'] = $staff;
-        $this->load->view('admin/staff/staff-list', $data);
+        $this->load->view('admin/staff/index', $data);
     }
 
     public function add_staff() {
         $data['title'] = translate('add') . " " . translate('staff');
-        $this->load->view('admin/staff/add-staff', $data);
+        $this->load->view('admin/staff/add_update', $data);
     }
 
     public function update_staff($id) {
@@ -37,7 +37,7 @@ class Staff extends MY_Controller {
         if (isset($staff) && count($staff) > 0) {
             $data['staff_data'] = $staff[0];
             $data['title'] = translate('update') . " " . translate('staff');
-            $this->load->view('admin/staff/add-staff', $data);
+            $this->load->view('admin/staff/add_update', $data);
         } else {
             show_404();
         }

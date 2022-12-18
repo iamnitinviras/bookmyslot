@@ -4,7 +4,6 @@ function DeleteRecord(element) {
     var id = $(element).attr('data-id');
     var title = $(element).attr('title');
     $("#some_name").html(title);
-    $("#confirm_msg").html("Are you sure you want to delete this record?");
     $("#record_id").val(id);
 }
 $(document).ready(function () {
@@ -44,15 +43,9 @@ $(document).ready(function () {
         var id = $("#record_id").val();
         folder_name = $('#folder_name').val();
         $.ajax({
-            url: site_url + folder_name + "/delete-staff/" + id,
+            url: site_url + folder_name + "/staff/delete/" + id,
             type: "post",
             data: {token_id: csrf_token_name},
-            beforeSend: function () {
-                $("body").preloader({
-                    percent: 10,
-                    duration: 15000
-                });
-            },
             success: function (data) {
                 if (data == true) {
                     window.location.reload();
