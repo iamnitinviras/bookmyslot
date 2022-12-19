@@ -6,12 +6,12 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-md-6 col-xl-6">
-                            <h4 class="card-title"><?php echo translate('city'); ?></h4>
+                            <h4 class="card-title"><?php echo $title; ?></h4>
                             <div class="page-title-box pb-0 d-sm-flex">
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="<?php echo base_url('admin/dashboard'); ?>"><?php echo translate('dashboard'); ?></a></li>
-                                        <li class="breadcrumb-item active"><?php echo translate('city'); ?></li>
+                                        <li class="breadcrumb-item active"><?php echo $title; ?></li>
                                     </ol>
                                 </div>
                             </div>
@@ -52,18 +52,6 @@
 
 <table class="table table-bordered dt-responsive nowrap w-100" id="datatable">
 
-    <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="city_status" id="active" value="A" <?php echo $active; ?>>
-        <label class="form-check-label" for="active"><?php echo translate('active'); ?></label>
-    </div>
-    <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="city_status" id="inactive"  value='I' <?php echo $inactive; ?>>
-        <label class="form-check-label" for="inactive"><?php echo translate('inactive'); ?></label>
-    </div>
 
 
 
-    <div class="d-flex flex-wrap gap-2">
-        <button type="submit" class="btn btn-primary"><?php echo translate('save'); ?></button>
-        <a href="<?php echo base_url($folder_name.'/city'); ?>" class="btn btn-outline-secondary"><?php echo translate('cancel'); ?></a>
-    </div>
