@@ -2,93 +2,101 @@
 include VIEWPATH . 'admin/header.php';
 $get_current_currency = get_current_currency();
 ?>
-<div class="dashboard-body">
-    <!-- Start Content -->
-    <div class="content">
-        <!-- Start Container -->
-        <div class="container-fluid ">
-            <section class="form-light px-2 sm-margin-b-20">
-                <!-- Row -->
-                <div class="row">
-                    <div class="col-md-12 m-auto">
-                        <?php $this->load->view('message'); ?>
-
-                        <div class="card mt-4">
-                            <div class="card-header">
-                                <h5 class="black-text font-bold mb-0"><?php echo translate('payout_request') ?></h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table mdl-data-table" id="example">
-                                        <thead>
-                                            <tr>
-                                                <th class="text-center font-bold dark-grey-text">#</th>
-                                                <th class="text-center font-bold dark-grey-text"><?php echo translate('vendor_name'); ?></th>
-                                                <th class="text-center font-bold dark-grey-text"><?php echo translate('payment_gateway'); ?></th>
-                                                <th class="text-center font-bold dark-grey-text"><?php echo translate('amount'); ?></th>
-                                                <th class="text-center font-bold dark-grey-text"><?php echo translate('cash_payment_fee'); ?></th>
-                                                <th class="text-center font-bold dark-grey-text"><?php echo translate('status'); ?></th>
-                                                <th class="text-center font-bold dark-grey-text"><?php echo translate('request_date'); ?></th>
-                                                <th class="text-center font-bold dark-grey-text"><?php echo translate('action'); ?></th>
-
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $i = 1;
-                                            if (isset($payment_data) && count($payment_data) > 0) {
-                                                foreach ($payment_data as $row) {
-                                                    $status = "";
-                                                    if ($row['status'] == 'P') {
-                                                        $status = "<span class='badge badge-warning'>" . translate('pending') . "</span>";
-                                                    } else if ($row['status'] == 'S') {
-                                                        $status = "<span class='badge badge-success'>" . translate('payout_successful') . "</span>";
-                                                    } else if ($row['status'] == 'H') {
-                                                        $status = "<span class='badge badge-info'>" . translate('on_hold') . "</span>";
-                                                    } else if ($row['status'] == 'F') {
-                                                        $status = "<span class='badge badge-danger'>" . translate('failed') . "</span>";
-                                                    }
-
-                                                    $other_charge = "";
-
-                                                    if (isset($row['other_charge']) && $row['other_charge'] != 0) {
-                                                        $other_charge = " + " . price_format($row['other_charge']);
-                                                    }
-                                                    ?>
-                                                    <tr>
-                                                        <td class="text-center"><?php echo $i; ?></td>
-                                                        <td class="text-center"><?php echo $row['vendor_name']; ?></td>
-                                                        <td class="text-center"><?php echo isset($row['choose_payment_gateway']) ? $row['choose_payment_gateway'] : "NA"; ?></td>
-                                                        <td class="text-center"><?php echo price_format($row['amount']); ?></td>
-                                                        <td class="text-center"><?php echo price_format($row['cash_payment']); ?></td>
-                                                        <td class="text-center"><?php echo $status; ?></td>
-                                                        <td class="text-center"><?php echo get_formated_date($row['created_date']); ?></td>
-
-                                                        <td class="text-center">
-                                                            <a href="<?php echo base_url('payout-request-details/' . (int) $row['id']); ?>"  data-direction="right" class="btn btn-info font_size_12 bookslide" title="<?php echo translate('view_details'); ?>"><?php echo translate('details'); ?></a>
-                                                            <?php if ($row['status'] != 'S'): ?>
-                                                                <a id="" data-toggle="modal" onclick='UpdateStatus(this)' data-amount="<?php echo $row['amount']; ?>" data-cpayment="<?php echo isset($row['choose_payment_gateway']) ? $row['choose_payment_gateway'] : ""; ?>" data-target="#update_details" data-id="<?php echo (int) $row['id']; ?>" class="btn btn-primary font_size_12" title="Post"><?php echo translate('process'); ?></a>
-                                                            <?php endif; ?>
-                                                        </td>
-                                                    </tr>
-                                                    <?php
-                                                    $i++;
-                                                }
-                                            }
-                                            ?>
-                                        </tbody>
-                                    </table>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-6 col-xl-6">
+                            <h4 class="card-title"><?php echo $title; ?></h4>
+                            <div class="page-title-box pb-0 d-sm-flex">
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="<?php echo base_url('admin/dashboard'); ?>"><?php echo translate('dashboard'); ?></a></li>
+                                        <li class="breadcrumb-item"><a href="<?php echo base_url('admin/vendor'); ?>"><?php echo translate('vendor'); ?></a></li>
+                                        <li class="breadcrumb-item active"><?php echo $title; ?></li>
+                                    </ol>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!--col-md-12-->
                 </div>
-                <!--Row-->
-            </section>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12 m-auto">
+                            <?php $this->load->view('message'); ?>
+
+                            <div class="table-responsive">
+                                <table class="table table-bordered dt-responsive nowrap w-100" id="datatable">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-center font-bold dark-grey-text">#</th>
+                                        <th class="text-center font-bold dark-grey-text"><?php echo translate('vendor_name'); ?></th>
+                                        <th class="text-center font-bold dark-grey-text"><?php echo translate('payment_gateway'); ?></th>
+                                        <th class="text-center font-bold dark-grey-text"><?php echo translate('amount'); ?></th>
+                                        <th class="text-center font-bold dark-grey-text"><?php echo translate('cash_payment_fee'); ?></th>
+                                        <th class="text-center font-bold dark-grey-text"><?php echo translate('status'); ?></th>
+                                        <th class="text-center font-bold dark-grey-text"><?php echo translate('request_date'); ?></th>
+                                        <th class="text-center font-bold dark-grey-text"><?php echo translate('action'); ?></th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                    $i = 1;
+                                    if (isset($payment_data) && count($payment_data) > 0) {
+                                        foreach ($payment_data as $row) {
+                                            $status = "";
+                                            if ($row['status'] == 'P') {
+                                                $status = "<span class='badge badge-warning'>" . translate('pending') . "</span>";
+                                            } else if ($row['status'] == 'S') {
+                                                $status = "<span class='badge badge-success'>" . translate('payout_successful') . "</span>";
+                                            } else if ($row['status'] == 'H') {
+                                                $status = "<span class='badge badge-info'>" . translate('on_hold') . "</span>";
+                                            } else if ($row['status'] == 'F') {
+                                                $status = "<span class='badge badge-danger'>" . translate('failed') . "</span>";
+                                            }
+
+                                            $other_charge = "";
+
+                                            if (isset($row['other_charge']) && $row['other_charge'] != 0) {
+                                                $other_charge = " + " . price_format($row['other_charge']);
+                                            }
+                                            ?>
+                                            <tr>
+                                                <td class="text-center"><?php echo $i; ?></td>
+                                                <td class="text-center"><?php echo $row['vendor_name']; ?></td>
+                                                <td class="text-center"><?php echo isset($row['choose_payment_gateway']) ? $row['choose_payment_gateway'] : "NA"; ?></td>
+                                                <td class="text-center"><?php echo price_format($row['amount']); ?></td>
+                                                <td class="text-center"><?php echo price_format($row['cash_payment']); ?></td>
+                                                <td class="text-center"><?php echo $status; ?></td>
+                                                <td class="text-center"><?php echo get_formated_date($row['created_date']); ?></td>
+
+                                                <td class="text-center">
+                                                    <a href="<?php echo base_url('payout-request-details/' . (int) $row['id']); ?>"  data-direction="right" class="btn btn-info font_size_12 bookslide" title="<?php echo translate('view_details'); ?>"><?php echo translate('details'); ?></a>
+                                                    <?php if ($row['status'] != 'S'): ?>
+                                                        <a id="" data-toggle="modal" onclick='UpdateStatus(this)' data-amount="<?php echo $row['amount']; ?>" data-cpayment="<?php echo isset($row['choose_payment_gateway']) ? $row['choose_payment_gateway'] : ""; ?>" data-target="#update_details" data-id="<?php echo (int) $row['id']; ?>" class="btn btn-primary font_size_12" title="Post"><?php echo translate('process'); ?></a>
+                                                    <?php endif; ?>
+                                                </td>
+                                            </tr>
+                                            <?php
+                                            $i++;
+                                        }
+                                    }
+                                    ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>   
+    </div>
+    <!-- end row -->
 </div>
+
 <!-- Modal -->
 <div class="modal fade" id="update_details">
     <div class="modal-dialog">

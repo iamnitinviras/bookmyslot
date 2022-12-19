@@ -1,84 +1,97 @@
 <?php
 include VIEWPATH . 'admin/header.php';
 ?>
-<div class="dashboard-body">
-    <!-- Start Content -->
-    <div class="content">
-        <!-- Start Container -->
-        <div class="container-fluid ">
-            <section class="form-light px-2 sm-margin-b-20">
-                <!-- Row -->
-                <div class="row">
-                    <div class="col-md-12 m-auto">
-                        <?php $this->load->view('message'); ?>
-                        <div class="card mt-4">
-                            <div class="card-header">
-                                <h5 class="black-text font-bold mb-0"><?php echo translate('vendor_Payment'); ?></h5>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-6 col-xl-6">
+                                <h4 class="card-title"><?php echo translate('city'); ?></h4>
+                                <div class="page-title-box pb-0 d-sm-flex">
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="<?php echo base_url('admin/dashboard'); ?>"><?php echo translate('dashboard'); ?></a></li>
+                                            <li class="breadcrumb-item active"><?php echo translate('city'); ?></li>
+                                        </ol>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="card-body">
+                            <div class="col-md-6 col-xl-6 text-end add-new-btn-parent">
+                                <div class="text-sm-end">
+                                    <a href='<?php echo base_url($folder_name.'/add-city'); ?>'class="btn btn-success btn-rounded waves-effect waves-light mb-2 me-2"><i class="mdi mdi-plus me-1"></i> <?php echo translate('add'); ?> <?php echo translate('city'); ?></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12 m-auto">
+                                <?php $this->load->view('message'); ?>
+
                                 <div class="table-responsive">
-                                    <table class="table mdl-data-table" id="example">
+                                    <table class="table table-bordered dt-responsive nowrap w-100" id="datatable">
                                         <thead>
-                                            <tr>
-                                                <th class="text-center font-bold dark-grey-text">#</th>
-                                                <th class="text-center font-bold dark-grey-text"><?php echo translate('name'); ?></th>
-                                                <th class="text-center font-bold dark-grey-text"><?php echo translate('title'); ?></th>
-                                                <th class="text-center font-bold dark-grey-text"><?php echo translate('category'); ?></th>
-                                                <th class="text-center font-bold dark-grey-text"><?php echo translate('price'); ?></th>
-                                                <th class="text-center font-bold dark-grey-text"><?php echo translate('payment_type'); ?></th>
-                                                <th class="text-center font-bold dark-grey-text"><?php echo translate('transfer_status'); ?></th>
-                                                <th class="text-center font-bold dark-grey-text"><?php echo translate('event_creater'); ?></th>
-                                                <th class="text-center font-bold dark-grey-text"><?php echo translate('created_date'); ?></th>
-                                                <th class="text-center font-bold dark-grey-text"><?php echo translate('action'); ?></th>
-                                            </tr>
+                                        <tr>
+                                            <th class="text-center font-bold dark-grey-text">#</th>
+                                            <th class="text-center font-bold dark-grey-text"><?php echo translate('name'); ?></th>
+                                            <th class="text-center font-bold dark-grey-text"><?php echo translate('title'); ?></th>
+                                            <th class="text-center font-bold dark-grey-text"><?php echo translate('category'); ?></th>
+                                            <th class="text-center font-bold dark-grey-text"><?php echo translate('price'); ?></th>
+                                            <th class="text-center font-bold dark-grey-text"><?php echo translate('payment_type'); ?></th>
+                                            <th class="text-center font-bold dark-grey-text"><?php echo translate('transfer_status'); ?></th>
+                                            <th class="text-center font-bold dark-grey-text"><?php echo translate('event_creater'); ?></th>
+                                            <th class="text-center font-bold dark-grey-text"><?php echo translate('created_date'); ?></th>
+                                            <th class="text-center font-bold dark-grey-text"><?php echo translate('action'); ?></th>
+                                        </tr>
                                         </thead>
                                         <tbody>
-                                            <?php
-                                            if (isset($vendor_payment) && count($vendor_payment) > 0) {
-                                                foreach ($vendor_payment as $payment_key => $payment_row) {
-                                                    if ($payment_row['transfer_status'] == "S") {
-                                                        $status_string = '<span class="badge badge-success">' . translate('success') . '</span>';
-                                                    } else {
-                                                        $status_string = '<span class="badge badge-danger">' . translate('pending') . '</span>';
-                                                    }
-                                                    ?>
-                                                    <tr>
-                                                        <td class="text-center"><?php echo $payment_key + 1; ?></td>
-                                                        <td class="text-center"><?php echo ($payment_row['first_name']) . " " . ($payment_row['last_name']); ?></td>
-                                                        <td class="text-center"><?php echo $payment_row['title']; ?></td>
-                                                        <td class="text-center"><?php echo $payment_row['category_title']; ?></td>
-                                                        <td class="text-center"><?php echo price_format(number_format($payment_row['price'], 0)); ?></td>
-                                                        <td class="text-center"><?php echo $payment_row['payment_method']; ?></td>
-                                                        <td class="text-center"><?php echo $status_string; ?></td>
-                                                        <td class="text-center"><?php echo ($payment_row['cre_first_name']) . " " . ($payment_row['cre_last_name']); ?></td>
-                                                        <td class="text-center"><?php echo get_formated_date($payment_row['created_on'], "N"); ?></td>
-                                                        <td class="text-center">
-                                                            <?php if ($payment_row['transfer_status'] == 'P') { ?>
-                                                                <a id="" data-toggle="modal" onclick='DeleteRecord(this)' data-target="#delete-record" data-id="<?php echo (int) $payment_row['id']; ?>" class="btn btn-sm blue-gradient font-bold waves-effect waves-light"><?php echo translate('send'); ?></a>
-                                                                <?php
-                                                            } else {
-                                                                echo '-';
-                                                            }
-                                                            ?>
-                                                        </td>
-                                                    </tr>
-                                                    <?php
+                                        <?php
+                                        if (isset($vendor_payment) && count($vendor_payment) > 0) {
+                                            foreach ($vendor_payment as $payment_key => $payment_row) {
+                                                if ($payment_row['transfer_status'] == "S") {
+                                                    $status_string = '<span class="badge badge-success">' . translate('success') . '</span>';
+                                                } else {
+                                                    $status_string = '<span class="badge badge-danger">' . translate('pending') . '</span>';
                                                 }
+                                                ?>
+                                                <tr>
+                                                    <td class="text-center"><?php echo $payment_key + 1; ?></td>
+                                                    <td class="text-center"><?php echo ($payment_row['first_name']) . " " . ($payment_row['last_name']); ?></td>
+                                                    <td class="text-center"><?php echo $payment_row['title']; ?></td>
+                                                    <td class="text-center"><?php echo $payment_row['category_title']; ?></td>
+                                                    <td class="text-center"><?php echo price_format(number_format($payment_row['price'], 0)); ?></td>
+                                                    <td class="text-center"><?php echo $payment_row['payment_method']; ?></td>
+                                                    <td class="text-center"><?php echo $status_string; ?></td>
+                                                    <td class="text-center"><?php echo ($payment_row['cre_first_name']) . " " . ($payment_row['cre_last_name']); ?></td>
+                                                    <td class="text-center"><?php echo get_formated_date($payment_row['created_on'], "N"); ?></td>
+                                                    <td class="text-center">
+                                                        <?php if ($payment_row['transfer_status'] == 'P') { ?>
+                                                            <a id="" data-toggle="modal" onclick='DeleteRecord(this)' data-target="#delete-record" data-id="<?php echo (int) $payment_row['id']; ?>" class="btn btn-sm blue-gradient font-bold waves-effect waves-light"><?php echo translate('send'); ?></a>
+                                                            <?php
+                                                        } else {
+                                                            echo '-';
+                                                        }
+                                                        ?>
+                                                    </td>
+                                                </tr>
+                                                <?php
                                             }
-                                            ?>
+                                        }
+                                        ?>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!--col-md-12-->
                 </div>
-                <!--Row-->
-            </section>
+            </div>
         </div>
-    </div>   
-</div>
+        <!-- end row -->
+    </div>
+
 <!-- Modal -->
 <div class="modal fade" id="delete-record">
     <div class="modal-dialog">

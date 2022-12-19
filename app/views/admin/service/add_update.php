@@ -49,529 +49,542 @@ $id = (set_value("id")) ? set_value("id") : (!empty($event_data) ? $event_data['
 ?>
 
 <input type="hidden" name="address_selection" id="address_selection" value="0">
-<div class="dashboard-body">
-    <!-- Start Content -->
-    <div class="content">
-        <!-- Start Container -->
-        <div class="container-fluid">
-            <section class="form-light px-2 sm-margin-b-20 ">
-                <!-- Row -->
-                <div class="row">
-                    <div class="col-md-12 m-auto">
-                        <?php $this->load->view('message'); ?>
 
-                        <div class="card mt-4">
-                            <div class="card-header">
-                                <h5 class="black-text font-bold mb-0"><?php echo isset($id) && $id > 0 ? translate('update') : translate('add'); ?> <?php echo translate('service'); ?></h5>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-6 col-xl-6">
+                            <h4 class="card-title"><?php echo $title; ?></h4>
+                            <div class="page-title-box pb-0 d-sm-flex">
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="<?php echo base_url('admin/dashboard'); ?>"><?php echo translate('dashboard'); ?></a></li>
+                                        <li class="breadcrumb-item"><a href="<?php echo base_url($folder_name.'/service'); ?>"><?php echo translate('dashboard'); ?></a></li>
+                                        <li class="breadcrumb-item active"><?php echo $title; ?></li>
+                                    </ol>
+                                </div>
                             </div>
-                            <div class="card-body resp_mx-0">
-                                <?php
-                                echo form_open_multipart($form_url, array('name' => 'ServiceForm', 'id' => 'ServiceForm'));
-                                echo form_input(array('type' => 'hidden', 'name' => 'id', 'id' => 'id', 'value' => $id));
-                                echo form_input(array('type' => 'hidden', 'name' => 'hidden_image', 'id' => 'hidden_image', 'value' => isset($image_data) && $image_data != '' ? $image_data : ''));
-                                echo form_input(array('type' => 'hidden', 'name' => 'folder_name', 'id' => 'folder_name', 'value' => isset($folder_name) && $folder_name != '' ? $folder_name : ''));
-                                echo form_input(array('type' => 'hidden', 'name' => 'event_latitude', 'id' => 'business_latitude', 'value' => isset($latitude) && $latitude != '' ? $latitude : ''));
-                                echo form_input(array('type' => 'hidden', 'name' => 'event_longitude', 'id' => 'business_longitude', 'value' => isset($longitude) && $longitude != '' ? $longitude : ''));
-                                echo form_input(array('type' => 'hidden', 'name' => 'event_starttime', 'id' => 'event_starttime', 'value' => isset($start_time) && $start_time != '' ? $start_time : ''));
-                                echo form_input(array('type' => 'hidden', 'name' => 'event_stoptime', 'id' => 'event_stoptime', 'value' => isset($end_time) && $end_time != '' ? $end_time : ''));
-                                ?>
-                                <input type="hidden" name="event_latitude" id="business_latitude">
-                                <input type="hidden" name="event_longitude" id="business_longitude">
+                        </div>
 
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <?php echo translate('service'); ?> <?php echo translate('information'); ?>
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="name"> <?php echo translate('title'); ?><small class="required">*</small></label>
-                                                            <input required type="text" autocomplete="off" tabindex="1" id="name" name="name" value="<?php echo $name; ?>" class="form-control" placeholder="<?php echo translate('title'); ?>">
-                                                            <?php echo form_error('name'); ?>
-                                                        </div>
+                    </div>
+                </div>
+                <?php
+                echo form_open_multipart($form_url, array('name' => 'ServiceForm', 'id' => 'ServiceForm'));
+                echo form_input(array('type' => 'hidden', 'name' => 'id', 'id' => 'id', 'value' => $id));
+                echo form_input(array('type' => 'hidden', 'name' => 'hidden_image', 'id' => 'hidden_image', 'value' => isset($image_data) && $image_data != '' ? $image_data : ''));
+                echo form_input(array('type' => 'hidden', 'name' => 'folder_name', 'id' => 'folder_name', 'value' => isset($folder_name) && $folder_name != '' ? $folder_name : ''));
+                echo form_input(array('type' => 'hidden', 'name' => 'event_latitude', 'id' => 'business_latitude', 'value' => isset($latitude) && $latitude != '' ? $latitude : ''));
+                echo form_input(array('type' => 'hidden', 'name' => 'event_longitude', 'id' => 'business_longitude', 'value' => isset($longitude) && $longitude != '' ? $longitude : ''));
+                echo form_input(array('type' => 'hidden', 'name' => 'event_starttime', 'id' => 'event_starttime', 'value' => isset($start_time) && $start_time != '' ? $start_time : ''));
+                echo form_input(array('type' => 'hidden', 'name' => 'event_stoptime', 'id' => 'event_stoptime', 'value' => isset($end_time) && $end_time != '' ? $end_time : ''));
+                ?>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12 m-auto">
+                            <?php $this->load->view('message'); ?>
+
+
+                            <input type="hidden" name="event_latitude" id="business_latitude">
+                            <input type="hidden" name="event_longitude" id="business_longitude">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <?php echo translate('service'); ?> <?php echo translate('information'); ?>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="name"> <?php echo translate('title'); ?><small class="required">*</small></label>
+                                                        <input required type="text" autocomplete="off" tabindex="1" id="name" name="name" value="<?php echo $name; ?>" class="form-control" placeholder="<?php echo translate('title'); ?>">
+                                                        <?php echo form_error('name'); ?>
                                                     </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label class="black-text"><?php echo translate('select') . " " . translate("service") . " " . translate('category'); ?><small class="required">*</small></label>
-                                                            <select required tabindex="2" class="form-control" id="days" name="category_id">
-                                                                <option value=""><?php echo translate('select') . " " . translate("service") . " " . translate('category'); ?></option>
-                                                                <?php
-                                                                if (isset($category_data) && count($category_data)) {
-                                                                    foreach ($category_data as $category_key => $category_value) {
-                                                                        ?>
-                                                                        <option value="<?php echo $category_value['id']; ?>" <?php echo isset($category_id) && $category_id == $category_value['id'] ? 'selected' : ''; ?>><?php echo $category_value['title']; ?></option>
-                                                                        <?php
-                                                                    }
-                                                                }
-                                                                ?>
-                                                            </select>
-                                                            <?php echo form_error('category_id'); ?>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label class="black-text"><?php echo translate('select') . " " . translate("staff"); ?></label>
-                                                            <select multiple="" tabindex="2" class="form-control" id="staff" name="staff[]">
-                                                                <option value="" disabled=""><?php echo translate('select') . " " . translate("staff"); ?></option>
-                                                                <?php
-                                                                if (isset($staff_data) && count($staff_data)) {
-                                                                    foreach ($staff_data as $vals) {
-                                                                        ?>
-                                                                        <option value="<?php echo $vals['id']; ?>" <?php echo isset($staff) && in_array($vals['id'], $staff) ? 'selected' : ''; ?>><?php echo $vals['first_name'] . " " . $vals['last_name']; ?></option>
-                                                                        <?php
-                                                                    }
-                                                                }
-                                                                ?>
-                                                            </select>
-                                                            <?php echo form_error('category_id'); ?>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label class="black-text"><?php echo translate('select_city'); ?><small class="required">*</small></label>
-                                                            <select tabindex="4" required class="form-control" id="city" name="city" onchange="get_location(this.value);">
-                                                                <option value=""><?php echo translate('select_city'); ?></option>
-                                                                <?php
-                                                                if (isset($city_data) && count($city_data) > 0) {
-                                                                    foreach ($city_data as $value) {
-                                                                        ?>
-                                                                        <option value="<?php echo $value['city_id']; ?>" <?php echo isset($city) && $city == $value['city_id'] ? 'selected' : ''; ?>><?php echo $value['city_title']; ?></option>
-                                                                        <?php
-                                                                    }
-                                                                }
-                                                                ?>
-                                                            </select>
-                                                            <?php echo form_error('city'); ?>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label class="black-text"><?php echo translate('select_location'); ?><small class="required">*</small></label>
-                                                            <select required tabindex="5" class="form-control" id="location" name="location">
-                                                                <?php if (isset($location_data) && count($location_data) > 0) { ?>
-                                                                    <option value=""><?php echo translate('select_location'); ?></option>
-                                                                    <?php foreach ($location_data as $value) {
-                                                                        ?>
-                                                                        <option value="<?php echo $value['loc_id']; ?>" <?php echo isset($location) && $location == $value['loc_id'] ? 'selected' : ''; ?>><?php echo $value['loc_title']; ?></option>
-                                                                        <?php
-                                                                    }
-                                                                } else {
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="black-text"><?php echo translate('select') . " " . translate("service") . " " . translate('category'); ?><small class="required">*</small></label>
+                                                        <select required tabindex="2" class="form-control" id="days" name="category_id">
+                                                            <option value=""><?php echo translate('select') . " " . translate("service") . " " . translate('category'); ?></option>
+                                                            <?php
+                                                            if (isset($category_data) && count($category_data)) {
+                                                                foreach ($category_data as $category_key => $category_value) {
                                                                     ?>
-                                                                    <option value=""><?php echo translate('select_city_first'); ?></option>
+                                                                    <option value="<?php echo $category_value['id']; ?>" <?php echo isset($category_id) && $category_id == $category_value['id'] ? 'selected' : ''; ?>><?php echo $category_value['title']; ?></option>
+                                                                    <?php
+                                                                }
+                                                            }
+                                                            ?>
+                                                        </select>
+                                                        <?php echo form_error('category_id'); ?>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="black-text"><?php echo translate('select') . " " . translate("staff"); ?></label>
+                                                        <select multiple="" tabindex="2" class="form-control" id="staff" name="staff[]">
+                                                            <option value="" disabled=""><?php echo translate('select') . " " . translate("staff"); ?></option>
+                                                            <?php
+                                                            if (isset($staff_data) && count($staff_data)) {
+                                                                foreach ($staff_data as $vals) {
+                                                                    ?>
+                                                                    <option value="<?php echo $vals['id']; ?>" <?php echo isset($staff) && in_array($vals['id'], $staff) ? 'selected' : ''; ?>><?php echo $vals['first_name'] . " " . $vals['last_name']; ?></option>
+                                                                    <?php
+                                                                }
+                                                            }
+                                                            ?>
+                                                        </select>
+                                                        <?php echo form_error('category_id'); ?>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="black-text"><?php echo translate('select_city'); ?><small class="required">*</small></label>
+                                                        <select tabindex="4" required class="form-control" id="city" name="city" onchange="get_location(this.value);">
+                                                            <option value=""><?php echo translate('select_city'); ?></option>
+                                                            <?php
+                                                            if (isset($city_data) && count($city_data) > 0) {
+                                                                foreach ($city_data as $value) {
+                                                                    ?>
+                                                                    <option value="<?php echo $value['city_id']; ?>" <?php echo isset($city) && $city == $value['city_id'] ? 'selected' : ''; ?>><?php echo $value['city_title']; ?></option>
+                                                                    <?php
+                                                                }
+                                                            }
+                                                            ?>
+                                                        </select>
+                                                        <?php echo form_error('city'); ?>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="black-text"><?php echo translate('select_location'); ?><small class="required">*</small></label>
+                                                        <select required tabindex="5" class="form-control" id="location" name="location">
+                                                            <?php if (isset($location_data) && count($location_data) > 0) { ?>
+                                                                <option value=""><?php echo translate('select_location'); ?></option>
+                                                                <?php foreach ($location_data as $value) {
+                                                                    ?>
+                                                                    <option value="<?php echo $value['loc_id']; ?>" <?php echo isset($location) && $location == $value['loc_id'] ? 'selected' : ''; ?>><?php echo $value['loc_title']; ?></option>
+                                                                    <?php
+                                                                }
+                                                            } else {
+                                                                ?>
+                                                                <option value=""><?php echo translate('select_city_first'); ?></option>
+                                                            <?php }
+                                                            ?>
+                                                        </select>
+                                                        <?php echo form_error('location'); ?>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="address"> <?php echo translate('address'); ?><small class="required">*</small></label>
+                                                        <input tabindex="8" autocomplete="off"  type="text" required="" name="address" class="form-control" placeholder="<?php echo translate('address'); ?>" value="<?php echo $address; ?>"/>
+                                                        <?php echo form_error('address'); ?>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="address"> <?php echo translate('get_direction') . " " . translate('map') . " " . translate('link'); ?></label>
+                                                        <input tabindex="8"  autocomplete="off" type="text" id="address_map_link" name="address_map_link" class="form-control" placeholder="<?php echo translate('map') . " " . translate('link'); ?>" value="<?php echo $address_map_link; ?>"/>
+                                                        <a href="javascript:void(0)" data-toggle="modal" data-target="#map_modal" >Click Here For Details</a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label style="color: #757575;" > <?php echo translate('status'); ?> <small class="required">*</small></label>
+                                                    <div class="form-group form-inline">
+                                                        <?php
+                                                        $active = $inactive = '';
+                                                        if ($status == "I") {
+                                                            $inactive = "checked";
+                                                        } else {
+                                                            $active = "checked";
+                                                        }
+                                                        ?>
+                                                        <div class="form-group">
+                                                            <input tabindex="9"  autocomplete="off" name='status' value="A" type='radio' id='e_active'   <?php echo $active; ?>>
+                                                            <label for="e_active"><?php echo translate('active'); ?></label>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input tabindex="10"  autocomplete="off" name='status' type='radio'  value='I' id='e_inactive'  <?php echo $inactive; ?>>
+                                                            <label for='e_inactive'><?php echo translate('inactive'); ?></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row" >
+                                <div class="col-md-12">
+
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <?php echo translate('service'); ?> <?php echo translate('description'); ?>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="description"> <?php echo translate('description'); ?><small class="required">*</small></label>
+                                                        <textarea required type="text" tabindex="3" id="summornote_div_id" name="description" class="form-control" placeholder="<?php echo translate('description'); ?>"><?php echo $description; ?></textarea>
+                                                        <?php echo form_error('description'); ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <?php echo translate('booking'); ?> <?php echo translate('setting'); ?>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="black-text"><?php echo translate('select'); ?> <?php echo translate('days'); ?><small class="required">*</small></label>
+                                                        <select  tabindex="12" class="form-control" id="days" name="days[]" multiple>
+                                                            <option value="" disabled=""><?php echo translate('select') . " " . translate('days'); ?></option>
+                                                            <option value="Mon" <?php echo isset($days) && in_array("Mon", $days) ? 'selected' : ''; ?>><?php echo translate('monday'); ?></option>
+                                                            <option value="Tue" <?php echo isset($days) && in_array("Tue", $days) ? 'selected' : ''; ?>><?php echo translate('tuesday'); ?></option>
+                                                            <option value="Wed" <?php echo isset($days) && in_array("Wed", $days) ? 'selected' : ''; ?>><?php echo translate('wednesday'); ?></option>
+                                                            <option value="Thu" <?php echo isset($days) && in_array("Thu", $days) ? 'selected' : ''; ?>><?php echo translate('thursday'); ?></option>
+                                                            <option value="Fri" <?php echo isset($days) && in_array("Fri", $days) ? 'selected' : ''; ?>><?php echo translate('friday'); ?></option>
+                                                            <option value="Sat" <?php echo isset($days) && in_array("Sat", $days) ? 'selected' : ''; ?>><?php echo translate('saturday'); ?></option>
+                                                            <option value="Sun" <?php echo isset($days) && in_array("Sun", $days) ? 'selected' : ''; ?>><?php echo translate('sunday'); ?></option>
+                                                        </select>
+                                                        <?php echo form_error('days[]'); ?>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group" style="padding-top: <?php isset($id) && $id > 0 ? "10px" : ""; ?>;">
+                                                        <label for="slot_time"> <?php echo translate('slot_time'); ?> <small class="required">*</small> ( <?php echo translate('in_min'); ?> )</label>
+                                                        <input tabindex="16" autocomplete="off"  type="number" placeholder="<?php echo translate('slot_time'); ?>" id="slot_time" name="slot_time" value="<?php echo $slot_time; ?>" class="form-control" min="15">
+                                                        <?php echo form_error('slot_time'); ?>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group" style="padding-top: <?php isset($id) && $id > 0 ? "10px" : ""; ?>;">
+                                                        <label for="start_time"> <?php echo translate('start_time'); ?> (In 24hr format)<small class="required">*</small></label>
+                                                        <input readonly="" autocomplete="off"  tabindex="14" type="text" placeholder="<?php echo translate('start_time'); ?>" id="start_time" name="start_time" value="<?php echo $start_time; ?>" class="form-control">
+                                                        <?php echo form_error('start_time'); ?>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group" style="padding-top: <?php isset($id) && $id > 0 ? "10px" : ""; ?>;">
+                                                        <label for="end_time"> <?php echo translate('end_time'); ?> (In 24hr format)<small class="required">*</small></label>
+                                                        <input readonly=""  autocomplete="off" tabindex="15" type="text" placeholder="<?php echo translate('end_time'); ?>" id="end_time" name="end_time" value="<?php echo $end_time; ?>" class="form-control">
+                                                        <?php echo form_error('end_time'); ?>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group" >
+                                                        <label for="padding_time" class="d-block"> <?php echo translate('padding_time'); ?> ( <?php echo translate('in_min'); ?> )</label>
+                                                        <input tabindex="17" autocomplete="off"  type="text"  class="form-control integers" name="padding_time" value="<?php echo isset($padding_time) ? $padding_time : "0"; ?>">
+                                                        <?php echo form_error('padding_time'); ?>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label style="color: #757575;" > <?php echo translate('is_allow_multiple_slotbooking'); ?> <small class="required">*</small></label>
+                                                    <div class="form-group form-inline">
+                                                        <?php
+                                                        $active = $inactive = '';
+                                                        if ($multiple_slotbooking_allow == "Y") {
+                                                            $active = "checked";
+                                                        } else {
+                                                            $inactive = "checked";
+                                                        }
+                                                        ?>
+                                                        <div class="form-group">
+                                                            <input tabindex="18" name='multiple_slotbooking_allow' value="Y" type='radio' id='multiobook_active'   <?php echo $active; ?>>
+                                                            <label for="multiobook_active"><?php echo translate('yes'); ?></label>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input tabindex="19" name='multiple_slotbooking_allow' type='radio'  value='N' id='multiobook_inactive'  <?php echo $inactive; ?>>
+                                                            <label for='multiobook_inactive'><?php echo translate('no'); ?></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="book_limit" class="col-md-6  <?php echo isset($multiple_slotbooking_allow) && $multiple_slotbooking_allow == 'N' ? 'd-none' : ''; ?>">
+                                                    <div class="form-group" >
+                                                        <label for="multiple_slotbooking_limit" class="d-block"> <?php echo translate('multiple_slotbooking_limit'); ?> <small class="required">*</small></label>
+                                                        <input tabindex="20" autocomplete="off"  type="text"  class="form-control integers" id="multiple_slotbooking_limit" name="multiple_slotbooking_limit" value="<?php echo isset($multiple_slotbooking_limit) ? $multiple_slotbooking_limit : ""; ?>">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row" >
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <?php echo translate('price'); ?> <?php echo translate('information'); ?>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label style="color: #757575;" > <?php echo translate('type'); ?> <small class="required">*</small></label>
+                                                    <div class="form-group form-inline">
+                                                        <?php
+                                                        $free = $paid = '';
+                                                        if ($payment_type == "P") {
+                                                            $paid = "checked";
+                                                        } else {
+                                                            $free = "checked";
+                                                        }
+                                                        ?>
+                                                        <div class="form-group">
+                                                            <input tabindex="21" name='payment_type' value="F" type='radio' id='free'   <?php echo $free; ?>>
+                                                            <label for="free"><?php echo translate('free'); ?></label>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input tabindex="22" name='payment_type' type='radio'  value='P' id='paid'  <?php echo $paid; ?>>
+                                                            <label for='paid'><?php echo translate('paid'); ?></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group <?php echo isset($payment_type) && $payment_type == 'F' ? 'd-none' : ''; ?>" style="padding-top: <?php isset($id) && $id > 0 ? "10px" : ""; ?>;" id="price-box">
+                                                        <label for="price"> <?php echo translate('price'); ?> <small class="required">*</small></label>
+                                                        <input tabindex="23"  autocomplete="off" onblur="calc_final_price(this);" type="number" placeholder="<?php echo translate('price'); ?>" id="price" name="price" value="<?php echo $price; ?>" class="form-control" <?php echo isset($payment_type) && $payment_type == 'F' ? 'min="0"' : 'min="1"'; ?>>
+                                                        <?php echo form_error('price'); ?>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="price-box form-group <?php echo isset($payment_type) && $payment_type == 'F' ? 'd-none' : ''; ?>" style="padding-top: <?php isset($id) && $id > 0 ? "10px" : ""; ?>;">
+                                                        <label  for="discount"> <?php echo translate('discount') . " " . translate('in') . " " . translate('percentage'); ?></label>
+                                                        <input tabindex="24"  autocomplete="off" onblur="calc_final_price(this);" type="number" placeholder="<?php echo translate('discount') . " " . translate('in') . " " . translate('percentage'); ?>" id="discount" name="discount" value="<?php echo $discount; ?>" class="form-control integers" <?php echo isset($payment_type) && $payment_type == 'F' ? 'min="0"' : 'min="1" max="100";'; ?>>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group <?php echo isset($payment_type) && $payment_type == 'F' ? 'd-none' : ''; ?>" style="padding-top: <?php isset($id) && $id > 0 ? "10px" : ""; ?>;" id="price-box">
+                                                        <label for="discounted_price"> <?php echo translate('price_after_discount'); ?></label>
+                                                        <input tabindex="25"  autocomplete="off" readonly="" type="number" placeholder="<?php echo translate('discount') . " " . translate('price'); ?>" id="discounted_price" name="discounted_price" value="<?php echo $discounted_price; ?>" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="price-box form-group <?php echo isset($payment_type) && $payment_type == 'F' ? 'd-none' : ''; ?>" style="padding-top: <?php isset($id) && $id > 0 ? "10px" : ""; ?>;">
+                                                        <label for="from_date"> <?php echo translate('from_date') ?></label>
+                                                        <input tabindex="26"  autocomplete="off" type="text" placeholder="<?php echo translate('from_date') ?>" id="from_date" name="from_date" value="<?php echo $from_date; ?>" class="form-control bdatepicker">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <div class="price-box form-group <?php echo isset($payment_type) && $payment_type == 'F' ? 'd-none' : ''; ?>" style="padding-top: <?php isset($id) && $id > 0 ? "10px" : ""; ?>;">
+                                                        <label for="to_date"> <?php echo translate('to_date') ?></label>
+                                                        <input tabindex="27"  autocomplete="off" type="text" placeholder="<?php echo translate('to_date'); ?>" id="to_date" name="to_date" value="<?php echo $to_date; ?>" class="form-control bdatepicker">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <?php echo translate('media'); ?> <?php echo translate('information'); ?>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <button type="button" class="pull-right btn blue-gradient waves-effect success-color btn-sm float-right" onclick="get_more_image(this);"><i class="fa fa-plus-square-o mr-10"></i><?php echo translate('more'); ?></button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <?php if (isset($imageArr) && count($imageArr) > 0) { ?>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="image"> <?php echo translate('event_image_preview'); ?></label><br>
+                                                            <ul class="list-inline inline-ul" id="images_ul">
+                                                                <?php
+                                                                foreach ($imageArr as $value) {
+                                                                    ?>
+                                                                    <li class="hover-btn">
+                                                                        <img src = "<?php echo check_admin_image(UPLOAD_PATH . "event/" . $value); ?>" class = "img-thumbnail mr-10 mb-10 height-100" width = "100px"/>
+                                                                        <a class="btn-danger btn-floating btn-sm red-gradient waves-effect waves-light remove-btn" onclick="delete_event_image(this);" data-url="<?php echo UPLOAD_PATH . "event/" . $value; ?>" data-id="<?php echo $id; ?>"><i class="fa fa-trash"></i></a>
+                                                                    </li>
                                                                 <?php }
                                                                 ?>
-                                                            </select>
-                                                            <?php echo form_error('location'); ?>
+                                                            </ul>
                                                         </div>
                                                     </div>
-
-
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="address"> <?php echo translate('address'); ?><small class="required">*</small></label>
-                                                            <input tabindex="8" autocomplete="off"  type="text" required="" name="address" class="form-control" placeholder="<?php echo translate('address'); ?>" value="<?php echo $address; ?>"/>
-                                                            <?php echo form_error('address'); ?>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="address"> <?php echo translate('get_direction') . " " . translate('map') . " " . translate('link'); ?></label>
-                                                            <input tabindex="8"  autocomplete="off" type="text" id="address_map_link" name="address_map_link" class="form-control" placeholder="<?php echo translate('map') . " " . translate('link'); ?>" value="<?php echo $address_map_link; ?>"/>
-                                                            <a href="javascript:void(0)" data-toggle="modal" data-target="#map_modal" >Click Here For Details</a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label style="color: #757575;" > <?php echo translate('status'); ?> <small class="required">*</small></label>
-                                                        <div class="form-group form-inline">
-                                                            <?php
-                                                            $active = $inactive = '';
-                                                            if ($status == "I") {
-                                                                $inactive = "checked";
-                                                            } else {
-                                                                $active = "checked";
-                                                            }
-                                                            ?>
-                                                            <div class="form-group">
-                                                                <input tabindex="9"  autocomplete="off" name='status' value="A" type='radio' id='e_active'   <?php echo $active; ?>>
-                                                                <label for="e_active"><?php echo translate('active'); ?></label>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <input tabindex="10"  autocomplete="off" name='status' type='radio'  value='I' id='e_inactive'  <?php echo $inactive; ?>>
-                                                                <label for='e_inactive'><?php echo translate('inactive'); ?></label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row" >
-                                    <div class="col-md-12">
-
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <?php echo translate('service'); ?> <?php echo translate('description'); ?>
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label for="description"> <?php echo translate('description'); ?><small class="required">*</small></label>
-                                                            <textarea required type="text" tabindex="3" id="summornote_div_id" name="description" class="form-control" placeholder="<?php echo translate('description'); ?>"><?php echo $description; ?></textarea>
-                                                            <?php echo form_error('description'); ?>
-                                                        </div>
+                                                <?php } ?>
+                                                <div class="col-md-6">
+                                                    <div class="form-group" id="image-data">
+                                                        <label for="image"><?php echo translate('service') . " " . translate('image'); ?> <small class="required">*</small></label>
+                                                        <input tabindex="28" type="file" id="image" name="image[]" class="form-control" <?php echo isset($image_data) && $image_data != '' ? '' : 'required'; ?>>
+                                                        <?php echo form_error('image'); ?>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <?php echo translate('booking'); ?> <?php echo translate('setting'); ?>
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label class="black-text"><?php echo translate('select'); ?> <?php echo translate('days'); ?><small class="required">*</small></label>
-                                                            <select  tabindex="12" class="form-control" id="days" name="days[]" multiple>
-                                                                <option value="" disabled=""><?php echo translate('select') . " " . translate('days'); ?></option>
-                                                                <option value="Mon" <?php echo isset($days) && in_array("Mon", $days) ? 'selected' : ''; ?>><?php echo translate('monday'); ?></option>
-                                                                <option value="Tue" <?php echo isset($days) && in_array("Tue", $days) ? 'selected' : ''; ?>><?php echo translate('tuesday'); ?></option>
-                                                                <option value="Wed" <?php echo isset($days) && in_array("Wed", $days) ? 'selected' : ''; ?>><?php echo translate('wednesday'); ?></option>
-                                                                <option value="Thu" <?php echo isset($days) && in_array("Thu", $days) ? 'selected' : ''; ?>><?php echo translate('thursday'); ?></option>
-                                                                <option value="Fri" <?php echo isset($days) && in_array("Fri", $days) ? 'selected' : ''; ?>><?php echo translate('friday'); ?></option>
-                                                                <option value="Sat" <?php echo isset($days) && in_array("Sat", $days) ? 'selected' : ''; ?>><?php echo translate('saturday'); ?></option>
-                                                                <option value="Sun" <?php echo isset($days) && in_array("Sun", $days) ? 'selected' : ''; ?>><?php echo translate('sunday'); ?></option>
-                                                            </select>
-                                                            <?php echo form_error('days[]'); ?>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group" style="padding-top: <?php isset($id) && $id > 0 ? "10px" : ""; ?>;">
-                                                            <label for="slot_time"> <?php echo translate('slot_time'); ?> <small class="required">*</small> ( <?php echo translate('in_min'); ?> )</label>
-                                                            <input tabindex="16" autocomplete="off"  type="number" placeholder="<?php echo translate('slot_time'); ?>" id="slot_time" name="slot_time" value="<?php echo $slot_time; ?>" class="form-control" min="15">
-                                                            <?php echo form_error('slot_time'); ?>
-                                                        </div>
-                                                    </div>
+                            <div class="row">
+                                <div class="col-md-12">
 
-                                                    <div class="col-md-6">
-                                                        <div class="form-group" style="padding-top: <?php isset($id) && $id > 0 ? "10px" : ""; ?>;">
-                                                            <label for="start_time"> <?php echo translate('start_time'); ?> (In 24hr format)<small class="required">*</small></label>
-                                                            <input readonly="" autocomplete="off"  tabindex="14" type="text" placeholder="<?php echo translate('start_time'); ?>" id="start_time" name="start_time" value="<?php echo $start_time; ?>" class="form-control">
-                                                            <?php echo form_error('start_time'); ?>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group" style="padding-top: <?php isset($id) && $id > 0 ? "10px" : ""; ?>;">
-                                                            <label for="end_time"> <?php echo translate('end_time'); ?> (In 24hr format)<small class="required">*</small></label>
-                                                            <input readonly=""  autocomplete="off" tabindex="15" type="text" placeholder="<?php echo translate('end_time'); ?>" id="end_time" name="end_time" value="<?php echo $end_time; ?>" class="form-control">
-                                                            <?php echo form_error('end_time'); ?>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="col-md-6">
-                                                        <div class="form-group" >
-                                                            <label for="padding_time" class="d-block"> <?php echo translate('padding_time'); ?> ( <?php echo translate('in_min'); ?> )</label>
-                                                            <input tabindex="17" autocomplete="off"  type="text"  class="form-control integers" name="padding_time" value="<?php echo isset($padding_time) ? $padding_time : "0"; ?>">
-                                                            <?php echo form_error('padding_time'); ?>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label style="color: #757575;" > <?php echo translate('is_allow_multiple_slotbooking'); ?> <small class="required">*</small></label>
-                                                        <div class="form-group form-inline">
-                                                            <?php
-                                                            $active = $inactive = '';
-                                                            if ($multiple_slotbooking_allow == "Y") {
-                                                                $active = "checked";
-                                                            } else {
-                                                                $inactive = "checked";
-                                                            }
-                                                            ?>
-                                                            <div class="form-group">
-                                                                <input tabindex="18" name='multiple_slotbooking_allow' value="Y" type='radio' id='multiobook_active'   <?php echo $active; ?>>
-                                                                <label for="multiobook_active"><?php echo translate('yes'); ?></label>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <input tabindex="19" name='multiple_slotbooking_allow' type='radio'  value='N' id='multiobook_inactive'  <?php echo $inactive; ?>>
-                                                                <label for='multiobook_inactive'><?php echo translate('no'); ?></label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div id="book_limit" class="col-md-6  <?php echo isset($multiple_slotbooking_allow) && $multiple_slotbooking_allow == 'N' ? 'd-none' : ''; ?>">
-                                                        <div class="form-group" >
-                                                            <label for="multiple_slotbooking_limit" class="d-block"> <?php echo translate('multiple_slotbooking_limit'); ?> <small class="required">*</small></label>
-                                                            <input tabindex="20" autocomplete="off"  type="text"  class="form-control integers" id="multiple_slotbooking_limit" name="multiple_slotbooking_limit" value="<?php echo isset($multiple_slotbooking_limit) ? $multiple_slotbooking_limit : ""; ?>">
-                                                        </div>
-                                                    </div>
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <?php echo translate('faqs'); ?>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <button type="button" class="pull-right btn blue-gradient waves-effect success-color btn-sm float-right" onclick="add_more_faq(this);"><i class="fa fa-plus-square-o mr-10"></i><?php echo translate('more'); ?></button>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-
-                                <div class="row" >
-                                    <div class="col-md-12">
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <?php echo translate('price'); ?> <?php echo translate('information'); ?>
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <label style="color: #757575;" > <?php echo translate('type'); ?> <small class="required">*</small></label>
-                                                        <div class="form-group form-inline">
-                                                            <?php
-                                                            $free = $paid = '';
-                                                            if ($payment_type == "P") {
-                                                                $paid = "checked";
-                                                            } else {
-                                                                $free = "checked";
-                                                            }
-                                                            ?>
-                                                            <div class="form-group">
-                                                                <input tabindex="21" name='payment_type' value="F" type='radio' id='free'   <?php echo $free; ?>>
-                                                                <label for="free"><?php echo translate('free'); ?></label>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <input tabindex="22" name='payment_type' type='radio'  value='P' id='paid'  <?php echo $paid; ?>>
-                                                                <label for='paid'><?php echo translate('paid'); ?></label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="form-group <?php echo isset($payment_type) && $payment_type == 'F' ? 'd-none' : ''; ?>" style="padding-top: <?php isset($id) && $id > 0 ? "10px" : ""; ?>;" id="price-box">
-                                                            <label for="price"> <?php echo translate('price'); ?> <small class="required">*</small></label>
-                                                            <input tabindex="23"  autocomplete="off" onblur="calc_final_price(this);" type="number" placeholder="<?php echo translate('price'); ?>" id="price" name="price" value="<?php echo $price; ?>" class="form-control" <?php echo isset($payment_type) && $payment_type == 'F' ? 'min="0"' : 'min="1"'; ?>>
-                                                            <?php echo form_error('price'); ?>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="price-box form-group <?php echo isset($payment_type) && $payment_type == 'F' ? 'd-none' : ''; ?>" style="padding-top: <?php isset($id) && $id > 0 ? "10px" : ""; ?>;">
-                                                            <label  for="discount"> <?php echo translate('discount') . " " . translate('in') . " " . translate('percentage'); ?></label>
-                                                            <input tabindex="24"  autocomplete="off" onblur="calc_final_price(this);" type="number" placeholder="<?php echo translate('discount') . " " . translate('in') . " " . translate('percentage'); ?>" id="discount" name="discount" value="<?php echo $discount; ?>" class="form-control integers" <?php echo isset($payment_type) && $payment_type == 'F' ? 'min="0"' : 'min="1" max="100";'; ?>>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="form-group <?php echo isset($payment_type) && $payment_type == 'F' ? 'd-none' : ''; ?>" style="padding-top: <?php isset($id) && $id > 0 ? "10px" : ""; ?>;" id="price-box">
-                                                            <label for="discounted_price"> <?php echo translate('price_after_discount'); ?></label>
-                                                            <input tabindex="25"  autocomplete="off" readonly="" type="number" placeholder="<?php echo translate('discount') . " " . translate('price'); ?>" id="discounted_price" name="discounted_price" value="<?php echo $discounted_price; ?>" class="form-control">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="price-box form-group <?php echo isset($payment_type) && $payment_type == 'F' ? 'd-none' : ''; ?>" style="padding-top: <?php isset($id) && $id > 0 ? "10px" : ""; ?>;">
-                                                            <label for="from_date"> <?php echo translate('from_date') ?></label>
-                                                            <input tabindex="26"  autocomplete="off" type="text" placeholder="<?php echo translate('from_date') ?>" id="from_date" name="from_date" value="<?php echo $from_date; ?>" class="form-control bdatepicker">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-md-4">
-                                                        <div class="price-box form-group <?php echo isset($payment_type) && $payment_type == 'F' ? 'd-none' : ''; ?>" style="padding-top: <?php isset($id) && $id > 0 ? "10px" : ""; ?>;">
-                                                            <label for="to_date"> <?php echo translate('to_date') ?></label>
-                                                            <input tabindex="27"  autocomplete="off" type="text" placeholder="<?php echo translate('to_date'); ?>" id="to_date" name="to_date" value="<?php echo $to_date; ?>" class="form-control bdatepicker">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-12">
-
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <?php echo translate('media'); ?> <?php echo translate('information'); ?>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <button type="button" class="pull-right btn blue-gradient waves-effect success-color btn-sm float-right" onclick="get_more_image(this);"><i class="fa fa-plus-square-o mr-10"></i><?php echo translate('more'); ?></button>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <?php if (isset($imageArr) && count($imageArr) > 0) { ?>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label for="image"> <?php echo translate('event_image_preview'); ?></label><br>
-                                                                <ul class="list-inline inline-ul" id="images_ul">
-                                                                    <?php
-                                                                    foreach ($imageArr as $value) {
-                                                                        ?>
-                                                                        <li class="hover-btn">
-                                                                            <img src = "<?php echo check_admin_image(UPLOAD_PATH . "event/" . $value); ?>" class = "img-thumbnail mr-10 mb-10 height-100" width = "100px"/>
-                                                                            <a class="btn-danger btn-floating btn-sm red-gradient waves-effect waves-light remove-btn" onclick="delete_event_image(this);" data-url="<?php echo UPLOAD_PATH . "event/" . $value; ?>" data-id="<?php echo $id; ?>"><i class="fa fa-trash"></i></a>
-                                                                        </li>
-                                                                    <?php }
-                                                                    ?>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    <?php } ?>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group" id="image-data">
-                                                            <label for="image"><?php echo translate('service') . " " . translate('image'); ?> <small class="required">*</small></label>
-                                                            <input tabindex="28" type="file" id="image" name="image[]" class="form-control" <?php echo isset($image_data) && $image_data != '' ? '' : 'required'; ?>>
-                                                            <?php echo form_error('image'); ?>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-12">
-
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <?php echo translate('faqs'); ?>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <button type="button" class="pull-right btn blue-gradient waves-effect success-color btn-sm float-right" onclick="add_more_faq(this);"><i class="fa fa-plus-square-o mr-10"></i><?php echo translate('more'); ?></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <div id="faq_section_id">
-                                                    <?php if (count($faq) && !empty($faq)): ?>
-                                                        <?php foreach ($faq as $val): ?>
-                                                            <div class="row">
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group">
-                                                                        <label for="faq_title"> <?php echo translate('title') ?></label>
-                                                                        <input type="text" autocomplete="off"  placeholder="<?php echo translate('title'); ?>" id="seo_keyword" name="faq_title[]" value="<?php echo trim($val->faq_title); ?>" class="form-control">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group">
-                                                                        <label for="faq_description"> <?php echo translate('description'); ?></label>
-                                                                        <textarea type="text" id="seo_description" name="faq_description[]" class="form-control" placeholder="<?php echo translate('description'); ?>"><?php echo trim($val->faq_description); ?></textarea>
-                                                                        <?php echo form_error('faq_description'); ?>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-2">
-                                                                    <div class="form-group"><br/>
-                                                                        <label for="remove">&nbsp;</label>
-                                                                        <button type="button" class="btn btn-danger btn-sm" onclick="remove_add_more(this);"><i class="fa fa-trash"></i></button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        <?php endforeach; ?>
-                                                    <?php else: ?>
+                                        <div class="card-body">
+                                            <div id="faq_section_id">
+                                                <?php if (count($faq) && !empty($faq)): ?>
+                                                    <?php foreach ($faq as $val): ?>
                                                         <div class="row">
                                                             <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label for="faq_title"> <?php echo translate('title') ?></label>
-                                                                    <input type="text" autocomplete="off"  placeholder="<?php echo translate('title'); ?>" id="seo_keyword" name="faq_title[]" value="" class="form-control">
+                                                                    <input type="text" autocomplete="off"  placeholder="<?php echo translate('title'); ?>" id="seo_keyword" name="faq_title[]" value="<?php echo trim($val->faq_title); ?>" class="form-control">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label for="faq_description"> <?php echo translate('description'); ?></label>
-                                                                    <textarea type="text" id="seo_description" name="faq_description[]" rows="1" class="form-control" placeholder="<?php echo translate('description'); ?>"></textarea>
+                                                                    <textarea type="text" id="seo_description" name="faq_description[]" class="form-control" placeholder="<?php echo translate('description'); ?>"><?php echo trim($val->faq_description); ?></textarea>
                                                                     <?php echo form_error('faq_description'); ?>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-2">
-
+                                                                <div class="form-group"><br/>
+                                                                    <label for="remove">&nbsp;</label>
+                                                                    <button type="button" class="btn btn-danger btn-sm" onclick="remove_add_more(this);"><i class="fa fa-trash"></i></button>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    <?php endif; ?>
-                                                </div>
-                                            </div>
+                                                    <?php endforeach; ?>
+                                                <?php else: ?>
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label for="faq_title"> <?php echo translate('title') ?></label>
+                                                                <input type="text" autocomplete="off"  placeholder="<?php echo translate('title'); ?>" id="seo_keyword" name="faq_title[]" value="" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label for="faq_description"> <?php echo translate('description'); ?></label>
+                                                                <textarea type="text" id="seo_description" name="faq_description[]" rows="1" class="form-control" placeholder="<?php echo translate('description'); ?>"></textarea>
+                                                                <?php echo form_error('faq_description'); ?>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-2">
 
+                                                        </div>
+                                                    </div>
+                                                <?php endif; ?>
+                                            </div>
                                         </div>
 
                                     </div>
+
                                 </div>
-
-                                <div class="row">
-                                    <div class="col-md-12">
-
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <?php echo translate('seo'); ?> <?php echo translate('information'); ?>
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="row">
-
-                                                    <div class="col-md-4">
-                                                        <div class="form-group">
-                                                            <label for="seo_keyword"> <?php echo translate('seo_keyword') ?></label>
-                                                            <input tabindex="29" autocomplete="off"  type="text" placeholder="<?php echo translate('seo_keyword'); ?>" id="seo_keyword" name="seo_keyword" value="<?php echo $seo_keyword; ?>" class="form-control">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="form-group">
-                                                            <label for="seo_description"> <?php echo translate('seo_description'); ?></label>
-                                                            <textarea tabindex="30" type="text" id="seo_description" name="seo_description" class="form-control" placeholder="<?php echo translate('seo_description'); ?>"><?php echo $seo_description; ?></textarea>
-                                                            <?php echo form_error('seo_description'); ?>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="form-group" id="image-data">
-                                                            <label for="image"> <?php echo translate('seo_og_image'); ?></label>
-                                                            <input tabindex="31" type="file" id="image" name="seo_og_image" class="form-control">
-                                                        </div>
-                                                    </div>
-                                                    <?php if ($seo_og_image != '') { ?>
-                                                        <div class="col-md-6">
-                                                            <ul class="list-inline inline-ul" id="images_ul">
-                                                                <li class="hover-btn">
-                                                                    <img src = "<?php echo check_admin_image(UPLOAD_PATH . "event/" . $seo_og_image); ?>" class = "img-thumbnail mr-10 mb-10 height-100" width = "100px"/>
-                                                                    <a class="btn-danger btn-floating btn-sm red-gradient waves-effect waves-light remove-btn" onclick="delete_event_seo_image(this);" data-url="<?php echo UPLOAD_PATH . "event/" . $seo_og_image; ?>" data-id="<?php echo $id; ?>"><i class="fa fa-trash"></i></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    <?php } ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row mt-4">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-success waves-effect"><?php echo translate('save'); ?></button>
-                                            <a href="<?php echo base_url($folder_name . '/manage-service'); ?>" class="btn btn-info waves-effect"><?php echo translate('cancel'); ?></a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <?php echo form_close(); ?>
                             </div>
-                            <!--/Form with header-->
+
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <?php echo translate('seo'); ?> <?php echo translate('information'); ?>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="seo_keyword"> <?php echo translate('seo_keyword') ?></label>
+                                                        <input tabindex="29" autocomplete="off"  type="text" placeholder="<?php echo translate('seo_keyword'); ?>" id="seo_keyword" name="seo_keyword" value="<?php echo $seo_keyword; ?>" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="seo_description"> <?php echo translate('seo_description'); ?></label>
+                                                        <textarea tabindex="30" type="text" id="seo_description" name="seo_description" class="form-control" placeholder="<?php echo translate('seo_description'); ?>"><?php echo $seo_description; ?></textarea>
+                                                        <?php echo form_error('seo_description'); ?>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group" id="image-data">
+                                                        <label for="image"> <?php echo translate('seo_og_image'); ?></label>
+                                                        <input tabindex="31" type="file" id="image" name="seo_og_image" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <?php if ($seo_og_image != '') { ?>
+                                                    <div class="col-md-6">
+                                                        <ul class="list-inline inline-ul" id="images_ul">
+                                                            <li class="hover-btn">
+                                                                <img src = "<?php echo check_admin_image(UPLOAD_PATH . "event/" . $seo_og_image); ?>" class = "img-thumbnail mr-10 mb-10 height-100" width = "100px"/>
+                                                                <a class="btn-danger btn-floating btn-sm red-gradient waves-effect waves-light remove-btn" onclick="delete_event_seo_image(this);" data-url="<?php echo UPLOAD_PATH . "event/" . $seo_og_image; ?>" data-id="<?php echo $id; ?>"><i class="fa fa-trash"></i></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                <?php } ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mt-4">
+
+                            </div>
+
+
+
                         </div>
-                        <!--Card-->
                     </div>
-                    <!-- End Col -->
                 </div>
-                <!--Row-->
-            </section>
-            <!-- End Login-->
+                <div class="card-footer">
+                    <div class="d-flex flex-wrap gap-2">
+                        <button type="submit" class="btn btn-primary"><?php echo translate('save'); ?></button>
+                        <a href="<?php echo base_url($folder_name.'/service'); ?>" class="btn btn-outline-secondary"><?php echo translate('cancel'); ?></a>
+                    </div>
+                </div>
+                <?php echo form_close(); ?>
+
+
+            </div>
         </div>
     </div>
+    <!-- end row -->
 </div>
+
 
 <div class="modal fade" id="map_modal">
     <div class="modal-dialog">

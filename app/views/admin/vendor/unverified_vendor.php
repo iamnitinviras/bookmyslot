@@ -1,80 +1,90 @@
 <?php include VIEWPATH . 'admin/header.php'; ?>
-<div class="dashboard-body">
-    <!-- Start Content -->
-    <div class="content">
-        <!-- Start Container -->
-        <div class="container-fluid ">
-            <section class="form-light px-2 sm-margin-b-20">
-                <!-- Row -->
-                <div class="row">
-                    <div class="col-md-12 m-auto">
-                        <?php $this->load->view('message'); ?>
-                        <div class="card mt-4">
-                            <div class="card-header">
-                                <h5 class="black-text font-bold mb-0"><?php echo translate('unverified'); ?> <?php echo translate('vendor'); ?></h5>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-6 col-xl-6">
+                                <h4 class="card-title"><?php echo $title; ?></h4>
+                                <div class="page-title-box pb-0 d-sm-flex">
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="<?php echo base_url('admin/dashboard'); ?>"><?php echo translate('dashboard'); ?></a></li>
+                                            <li class="breadcrumb-item"><a href="<?php echo base_url('admin/vendor'); ?>"><?php echo translate('vendor'); ?></a></li>
+                                            <li class="breadcrumb-item active"><?php echo $title; ?></li>
+                                        </ol>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="card-body">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12 m-auto">
+                                <?php $this->load->view('message'); ?>
+
                                 <div class="table-responsive">
-                                    <table class="table mdl-data-table" id="example">
+                                    <table class="table table-bordered dt-responsive nowrap w-100" id="datatable">
                                         <thead>
-                                            <tr>
-                                                <th class="text-center font-bold dark-grey-text">#</th>
-                                                <th class="text-center font-bold dark-grey-text"><?php echo translate('name'); ?></th>
-                                                <th class="text-center font-bold dark-grey-text"><?php echo translate('company_name'); ?></th>
-                                                <th class="text-center font-bold dark-grey-text"><?php echo translate('email'); ?></th>
-                                                <th class="text-center font-bold dark-grey-text"><?php echo translate('status'); ?></th>
-                                                <th class="text-center font-bold dark-grey-text"><?php echo translate('verification'); ?></th>
-                                                <th class="text-center font-bold dark-grey-text"><?php echo translate('action'); ?></th>
-                                            </tr>
+                                        <tr>
+                                            <th class="text-center font-bold dark-grey-text">#</th>
+                                            <th class="text-center font-bold dark-grey-text"><?php echo translate('name'); ?></th>
+                                            <th class="text-center font-bold dark-grey-text"><?php echo translate('company_name'); ?></th>
+                                            <th class="text-center font-bold dark-grey-text"><?php echo translate('email'); ?></th>
+                                            <th class="text-center font-bold dark-grey-text"><?php echo translate('status'); ?></th>
+                                            <th class="text-center font-bold dark-grey-text"><?php echo translate('verification'); ?></th>
+                                            <th class="text-center font-bold dark-grey-text"><?php echo translate('action'); ?></th>
+                                        </tr>
                                         </thead>
                                         <tbody>
-                                            <?php
-                                            $i = 1;
-                                            if (isset($vendor_data) && count($vendor_data) > 0) {
-                                                foreach ($vendor_data as $row) {
+                                        <?php
+                                        $i = 1;
+                                        if (isset($vendor_data) && count($vendor_data) > 0) {
+                                            foreach ($vendor_data as $row) {
 
-                                                    $profile_status = "";
+                                                $profile_status = "";
 
-                                                    if ($row['profile_status'] == 'V') {
-                                                        $profile_status = "<span class='badge badge-success'>" . translate('approved') . "</span>";
-                                                    } elseif ($row['profile_status'] == 'N') {
-                                                        $profile_status = "<span class='badge badge-info'>" . translate('unverified') . "</span>";
-                                                    } elseif ($row['profile_status'] == 'R') {
-                                                        $profile_status = "<span class='badge badge-danger'>" . translate('unverified') . "</span>";
-                                                    }
-                                                    ?>
-                                                    <tr>
-                                                        <td class="text-center"><?php echo $i; ?></td>
-                                                        <td class="text-center"><?php echo $row['first_name'] . ' ' . $row['last_name']; ?></td>
-                                                        <td class="text-center"><?php echo $row['company_name']; ?></td>
-                                                        <td class="text-center"><?php echo $row['email']; ?></td>
+                                                if ($row['profile_status'] == 'V') {
+                                                    $profile_status = "<span class='badge badge-success'>" . translate('approved') . "</span>";
+                                                } elseif ($row['profile_status'] == 'N') {
+                                                    $profile_status = "<span class='badge badge-info'>" . translate('unverified') . "</span>";
+                                                } elseif ($row['profile_status'] == 'R') {
+                                                    $profile_status = "<span class='badge badge-danger'>" . translate('unverified') . "</span>";
+                                                }
+                                                ?>
+                                                <tr>
+                                                    <td class="text-center"><?php echo $i; ?></td>
+                                                    <td class="text-center"><?php echo $row['first_name'] . ' ' . $row['last_name']; ?></td>
+                                                    <td class="text-center"><?php echo $row['company_name']; ?></td>
+                                                    <td class="text-center"><?php echo $row['email']; ?></td>
 
-                                                        <td class="text-center"><?php echo print_vendor_status($row['status']); ?></td>
-                                                        <td class="text-center"><?php echo $profile_status; ?></td>
-                                                        <td class="td-actions text-center">
+                                                    <td class="text-center"><?php echo print_vendor_status($row['status']); ?></td>
+                                                    <td class="text-center"><?php echo $profile_status; ?></td>
+                                                    <td class="td-actions text-center">
                                                             <span class="d-inline-block" title="<?php echo translate('update') . " " . translate('status'); ?>" data-toggle="tooltip" data-placement="top">
                                                                 <a id="" data-toggle="modal" onclick='ChangeStatus(this)' data-target="#change-status" data-id="<?php echo (int) $row['id']; ?>" class="btn btn-primary font_size_12"><i class="fa fa-eye"></i></a>
                                                             </span>
-                                                        </td>
-                                                    </tr>
-                                                    <?php
-                                                    $i++;
-                                                }
+                                                    </td>
+                                                </tr>
+                                                <?php
+                                                $i++;
                                             }
-                                            ?>
+                                        }
+                                        ?>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!--col-md-12-->
                 </div>
-                <!--Row-->
-            </section>
+            </div>
         </div>
-    </div>   
-</div>
+        <!-- end row -->
+    </div>
+
 <!-- Status Modal -->
 <div class="modal fade" id="change-status">
     <div class="modal-dialog">

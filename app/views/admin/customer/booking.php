@@ -9,7 +9,7 @@ include VIEWPATH . 'admin/header.php';
                     <div class="card-header">
                         <div class="row">
                             <div class="col-md-6 col-xl-6">
-                                <h4 class="card-title"><?php echo translate('customer'); ?> <?php echo translate('booking'); ?></h4>
+                                <h4 class="card-title"><?php echo $title; ?></h4>
                                 <div class="page-title-box pb-0 d-sm-flex">
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">

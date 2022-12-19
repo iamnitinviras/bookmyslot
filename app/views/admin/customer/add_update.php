@@ -18,7 +18,7 @@ if ($this->session->userdata('Type_' . ucfirst($this->uri->segment(1))) == 'V') 
                 <div class="card-header">
                     <div class="row">
                         <div class="col-md-12 col-xl-12">
-                            <h4 class="card-title"><?php echo translate('customer'); ?></h4>
+                            <h4 class="card-title"><?php echo $title; ?></h4>
                             <div class="page-title-box pb-0 d-sm-flex">
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
