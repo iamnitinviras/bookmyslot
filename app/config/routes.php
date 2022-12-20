@@ -434,10 +434,10 @@ $route['admin/save-translated-language/(:num)'] = 'admin/language/save_translate
 $route['admin/delete-language/(:num)'] = 'admin/language/delete_language/$1';
 
 /* Content Management */
-$route['admin/manage-content'] = 'admin/page_content/index';
-$route['admin/add-content'] = 'admin/page_content/add_content';
-$route['admin/update-content/(:num)'] = 'admin/page_content/update_content/$1';
-$route['admin/save-content'] = 'admin/page_content/save_content';
+$route['admin/content'] = 'admin/page_content/index';
+$route['admin/content/add'] = 'admin/page_content/add_content';
+$route['admin/content/edit/(:num)'] = 'admin/page_content/update_content/$1';
+$route['admin/content/save'] = 'admin/page_content/save_content';
 $route['admin/delete-content/(:num)'] = 'admin/page_content/delete_content/$1';
 $route['admin/check-page-title'] = 'admin/page_content/check_page_title';
 
