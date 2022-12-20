@@ -9,7 +9,7 @@ class MY_Controller extends CI_Controller {
         parent::__construct();
         $this->lang->load('basic', get_Langauge());
         run_default_query();
-        expire_holiday_date();
+        //expire_holiday_date();
         $this->login_type = $this->session->userdata('Type_' . ucfirst($this->uri->segment(1)));
         if ($this->login_type == 'V') {
             $this->login_id = $this->session->userdata('Vendor_ID');

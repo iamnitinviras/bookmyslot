@@ -56,7 +56,7 @@
                                                     <td class="text-center"><?php echo $row['package_month']; ?></td>
                                                     <td class="text-center"><?php echo $status_string; ?></td>
                                                     <td class="td-actions text-center">
-                                                        <a href="<?php echo base_url('admin/update-package/' . $row['id']); ?>" class="btn-danger btn-floating btn-sm blue-gradient" title="<?php echo translate('edit'); ?>">
+                                                        <a href="<?php echo base_url('admin/package/edit/' . $row['id']); ?>" class="text-success" title="<?php echo translate('edit'); ?>">
                                                             <i class="mdi mdi-pencil font-size-18"></i>
                                                         </a>
                                                     </td>

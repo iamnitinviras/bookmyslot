@@ -926,7 +926,9 @@ class Service extends MY_Controller {
     }
 
     public function save_holiday() {
+
         $id = (int) $this->input->post('id', true);
+
         $this->form_validation->set_rules('title', translate('title'), 'required|trim');
         $this->form_validation->set_rules('holiday_date', translate('date'), 'required|trim|callback_holiday_check');
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
@@ -940,8 +942,9 @@ class Service extends MY_Controller {
 
             $data['title'] = $this->input->post('title', true);
             $data['holiday_date'] = date("Y-m-d", strtotime($this->input->post('holiday_date', true)));
-            $data['status'] = $this->input->post('status', true);
+            $data['status'] = $this->input->post('status');
             $data['created_by'] = $this->login_id;
+
 
             if ($id > 0) {
                 $this->model_event->update('app_holidays', $data, "id=" . $id);

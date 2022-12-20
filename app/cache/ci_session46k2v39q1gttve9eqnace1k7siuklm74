@@ -1,1 +1,0 @@
-__ci_last_regenerate|i:1665938017;ADMIN_ID|s:1:"1";Type_Admin|s:1:"A";DefaultPassword|s:1:"0";location|s:6:"asd'ss";location_id|s:1:"1";is_from_city|i:1;msg|s:123:"Account not verified.<br/><a href=http://localhost/product/bookmyslot/customer-verify-resend/2>Resend Verification Link</a>";__ci_vars|a:2:{s:3:"msg";s:3:"new";s:9:"msg_class";s:3:"new";}msg_class|s:7:"failure";

@@ -278,21 +278,6 @@
                         </li>
                     <?php endif; ?>
 
-                    <?php if (get_site_setting('enable_event') == 'Y'): ?>
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow">
-                                <i data-feather="briefcase"></i>
-                                <span data-key="t-components"><?php echo translate('event'); ?></span>
-                            </a>
-                            <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="<?php echo base_url('admin/event'); ?>" data-key="t-user-grid"><?php echo translate('event'); ?></a></li>
-                                <li><a href="<?php echo base_url('admin/event/category'); ?>" data-key="t-user-list"><?php echo translate('event_category'); ?></a></li>
-                                <li><a href="<?php echo base_url('admin/event/booking'); ?>" data-key="t-profile"><?php echo translate('event') . " " . translate('booking'); ?></a></li>
-                                <li><a href="<?php echo base_url('admin/event/payment'); ?>" data-key="t-profile"><?php echo translate('event') . " " . translate('payment'); ?></a></li>
-                            </ul>
-                        </li>
-                    <?php endif; ?>
-
                     <li>
                         <a href="javascript: void(0);" class="has-arrow">
                             <i data-feather="gift"></i>

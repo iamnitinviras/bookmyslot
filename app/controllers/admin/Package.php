@@ -16,13 +16,13 @@ class Package extends MY_Controller {
         $package = $this->model_package->getData('', '*');
         $data['package_data'] = $package;
         $data['title'] = translate('manage') . " " . translate('package');
-        $this->load->view('admin/package/package-list', $data);
+        $this->load->view('admin/package/index', $data);
     }
 
     //show add package form
     public function add_package() {
         $data['title'] = translate('add') . " " . translate('package');
-        $this->load->view('admin/package/add-update-package', $data);
+        $this->load->view('admin/package/add_update', $data);
     }
 
     //show edit package form
@@ -34,7 +34,7 @@ class Package extends MY_Controller {
         if (isset($package[0]) && !empty($package[0])) {
             $data['package_data'] = $package[0];
             $data['title'] = translate('update') . " " . translate('package');
-            $this->load->view('admin/package/add-update-package', $data);
+            $this->load->view('admin/package/add_update', $data);
         } else {
             show_404();
         }
@@ -69,7 +69,7 @@ class Package extends MY_Controller {
             $this->model_package->update('app_package', $data, "id=$package_id");
             $this->session->set_flashdata('msg', translate('package_update'));
             $this->session->set_flashdata('msg_class', 'success');
-            redirect('admin/manage-package', 'redirect');
+            redirect('admin/package', 'redirect');
         }
     }
 
@@ -89,9 +89,8 @@ class Package extends MY_Controller {
     public function package_payment() {
         $data['payment_history'] = $this->model_membership->get_package_history();
         $data['title'] = $this->lang->line('Package_Payment');
-        $this->load->view('admin/package/package-payment-list', $data);
+        $this->load->view('admin/package/payment', $data);
     }
-
 }
 
 ?>

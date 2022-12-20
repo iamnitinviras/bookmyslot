@@ -10,7 +10,7 @@ if ($this->session->userdata('Type_' . ucfirst($this->uri->segment(1))) == 'V') 
 }
 
 $id = (set_value("id")) ? set_value("id") : (!empty($coupon_data) ? $coupon_data['id'] : '');
-$title = (set_value("title")) ? set_value("title") : (!empty($coupon_data) ? $coupon_data['title'] : '');
+$coupon_title = (set_value("title")) ? set_value("title") : (!empty($coupon_data) ? $coupon_data['title'] : '');
 $valid_till = (set_value("valid_till")) ? set_value("valid_till") : (!empty($coupon_data) ? $coupon_data['valid_till'] : '');
 $event_id = (set_value("event_id")) ? set_value("event_id") : (!empty($coupon_data) ? json_decode($coupon_data['event_id']) : array());
 $code = (set_value("code")) ? set_value("code") : (!empty($coupon_data) ? $coupon_data['code'] : '');
@@ -53,7 +53,7 @@ $status = (set_value("status")) ? set_value("status") : (!empty($coupon_data) ? 
                                 <div class="col-md-4">
                                     <div class="form-group mb-0">
                                         <label for="title"> <?php echo translate('coupon_title'); ?><small class="required">*</small></label>
-                                        <input type="text" autocomplete="off" required="" id="title" name="title" value="<?php echo $title; ?>" class="form-control" placeholder="<?php echo translate('coupon_title'); ?>">
+                                        <input type="text" autocomplete="off" required="" id="title" name="title" value="<?php echo $coupon_title; ?>" class="form-control" placeholder="<?php echo translate('coupon_title'); ?>">
                                         <?php echo form_error('title'); ?>
                                     </div>
                                 </div>

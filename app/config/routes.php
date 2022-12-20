@@ -416,10 +416,10 @@ $route['admin/send-message'] = 'admin/message/send_message';
 $route['admin/ajax-get-chats-messages'] = 'admin/message/ajax_get_chats_messages';
 
 /* Discount Coupon Admin */
-$route['admin/manage-coupon'] = 'admin/coupon/index';
-$route['admin/add-coupon'] = 'admin/coupon/add_coupon';
-$route['admin/update-coupon/(:num)'] = 'admin/coupon/update_coupon/$1';
-$route['admin/save-coupon'] = 'admin/coupon/save_coupon';
+$route['admin/coupon'] = 'admin/coupon/index';
+$route['admin/coupon/add'] = 'admin/coupon/add_coupon';
+$route['admin/coupon/edit/(:num)'] = 'admin/coupon/update_coupon/$1';
+$route['admin/coupon/save'] = 'admin/coupon/save_coupon';
 $route['admin/delete-coupon/(:num)'] = 'admin/coupon/delete_coupon/$1';
 
 
@@ -594,12 +594,12 @@ $route['vendor/appointment-report'] = 'admin/report/appointment_report';
 $route['vendor/integrateon-webpage'] = 'admin/sitesetting/integrateon_webpage';
 
 /* Package */
-$route['admin/manage-package'] = 'admin/package/index';
-$route['admin/add-package'] = 'admin/package/add_package';
-$route['admin/save-package'] = 'admin/package/save_package';
-$route['admin/update-package/(:num)'] = 'admin/package/update_package/$1';
+$route['admin/package'] = 'admin/package/index';
+$route['admin/package/add'] = 'admin/package/add_package';
+$route['admin/package/save'] = 'admin/package/save_package';
+$route['admin/package/edit/(:num)'] = 'admin/package/update_package/$1';
 $route['admin/delete-package/(:num)'] = 'admin/package/delete_package/$1';
-$route['admin/package-payment'] = 'admin/package/package_payment/$1';
+$route['admin/package/payment'] = 'admin/package/package_payment/$1';
 
 
 $route['get-service-slidepanel-details/(:num)'] = 'content/get_service_slidepanel_details/$1';
