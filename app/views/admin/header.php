@@ -30,6 +30,9 @@
     <link href="<?php echo base_url('assets/admin/css/icons.min.css');?>" rel="stylesheet" type="text/css" />
     <!-- App Css-->
     <link href="<?php echo base_url('assets/admin/css/app.min.css');?>" id="app-style" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $this->config->item('css_url'); ?>datepicker.css" rel="stylesheet">
+    <link href="<?php echo $this->config->item('css_url'); ?>timepicker.css" rel="stylesheet">
+
 
     <script>
         var site_url = "<?php echo $this->config->item('site_url'); ?>";
@@ -310,8 +313,8 @@
                                 <span data-key="t-ui-elements"><?php echo translate('package'); ?></span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="<?php echo base_url('admin/manage-package'); ?>" data-key="t-user-grid"><?php echo translate('manage') . " " . translate('package'); ?></a></li>
-                                <li><a href="<?php echo base_url('admin/package-payment'); ?>" data-key="t-user-list"><?php echo translate('package') . " " . translate('payment'); ?></a></li>
+                                <li><a href="<?php echo base_url('admin/package'); ?>" data-key="t-user-grid"><?php echo translate('manage') . " " . translate('package'); ?></a></li>
+                                <li><a href="<?php echo base_url('admin/package/payment'); ?>" data-key="t-user-list"><?php echo translate('package') . " " . translate('payment'); ?></a></li>
                             </ul>
                         </li>
                     <?php endif; ?>

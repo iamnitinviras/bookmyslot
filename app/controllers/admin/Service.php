@@ -335,7 +335,7 @@ class Service extends MY_Controller {
                 $this->session->set_flashdata('msg_class', 'success');
             }
             $folder_url = isset($this->login_type) && $this->login_type == 'V' ? 'vendor' : 'admin';
-            redirect($folder_url . '/manage-service', 'redirect');
+            redirect($folder_url . '/service', 'redirect');
         }
     }
 
@@ -659,16 +659,16 @@ class Service extends MY_Controller {
                 $this->load->view('admin/service/addons/index', $data);
             } else {
                 if ($this->login_type == 'V') {
-                    redirect('vendor/manage-service');
+                    redirect('vendor/service');
                 } else {
-                    redirect('admin/manage-service');
+                    redirect('admin/service');
                 }
             }
         } else {
             if ($this->login_type == 'V') {
-                redirect('vendor/manage-service');
+                redirect('vendor/service');
             } else {
-                redirect('admin/manage-service');
+                redirect('admin/service');
             }
         }
     }
@@ -686,9 +686,9 @@ class Service extends MY_Controller {
             $this->load->view('admin/service/addons/add_update', $data);
         } else {
             if ($this->login_type == 'V') {
-                redirect('vendor/manage-service');
+                redirect('vendor/service');
             } else {
-                redirect('admin/manage-service');
+                redirect('admin/service');
             }
         }
     }
@@ -710,16 +710,16 @@ class Service extends MY_Controller {
                 $this->load->view('admin/service/addons/add_update', $data);
             } else {
                 if ($this->login_type == 'V') {
-                    redirect('vendor/manage-service');
+                    redirect('vendor/service');
                 } else {
-                    redirect('admin/manage-service');
+                    redirect('admin/service');
                 }
             }
         } else {
             if ($this->login_type == 'V') {
-                redirect('vendor/manage-service');
+                redirect('vendor/service');
             } else {
-                redirect('admin/manage-service');
+                redirect('admin/service');
             }
         }
     }
@@ -780,13 +780,13 @@ class Service extends MY_Controller {
                     $this->session->set_flashdata('msg_class', 'success');
                 }
                 $folder_url = isset($this->login_type) && $this->login_type == 'V' ? 'vendor' : 'admin';
-                redirect($folder_url . '/manage-service-addons/' . $service_id, 'redirect');
+                redirect($folder_url . '/service/addons/' . $service_id, 'redirect');
             }
         } else {
             if ($this->login_type == 'V') {
-                redirect('vendor/manage-service');
+                redirect('vendor/service');
             } else {
-                redirect('admin/manage-service');
+                redirect('admin/service');
             }
         }
     }

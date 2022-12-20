@@ -90,10 +90,10 @@ if ($this->session->userdata('Type_' . ucfirst($this->uri->segment(1))) == 'V') 
                                                         $status_string = '<span class="badge label-danger">' . translate('inactive') . '</span>';
                                                     }
                                                     if ($this->session->userdata('Type_' . ucfirst($this->uri->segment(1))) == 'V') {
-                                                        $update_url = 'vendor/update-service/' . $row['id'];
+                                                        $update_url = 'vendor/service/edit/' . $row['id'];
                                                         $manage_url = 'vendor/manage-appointment/' . $row['id'];
                                                     } else {
-                                                        $update_url = 'admin/update-service/' . $row['id'];
+                                                        $update_url = 'admin/service/edit/' . $row['id'];
                                                         $manage_url = 'admin/manage-appointment/' . $row['id'];
                                                     }
                                                     ?>
@@ -144,9 +144,9 @@ if ($this->session->userdata('Type_' . ucfirst($this->uri->segment(1))) == 'V') 
                                                         <td class="text-center">
                                                             <?php if ($row['payment_type'] == 'P'): ?>
                                                                 <?php if ($this->session->userdata('Type_' . ucfirst($this->uri->segment(1))) == 'V') : ?>
-                                                                    <a href="<?php echo base_url('vendor/manage-service-addons/' . $row['id']); ?>" class="btn-warning btn-sm" title="<?php echo translate('manage') . " " . translate('add_ons'); ?>" data-toggle="tooltip" data-placement="top"><?php echo translate('manage') . " " . translate('add_ons'); ?></a>
+                                                                    <a href="<?php echo base_url('vendor/service/addons/' . $row['id']); ?>" class="btn-warning btn-sm" title="<?php echo translate('manage') . " " . translate('add_ons'); ?>" data-toggle="tooltip" data-placement="top"><?php echo translate('manage') . " " . translate('add_ons'); ?></a>
                                                                 <?php else: ?>
-                                                                    <a href="<?php echo base_url('admin/manage-service-addons/' . $row['id']); ?>" class="btn-warning btn-sm" title="<?php echo translate('manage') . " " . translate('add_ons'); ?>" data-toggle="tooltip" data-placement="top"><?php echo translate('manage') . " " . translate('add_ons'); ?></a>
+                                                                    <a href="<?php echo base_url('admin/service/addons/' . $row['id']); ?>" class="btn-warning btn-sm" title="<?php echo translate('manage') . " " . translate('add_ons'); ?>" data-toggle="tooltip" data-placement="top"><?php echo translate('manage') . " " . translate('add_ons'); ?></a>
                                                                 <?php endif; ?>
                                                             <?php else: ?>
                                                                 --
@@ -154,8 +154,10 @@ if ($this->session->userdata('Type_' . ucfirst($this->uri->segment(1))) == 'V') 
                                                         </td>
                                                         <td class="text-center"><?php echo $status_string; ?></td>
                                                         <td class="td-actions text-center">
-                                                            <a href="<?php echo base_url($update_url); ?>" class="btn btn-primary" title="<?php echo translate('edit'); ?>" data-toggle="tooltip" data-placement="top"><i class="fa fa-pencil"></i></a>
-                                                            <span class="d-inline-block" title="<?php echo translate('delete'); ?>" data-toggle="tooltip" data-placement="top"><a id="" data-toggle="modal" onclick='DeleteRecord(this)' data-target="#delete-record" data-id="<?php echo (int) $row['id']; ?>" class="btn btn-danger" title="<?php echo translate('delete'); ?>"><i class="fa fa-trash"></i></a></span>
+                                                            <a href="<?php echo base_url($update_url); ?>" class="text-success" title="<?php echo translate('edit'); ?>" data-bs-toggle="tooltip" data-bs-placement="top"><i class="mdi mdi-pencil font-size-18"></i></a>
+                                                            <a href="javascript:void(0)" data-bs-toggle="modal" onclick='DeleteRecord(this)' data-bs-target="#delete-record" data-id="<?php echo (int) $row['id']; ?>" class="text-danger" title="<?php echo translate('delete'); ?>">
+                                                                <i class="mdi mdi-delete font-size-18"></i>
+                                                            </a>
                                                         </td>
                                                     </tr>
                                                     <?php

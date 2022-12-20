@@ -45,6 +45,7 @@
 <!-- JAVASCRIPT -->
 <script src="<?php echo base_url('assets/admin/libs/bootstrap/js/bootstrap.bundle.min.js');?>"></script>
 <script src="<?php echo $this->config->item('js_url'); ?>jquery.validate.min.js" type="text/javascript"></script>
+<script src="<?php echo $this->config->item('js_url'); ?>additional-method.js" type="text/javascript"></script>
 <script src="<?php echo base_url('assets/admin/libs/metismenu/metisMenu.min.js');?>"></script>
 <script src="<?php echo base_url('assets/admin/libs/simplebar/simplebar.min.js');?>"></script>
 <script src="<?php echo base_url('assets/admin/libs/node-waves/waves.min.js');?>"></script>
@@ -66,8 +67,40 @@
 <!-- dashboard init -->
 <script src="<?php echo base_url('assets/admin/js/pages/dashboard.init.js');?>"></script>
 <script src="<?php echo base_url('assets/admin/js/app.js');?>"></script>
-<script>
+<script src="<?php echo $this->config->item('js_url'); ?>datepicker.js"></script>
+<script src="<?php echo $this->config->item('js_url'); ?>bootstrap-timepicker.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
 
+<script>
+    $('#summornote_div_id').summernote({
+        minHeight: 300,
+        callbacks: {
+            onImageUpload: function (files, editor, welEditable) {
+                sendFile(files[0], editor, welEditable);
+            }
+        }
+    });
+
+    function sendFile(file, editor, welEditable) {
+        data = new FormData();
+        data.append("file", file);
+        $.ajax({
+            data: data,
+            type: "POST",
+            url: "<?php echo base_url('upload-summernote-image'); ?>",
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (url) {
+                $('#summornote_div_id').summernote("insertImage", url);
+            }
+        });
+    }
+
+    $('.note-video-clip').each(function () {
+        var tmp = $(this).wrap('<p/>').parent().html();
+        $(this).parent().html('<div class="embed-responsive embed-responsive-16by9">' + tmp + '</div>');
+    });
 </script>
 </body>
 </html>

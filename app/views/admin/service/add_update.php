@@ -49,7 +49,7 @@ $id = (set_value("id")) ? set_value("id") : (!empty($event_data) ? $event_data['
 ?>
 
 <input type="hidden" name="address_selection" id="address_selection" value="0">
-
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
@@ -100,14 +100,14 @@ $id = (set_value("id")) ? set_value("id") : (!empty($event_data) ? $event_data['
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="name"> <?php echo translate('title'); ?><small class="required">*</small></label>
+                                                        <label for="name"><?php echo translate('title'); ?><small class="required">*</small></label>
                                                         <input required type="text" autocomplete="off" tabindex="1" id="name" name="name" value="<?php echo $name; ?>" class="form-control" placeholder="<?php echo translate('title'); ?>">
                                                         <?php echo form_error('name'); ?>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label class="black-text"><?php echo translate('select') . " " . translate("service") . " " . translate('category'); ?><small class="required">*</small></label>
+                                                        <label><?php echo translate('select') . " " . translate("service") . " " . translate('category'); ?><small class="required">*</small></label>
                                                         <select required tabindex="2" class="form-control" id="days" name="category_id">
                                                             <option value=""><?php echo translate('select') . " " . translate("service") . " " . translate('category'); ?></option>
                                                             <?php
@@ -300,9 +300,10 @@ $id = (set_value("id")) ? set_value("id") : (!empty($event_data) ? $event_data['
                                                         <?php echo form_error('padding_time'); ?>
                                                     </div>
                                                 </div>
+
                                                 <div class="col-md-6">
-                                                    <label style="color: #757575;" > <?php echo translate('is_allow_multiple_slotbooking'); ?> <small class="required">*</small></label>
-                                                    <div class="form-group form-inline">
+                                                    <label style="color: #757575;" ><?php echo translate('is_allow_multiple_slotbooking'); ?> <small class="required">*</small></label>
+                                                    <div class="form-group">
                                                         <?php
                                                         $active = $inactive = '';
                                                         if ($multiple_slotbooking_allow == "Y") {
@@ -311,16 +312,17 @@ $id = (set_value("id")) ? set_value("id") : (!empty($event_data) ? $event_data['
                                                             $inactive = "checked";
                                                         }
                                                         ?>
-                                                        <div class="form-group">
-                                                            <input tabindex="18" name='multiple_slotbooking_allow' value="Y" type='radio' id='multiobook_active'   <?php echo $active; ?>>
-                                                            <label for="multiobook_active"><?php echo translate('yes'); ?></label>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="multiple_slotbooking_allow" id="multiobook_active" value="Y" <?php echo $active; ?>>
+                                                            <label class="form-check-label" for="multiobook_active"><?php echo translate('yes'); ?></label>
                                                         </div>
-                                                        <div class="form-group">
-                                                            <input tabindex="19" name='multiple_slotbooking_allow' type='radio'  value='N' id='multiobook_inactive'  <?php echo $inactive; ?>>
-                                                            <label for='multiobook_inactive'><?php echo translate('no'); ?></label>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="multiple_slotbooking_allow" id="multiobook_inactive"  value='N' <?php echo $inactive; ?>>
+                                                            <label class="form-check-label" for="multiobook_inactive"><?php echo translate('no'); ?></label>
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 <div id="book_limit" class="col-md-6  <?php echo isset($multiple_slotbooking_allow) && $multiple_slotbooking_allow == 'N' ? 'd-none' : ''; ?>">
                                                     <div class="form-group" >
                                                         <label for="multiple_slotbooking_limit" class="d-block"> <?php echo translate('multiple_slotbooking_limit'); ?> <small class="required">*</small></label>
@@ -342,8 +344,8 @@ $id = (set_value("id")) ? set_value("id") : (!empty($event_data) ? $event_data['
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <label style="color: #757575;" > <?php echo translate('type'); ?> <small class="required">*</small></label>
-                                                    <div class="form-group form-inline">
+                                                    <label style="color: #757575;" ><?php echo translate('type'); ?><small class="required">*</small></label>
+                                                    <div class="form-group">
                                                         <?php
                                                         $free = $paid = '';
                                                         if ($payment_type == "P") {
@@ -352,13 +354,13 @@ $id = (set_value("id")) ? set_value("id") : (!empty($event_data) ? $event_data['
                                                             $free = "checked";
                                                         }
                                                         ?>
-                                                        <div class="form-group">
-                                                            <input tabindex="21" name='payment_type' value="F" type='radio' id='free'   <?php echo $free; ?>>
-                                                            <label for="free"><?php echo translate('free'); ?></label>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="payment_type" id="free" value="F" <?php echo $free; ?>>
+                                                            <label class="form-check-label" for="free"><?php echo translate('free'); ?></label>
                                                         </div>
-                                                        <div class="form-group">
-                                                            <input tabindex="22" name='payment_type' type='radio'  value='P' id='paid'  <?php echo $paid; ?>>
-                                                            <label for='paid'><?php echo translate('paid'); ?></label>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="payment_type" id="paid"  value='P' <?php echo $paid; ?>>
+                                                            <label class="form-check-label" for="paid"><?php echo translate('paid'); ?></label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -409,8 +411,8 @@ $id = (set_value("id")) ? set_value("id") : (!empty($event_data) ? $event_data['
                                                 <div class="col-md-6">
                                                     <?php echo translate('media'); ?> <?php echo translate('information'); ?>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <button type="button" class="pull-right btn blue-gradient waves-effect success-color btn-sm float-right" onclick="get_more_image(this);"><i class="fa fa-plus-square-o mr-10"></i><?php echo translate('more'); ?></button>
+                                                <div class="col-md-6" style="text-align: right">
+                                                    <button type="button" class="btn btn-info btn-sm" onclick="get_more_image(this);"><i class="fa fa-plus-square-o mr-10"></i><?php echo translate('more'); ?></button>
                                                 </div>
                                             </div>
 
@@ -420,7 +422,7 @@ $id = (set_value("id")) ? set_value("id") : (!empty($event_data) ? $event_data['
                                                 <?php if (isset($imageArr) && count($imageArr) > 0) { ?>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="image"> <?php echo translate('event_image_preview'); ?></label><br>
+                                                            <label for="image"><?php echo translate('event_image_preview'); ?></label><br>
                                                             <ul class="list-inline inline-ul" id="images_ul">
                                                                 <?php
                                                                 foreach ($imageArr as $value) {
@@ -457,8 +459,8 @@ $id = (set_value("id")) ? set_value("id") : (!empty($event_data) ? $event_data['
                                                 <div class="col-md-6">
                                                     <?php echo translate('faqs'); ?>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <button type="button" class="pull-right btn blue-gradient waves-effect success-color btn-sm float-right" onclick="add_more_faq(this);"><i class="fa fa-plus-square-o mr-10"></i><?php echo translate('more'); ?></button>
+                                                <div class="col-md-6" style="text-align: right">
+                                                    <button type="button" class="btn btn-info btn-sm " onclick="add_more_faq(this);"><i class="fa fa-plus-square-o mr-10"></i><?php echo translate('more'); ?></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -532,6 +534,7 @@ $id = (set_value("id")) ? set_value("id") : (!empty($event_data) ? $event_data['
                                                         <input tabindex="29" autocomplete="off"  type="text" placeholder="<?php echo translate('seo_keyword'); ?>" id="seo_keyword" name="seo_keyword" value="<?php echo $seo_keyword; ?>" class="form-control">
                                                     </div>
                                                 </div>
+
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="seo_description"> <?php echo translate('seo_description'); ?></label>
@@ -539,12 +542,14 @@ $id = (set_value("id")) ? set_value("id") : (!empty($event_data) ? $event_data['
                                                         <?php echo form_error('seo_description'); ?>
                                                     </div>
                                                 </div>
+
                                                 <div class="col-md-4">
                                                     <div class="form-group" id="image-data">
                                                         <label for="image"> <?php echo translate('seo_og_image'); ?></label>
                                                         <input tabindex="31" type="file" id="image" name="seo_og_image" class="form-control">
                                                     </div>
                                                 </div>
+
                                                 <?php if ($seo_og_image != '') { ?>
                                                     <div class="col-md-6">
                                                         <ul class="list-inline inline-ul" id="images_ul">
@@ -555,18 +560,13 @@ $id = (set_value("id")) ? set_value("id") : (!empty($event_data) ? $event_data['
                                                         </ul>
                                                     </div>
                                                 <?php } ?>
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="row mt-4">
-
-                            </div>
-
-
-
+                            <div class="row mt-4"></div>
                         </div>
                     </div>
                 </div>
@@ -577,8 +577,6 @@ $id = (set_value("id")) ? set_value("id") : (!empty($event_data) ? $event_data['
                     </div>
                 </div>
                 <?php echo form_close(); ?>
-
-
             </div>
         </div>
     </div>
@@ -638,7 +636,8 @@ $id = (set_value("id")) ? set_value("id") : (!empty($event_data) ? $event_data['
     }
 </script>
 <script src="<?php echo $this->config->item('js_url'); ?>module/service.js" type="text/javascript"></script>
-<script src="<?php echo $this->config->item('js_url'); ?>additional-method.js" type="text/javascript"></script>
+
+
 <?php
 if ($this->session->userdata('Type_' . ucfirst($this->uri->segment(1))) == 'V') {
     include VIEWPATH . 'vendor/footer.php';

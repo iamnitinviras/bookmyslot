@@ -138,7 +138,7 @@ function get_location(ci) {
                 $("#loadingmessage").show();
             },
             success: function (data) {
-                $('#location').html(data).material_select();
+                $('#location').html(data);
                 $("#loadingmessage").hide();
             }
         });
@@ -253,11 +253,13 @@ function calc_final_price(element) {
 $("#autocomplete").keyup(function () {
     $("#address_selection").val("0");
 });
+
 $("#autocomplete").focusout(function () {
     if ($("#address_selection").val() == 0) {
         $("#autocomplete").val("");
     }
 });
+
 var placeSearch, autocomplete;
 var componentForm = {
     street_number: 'short_name',
@@ -290,6 +292,7 @@ function fillInAddress() {
         }
     }
 }
+
 function geolocate() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {

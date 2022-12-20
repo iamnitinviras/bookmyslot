@@ -19,7 +19,7 @@ $id = (set_value("id")) ? set_value("id") : (!empty($package_data) ? $package_da
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="<?php echo base_url('admin/dashboard'); ?>"><?php echo translate('dashboard'); ?></a></li>
-                                        <li class="breadcrumb-item"><a href="<?php echo base_url('admin/dashboard'); ?>"><?php echo translate('dashboard'); ?></a></li>
+                                        <li class="breadcrumb-item"><a href="<?php echo base_url('admin/package'); ?>"><?php echo translate('package'); ?></a></li>
                                         <li class="breadcrumb-item active"><?php echo $title; ?></li>
                                     </ol>
                                 </div>
@@ -29,7 +29,7 @@ $id = (set_value("id")) ? set_value("id") : (!empty($package_data) ? $package_da
                     </div>
                 </div>
                 <?php
-                $form_url = 'admin/save-package';
+                $form_url = 'admin/package/save';
                 ?>
                 <?php
                 echo form_open_multipart($form_url, array('name' => 'PackageForm', 'id' => 'PackageForm'));
@@ -40,25 +40,25 @@ $id = (set_value("id")) ? set_value("id") : (!empty($package_data) ? $package_da
                         <div class="col-md-12 m-auto">
                             <?php $this->load->view('message'); ?>
 
-                            <div class="form-group">
+                            <div class="form-group mb-2">
                                 <label for="title"> <?php echo translate('title'); ?><small class="required">*</small></label>
                                 <input type="text" autocomplete="off" id="title" require name="title" value="<?php echo $title; ?>" class="form-control" placeholder="<?php echo translate('title'); ?>">
                                 <?php echo form_error('title'); ?>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group mb-2">
                                 <label for="title"> <?php echo translate('description'); ?><small class="required">*</small></label>
                                 <textarea id="description" require="" name="description" class="form-control" placeholder="<?php echo translate('description'); ?>"><?php echo $description; ?></textarea>
                                 <?php echo form_error('description'); ?>
                             </div>
 
-                            <div class="form-group">
-                                <label for="price"> <?php echo translate('price'); ?> <small class="required">*</small></label>
+                            <div class="form-group mb-2">
+                                <label for="price"><?php echo translate('price'); ?><small class="required">*</small></label>
                                 <input type="number" autocomplete="off" require placeholder="<?php echo translate('price'); ?>" id="price" name="price" min="1" value="<?php echo $price; ?>" class="form-control">
                                 <?php echo form_error('price'); ?>
                             </div>
 
-                            <div class="form-group">
-                                <label for="package_month"> <?php echo translate('validity'); ?> <small class="required">*(Number of month)</small></label>
+                            <div class="form-group mb-2">
+                                <label for="package_month"><?php echo translate('validity'); ?><small class="required">*(Number of month)</small></label>
                                 <input type="number" autocomplete="off" require placeholder="<?php echo translate('validity'); ?>" id="package_month" name="package_month" min="1" max="12" value="<?php echo $package_month; ?>" class="form-control">
                                 <?php echo form_error('package_month'); ?>
                             </div>
