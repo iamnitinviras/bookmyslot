@@ -9,7 +9,7 @@ class Model_front extends CI_Model {
 
     public function __construct() {
         parent::__construct();
-        $this->main_table = "app_admin";
+        $this->main_table = "app_users";
         $this->primary_key = "id";
         $this->Per_Page = get_site_setting('display_record_per_page');
     }
@@ -17,7 +17,7 @@ class Model_front extends CI_Model {
     function msg_vendor_data($vendor_id) {
         $this->db->select('profile_image,first_name,last_name,id');
         $this->db->where('id', $vendor_id);
-        $res = $this->db->get('app_admin')->result_array();
+        $res = $this->db->get('app_users')->result_array();
         return $res;
     }
 
@@ -40,8 +40,8 @@ class Model_front extends CI_Model {
     }
 
     function message_vendor_list($customer_id) {
-        $this->db->select('app_chat_master.*,app_admin.profile_image,app_admin.first_name,app_admin.last_name,app_admin.id as vendor_id');
-        $this->db->join('app_admin', 'app_admin.id=app_chat_master.vendor_id');
+        $this->db->select('app_chat_master.*,app_users.profile_image,app_users.first_name,app_users.last_name,app_users.id as vendor_id');
+        $this->db->join('app_users', 'app_users.id=app_chat_master.vendor_id');
         $this->db->where('app_chat_master.customer_id', $customer_id);
         $res = $this->db->get('app_chat_master')->result_array();
         return $res;
@@ -201,7 +201,7 @@ class Model_front extends CI_Model {
                 ON
                     cm.from_id = u.id
                 LEFT JOIN
-                    app_admin AS a
+                    app_users AS a
                 ON
                     cm.from_id = a.id
                     

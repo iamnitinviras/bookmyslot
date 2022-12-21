@@ -81,7 +81,7 @@ class Customer extends MY_Controller {
         $this->form_validation->set_rules('first_name', 'First Name', 'required');
         $this->form_validation->set_rules('last_name', 'Last Name', 'required');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[app_customer.email.id.' . $user_id . ']');
-        $this->form_validation->set_rules('phone', 'Phone', 'is_unique[app_admin.phone.id.' . $user_id . ']');
+        $this->form_validation->set_rules('phone', 'Phone', 'is_unique[app_users.phone.id.' . $user_id . ']');
         $this->form_validation->set_message('required', translate('required_message'));
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
         if ($this->form_validation->run() == false) {
@@ -163,17 +163,17 @@ class Customer extends MY_Controller {
                 'jointype' => 'left'
             ),
             array(
-                'table' => 'app_admin',
-                'condition' => 'app_admin.id=app_event.created_by',
+                'table' => 'app_users',
+                'condition' => 'app_users.id=app_event.created_by',
                 'jointype' => 'left'
             )
         );
 
         $s_condition = "app_event.type = 'S' AND app_event_book.customer_id=" . $id;
-        $appointment = $this->model_customer->getData("app_event_book", "app_event_book.*,app_admin.id as aid ,app_event_book.price as final_price,app_admin.company_name,app_event.title,app_location.loc_title,app_city.city_title,app_event_category.title as category_title,app_customer.first_name,app_customer.last_name,app_customer.phone,app_event.price,app_admin.first_name,app_admin.last_name,app_admin.company_name,app_event.image,app_event.description as event_description, app_event.payment_type", $s_condition, $join);
+        $appointment = $this->model_customer->getData("app_event_book", "app_event_book.*,app_users.id as aid ,app_event_book.price as final_price,app_users.company_name,app_event.title,app_location.loc_title,app_city.city_title,app_event_category.title as category_title,app_customer.first_name,app_customer.last_name,app_customer.phone,app_event.price,app_users.first_name,app_users.last_name,app_users.company_name,app_event.image,app_event.description as event_description, app_event.payment_type", $s_condition, $join);
         $data['service_appointment_data'] = $appointment;
         $e_condition = "app_event.type = 'E' AND app_event_book.customer_id=" . $id;
-        $e_appointment = $this->model_customer->getData("app_event_book", "app_event_book.*,app_admin.id as aid ,app_event_book.price as final_price,app_admin.company_name,app_event.title,app_location.loc_title,app_city.city_title,app_event_category.title as category_title,app_customer.first_name,app_customer.last_name,app_customer.phone,app_event.price,app_admin.first_name,app_admin.last_name,app_admin.company_name,app_event.image,app_event.description as event_description, app_event.payment_type", $e_condition, $join);
+        $e_appointment = $this->model_customer->getData("app_event_book", "app_event_book.*,app_users.id as aid ,app_event_book.price as final_price,app_users.company_name,app_event.title,app_location.loc_title,app_city.city_title,app_event_category.title as category_title,app_customer.first_name,app_customer.last_name,app_customer.phone,app_event.price,app_users.first_name,app_users.last_name,app_users.company_name,app_event.image,app_event.description as event_description, app_event.payment_type", $e_condition, $join);
         $data['event_appointment_data'] = $e_appointment;
         $this->load->view('admin/customer/booking', $data);
     }
@@ -207,14 +207,14 @@ class Customer extends MY_Controller {
                 'jointype' => 'left'
             ),
             array(
-                'table' => 'app_admin',
-                'condition' => 'app_admin.id=app_event.created_by',
+                'table' => 'app_users',
+                'condition' => 'app_users.id=app_event.created_by',
                 'jointype' => 'left'
             )
         );
 
         $e_condition = "app_event_book.id=" . $id;
-        $event_data = $this->model_customer->getData("app_event_book", "app_event_book.* ,app_event_book.price as final_price,app_event.title as Event_title,app_location.loc_title,app_city.city_title,app_event_category.title as category_title,CONCAT(app_customer.first_name,' ',app_customer.last_name) as Customer_name,app_customer.phone as Customer_phone,app_customer.email as Customer_email,app_event.price,app_admin.company_name,app_event.description as Event_description, app_event.payment_type", $e_condition, $join);
+        $event_data = $this->model_customer->getData("app_event_book", "app_event_book.* ,app_event_book.price as final_price,app_event.title as Event_title,app_location.loc_title,app_city.city_title,app_event_category.title as category_title,CONCAT(app_customer.first_name,' ',app_customer.last_name) as Customer_name,app_customer.phone as Customer_phone,app_customer.email as Customer_email,app_event.price,app_users.company_name,app_event.description as Event_description, app_event.payment_type", $e_condition, $join);
         $data['event_data'] = $event_data;
         $this->load->view('admin/customer/view_booking_details', $data);
     }

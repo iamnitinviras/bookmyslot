@@ -368,10 +368,10 @@ class Content extends CI_Controller {
     public function vendor_register_save() {
         $this->form_validation->set_rules('first_name', '', 'required');
         $this->form_validation->set_rules('last_name', '', 'required');
-        $this->form_validation->set_rules('email', '', 'required|is_unique[app_admin.email]');
+        $this->form_validation->set_rules('email', '', 'required|is_unique[app_users.email]');
         $this->form_validation->set_rules('password', '', 'required');
         $this->form_validation->set_rules('company', '', 'required');
-        $this->form_validation->set_rules('phone', '', 'required|is_unique[app_admin.phone]');
+        $this->form_validation->set_rules('phone', '', 'required|is_unique[app_users.phone]');
         $this->form_validation->set_rules('address', '', 'required');
         $this->form_validation->set_message('required', translate('required_message'));
         $this->form_validation->set_error_delimiters('<div class = "error"> ', '</div>');
@@ -392,7 +392,7 @@ class Content extends CI_Controller {
                 'created_on' => date("Y-m-d H:i:s")
             );
 
-            $insert_id = $this->model_customer->insert("app_admin", $data);
+            $insert_id = $this->model_customer->insert("app_users", $data);
             $this->vendor_verify_resend($insert_id);
         }
     }
@@ -400,10 +400,10 @@ class Content extends CI_Controller {
     public function verify_vendor($encid, $encemail) {
         $id = (int) $this->general->decryptData($encid);
         $email = $this->general->decryptData($encemail);
-        $vendor_data = $this->model_customer->getData("app_admin", "*", "id='" . $id . "' AND email='" . $email . "'");
+        $vendor_data = $this->model_customer->getData("app_users", "*", "id='" . $id . "' AND email='" . $email . "'");
         if (count($vendor_data) > 0) {
             if ($vendor_data[0]['status'] == 'P') {
-                $this->model_customer->update('app_admin', array('profile_status' => 'N', 'status' => 'A'), "id='$id'");
+                $this->model_customer->update('app_users', array('profile_status' => 'N', 'status' => 'A'), "id='$id'");
                 $this->session->set_flashdata('msg_class', "success");
                 $this->session->set_flashdata('msg', translate('account_verify_success'));
                 redirect('vendor/login');
@@ -420,11 +420,11 @@ class Content extends CI_Controller {
     }
 
     public function vendor_verify_resend($id) {
-        $vendor_result = $this->model_customer->getData('app_admin', '*', "id='$id' AND profile_status='N'");
+        $vendor_result = $this->model_customer->getData('app_users', '*', "id='$id' AND profile_status='N'");
 
         if (count($vendor_result) > 0) {
 
-            $this->model_customer->update('app_admin', array('created_on' => date("Y-m-d H:i:s")), "id='$id'");
+            $this->model_customer->update('app_users', array('created_on' => date("Y-m-d H:i:s")), "id='$id'");
 
             $encid = $this->general->encryptData($id);
             $encemail = $this->general->encryptData($vendor_result[0]['email']);
@@ -455,9 +455,9 @@ class Content extends CI_Controller {
         $email = $this->input->post('email');
         $id = $this->input->post('id');
         if ($id && $id > 0) {
-            $check_title = $this->model_customer->getData("app_admin", "email", "email='$email' AND id != " . $id);
+            $check_title = $this->model_customer->getData("app_users", "email", "email='$email' AND id != " . $id);
         } else {
-            $check_title = $this->model_customer->getData("app_admin", "email", "email='$email'");
+            $check_title = $this->model_customer->getData("app_users", "email", "email='$email'");
         }
         if (isset($check_title) && count($check_title) > 0) {
             echo "false";
@@ -472,9 +472,9 @@ class Content extends CI_Controller {
         $phone = $this->input->post('phone');
         $id = $this->input->post('id');
         if ($id && $id > 0) {
-            $check_title = $this->model_customer->getData("app_admin", "phone", "phone='$phone' AND id != " . $id);
+            $check_title = $this->model_customer->getData("app_users", "phone", "phone='$phone' AND id != " . $id);
         } else {
-            $check_title = $this->model_customer->getData("app_admin", "phone", "phone='$phone'");
+            $check_title = $this->model_customer->getData("app_users", "phone", "phone='$phone'");
         }
         if (isset($check_title) && count($check_title) > 0) {
             echo "false";
@@ -594,11 +594,11 @@ class Content extends CI_Controller {
     public function appointment_payment_details($id = FALSE) {
         if ($id) {
             $fields = "";
-            $fields .= "app_event_book.staff_id,app_event_book.event_booked_seat,app_event_book.addons_id,app_appointment_payment.*,CONCAT(app_admin.first_name,' ',app_admin.last_name) as vendor_name,app_admin.company_name,app_event.type as event_type,app_event.title as event_name,CONCAT(app_customer.first_name,' ',app_customer.last_name) as customer_name";
+            $fields .= "app_event_book.staff_id,app_event_book.event_booked_seat,app_event_book.addons_id,app_appointment_payment.*,CONCAT(app_users.first_name,' ',app_users.last_name) as vendor_name,app_users.company_name,app_event.type as event_type,app_event.title as event_name,CONCAT(app_customer.first_name,' ',app_customer.last_name) as customer_name";
             $join = array(
                 array(
-                    "table" => "app_admin",
-                    "condition" => "app_admin.id=app_appointment_payment.vendor_id",
+                    "table" => "app_users",
+                    "condition" => "app_users.id=app_appointment_payment.vendor_id",
                     "jointype" => "INNER"),
                 array(
                     "table" => "app_event",
@@ -625,11 +625,11 @@ class Content extends CI_Controller {
     public function event_payment_details($id = FALSE) {
         if ($id) {
             $fields = "";
-            $fields .= "app_event_book.staff_id,app_event_book.event_booked_seat,app_event_book.addons_id,app_appointment_payment.*,CONCAT(app_admin.first_name,' ',app_admin.last_name) as vendor_name,app_admin.company_name,app_event.type as event_type,app_event.title as event_name,CONCAT(app_customer.first_name,' ',app_customer.last_name) as customer_name";
+            $fields .= "app_event_book.staff_id,app_event_book.event_booked_seat,app_event_book.addons_id,app_appointment_payment.*,CONCAT(app_users.first_name,' ',app_users.last_name) as vendor_name,app_users.company_name,app_event.type as event_type,app_event.title as event_name,CONCAT(app_customer.first_name,' ',app_customer.last_name) as customer_name";
             $join = array(
                 array(
-                    "table" => "app_admin",
-                    "condition" => "app_admin.id=app_appointment_payment.vendor_id",
+                    "table" => "app_users",
+                    "condition" => "app_users.id=app_appointment_payment.vendor_id",
                     "jointype" => "INNER"),
                 array(
                     "table" => "app_event",

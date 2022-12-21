@@ -26,7 +26,7 @@ class Dashboard extends MY_Controller {
         $commission_percentage = get_site_setting('commission_percentage');
         $package_id = $this->model_event->get_current_membership($vendor_id);
         $data['total_event'] = $this->model_dashboard->Totalcount('app_event', "created_by='$vendor_id' AND type='E'");
-        $data['vendor_staff'] = $this->model_dashboard->Totalcount('app_admin', "created_by='$vendor_id' AND type='S'");
+        $data['vendor_staff'] = $this->model_dashboard->Totalcount('app_users', "created_by='$vendor_id' AND type='S'");
         $data['total_service'] = $this->model_dashboard->Totalcount('app_event', "created_by='$vendor_id' AND type='S'");
         $data['total_appointment'] = $this->model_dashboard->vendor_total_appointment($vendor_id);
 
@@ -79,7 +79,7 @@ class Dashboard extends MY_Controller {
         $Vendor_ID = $this->session->userdata('Vendor_ID');
         if (isset($Vendor_ID) && $Vendor_ID > 0) {
             $minimum_vendor_payout = get_site_setting('minimum_vendor_payout');
-            $total = $this->model_dashboard->getData('app_admin', 'my_wallet,my_earning', "id = " . $Vendor_ID)[0];
+            $total = $this->model_dashboard->getData('app_users', 'my_wallet,my_earning', "id = " . $Vendor_ID)[0];
             $data['payment_data'] = $this->model_dashboard->getData("app_payment_request", '*', "vendor_id=" . $Vendor_ID, '', "id desc");
             $data['minimum_vendor_payout'] = $minimum_vendor_payout;
             $data['total_earning'] = isset($total['my_wallet']) ? $total['my_wallet'] : "";
@@ -97,7 +97,7 @@ class Dashboard extends MY_Controller {
             $get_VendorDetails = get_VendorDetails($Vendor_ID);
 
             $minimum_vendor_payout = get_site_setting('minimum_vendor_payout');
-            $vendor_wallet = $this->model_dashboard->getData("app_admin", 'my_wallet,my_earning', "id=" . $Vendor_ID);
+            $vendor_wallet = $this->model_dashboard->getData("app_users", 'my_wallet,my_earning', "id=" . $Vendor_ID);
             if (isset($vendor_wallet[0]['my_earning']) && $vendor_wallet[0]['my_earning'] > 0) {
                 $my_wallet = $this->input->post('payout_amount');
 
@@ -124,12 +124,12 @@ class Dashboard extends MY_Controller {
                         $id = $this->db->insert_ID();
                         if ($id) {
 
-                            $this->db->query("UPDATE app_admin SET my_earning=my_earning-" . $my_wallet . ",cash_payment=0,my_wallet=my_wallet-" . $my_wallet . " WHERE id=" . $Vendor_ID);
+                            $this->db->query("UPDATE app_users SET my_earning=my_earning-" . $my_wallet . ",cash_payment=0,my_wallet=my_wallet-" . $my_wallet . " WHERE id=" . $Vendor_ID);
                             $this->session->set_flashdata('msg', translate('payout_request_success'));
                             $this->session->set_flashdata('msg_class', 'success');
 
                             //Send email to admin
-                            $admin_data = $this->model_dashboard->getData("app_admin", '*', "type='A'");
+                            $admin_data = $this->model_dashboard->getData("app_users", '*', "type='A'");
                             $subject = get_CompanyName() . " | " . translate('payout_request');
 
                             foreach ($admin_data as $val):
@@ -191,12 +191,12 @@ class Dashboard extends MY_Controller {
 
 
                 if ($payment_method == "Cash") {
-                    $up_qry_vendor1 = $this->db->query("UPDATE app_admin SET cash_payment=cash_payment+" . $admin_amount . " WHERE id=" . $Vendor_ID);
-                    $up_qry_vendor = $this->db->query("UPDATE app_admin SET my_wallet=my_wallet+" . $vendor_amount . " WHERE id=" . $Vendor_ID);
+                    $up_qry_vendor1 = $this->db->query("UPDATE app_users SET cash_payment=cash_payment+" . $admin_amount . " WHERE id=" . $Vendor_ID);
+                    $up_qry_vendor = $this->db->query("UPDATE app_users SET my_wallet=my_wallet+" . $vendor_amount . " WHERE id=" . $Vendor_ID);
                 } else {
-                    $up_qry_vendor = $this->db->query("UPDATE app_admin SET my_earning=my_earning+" . $vendor_amount . ",my_wallet=my_wallet+" . $vendor_amount . " WHERE id=" . $Vendor_ID);
+                    $up_qry_vendor = $this->db->query("UPDATE app_users SET my_earning=my_earning+" . $vendor_amount . ",my_wallet=my_wallet+" . $vendor_amount . " WHERE id=" . $Vendor_ID);
                 }
-                $up_qry_admin = $this->db->query("UPDATE app_admin SET my_wallet=my_wallet+" . $admin_amount . " WHERE id=1");
+                $up_qry_admin = $this->db->query("UPDATE app_users SET my_wallet=my_wallet+" . $admin_amount . " WHERE id=1");
 
                 $this->session->set_flashdata('msg', translate('status_update'));
                 $this->session->set_flashdata('msg_class', 'success');
@@ -218,11 +218,11 @@ class Dashboard extends MY_Controller {
 
     public function contact_us() {
         $Vendor_ID = $this->session->userdata('Vendor_ID');
-        $fields = "app_contact_us.*,CONCAT(app_admin.first_name,' ',app_admin.last_name) as vendor_name,app_event.title as event_name";
+        $fields = "app_contact_us.*,CONCAT(app_users.first_name,' ',app_users.last_name) as vendor_name,app_event.title as event_name";
         $join = array(
             array(
-                "table" => "app_admin",
-                "condition" => "app_admin.id=app_contact_us.admin_id",
+                "table" => "app_users",
+                "condition" => "app_users.id=app_contact_us.admin_id",
                 "jointype" => "INNER"),
             array(
                 "table" => "app_event",

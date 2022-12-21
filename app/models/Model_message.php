@@ -145,7 +145,7 @@ class Model_message extends CI_Model {
                 ON
                     cm.from_id = u.id
                 LEFT JOIN
-                    app_admin AS a
+                    app_users AS a
                 ON
                     cm.from_id = a.id
                     

@@ -9,7 +9,7 @@ class Model_staff extends CI_Model {
 
     public function __construct() {
         parent::__construct();
-        $this->main_table = "app_admin";
+        $this->main_table = "app_users";
         $this->primary_key = "id";
     }
 

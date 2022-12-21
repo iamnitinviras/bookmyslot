@@ -83,7 +83,7 @@
         $admin_id = (int) $this->session->userdata('Vendor_ID');
         $this->db->select('my_wallet as total');
         $this->db->where('id', $admin_id);
-        $my_wallet = $this->db->get('app_admin')->row_array();
+        $my_wallet = $this->db->get('app_users')->row_array();
         ?>
         <!-- Start Topbar -->
         <nav class="nav navbar py-3 white">

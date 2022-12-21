@@ -9,7 +9,7 @@ class Model_dashboard extends CI_Model {
 
     public function __construct() {
         parent::__construct();
-        $this->main_table = "app_admin";
+        $this->main_table = "app_users";
         $this->primary_key = "id";
     }
 
@@ -37,7 +37,7 @@ class Model_dashboard extends CI_Model {
     function total_my_wallet($login_id) {
         $this->db->select('my_wallet as total');
         $this->db->where('id', $login_id);
-        $res = $this->db->get('app_admin')->result_array();
+        $res = $this->db->get('app_users')->result_array();
         return isset($res) && count($res) > 0 && (int) $res[0]['total'] > 0 ? $res[0]['total'] : 0;
     }
 

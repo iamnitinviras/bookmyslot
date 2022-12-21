@@ -276,7 +276,7 @@ $get_current_currency = get_current_currency();
                                     </div>
                                     <div class="user_details-info">
                                         <p class="user-name"><?php echo trim($event_data['company_name']); ?></p>
-                                        <small><?php echo translate('last_seen') ?> : <?php echo get_last_seen($event_data['app_admin_id']); ?></small>
+                                        <small><?php echo translate('last_seen') ?> : <?php echo get_last_seen($event_data['app_users_id']); ?></small>
                                         <?php if (isset($event_data['fb_link']) || isset($event_data['twitter_link']) || isset($event_data['google_link'])) { ?>
                                             <div class="social_icon">
                                                 <ul class="list-inline inline-ul">
@@ -291,7 +291,7 @@ $get_current_currency = get_current_currency();
                                             </div>
                                         <?php } ?>
                                         <div class="gobtn">
-                                            <a class="btn text-capitalize" href="<?php echo base_url('v/' . slugify(trim($event_data['company_name'])) . '/' . $event_data['app_admin_id']); ?>"><?php echo translate('view') . " " . translate('organizer') . " " . translate('profile'); ?></a>
+                                            <a class="btn text-capitalize" href="<?php echo base_url('v/' . slugify(trim($event_data['company_name'])) . '/' . $event_data['app_users_id']); ?>"><?php echo translate('view') . " " . translate('organizer') . " " . translate('profile'); ?></a>
                                         </div>
                                     </div>
                                 </div>

@@ -13,9 +13,9 @@ class Model_membership extends CI_Model {
         $this->primary_key = "id";
     }
     function get_package_history($vendor_id = NULL, $package_id = NULL) {
-        $this->db->select('app_package.*,app_membership_history.id as app_membership_id,app_membership_history.membership_till,app_membership_history.remaining_event,app_membership_history.status as membership_status,app_admin.first_name,app_admin.last_name');
+        $this->db->select('app_package.*,app_membership_history.id as app_membership_id,app_membership_history.membership_till,app_membership_history.remaining_event,app_membership_history.status as membership_status,app_users.first_name,app_users.last_name');
         $this->db->join('app_package', 'app_package.id=app_membership_history.package_id', 'left');
-        $this->db->join('app_admin', 'app_admin.id=app_membership_history.customer_id', 'left');
+        $this->db->join('app_users', 'app_users.id=app_membership_history.customer_id', 'left');
         $this->db->order_by('app_membership_history.created_on DESC');
         if (!is_null($vendor_id)) {
             $this->db->where('customer_id', $vendor_id);

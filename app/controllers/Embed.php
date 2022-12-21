@@ -15,7 +15,7 @@ class Embed extends CI_Controller {
     }
 
     public function check_token($token) {
-        $token_user_Res = $this->model_front->getData('app_admin', '*', 'token="' . $token . '"');
+        $token_user_Res = $this->model_front->getData('app_users', '*', 'token="' . $token . '"');
         if (isset($token_user_Res) && count($token_user_Res) > 0) {
             return $token_user_Res[0];
         } else {
@@ -50,15 +50,15 @@ class Embed extends CI_Controller {
                 'jointype' => 'left'
             ),
             array(
-                'table' => 'app_admin',
-                'condition' => 'app_admin.id=app_event.created_by',
+                'table' => 'app_users',
+                'condition' => 'app_users.id=app_event.created_by',
                 'jointype' => 'left'
             ),
         );
         $cond = 'app_event.status="A" AND app_event.type="S" AND app_event.created_by = ' . $user_id;
         $select = 'app_event.*,';
-        $select .= 'app_event.id as event_id,app_event_category.title as category_title,app_city.city_title, app_location.loc_title,app_admin.profile_image, app_admin.first_name,';
-        $select .= 'app_admin.first_name,app_admin.last_name,app_admin.company_name,app_admin.email,app_admin.profile_image';
+        $select .= 'app_event.id as event_id,app_event_category.title as category_title,app_city.city_title, app_location.loc_title,app_users.profile_image, app_users.first_name,';
+        $select .= 'app_users.first_name,app_users.last_name,app_users.company_name,app_users.email,app_users.profile_image';
         $total_service = $this->model_front->getData("app_event", $select, $cond, $join, '', 'app_event.id');
 
         $data['total_service'] = $total_service;
@@ -99,7 +99,7 @@ class Embed extends CI_Controller {
 
                 if (isset($event[0]['created_by']) && $event[0]['created_by'] > 0) {
                     $event_book = $this->model_front->getData("app_event_book", "id", "event_id='$event_id'");
-                    $admin_data = $this->model_front->getData("app_admin", "*", "id=" . $event[0]['created_by']);
+                    $admin_data = $this->model_front->getData("app_users", "*", "id=" . $event[0]['created_by']);
 
                     //all rating data
                     $rjoin = array(array(
@@ -167,12 +167,12 @@ class Embed extends CI_Controller {
                 'jointype' => 'left'
             ),
             array(
-                'table' => 'app_admin',
-                'condition' => 'app_admin.id=app_event.created_by',
+                'table' => 'app_users',
+                'condition' => 'app_users.id=app_event.created_by',
                 'jointype' => 'left'
             ),
         );
-        $select_value = "app_event.*,app_location.loc_title,app_city.city_title,app_event_category.title as category_title,app_admin.company_name";
+        $select_value = "app_event.*,app_location.loc_title,app_city.city_title,app_event_category.title as category_title,app_users.company_name";
         $event = $this->model_front->getData("app_event", $select_value, "app_event.id=" . $id . " AND app_event.type='S'", $join_data);
         if (!isset($event) || isset($event) && count($event) == 0) {
             $this->session->set_flashdata('msg_class', 'failure');
@@ -929,8 +929,8 @@ class Embed extends CI_Controller {
 
                                 $this->model_front->insert('app_appointment_payment', $data);
 
-                                $up_qry_vendor = $this->db->query("UPDATE app_admin SET my_earning=my_earning+" . $vendor_amount . ",my_wallet=my_wallet+" . $vendor_amount . " WHERE id=" . $service_data['created_by']);
-                                $up_qry_admin = $this->db->query("UPDATE app_admin SET my_wallet=my_wallet+" . $admin_amount . " WHERE id=1");
+                                $up_qry_vendor = $this->db->query("UPDATE app_users SET my_earning=my_earning+" . $vendor_amount . ",my_wallet=my_wallet+" . $vendor_amount . " WHERE id=" . $service_data['created_by']);
+                                $up_qry_admin = $this->db->query("UPDATE app_users SET my_wallet=my_wallet+" . $admin_amount . " WHERE id=1");
 
                                 $transaction = true;
 
@@ -1187,8 +1187,8 @@ class Embed extends CI_Controller {
             $app_event_book['payment_status'] = 'S';
             $this->model_front->update('app_event_book', $app_event_book, "id=" . $booking_id);
 
-            $up_qry_vendor = $this->db->query("UPDATE app_admin SET my_earning=my_earning+" . $vendor_amount . ",my_wallet=my_wallet+" . $vendor_amount . " WHERE id=" . $service_data['created_by']);
-            $up_qry_admin = $this->db->query("UPDATE app_admin SET my_wallet=my_wallet+" . $admin_amount . " WHERE id=1");
+            $up_qry_vendor = $this->db->query("UPDATE app_users SET my_earning=my_earning+" . $vendor_amount . ",my_wallet=my_wallet+" . $vendor_amount . " WHERE id=" . $service_data['created_by']);
+            $up_qry_admin = $this->db->query("UPDATE app_users SET my_wallet=my_wallet+" . $admin_amount . " WHERE id=1");
 
             //Send email to customer
             $name = ($customer[0]['first_name']) . " " . ($customer[0]['last_name']);
@@ -1369,7 +1369,7 @@ class Embed extends CI_Controller {
             }
         }
         //get vendor data
-        $token_user_Res = $this->model_front->getData('app_admin', '*', 'token="' . $token . '"');
+        $token_user_Res = $this->model_front->getData('app_users', '*', 'token="' . $token . '"');
         if (isset($token_user_Res) && !empty($token_user_Res)) {
             foreach ($token_user_Res as $tRow) {
                 $user_id = $tRow['id'];
@@ -1391,15 +1391,15 @@ class Embed extends CI_Controller {
                     'jointype' => 'left'
                 ),
                 array(
-                    'table' => 'app_admin',
-                    'condition' => 'app_admin.id=app_event.created_by',
+                    'table' => 'app_users',
+                    'condition' => 'app_users.id=app_event.created_by',
                     'jointype' => 'left'
                 ),
             );
             $cond = 'app_event.status="A" AND app_event.type="E" AND app_event.created_by = ' . $user_id;
             $select = 'app_event.*,';
-            $select .= 'app_event.id as event_id,app_event_category.title as category_title,app_city.city_title, app_location.loc_title,app_admin.profile_image, app_admin.first_name,';
-            $select .= 'app_admin.first_name,app_admin.last_name,app_admin.company_name,app_admin.email,app_admin.profile_image';
+            $select .= 'app_event.id as event_id,app_event_category.title as category_title,app_city.city_title, app_location.loc_title,app_users.profile_image, app_users.first_name,';
+            $select .= 'app_users.first_name,app_users.last_name,app_users.company_name,app_users.email,app_users.profile_image';
             $total_events = $this->model_front->getData("app_event", $select, $cond, $join, '', 'app_event.id');
 
             $data['total_events'] = $total_events;
@@ -1445,8 +1445,8 @@ class Embed extends CI_Controller {
                     'jointype' => 'left'
                 ),
                 array(
-                    'table' => 'app_admin',
-                    'condition' => 'app_admin.id=app_event.created_by',
+                    'table' => 'app_users',
+                    'condition' => 'app_users.id=app_event.created_by',
                     'jointype' => 'left'
                 ),
                 array(
@@ -1456,7 +1456,7 @@ class Embed extends CI_Controller {
                 )
             );
 
-            $event = $this->model_front->getData("app_event", "app_event.*,app_location.loc_title,app_city.city_title,app_event_category.title as category_title,app_admin.id as app_admin_id, app_admin.first_name, app_admin.last_name, app_admin.email,app_admin.phone, app_admin.profile_image,app_admin.google_link, app_admin.twitter_link, app_admin.fb_link, app_admin.instagram_link, app_admin.company_name, app_admin.website, app_event_sponsor.sponsor_name,app_event_sponsor.website_link, app_event_sponsor.sponsor_image, app_event_sponsor.id as sid", "app_event.id=" . $event_id . " AND app_event.type='E'", $join);
+            $event = $this->model_front->getData("app_event", "app_event.*,app_location.loc_title,app_city.city_title,app_event_category.title as category_title,app_users.id as app_users_id, app_users.first_name, app_users.last_name, app_users.email,app_users.phone, app_users.profile_image,app_users.google_link, app_users.twitter_link, app_users.fb_link, app_users.instagram_link, app_users.company_name, app_users.website, app_event_sponsor.sponsor_name,app_event_sponsor.website_link, app_event_sponsor.sponsor_image, app_event_sponsor.id as sid", "app_event.id=" . $event_id . " AND app_event.type='E'", $join);
 
             if (isset($event) && count($event) > 0) {
                 if (isset($event[0]['created_by']) && $event[0]['created_by'] > 0) {
@@ -1889,8 +1889,8 @@ class Embed extends CI_Controller {
 
                                 $this->model_front->insert('app_appointment_payment', $data);
 
-                                $up_qry_vendor = $this->db->query("UPDATE app_admin SET my_earning=my_earning+" . $vendor_amount . ",my_wallet=my_wallet+" . $vendor_amount . " WHERE id=" . $event_data['created_by']);
-                                $up_qry_admin = $this->db->query("UPDATE app_admin SET my_wallet=my_wallet+" . $admin_amount . " WHERE id=1");
+                                $up_qry_vendor = $this->db->query("UPDATE app_users SET my_earning=my_earning+" . $vendor_amount . ",my_wallet=my_wallet+" . $vendor_amount . " WHERE id=" . $event_data['created_by']);
+                                $up_qry_admin = $this->db->query("UPDATE app_users SET my_wallet=my_wallet+" . $admin_amount . " WHERE id=1");
 
                                 $transaction = true;
 
@@ -2143,8 +2143,8 @@ class Embed extends CI_Controller {
             $app_event_book['payment_status'] = 'S';
             $this->model_front->update('app_event_book', $app_event_book, "id=" . $booking_id);
 
-            $up_qry_vendor = $this->db->query("UPDATE app_admin SET my_earning=my_earning+" . $vendor_amount . ",my_wallet=my_wallet+" . $vendor_amount . " WHERE id=" . $event_data['created_by']);
-            $up_qry_admin = $this->db->query("UPDATE app_admin SET my_wallet=my_wallet+" . $admin_amount . " WHERE id=1");
+            $up_qry_vendor = $this->db->query("UPDATE app_users SET my_earning=my_earning+" . $vendor_amount . ",my_wallet=my_wallet+" . $vendor_amount . " WHERE id=" . $event_data['created_by']);
+            $up_qry_admin = $this->db->query("UPDATE app_users SET my_wallet=my_wallet+" . $admin_amount . " WHERE id=1");
 
 
             $name = ($customer[0]['first_name']) . " " . ($customer[0]['last_name']);
@@ -2264,7 +2264,7 @@ class Embed extends CI_Controller {
             $ins_data['created_on'] = date("Y-m-d H:i:s");
             $ins_id = $this->model_front->insert('app_contact_us', $ins_data);
             if ($ins_id) {
-                $admin = $this->model_front->getData("app_admin", "first_name,last_name,email", "id=" . $created_by);
+                $admin = $this->model_front->getData("app_users", "first_name,last_name,email", "id=" . $created_by);
                 $subject = translate('contact-us') . " | " . $event_title;
 
                 $admin_name = ($admin[0]['first_name']) . " " . ($admin[0]['last_name']);

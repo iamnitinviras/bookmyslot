@@ -16,7 +16,7 @@ class Model_slider extends CI_Model {
     function get_current_membership($id) {
         $this->db->select('package_id');
         $this->db->where("id='$id' AND type='V'");
-        $res = $this->db->get('app_admin')->result_array();
+        $res = $this->db->get('app_users')->result_array();
         return isset($res) && count($res) > 0 ? $res[0]['package_id'] : 0;
     }
 

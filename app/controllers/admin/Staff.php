@@ -19,7 +19,7 @@ class Staff extends MY_Controller {
         $data['title'] = translate('manage') . " " . translate('staff');
         $created_by = $this->login_id;
         $order = "created_on DESC";
-        $staff = $this->model_customer->getData("app_admin", "*", "created_by=" . $created_by . " AND type='S'", "", $order);
+        $staff = $this->model_customer->getData("app_users", "*", "created_by=" . $created_by . " AND type='S'", "", $order);
         $data['staff_data'] = $staff;
         $this->load->view('admin/staff/index', $data);
     }
@@ -32,7 +32,7 @@ class Staff extends MY_Controller {
     public function update_staff($id) {
         $id = (int) $id;
         $cond = 'id=' . $id;
-        $staff = $this->model_customer->getData("app_admin", "*", $cond);
+        $staff = $this->model_customer->getData("app_users", "*", $cond);
 
         if (isset($staff) && count($staff) > 0) {
             $data['staff_data'] = $staff[0];
@@ -50,8 +50,8 @@ class Staff extends MY_Controller {
         $this->form_validation->set_rules('first_name', 'First Name', 'trim|required');
         $this->form_validation->set_rules('last_name', 'Last Name', 'trim|required');
         $this->form_validation->set_rules('designation', 'Designation', 'trim|required');
-        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[app_admin.email.id.' . $user_id . ']');
-        $this->form_validation->set_rules('phone', 'Phone', 'trim|is_unique[app_admin.phone.id.' . $user_id . ']');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[app_users.email.id.' . $user_id . ']');
+        $this->form_validation->set_rules('phone', 'Phone', 'trim|is_unique[app_users.phone.id.' . $user_id . ']');
         $this->form_validation->set_message('required', translate('required_message'));
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
         if ($this->form_validation->run() == false) {
@@ -90,13 +90,13 @@ class Staff extends MY_Controller {
             }
 
             if ($user_id > 0) {
-                $this->model_customer->update('app_admin', $data, 'id=' . $user_id);
+                $this->model_customer->update('app_users', $data, 'id=' . $user_id);
                 $this->session->set_flashdata('msg', translate('staff_update'));
                 $this->session->set_flashdata('msg_class', 'success');
             } else {
                 $name = (trim($this->input->post('first_name'))) . " " . (trim($this->input->post('last_name')));
                 $hidenuseremail = $this->input->post('email');
-                $this->model_customer->insert('app_admin', $data);
+                $this->model_customer->insert('app_users', $data);
 
                 $subject = translate('staff') . " | " . translate('account_registration');
                 $define_param['to_name'] = $name;
@@ -122,7 +122,7 @@ class Staff extends MY_Controller {
         if ($id == null) {
             $id = $this->uri->segment(2);
         }
-        $staff_data = $this->model_customer->getData("app_admin", "*", "id=" . $id);
+        $staff_data = $this->model_customer->getData("app_users", "*", "id=" . $id);
         if (isset($staff_data) && count($staff_data) > 0):
             $staff_check = $this->model_customer->getData("app_event_book", "*", "staff_id=" . $id);
 
@@ -132,7 +132,7 @@ class Staff extends MY_Controller {
                 echo 'false';
                 exit;
             } else {
-                $this->model_customer->delete('app_admin', 'id=' . $id);
+                $this->model_customer->delete('app_users', 'id=' . $id);
 
                 //delete images
                 $uploadPath = dirname(BASEPATH) . "/" . uploads_path . '/profiles';
@@ -163,7 +163,7 @@ class Staff extends MY_Controller {
         $update = array(
             'status' => $status
         );
-        $this->model_customer->update('app_admin', $update, 'id=' . $id);
+        $this->model_customer->update('app_users', $update, 'id=' . $id);
         $msg = isset($status) && $status == "A" ? "Active" : "Inactive";
         $this->session->set_flashdata('msg', translate('staff_status'));
         $this->session->set_flashdata('msg_class', 'success');
@@ -197,22 +197,22 @@ class Staff extends MY_Controller {
                 'jointype' => 'left'
             ),
             array(
-                'table' => 'app_admin',
-                'condition' => 'app_admin.id=app_event_book.staff_id',
+                'table' => 'app_users',
+                'condition' => 'app_users.id=app_event_book.staff_id',
                 'jointype' => 'left'
             ),
             array(
-                'table' => 'app_admin',
-                'condition' => 'app_admin.id=app_event.created_by',
+                'table' => 'app_users',
+                'condition' => 'app_users.id=app_event.created_by',
                 'jointype' => 'left'
             )
         );
 
         $s_condition = "app_event.type = 'S' AND app_event_book.staff_id=" . $id;
-        $appointment = $this->model_customer->getData("app_event_book", "app_event_book.*,app_admin.id as aid ,app_event_book.price as final_price,app_admin.company_name,app_event.title,app_location.loc_title,app_city.city_title,app_event_category.title as category_title,app_admin.first_name,app_admin.last_name,app_admin.phone,app_event.price,app_admin.first_name,app_admin.last_name,app_admin.company_name,app_event.image,app_event.description as event_description, app_event.payment_type", $s_condition, $join);
+        $appointment = $this->model_customer->getData("app_event_book", "app_event_book.*,app_users.id as aid ,app_event_book.price as final_price,app_users.company_name,app_event.title,app_location.loc_title,app_city.city_title,app_event_category.title as category_title,app_users.first_name,app_users.last_name,app_users.phone,app_event.price,app_users.first_name,app_users.last_name,app_users.company_name,app_event.image,app_event.description as event_description, app_event.payment_type", $s_condition, $join);
         $data['service_appointment_data'] = $appointment;
         $e_condition = "app_event.type = 'E' AND app_event_book.staff_id=" . $id;
-        $e_appointment = $this->model_customer->getData("app_event_book", "app_event_book.*,app_admin.id as aid ,app_event_book.price as final_price,app_admin.company_name,app_event.title,app_location.loc_title,app_city.city_title,app_event_category.title as category_title,app_admin.first_name,app_admin.last_name,app_admin.phone,app_event.price,app_admin.first_name,app_admin.last_name,app_admin.company_name,app_event.image,app_event.description as event_description, app_event.payment_type", $e_condition, $join);
+        $e_appointment = $this->model_customer->getData("app_event_book", "app_event_book.*,app_users.id as aid ,app_event_book.price as final_price,app_users.company_name,app_event.title,app_location.loc_title,app_city.city_title,app_event_category.title as category_title,app_users.first_name,app_users.last_name,app_users.phone,app_event.price,app_users.first_name,app_users.last_name,app_users.company_name,app_event.image,app_event.description as event_description, app_event.payment_type", $e_condition, $join);
         $data['event_appointment_data'] = $e_appointment;
         $this->load->view('admin/staff/staff-booking', $data);
     }

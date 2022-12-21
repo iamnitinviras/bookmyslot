@@ -32,9 +32,9 @@ class Report extends MY_Controller {
 
         $data['month'] = $month;
         $data['year'] = $year;
-        $monthly = $this->model_report->getData("app_admin", "DATE(created_on) as created_on,COUNT(created_on) AS total", $condition, "", "", "DATE(created_on)");
+        $monthly = $this->model_report->getData("app_users", "DATE(created_on) as created_on,COUNT(created_on) AS total", $condition, "", "", "DATE(created_on)");
         $data['product_data'] = $monthly;
-        $yeardata = $this->model_report->getData("app_admin", "MIN(YEAR(created_on)) as min,MAX(YEAR(created_on)) as max");
+        $yeardata = $this->model_report->getData("app_users", "MIN(YEAR(created_on)) as min,MAX(YEAR(created_on)) as max");
         $data['title'] = translate('vendor_report');
         $this->load->view('admin/report/vendor_report', $data);
     }
@@ -101,7 +101,7 @@ class Report extends MY_Controller {
         $data['year'] = $year;
         $monthly = $this->model_report->getData("app_event_book", "COUNT(app_event_book.id) AS total , MONTH(app_event_book.created_on) as month", $condition, $join, "", "MONTH(app_event_book.created_on),YEAR(app_event_book.created_on)");
         $data['product_data'] = $monthly;
-        $data['vendor_list'] = $this->model_report->getData("app_admin", "*");
+        $data['vendor_list'] = $this->model_report->getData("app_users", "*");
         $yeardata = $this->model_report->getData("app_event_book", "MIN(YEAR(created_on)) as min,MAX(YEAR(created_on)) as max");
         $data['year_data'] = $yeardata[0];
         $data['title'] = translate('appointment_report');
@@ -166,12 +166,12 @@ class Report extends MY_Controller {
                 "condition" => "app_event.id=app_event_book.event_id",
                 "jointype" => "LEFT"),
             array(
-                "table" => "app_admin",
-                "condition" => "app_event.created_by=app_admin.id",
+                "table" => "app_users",
+                "condition" => "app_event.created_by=app_users.id",
                 "jointype" => "INNER")
         );
 
-        $appointment = $this->model_report->getData('app_event_book', 'app_event_book.*,app_admin.company_name,app_customer.first_name,app_customer.last_name,app_event.title,app_event.created_by,app_event.payment_type', $cond, $join, 'app_event_book.id DESC');
+        $appointment = $this->model_report->getData('app_event_book', 'app_event_book.*,app_users.company_name,app_customer.first_name,app_customer.last_name,app_event.title,app_event.created_by,app_event.payment_type', $cond, $join, 'app_event_book.id DESC');
         $data['appointment_data'] = $appointment;
 
         $join_one = array(
@@ -189,15 +189,15 @@ class Report extends MY_Controller {
                 'condition' => 'app_event.id=app_event_book.event_id',
                 'jointype' => 'inner'
             ), array(
-                'table' => 'app_admin',
-                'condition' => 'app_event.created_by=app_admin.id',
+                'table' => 'app_users',
+                'condition' => 'app_event.created_by=app_users.id',
                 'jointype' => 'inner'
             )
         );
 
         $appointment_event = $this->model_report->getData("app_event_book", "app_event_book.event_id,app_event.id as event_id,app_event.title as title", $vendor_condition, $join_one, "", "app_event.id");
 
-        $appointment_vendor = $this->model_report->getData("app_event_book", "app_admin.company_name,app_admin.first_name,app_admin.last_name,app_admin.id", "", $join_two, "", "app_admin.id");
+        $appointment_vendor = $this->model_report->getData("app_event_book", "app_users.company_name,app_users.first_name,app_users.last_name,app_users.id", "", $join_two, "", "app_users.id");
 
         $city_join = array(
             array(
@@ -287,12 +287,12 @@ class Report extends MY_Controller {
                 "condition" => "app_event.id=app_event_book.event_id",
                 "jointype" => "LEFT"),
             array(
-                "table" => "app_admin",
-                "condition" => "app_event.created_by=app_admin.id",
+                "table" => "app_users",
+                "condition" => "app_event.created_by=app_users.id",
                 "jointype" => "INNER")
         );
 
-        $appointment = $this->model_report->getData('app_event_book', 'app_event_book.*,app_admin.company_name,app_customer.first_name,app_customer.last_name,app_event.title,app_event.created_by,app_event.payment_type', $cond, $join, 'app_event_book.id DESC');
+        $appointment = $this->model_report->getData('app_event_book', 'app_event_book.*,app_users.company_name,app_customer.first_name,app_customer.last_name,app_event.title,app_event.created_by,app_event.payment_type', $cond, $join, 'app_event_book.id DESC');
         $data['appointment_data'] = $appointment;
 
         $join_one = array(
@@ -310,15 +310,15 @@ class Report extends MY_Controller {
                 'condition' => 'app_event.id=app_event_book.event_id',
                 'jointype' => 'inner'
             ), array(
-                'table' => 'app_admin',
-                'condition' => 'app_event.created_by=app_admin.id',
+                'table' => 'app_users',
+                'condition' => 'app_event.created_by=app_users.id',
                 'jointype' => 'inner'
             )
         );
 
         $appointment_event = $this->model_report->getData("app_event_book", "app_event_book.event_id,app_event.id as event_id,app_event.title as title", $vendor_condition, $join_one, "", "app_event.id");
 
-        $appointment_vendor = $this->model_report->getData("app_event_book", "app_admin.company_name,app_admin.first_name,app_admin.last_name,app_admin.id", "", $join_two, "", "app_admin.id");
+        $appointment_vendor = $this->model_report->getData("app_event_book", "app_users.company_name,app_users.first_name,app_users.last_name,app_users.id", "", $join_two, "", "app_users.id");
 
         $city_join = array(
             array(

@@ -72,7 +72,7 @@ class Content extends CI_Controller {
                 
                 //last_login Update
                 $up_data['last_login']=date('Y-m-d H:i:s');
-                $this->model_vendor->update("app_admin",$up_data, "id=".$Vendor_ID);
+                $this->model_vendor->update("app_users",$up_data, "id=".$Vendor_ID);
                 
                 $this->session->set_flashdata('msg', translate('login_success'));
                 $this->session->set_flashdata('msg_class', 'success');
@@ -116,7 +116,7 @@ class Content extends CI_Controller {
             $url = base_url("vendor/reset-password/" . $encid . "/" . $encemail);
             $update['reset_password_check'] = 0;
             $update['reset_password_requested_on'] = date("Y-m-d H:i:S");
-            $this->model_vendor->update("app_admin", $update, "id='" . $userid . "'");
+            $this->model_vendor->update("app_users", $update, "id='" . $userid . "'");
 
             // Send email
             $subject = translate('reset_password');
@@ -142,7 +142,7 @@ class Content extends CI_Controller {
         $id = (int) $this->general->decryptData($id_ency);
         $email = $this->general->decryptData($email_ency);
 
-        $vendor_data = $this->model_vendor->getData("app_admin", "*", "id='" . $id . "' AND email='" . $email . "'");
+        $vendor_data = $this->model_vendor->getData("app_users", "*", "id='" . $id . "' AND email='" . $email . "'");
         if (isset($vendor_data) && count($vendor_data) > 0 && !empty($vendor_data)) {
             $h_id = $vendor_data[0]['id'];
             $add_min = date("Y-m-d H:i:s", strtotime($vendor_data[0]['reset_password_requested_on'] . "+1 hour"));
@@ -179,7 +179,7 @@ class Content extends CI_Controller {
             $update['reset_password_check'] = 1;
             $update['reset_password_requested_on'] = "0000-00-00 00:00:00";
             $update['password'] = md5($password);
-            $this->model_vendor->update("app_admin", $update, "id='" . $id . "'");
+            $this->model_vendor->update("app_users", $update, "id='" . $id . "'");
             $this->session->set_flashdata('msg', translate('reset_success'));
             $this->session->set_flashdata('msg_class', 'success');
             redirect('vendor/login');
@@ -206,13 +206,13 @@ class Content extends CI_Controller {
         } else {
             $old_password = $this->input->post('old_password', true);
             $new_password = $this->input->post('password', true);
-            $vendor_data = $this->model_vendor->getData("app_admin", "*", "id='" . $vendor_id . "'");
+            $vendor_data = $this->model_vendor->getData("app_users", "*", "id='" . $vendor_id . "'");
             if (isset($vendor_data) && count($vendor_data) > 0 && !empty($vendor_data)) {
                 $vendor_password = $vendor_data[0]['password'];
                 if (isset($old_password) && $vendor_password == md5($old_password)) {
                     $update['default_password_changed'] = 1;
                     $update['password'] = md5($new_password);
-                    $result = $this->model_vendor->update("app_admin", $update, "id='" . $vendor_id . "'");
+                    $result = $this->model_vendor->update("app_users", $update, "id='" . $vendor_id . "'");
                     $this->session->set_userdata("DefaultPassword", 1);
                     $this->session->set_flashdata('msg', translate('reset_success'));
                     $this->session->set_flashdata('msg_class', 'success');
@@ -235,7 +235,7 @@ class Content extends CI_Controller {
         $this->authenticate->check_vendor();
         $vendor_id = (int) $this->session->userdata('Vendor_ID');
         if (isset($vendor_id) && $vendor_id > 0) {
-            $vendor_data = $this->model_vendor->getData("app_admin", "*", "id=" . $vendor_id);
+            $vendor_data = $this->model_vendor->getData("app_users", "*", "id=" . $vendor_id);
             if (isset($vendor_data) && count($vendor_data) > 0 && !empty($vendor_data)) {
                 $data['title'] = translate('profile');
                 $data['vendor_data'] = $vendor_data[0];
@@ -258,8 +258,8 @@ class Content extends CI_Controller {
         $vendor_id = (int) $this->session->userdata('Vendor_ID');
         $this->form_validation->set_rules('first_name', '', 'trim|required|max_length[50]');
         $this->form_validation->set_rules('last_name', '', 'trim|required|max_length[50]');
-        $this->form_validation->set_rules('email', '', 'trim|required|is_unique[app_admin.email.id.' . $vendor_id . ']');
-        $this->form_validation->set_rules('phone', '', 'trim|required|min_length[10]|is_unique[app_admin.phone.id.' . $vendor_id . '] ');
+        $this->form_validation->set_rules('email', '', 'trim|required|is_unique[app_users.email.id.' . $vendor_id . ']');
+        $this->form_validation->set_rules('phone', '', 'trim|required|min_length[10]|is_unique[app_users.phone.id.' . $vendor_id . '] ');
         $this->form_validation->set_message('required', translate('required_message'));
         $this->form_validation->set_error_delimiters('<div class = "error"> ', '</div>');
         if ($this->form_validation->run() == false) {
@@ -295,7 +295,7 @@ class Content extends CI_Controller {
                 move_uploaded_file($tmp_name, "$uploadPath/$newfilename");
                 $update['profile_cover_image'] = $newfilename;
             }
-            $this->model_vendor->update("app_admin", $update, "id='" . $vendor_id . "'");
+            $this->model_vendor->update("app_users", $update, "id='" . $vendor_id . "'");
             $this->session->set_flashdata('msg', translate('profile_success'));
             $this->session->set_flashdata('msg_class', "success");
             redirect('vendor/profile');

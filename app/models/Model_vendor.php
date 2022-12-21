@@ -9,16 +9,16 @@ class Model_vendor extends CI_Model {
 
     public function __construct() {
         parent::__construct();
-        $this->main_table = "app_admin";
+        $this->main_table = "app_users";
         $this->primary_key = "id";
     }
 
     function get_vendor_payment_list($login_id) {
-        $this->db->select('app_appointment_payment.id,app_appointment_payment.payment_method,app_appointment_payment.transfer_status,app_appointment_payment.created_on,app_event.title,app_event.price,app_event_category.title as category_title,app_customer.first_name,app_customer.last_name,app_admin.first_name as cre_first_name,app_admin.last_name as cre_last_name');
+        $this->db->select('app_appointment_payment.id,app_appointment_payment.payment_method,app_appointment_payment.transfer_status,app_appointment_payment.created_on,app_event.title,app_event.price,app_event_category.title as category_title,app_customer.first_name,app_customer.last_name,app_users.first_name as cre_first_name,app_users.last_name as cre_last_name');
         $this->db->join('app_customer', 'app_customer.id=app_appointment_payment.customer_id', 'left');
         $this->db->join('app_event', 'app_event.id=app_appointment_payment.event_id', 'left');
         $this->db->join('app_event_category', 'app_event_category.id=app_event.id', 'left');
-        $this->db->join('app_admin', 'app_admin.id=app_event.created_by', 'left');
+        $this->db->join('app_users', 'app_users.id=app_event.created_by', 'left');
         $this->db->where("app_appointment_payment.vendor_id !='$login_id'");
         $res = $this->db->get('app_appointment_payment')->result_array();
         return $res;

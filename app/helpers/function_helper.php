@@ -59,7 +59,7 @@ function get_cash_payment_vendor() {
     $vendor_id = $CI->session->userdata('Vendor_ID');
 
     $CI->db->select('cash_payment');
-    $CI->db->from('app_admin');
+    $CI->db->from('app_users');
     $CI->db->where('id', $vendor_id);
     $data = $CI->db->get()->row_array();
     return isset($data['cash_payment']) ? $data['cash_payment'] : 0;
@@ -160,7 +160,7 @@ function update_event_status() {
     $CI = & get_instance();
 
     if (get_site_setting('enable_membership') == 'Y') {
-        $membership_check = $CI->db->query('SELECT id FROM app_admin WHERE type="V" AND (package_id=0 OR membership_till IS NULL OR membership_till<"' . date("Y-m-d") . '")')->result_array();
+        $membership_check = $CI->db->query('SELECT id FROM app_users WHERE type="V" AND (package_id=0 OR membership_till IS NULL OR membership_till<"' . date("Y-m-d") . '")')->result_array();
         if (count($membership_check) > 0) {
             foreach ($membership_check as $val):
                 $CI->db->query("UPDATE app_event SET status='SS' WHERE created_by=" . $val['id'] . " AND status='A'");
@@ -185,7 +185,7 @@ function get_service_event_by_id($id) {
 function get_staff_by_vendor_id($id) {
     $CI = & get_instance();
     $CI->db->select('id,designation,profile_image,first_name,last_name,email,phone');
-    $CI->db->from('app_admin');
+    $CI->db->from('app_users');
     $where = "created_by=" . $id . " AND status='A' AND type='S'";
     $CI->db->where($where);
     $app_event = $CI->db->get()->result_array();
@@ -194,13 +194,13 @@ function get_staff_by_vendor_id($id) {
 
 function get_staff_by_id($id) {
     $CI = & get_instance();
-    $res = $CI->db->query("SELECT id,designation,profile_image,first_name,last_name,email,phone FROM app_admin WHERE id IN(" . $id . ")")->result_array();
+    $res = $CI->db->query("SELECT id,designation,profile_image,first_name,last_name,email,phone FROM app_users WHERE id IN(" . $id . ")")->result_array();
     return isset($res) ? $res : array();
 }
 
 function get_staff_row_by_id($id) {
     $CI = & get_instance();
-    $res = $CI->db->query("SELECT id,designation,profile_image,first_name,last_name,email,phone FROM app_admin WHERE id IN(" . $id . ")")->row_array();
+    $res = $CI->db->query("SELECT id,designation,profile_image,first_name,last_name,email,phone FROM app_users WHERE id IN(" . $id . ")")->row_array();
     return isset($res) ? $res : array();
 }
 
@@ -564,7 +564,7 @@ function get_VendorDetails($id = NULL) {
         $id = $CI->session->userdata('Vendor_ID');
     }
     $CI->db->select('id as user_id,first_name, last_name,email, profile_image,company_name,package_id,membership_till');
-    $CI->db->from('app_admin');
+    $CI->db->from('app_users');
     $where = "id='$id'";
     $CI->db->where($where);
     $user_data = $CI->db->get()->result_array();
@@ -790,7 +790,7 @@ function check_vendor_profile($profile_status = NULL) {
     $vendor_id = $CI->session->userdata('Vendor_ID');
     $CI->db->select('*');
     $CI->db->where('id', $vendor_id);
-    $vendor_result = $CI->db->get('app_admin')->result_array();
+    $vendor_result = $CI->db->get('app_users')->result_array();
 
     if (isset($vendor_result) && count($vendor_result) > 0) {
         if (!is_null($profile_status)) {
@@ -828,7 +828,7 @@ function get_last_seen($id) {
     $CI = & get_instance();
     $CI->db->select('last_login');
     $CI->db->where("id", $id);
-    $admin_data = $CI->db->get('app_admin')->row_array();
+    $admin_data = $CI->db->get('app_users')->row_array();
 
     if (isset($admin_data['last_login']) && $admin_data['last_login'] != "null" && $admin_data['last_login'] != "") {
         $datetime1 = new DateTime(date("Y-m-d H:i:s"));
@@ -884,7 +884,7 @@ function get_message($date, $chat_id) {
     $CI = & get_instance();
     $CI->db->select('app_chat.*,  DATE_FORMAT(app_chat.created_on, "%H:%i:%s") AS timestamp, u.profile_image,u.first_name,u.last_name,a.profile_image as aprofile_image,a.first_name as aname,a.last_name as alname');
     $CI->db->join("app_customer u", "u.id = app_chat.from_id", "LEFT");
-    $CI->db->join("app_admin a", "a.id = app_chat.from_id", "LEFT");
+    $CI->db->join("app_users a", "a.id = app_chat.from_id", "LEFT");
     $CI->db->where("DATE(app_chat.created_on) = '$date' AND app_chat.chat_id='$chat_id'");
     $CI->db->group_by("app_chat.id");
     $message = $CI->db->get('app_chat')->result_array();
@@ -893,8 +893,8 @@ function get_message($date, $chat_id) {
 
 function get_full_event_service_data($id) {
     $CI = & get_instance();
-    $CI->db->select('app_event.*,app_city.city_title,app_location.loc_title,app_event_category.title as category_title,app_admin.profile_image,app_admin.first_name,app_admin.last_name,app_admin.email,app_admin.phone,app_admin.address as vendor_address,app_admin.company_name,');
-    $CI->db->join("app_admin", "app_event.created_by = app_admin.id", "INNER");
+    $CI->db->select('app_event.*,app_city.city_title,app_location.loc_title,app_event_category.title as category_title,app_users.profile_image,app_users.first_name,app_users.last_name,app_users.email,app_users.phone,app_users.address as vendor_address,app_users.company_name,');
+    $CI->db->join("app_users", "app_event.created_by = app_users.id", "INNER");
     $CI->db->join("app_city", "app_event.city = app_city.city_id", "INNER");
     $CI->db->join("app_location", "app_event.location = app_location.loc_id", "INNER");
     $CI->db->join("app_event_category", "app_event.category_id = app_event_category.id", "INNER");
@@ -909,13 +909,13 @@ function get_full_event_service_data_by_booking_id($id) {
     $select_field = "app_customer.id as customer_id,app_customer.first_name as customer_first_name,app_customer.email as customer_email,app_customer.last_name as customer_last_name,";
     $select_field .= "app_event.id as event_id,app_event.start_date as event_start_date,app_event.end_date as event_end_date,app_event.type,app_event.address,app_event.title,app_event.type,app_event.payment_type,app_event.type,app_city.city_title,app_location.loc_title,";
     $select_field .= "app_event_category.title as category_title,";
-    $select_field .= "app_admin.profile_image,app_admin.first_name,app_admin.address as vendor_address,app_admin.last_name,app_admin.email,app_admin.phone,app_admin.address as vendor_address,app_admin.company_name,";
+    $select_field .= "app_users.profile_image,app_users.first_name,app_users.address as vendor_address,app_users.last_name,app_users.email,app_users.phone,app_users.address as vendor_address,app_users.company_name,";
     $select_field .= "app_event_book.id as booking_id,app_event_book.staff_id,app_event_book.addons_id,app_event_book.event_booked_seat,app_event_book.description,app_event_book.start_date,app_event_book.start_time,app_event_book.slot_time,app_event_book.price,app_event_book.status,app_event_book.payment_status,app_event_book.created_on";
 
     $CI->db->select($select_field);
     $CI->db->join("app_event", "app_event.id = app_event_book.event_id", "INNER");
     $CI->db->join("app_customer", "app_customer.id = app_event_book.customer_id", "INNER");
-    $CI->db->join("app_admin", "app_event.created_by = app_admin.id", "INNER");
+    $CI->db->join("app_users", "app_event.created_by = app_users.id", "INNER");
     $CI->db->join("app_city", "app_event.city = app_city.city_id", "INNER");
     $CI->db->join("app_location", "app_event.location = app_location.loc_id", "INNER");
     $CI->db->join("app_event_category", "app_event.category_id = app_event_category.id", "INNER");

@@ -129,8 +129,8 @@ class Front extends CI_Controller {
                 'condition' => 'app_location.loc_id=app_event.location',
                 'jointype' => 'INNER'
             ), array(
-                'table' => 'app_admin',
-                'condition' => 'app_admin.id=app_event.created_by',
+                'table' => 'app_users',
+                'condition' => 'app_users.id=app_event.created_by',
                 'jointype' => 'INNER'
             )
         );
@@ -151,8 +151,8 @@ class Front extends CI_Controller {
                 'condition' => 'app_location.loc_id=app_event.location',
                 'jointype' => 'INNER'
             ), array(
-                'table' => 'app_admin',
-                'condition' => 'app_admin.id=app_event.created_by',
+                'table' => 'app_users',
+                'condition' => 'app_users.id=app_event.created_by',
                 'jointype' => 'INNER'
             )
         );
@@ -169,11 +169,11 @@ class Front extends CI_Controller {
         $display_record_per_page = get_site_setting('display_record_per_page');
 
         if (get_site_setting('enable_event') == 'Y'):
-            $total_event = $this->model_front->getData("app_event", 'app_admin.company_name,app_admin.profile_image,app_event.*,app_event.id as event_id,app_event_category.title as category_title,app_city.city_title, app_location.loc_title', $cond, $event_join, 'RAND()', 'app_event.id', '', $display_record_per_page);
+            $total_event = $this->model_front->getData("app_event", 'app_users.company_name,app_users.profile_image,app_event.*,app_event.id as event_id,app_event_category.title as category_title,app_city.city_title, app_location.loc_title', $cond, $event_join, 'RAND()', 'app_event.id', '', $display_record_per_page);
             $data['total_Event'] = $total_event;
         endif;
 
-        $total_service = $this->model_front->getData("app_event", 'app_admin.company_name,app_admin.profile_image,app_event.*,app_event.id as event_id,app_event_category.title as category_title,app_city.city_title, app_location.loc_title', $service_cond, $service_join, 'app_event.id desc', 'app_event.id', '', $display_record_per_page);
+        $total_service = $this->model_front->getData("app_event", 'app_users.company_name,app_users.profile_image,app_event.*,app_event.id as event_id,app_event_category.title as category_title,app_city.city_title, app_location.loc_title', $service_cond, $service_join, 'app_event.id desc', 'app_event.id', '', $display_record_per_page);
 
 
         $event_cat_join = array(
@@ -285,8 +285,8 @@ class Front extends CI_Controller {
                     'jointype' => 'left'
                 ),
                 array(
-                    'table' => 'app_admin',
-                    'condition' => 'app_admin.id=app_event.created_by',
+                    'table' => 'app_users',
+                    'condition' => 'app_users.id=app_event.created_by',
                     'jointype' => 'left'
                 ),
                 array(
@@ -296,7 +296,7 @@ class Front extends CI_Controller {
                 )
             );
 
-            $event = $this->model_front->getData("app_event", "app_event.*,app_location.loc_title,app_city.city_title,app_event_category.title as category_title,app_admin.id as app_admin_id, app_admin.first_name, app_admin.last_name, app_admin.email,app_admin.phone, app_admin.profile_image,app_admin.google_link, app_admin.twitter_link, app_admin.fb_link, app_admin.instagram_link, app_admin.company_name, app_admin.website, app_event_sponsor.sponsor_name,app_event_sponsor.website_link, app_event_sponsor.sponsor_image, app_event_sponsor.id as sid", "app_event.id=" . $event_id . " AND app_event.type='E'", $join);
+            $event = $this->model_front->getData("app_event", "app_event.*,app_location.loc_title,app_city.city_title,app_event_category.title as category_title,app_users.id as app_users_id, app_users.first_name, app_users.last_name, app_users.email,app_users.phone, app_users.profile_image,app_users.google_link, app_users.twitter_link, app_users.fb_link, app_users.instagram_link, app_users.company_name, app_users.website, app_event_sponsor.sponsor_name,app_event_sponsor.website_link, app_event_sponsor.sponsor_image, app_event_sponsor.id as sid", "app_event.id=" . $event_id . " AND app_event.type='E'", $join);
 
             if (isset($event) && count($event) > 0) {
                 if (isset($event[0]['created_by']) && $event[0]['created_by'] > 0) {
@@ -371,7 +371,7 @@ class Front extends CI_Controller {
 
                 if (isset($event[0]['created_by']) && $event[0]['created_by'] > 0) {
                     $event_book = $this->model_front->getData("app_event_book", "id", "event_id='$event_id'");
-                    $admin_data = $this->model_front->getData("app_admin", "*", "id=" . $event[0]['created_by']);
+                    $admin_data = $this->model_front->getData("app_users", "*", "id=" . $event[0]['created_by']);
                     $user_rating = $this->model_front->getData("app_rating", "*", "user_id='$user_id' AND event_id='$event_id'");
                     $user_rating = $this->model_front->getData("app_rating", "*", "user_id='$user_id' AND event_id='$event_id'");
 
@@ -440,12 +440,12 @@ class Front extends CI_Controller {
                 'jointype' => 'left'
             ),
             array(
-                'table' => 'app_admin',
-                'condition' => 'app_admin.id=app_event.created_by',
+                'table' => 'app_users',
+                'condition' => 'app_users.id=app_event.created_by',
                 'jointype' => 'left'
             ),
         );
-        $select_value = "app_event.*,app_location.loc_title,app_city.city_title,app_event_category.title as category_title,app_admin.company_name";
+        $select_value = "app_event.*,app_location.loc_title,app_city.city_title,app_event_category.title as category_title,app_users.company_name";
         $event = $this->model_front->getData("app_event", $select_value, "app_event.id=" . $id . " AND app_event.type='S'", $join_data);
         if (!isset($event) || isset($event) && count($event) == 0) {
             $this->session->set_flashdata('msg_class', 'failure');
@@ -1219,8 +1219,8 @@ class Front extends CI_Controller {
 
                                     $this->model_front->insert('app_appointment_payment', $data);
 
-                                    $up_qry_vendor = $this->db->query("UPDATE app_admin SET my_earning=my_earning+" . $vendor_amount . ",my_wallet=my_wallet+" . $vendor_amount . " WHERE id=" . $service_data['created_by']);
-                                    $up_qry_admin = $this->db->query("UPDATE app_admin SET my_wallet=my_wallet+" . $admin_amount . " WHERE id=1");
+                                    $up_qry_vendor = $this->db->query("UPDATE app_users SET my_earning=my_earning+" . $vendor_amount . ",my_wallet=my_wallet+" . $vendor_amount . " WHERE id=" . $service_data['created_by']);
+                                    $up_qry_admin = $this->db->query("UPDATE app_users SET my_wallet=my_wallet+" . $admin_amount . " WHERE id=1");
 
                                     $transaction = true;
 
@@ -1632,8 +1632,8 @@ class Front extends CI_Controller {
                 $app_event_book['payment_status'] = 'S';
                 $this->model_front->update('app_event_book', $app_event_book, "id=" . $booking_id);
 
-                $up_qry_vendor = $this->db->query("UPDATE app_admin SET my_earning=my_earning+" . $vendor_amount . ",my_wallet=my_wallet+" . $vendor_amount . " WHERE id=" . $service_data['created_by']);
-                $up_qry_admin = $this->db->query("UPDATE app_admin SET my_wallet=my_wallet+" . $admin_amount . " WHERE id=1");
+                $up_qry_vendor = $this->db->query("UPDATE app_users SET my_earning=my_earning+" . $vendor_amount . ",my_wallet=my_wallet+" . $vendor_amount . " WHERE id=" . $service_data['created_by']);
+                $up_qry_admin = $this->db->query("UPDATE app_users SET my_wallet=my_wallet+" . $admin_amount . " WHERE id=1");
 
                 //Send email to customer
                 $name = ($customer[0]['first_name']) . " " . ($customer[0]['last_name']);
@@ -1760,8 +1760,8 @@ class Front extends CI_Controller {
                 $app_event_book['payment_status'] = 'S';
                 $this->model_front->update('app_event_book', $app_event_book, "id=" . $booking_id);
 
-                $up_qry_vendor = $this->db->query("UPDATE app_admin SET my_earning=my_earning+" . $vendor_amount . ",my_wallet=my_wallet+" . $vendor_amount . " WHERE id=" . $event_data['created_by']);
-                $up_qry_admin = $this->db->query("UPDATE app_admin SET my_wallet=my_wallet+" . $admin_amount . " WHERE id=1");
+                $up_qry_vendor = $this->db->query("UPDATE app_users SET my_earning=my_earning+" . $vendor_amount . ",my_wallet=my_wallet+" . $vendor_amount . " WHERE id=" . $event_data['created_by']);
+                $up_qry_admin = $this->db->query("UPDATE app_users SET my_wallet=my_wallet+" . $admin_amount . " WHERE id=1");
 
 
                 $name = ($customer[0]['first_name']) . " " . ($customer[0]['last_name']);
@@ -1829,7 +1829,7 @@ class Front extends CI_Controller {
                 $this->db->query("UPDATE app_event SET status='A' WHERE created_by=" . $vendor_id . " AND status='SS'");
 
                 $this->model_membership->insert('app_membership_history', $data);
-                $this->model_membership->update('app_admin', $vendor_update_data, "id=" . $vendor_id);
+                $this->model_membership->update('app_users', $vendor_update_data, "id=" . $vendor_id);
 
 
                 $this->session->set_flashdata('msg', translate('transaction_success'));
@@ -1909,8 +1909,8 @@ class Front extends CI_Controller {
             $app_event_book['payment_status'] = 'S';
             $this->model_front->update('app_event_book', $app_event_book, "id=" . $booking_id);
 
-            $up_qry_vendor = $this->db->query("UPDATE app_admin SET my_earning=my_earning+" . $vendor_amount . ",my_wallet=my_wallet+" . $vendor_amount . " WHERE id=" . $service_data['created_by']);
-            $up_qry_admin = $this->db->query("UPDATE app_admin SET my_wallet=my_wallet+" . $admin_amount . " WHERE id=1");
+            $up_qry_vendor = $this->db->query("UPDATE app_users SET my_earning=my_earning+" . $vendor_amount . ",my_wallet=my_wallet+" . $vendor_amount . " WHERE id=" . $service_data['created_by']);
+            $up_qry_admin = $this->db->query("UPDATE app_users SET my_wallet=my_wallet+" . $admin_amount . " WHERE id=1");
 
             //Send email to customer
             $name = ($customer[0]['first_name']) . " " . ($customer[0]['last_name']);
@@ -2047,8 +2047,8 @@ class Front extends CI_Controller {
                 'jointype' => 'left'
             ),
             array(
-                'table' => 'app_admin',
-                'condition' => 'app_admin.id=app_event.created_by',
+                'table' => 'app_users',
+                'condition' => 'app_users.id=app_event.created_by',
                 'jointype' => 'left'
             )
         );
@@ -2071,8 +2071,8 @@ class Front extends CI_Controller {
             $condition .= " AND app_event.payment_type='" . $type . "'";
         }
 
-        $appointment = $this->model_front->getData("app_event_book", "app_event_book.*,app_admin.id as aid ,app_event_book.price as final_price,app_admin.company_name,app_event.title,app_location.loc_title,app_city.city_title,app_event_category.title as category_title,app_customer.first_name,app_customer.last_name,app_customer.phone,app_event.price,app_admin.first_name,app_admin.last_name,app_admin.company_name,app_event.image,app_event.description as event_description, app_event.payment_type", $condition, $join, "app_event_book.start_date ASC,app_event_book.start_time ASC");
-        $past_appointment = $this->model_front->getData("app_event_book", "app_event_book.*,app_admin.id as aid ,app_event_book.price as final_price,app_admin.company_name,app_event.title,app_location.loc_title,app_city.city_title,app_event_category.title as category_title,app_customer.first_name,app_customer.last_name,app_customer.phone,app_event.price,app_admin.first_name,app_admin.last_name,app_admin.company_name,app_event.image,app_event.description as event_description, app_event.payment_type", $condition_past, $join, "app_event_book.start_date DESC,app_event_book.start_time DESC");
+        $appointment = $this->model_front->getData("app_event_book", "app_event_book.*,app_users.id as aid ,app_event_book.price as final_price,app_users.company_name,app_event.title,app_location.loc_title,app_city.city_title,app_event_category.title as category_title,app_customer.first_name,app_customer.last_name,app_customer.phone,app_event.price,app_users.first_name,app_users.last_name,app_users.company_name,app_event.image,app_event.description as event_description, app_event.payment_type", $condition, $join, "app_event_book.start_date ASC,app_event_book.start_time ASC");
+        $past_appointment = $this->model_front->getData("app_event_book", "app_event_book.*,app_users.id as aid ,app_event_book.price as final_price,app_users.company_name,app_event.title,app_location.loc_title,app_city.city_title,app_event_category.title as category_title,app_customer.first_name,app_customer.last_name,app_customer.phone,app_event.price,app_users.first_name,app_users.last_name,app_users.company_name,app_event.image,app_event.description as event_description, app_event.payment_type", $condition_past, $join, "app_event_book.start_date DESC,app_event_book.start_time DESC");
 
         $city_join = array(
             array(
@@ -2121,8 +2121,8 @@ class Front extends CI_Controller {
                 'jointype' => 'INNER'
             ),
             array(
-                'table' => 'app_admin',
-                'condition' => 'app_admin.id=app_event.created_by',
+                'table' => 'app_users',
+                'condition' => 'app_users.id=app_event.created_by',
                 'jointype' => 'INNER'
             )
         );
@@ -2131,8 +2131,8 @@ class Front extends CI_Controller {
         $condition = "app_event_book.customer_id=" . $customer_id . " AND app_event_book.type='E' AND DATE(app_event.end_date)>='" . $cur_date . "' ";
         $condition_past = "app_event_book.customer_id=" . $customer_id . " AND app_event_book.type='E' AND DATE(app_event.end_date)<'" . $cur_date . "' ";
 
-        $appointment = $this->model_front->getData("app_event_book", "app_event_book.*,app_admin.id as aid ,app_event_book.price as final_price,app_admin.company_name,app_event.title,app_location.loc_title,app_city.city_title,app_event_category.title as category_title,app_customer.first_name,app_customer.last_name,app_customer.phone,app_event.price,app_admin.first_name,app_admin.last_name,app_admin.company_name,app_event.image,app_event.description as event_description, app_event.payment_type", $condition, $join, "app_event_book.start_date ASC,app_event_book.start_time ASC");
-        $past_appointment = $this->model_front->getData("app_event_book", "app_event_book.*,app_admin.id as aid ,app_event_book.price as final_price,app_admin.company_name,app_event.title,app_location.loc_title,app_city.city_title,app_event_category.title as category_title,app_customer.first_name,app_customer.last_name,app_customer.phone,app_event.price,app_admin.first_name,app_admin.last_name,app_admin.company_name,app_event.image,app_event.description as event_description, app_event.payment_type", $condition_past, $join, "app_event_book.start_date DESC,app_event_book.start_time DESC");
+        $appointment = $this->model_front->getData("app_event_book", "app_event_book.*,app_users.id as aid ,app_event_book.price as final_price,app_users.company_name,app_event.title,app_location.loc_title,app_city.city_title,app_event_category.title as category_title,app_customer.first_name,app_customer.last_name,app_customer.phone,app_event.price,app_users.first_name,app_users.last_name,app_users.company_name,app_event.image,app_event.description as event_description, app_event.payment_type", $condition, $join, "app_event_book.start_date ASC,app_event_book.start_time ASC");
+        $past_appointment = $this->model_front->getData("app_event_book", "app_event_book.*,app_users.id as aid ,app_event_book.price as final_price,app_users.company_name,app_event.title,app_location.loc_title,app_city.city_title,app_event_category.title as category_title,app_customer.first_name,app_customer.last_name,app_customer.phone,app_event.price,app_users.first_name,app_users.last_name,app_users.company_name,app_event.image,app_event.description as event_description, app_event.payment_type", $condition_past, $join, "app_event_book.start_date DESC,app_event_book.start_time DESC");
 
         $data['appointment_data'] = $appointment;
         $data['past_appointment'] = $past_appointment;
@@ -2337,7 +2337,7 @@ class Front extends CI_Controller {
             $user_id = $this->session->userdata('CUST_ID');
 
 
-            $admin_data = $this->model_front->getData("app_admin", "*", "id=" . $admin_id);
+            $admin_data = $this->model_front->getData("app_users", "*", "id=" . $admin_id);
             if (count($admin_data) > 0) {
                 $admin_id = $admin_data[0]['id'];
                 $data['admin_data'] = $admin_data[0];
@@ -2359,8 +2359,8 @@ class Front extends CI_Controller {
                         'jointype' => 'left'
                     ),
                     array(
-                        'table' => 'app_admin',
-                        'condition' => 'app_admin.id=app_event.created_by',
+                        'table' => 'app_users',
+                        'condition' => 'app_users.id=app_event.created_by',
                         'jointype' => 'left'
                     )
                 );
@@ -2369,8 +2369,8 @@ class Front extends CI_Controller {
                         'condition' => 'app_event_category.id=app_event.category_id',
                         'jointype' => 'INNER'
                 ));
-                $event_data = $this->model_front->getData("app_event", "app_admin.company_name,app_admin.profile_image,app_event.*,app_event_category.title as category_title,app_event_category.event_category_image, app_city.city_title,app_location.loc_title, app_admin.profile_image, app_admin.company_name", "app_event.status='A'AND app_event.type='E' AND app_event.created_by='$admin_id'", $join);
-                $service_data = $this->model_front->getData("app_event", "app_admin.company_name,app_admin.profile_image,app_event.*,app_event_category.title as category_title,app_event_category.event_category_image, app_city.city_title,app_location.loc_title, app_admin.profile_image, app_admin.company_name", "app_event.status='A'AND app_event.type='S' AND app_event.created_by='$admin_id'", $join);
+                $event_data = $this->model_front->getData("app_event", "app_users.company_name,app_users.profile_image,app_event.*,app_event_category.title as category_title,app_event_category.event_category_image, app_city.city_title,app_location.loc_title, app_users.profile_image, app_users.company_name", "app_event.status='A'AND app_event.type='E' AND app_event.created_by='$admin_id'", $join);
+                $service_data = $this->model_front->getData("app_event", "app_users.company_name,app_users.profile_image,app_event.*,app_event_category.title as category_title,app_event_category.event_category_image, app_city.city_title,app_location.loc_title, app_users.profile_image, app_users.company_name", "app_event.status='A'AND app_event.type='S' AND app_event.created_by='$admin_id'", $join);
                 $category_data = $this->model_front->getData("app_event_category", "app_event_category.*", "app_event.status='A' AND app_event.created_by='$admin_id'", $cjoin, 'title', 'app_event_category.id');
                 /*
                  * list of top city
@@ -2489,7 +2489,7 @@ class Front extends CI_Controller {
         if ($id > 0) {
             $data['msg_vendor_data'] = $this->model_front->msg_vendor_data($id);
             $data['msg_group_list'] = $this->model_front->msg_group_list($id, $customer_id);
-            $data['admin_details'] = $this->model_front->getData('app_admin', 'app_admin.*', 'id=' . $id);
+            $data['admin_details'] = $this->model_front->getData('app_users', 'app_users.*', 'id=' . $id);
         }
 
         $data['title'] = translate('message');
@@ -2630,12 +2630,12 @@ class Front extends CI_Controller {
                 'jointype' => 'left'
             ),
             array(
-                'table' => 'app_admin',
-                'condition' => 'app_admin.id=app_event.created_by',
+                'table' => 'app_users',
+                'condition' => 'app_users.id=app_event.created_by',
                 'jointype' => 'left'
             )
         );
-        $event = $this->model_front->getData("app_event_book", "app_admin.company_name, app_admin.first_name as afname, app_admin.last_name as alname, app_admin.email as aemail, app_admin.phone as aphone, app_event_book.*,app_event.created_by,app_event.title,app_location.loc_title,app_city.city_title,app_event_category.title as category_title,app_customer.first_name,app_customer.last_name,app_customer.phone,app_event.price, app_customer.email", "app_event_book.id='$id'", $join);
+        $event = $this->model_front->getData("app_event_book", "app_users.company_name, app_users.first_name as afname, app_users.last_name as alname, app_users.email as aemail, app_users.phone as aphone, app_event_book.*,app_event.created_by,app_event.title,app_location.loc_title,app_city.city_title,app_event_category.title as category_title,app_customer.first_name,app_customer.last_name,app_customer.phone,app_event.price, app_customer.email", "app_event_book.id='$id'", $join);
         $img_path = get_CompanyLogo();
 
         if (isset($event) && !empty($event)) {
@@ -2789,8 +2789,8 @@ class Front extends CI_Controller {
                 'jointype' => 'left'
             ),
             array(
-                'table' => 'app_admin',
-                'condition' => 'app_admin.id=app_event.created_by',
+                'table' => 'app_users',
+                'condition' => 'app_users.id=app_event.created_by',
                 'jointype' => 'left'
             ),
             array(
@@ -2809,14 +2809,14 @@ class Front extends CI_Controller {
             $cond .= ' AND category_id=' . $category_id;
         }
         if ($search_txt != '') {
-            $cond .= ' AND (app_event.title LIKE "' . $search_txt . '%" OR app_event_category.title LIKE "' . $search_txt . '%" OR app_city.city_title LIKE "' . $search_txt . '%" OR app_location.loc_title LIKE "' . $search_txt . '%" OR app_admin.company_name LIKE "' . $search_txt . '%")';
+            $cond .= ' AND (app_event.title LIKE "' . $search_txt . '%" OR app_event_category.title LIKE "' . $search_txt . '%" OR app_city.city_title LIKE "' . $search_txt . '%" OR app_location.loc_title LIKE "' . $search_txt . '%" OR app_users.company_name LIKE "' . $search_txt . '%")';
         }
         if (isset($locations) && !empty($locations)) {
             $cond .= ' AND location  IN (' . $locations . ')';
         }
-        $events = $this->model_front->getData("app_event", '(SELECT COUNT(id) FROM app_event_book WHERE event_id = app_event.id) as totalBook, app_event.*,app_event_category.title as category_title,app_city.city_title, app_location.loc_title, app_admin.profile_image, app_admin.company_name', $cond, $join, '', 'app_event.id', '', '', array(), '', array(), '', $row, $sort_by);
+        $events = $this->model_front->getData("app_event", '(SELECT COUNT(id) FROM app_event_book WHERE event_id = app_event.id) as totalBook, app_event.*,app_event_category.title as category_title,app_city.city_title, app_location.loc_title, app_users.profile_image, app_users.company_name', $cond, $join, '', 'app_event.id', '', '', array(), '', array(), '', $row, $sort_by);
 
-        $total_Event = $this->model_front->getData("app_event", 'app_event.*,app_event_category.title as category_title,app_city.city_title, app_location.loc_title, app_admin.profile_image, app_admin.company_name', $cond, $join, '', 'app_event.id', '', '', array(), '', array(), '');
+        $total_Event = $this->model_front->getData("app_event", 'app_event.*,app_event_category.title as category_title,app_city.city_title, app_location.loc_title, app_users.profile_image, app_users.company_name', $cond, $join, '', 'app_event.id', '', '', array(), '', array(), '');
         if (isset($events) && !empty($events)) {
             echo json_encode(array("status" => "success", "data" => $events, "total_Event" => count($total_Event)));
             exit(0);
@@ -3070,7 +3070,7 @@ class Front extends CI_Controller {
             $ins_data['created_on'] = date("Y-m-d H:i:s");
             $ins_id = $this->model_front->insert('app_contact_us', $ins_data);
             if ($ins_id) {
-                $admin = $this->model_front->getData("app_admin", "first_name,last_name,email", "id=" . $created_by);
+                $admin = $this->model_front->getData("app_users", "first_name,last_name,email", "id=" . $created_by);
                 $subject = translate('contact-us') . " | " . $event_title;
 
                 $admin_name = ($admin[0]['first_name']) . " " . ($admin[0]['last_name']);
@@ -3154,7 +3154,7 @@ class Front extends CI_Controller {
             $ins_id = $this->model_front->insert('app_contact_us', $ins_data);
 
             if ($ins_id) {
-                $admin = $this->model_front->getData("app_admin", "first_name,last_name,email", "type='A'");
+                $admin = $this->model_front->getData("app_users", "first_name,last_name,email", "type='A'");
                 foreach ($admin as $val):
 
                     $admin_name = ($val['first_name']) . " " . ($val['last_name']);
@@ -3208,8 +3208,8 @@ class Front extends CI_Controller {
                 'condition' => 'app_location.loc_id=app_event.location',
                 'jointype' => 'INNER'
             ), array(
-                'table' => 'app_admin',
-                'condition' => 'app_admin.id=app_event.created_by',
+                'table' => 'app_users',
+                'condition' => 'app_users.id=app_event.created_by',
                 'jointype' => 'INNER'
             ),
         );
@@ -3219,7 +3219,7 @@ class Front extends CI_Controller {
             $cond .= " AND app_event_category.id=" . $category;
         }
         if (isset($vendor) && $vendor > 0) {
-            $cond .= " AND app_admin.id=" . $vendor;
+            $cond .= " AND app_users.id=" . $vendor;
         }
         if (isset($location) && $location > 0) {
             $cond .= " AND app_location.loc_id=" . $location;
@@ -3263,19 +3263,19 @@ class Front extends CI_Controller {
         $left_rec = $rec_count - ($page * $rec_limit);
         /* Pagination Data End */
 
-        $app_admin = $this->model_front->getData("app_admin", 'company_name,id', 'status="A" AND type!="S"', '', '', 'company_name');
+        $app_users = $this->model_front->getData("app_users", 'company_name,id', 'status="A" AND type!="S"', '', '', 'company_name');
         $event_category = $this->model_front->getData("app_event_category", 'title,id', 'type="E"', '', '', 'title');
         $app_location = $this->model_front->getData("app_location", 'loc_id,loc_title', 'loc_city_id=' . $location_id, '', '', 'loc_title');
 
         $data['title'] = translate('events');
-        $total_event = $this->model_front->getData("app_event", 'app_admin.profile_image,app_admin.company_name,app_event.*,app_event.id as event_id,app_event_category.title as category_title,app_city.city_title, app_location.loc_title', $cond, $join, '', 'app_event.id', '', '', '', '', '', '', $start_from);
+        $total_event = $this->model_front->getData("app_event", 'app_users.profile_image,app_users.company_name,app_event.*,app_event.id as event_id,app_event_category.title as category_title,app_city.city_title, app_location.loc_title', $cond, $join, '', 'app_event.id', '', '', '', '', '', '', $start_from);
 
         $data['total_Event'] = $total_event;
         $data['left_rec'] = $left_rec;
         $data['rec_limit'] = $rec_limit;
         $data['page'] = $page;
         $data['total_pages'] = $total_pages;
-        $data['vendor_data'] = $app_admin;
+        $data['vendor_data'] = $app_users;
         $data['app_location'] = $app_location;
         $data['event_category'] = $event_category;
 
@@ -3321,8 +3321,8 @@ class Front extends CI_Controller {
                 'condition' => 'app_location.loc_id=app_event.location',
                 'jointype' => 'INNER'
             ), array(
-                'table' => 'app_admin',
-                'condition' => 'app_admin.id=app_event.created_by',
+                'table' => 'app_users',
+                'condition' => 'app_users.id=app_event.created_by',
                 'jointype' => 'INNER'
             ),
         );
@@ -3332,7 +3332,7 @@ class Front extends CI_Controller {
             $cond .= " AND app_event_category.id=" . $category;
         }
         if (isset($vendor) && $vendor > 0) {
-            $cond .= " AND app_admin.id=" . $vendor;
+            $cond .= " AND app_users.id=" . $vendor;
         }
         if (isset($location) && $location > 0) {
             $cond .= " AND app_location.loc_id=" . $location;
@@ -3358,17 +3358,17 @@ class Front extends CI_Controller {
         $left_rec = $rec_count - ($page * $rec_limit);
         /* Pagination Data End */
 
-        $app_admin = $this->model_front->getData("app_admin", 'company_name,id', 'status="A" AND type!="S"', '', '', 'company_name');
+        $app_users = $this->model_front->getData("app_users", 'company_name,id', 'status="A" AND type!="S"', '', '', 'company_name');
         $service_category = $this->model_front->getData("app_event_category", 'title,id', 'type="S"', '', '', 'title');
         $app_location = $this->model_front->getData("app_location", 'loc_id,loc_title', 'loc_city_id=' . $location_id, '', '', 'loc_title');
 
-        $total_service = $this->model_front->getData("app_event", 'app_admin.profile_image,app_admin.company_name,app_event.*,app_event.id as event_id,app_event_category.title as category_title,app_city.city_title, app_location.loc_title', $cond, $join, '', 'app_event.id', '', '', '', '', '', '', $start_from);
+        $total_service = $this->model_front->getData("app_event", 'app_users.profile_image,app_users.company_name,app_event.*,app_event.id as event_id,app_event_category.title as category_title,app_city.city_title, app_location.loc_title', $cond, $join, '', 'app_event.id', '', '', '', '', '', '', $start_from);
         $data['total_service'] = $total_service;
         $data['left_rec'] = $left_rec;
         $data['rec_limit'] = $rec_limit;
         $data['page'] = $page;
         $data['total_pages'] = $total_pages;
-        $data['vendor_data'] = $app_admin;
+        $data['vendor_data'] = $app_users;
         $data['app_location'] = $app_location;
         $data['service_category'] = $service_category;
         /* Get Top City */
@@ -3410,14 +3410,14 @@ class Front extends CI_Controller {
                 'jointype' => 'left'
             ),
             array(
-                'table' => 'app_admin',
-                'condition' => 'app_admin.id=app_event.created_by',
+                'table' => 'app_users',
+                'condition' => 'app_users.id=app_event.created_by',
                 'jointype' => 'inner'
             )
         );
 
         $cond = "app_event.status='A' AND app_event.type='E' AND app_event.id= '$event_id'";
-        $field = 'app_event.*,app_event.id as event_id,app_event_category.title as category_title,app_city.city_title, app_location.loc_title,CONCAT(app_admin.first_name," " ,app_admin.last_name) as Creater_name';
+        $field = 'app_event.*,app_event.id as event_id,app_event_category.title as category_title,app_city.city_title, app_location.loc_title,CONCAT(app_users.first_name," " ,app_users.last_name) as Creater_name';
         $event = $this->model_front->getData("app_event", $field, $cond, $join, '', 'app_event.id', '', $this->Per_Page, array(), '', array(), '', '', $sort_by = 'N');
 
 
@@ -3864,8 +3864,8 @@ class Front extends CI_Controller {
 
                                     $this->model_front->insert('app_appointment_payment', $data);
 
-                                    $up_qry_vendor = $this->db->query("UPDATE app_admin SET my_earning=my_earning+" . $vendor_amount . ",my_wallet=my_wallet+" . $vendor_amount . " WHERE id=" . $event_data['created_by']);
-                                    $up_qry_admin = $this->db->query("UPDATE app_admin SET my_wallet=my_wallet+" . $admin_amount . " WHERE id=1");
+                                    $up_qry_vendor = $this->db->query("UPDATE app_users SET my_earning=my_earning+" . $vendor_amount . ",my_wallet=my_wallet+" . $vendor_amount . " WHERE id=" . $event_data['created_by']);
+                                    $up_qry_admin = $this->db->query("UPDATE app_users SET my_wallet=my_wallet+" . $admin_amount . " WHERE id=1");
 
                                     $transaction = true;
 
@@ -4138,8 +4138,8 @@ class Front extends CI_Controller {
             $app_event_book['payment_status'] = 'S';
             $this->model_front->update('app_event_book', $app_event_book, "id=" . $booking_id);
 
-            $up_qry_vendor = $this->db->query("UPDATE app_admin SET my_earning=my_earning+" . $vendor_amount . ",my_wallet=my_wallet+" . $vendor_amount . " WHERE id=" . $event_data['created_by']);
-            $up_qry_admin = $this->db->query("UPDATE app_admin SET my_wallet=my_wallet+" . $admin_amount . " WHERE id=1");
+            $up_qry_vendor = $this->db->query("UPDATE app_users SET my_earning=my_earning+" . $vendor_amount . ",my_wallet=my_wallet+" . $vendor_amount . " WHERE id=" . $event_data['created_by']);
+            $up_qry_admin = $this->db->query("UPDATE app_users SET my_wallet=my_wallet+" . $admin_amount . " WHERE id=1");
 
 
             $name = ($customer[0]['first_name']) . " " . ($customer[0]['last_name']);
@@ -4246,8 +4246,8 @@ class Front extends CI_Controller {
                     'jointype' => 'INNER'
                 ),
                 array(
-                    'table' => 'app_admin',
-                    'condition' => 'app_admin.id=app_event.created_by',
+                    'table' => 'app_users',
+                    'condition' => 'app_users.id=app_event.created_by',
                     'jointype' => 'INNER'
                 ),
             );
@@ -4270,8 +4270,8 @@ class Front extends CI_Controller {
                     'jointype' => 'INNER'
                 ),
                 array(
-                    'table' => 'app_admin',
-                    'condition' => 'app_admin.id=app_event.created_by',
+                    'table' => 'app_users',
+                    'condition' => 'app_users.id=app_event.created_by',
                     'jointype' => 'INNER'
                 ),
             );
@@ -4295,15 +4295,15 @@ class Front extends CI_Controller {
                         "pattern" => $search_string,
                     ),
                     array(
-                        "column" => "app_admin.first_name",
+                        "column" => "app_users.first_name",
                         "pattern" => $search_string,
                     ),
                     array(
-                        "column" => "app_admin.last_name",
+                        "column" => "app_users.last_name",
                         "pattern" => $search_string,
                     ),
                     array(
-                        "column" => "app_admin.company_name",
+                        "column" => "app_users.company_name",
                         "pattern" => $search_string,
                     ),
                     array(
@@ -4313,7 +4313,7 @@ class Front extends CI_Controller {
                 );
             }
 
-            $field = "app_event.*,app_location.loc_title,app_city.city_title,app_admin.phone,app_admin.company_name,app_event_category.title as category_title";
+            $field = "app_event.*,app_location.loc_title,app_city.city_title,app_users.phone,app_users.company_name,app_event_category.title as category_title";
             $data['event'] = $this->model_front->getData("app_event", $field, "app_event.city='$city_id' AND app_event.type='E' AND app_event.status='A'", $event_join, "", "", "", "", array(), "", $like);
             $data['service'] = $this->model_front->getData("app_event", $field, "app_event.city='$city_id' AND app_event.type='S' AND app_event.status='A'", $service_join, "", "", "", "", array(), "", $like);
             /* orgnizer */
@@ -4325,7 +4325,7 @@ class Front extends CI_Controller {
                     )
                 );
             }
-            $data['orgnizer'] = $this->model_front->getData("app_admin", '*', "", array(), "", "", "", "", array(), "", $like_orgnizer);
+            $data['orgnizer'] = $this->model_front->getData("app_users", '*', "", array(), "", "", "", "", array(), "", $like_orgnizer);
             if (isset($data['orgnizer']) && count($data['orgnizer']) > 0) {
                 $vendor_id = $data['orgnizer'][0]['id'];
                 $data['total_event'] = $this->model_front->Totalcount("app_event", "created_by='$vendor_id'");

@@ -388,7 +388,7 @@ class Sitesetting extends MY_Controller {
     public function integrateon_webpage() {
         $token = "";
         $logged_id = $this->login_type == 'V' ? $this->session->userdata('Vendor_ID') : $this->session->userdata('ADMIN_ID');
-        $admin_data = $this->model_sitesetting->getData('app_admin', '*', 'id =' . $logged_id);
+        $admin_data = $this->model_sitesetting->getData('app_users', '*', 'id =' . $logged_id);
         if (isset($admin_data) && !empty($admin_data)) {
             foreach ($admin_data as $aRow) {
                 $token = $aRow['token'];
@@ -398,7 +398,7 @@ class Sitesetting extends MY_Controller {
             $this->load->helper('string');
             $token = random_string('alnum', 16);
             $u_data['token'] = $token;
-            $res = $this->model_sitesetting->edit_data('app_admin', $logged_id, $u_data);
+            $res = $this->model_sitesetting->edit_data('app_users', $logged_id, $u_data);
         }
         $data['token'] = $token;
         $data['title'] = translate('integrateon_webpage');

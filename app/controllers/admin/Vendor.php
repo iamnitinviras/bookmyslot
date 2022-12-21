@@ -19,7 +19,7 @@ class Vendor extends MY_Controller {
     //show vendor list
     public function index() {
         $data['title'] = translate('manage') . " " . translate('vendor');
-        $vendor = $this->model_vendor->getData("app_admin", '*', "type='V'");
+        $vendor = $this->model_vendor->getData("app_users", '*', "type='V'");
         $data['vendor_data'] = $vendor;
         $this->load->view('admin/vendor/index', $data);
     }
@@ -27,7 +27,7 @@ class Vendor extends MY_Controller {
     //Show unverified vendor list
     public function unverified_vendor() {
         $data['title'] = translate('unverified') . " " . translate('vendor');
-        $vendor = $this->model_vendor->getData("app_admin", '*', "type='V' AND profile_status='N'");
+        $vendor = $this->model_vendor->getData("app_users", '*', "type='V' AND profile_status='N'");
         $data['vendor_data'] = $vendor;
         $this->load->view('admin/vendor/unverified_vendor', $data);
     }
@@ -41,7 +41,7 @@ class Vendor extends MY_Controller {
             echo 'false';
             exit(0);
         } else {
-            $this->model_vendor->delete('app_admin', 'id=' . $id);
+            $this->model_vendor->delete('app_users', 'id=' . $id);
             $this->session->set_flashdata('msg', translate('vendor_deleted'));
             $this->session->set_flashdata('msg_class', 'success');
             echo 'true';
@@ -55,7 +55,7 @@ class Vendor extends MY_Controller {
         $update = array(
             'status' => $status
         );
-        $this->model_vendor->update('app_admin', $update, 'id=' . $id);
+        $this->model_vendor->update('app_users', $update, 'id=' . $id);
         $this->session->set_flashdata('msg', translate('vendor_status'));
         $this->session->set_flashdata('msg_class', 'success');
         echo 'true';
@@ -78,9 +78,9 @@ class Vendor extends MY_Controller {
                 $status_name = translate('rejected');
             endif;
 
-            $this->model_vendor->update('app_admin', $update, 'id=' . $user_id);
+            $this->model_vendor->update('app_users', $update, 'id=' . $user_id);
             //Send email to vendor
-            $vendor = $this->model_vendor->getData("app_admin", '*', "id=" . $user_id)[0];
+            $vendor = $this->model_vendor->getData("app_users", '*', "id=" . $user_id)[0];
             $first_name = $vendor['first_name'];
             $last_name = $vendor['last_name'];
             $email = $vendor['email'];
@@ -129,7 +129,7 @@ class Vendor extends MY_Controller {
     public function update_vendor($id) {
         $cond = 'id=' . $id;
 
-        $vendor = $this->model_vendor->getData("app_admin", "*", $cond);
+        $vendor = $this->model_vendor->getData("app_users", "*", $cond);
         if (isset($vendor[0]) && !empty($vendor[0])) {
             $data['vendor_data'] = $vendor[0];
             $data['title'] = translate('update') . " " . translate('vendor');
@@ -144,9 +144,9 @@ class Vendor extends MY_Controller {
         $user_id = (int) $this->input->post('vendor_id');
         $this->form_validation->set_rules('first_name', 'First Name', 'required');
         $this->form_validation->set_rules('last_name', 'Last Name', 'required');
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[app_admin.email.id.' . $user_id . ']');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[app_users.email.id.' . $user_id . ']');
         $this->form_validation->set_rules('address', 'Address', 'required');
-        $this->form_validation->set_rules('phone', 'Phone', 'required|is_unique[app_admin.phone.id.' . $user_id . ']');
+        $this->form_validation->set_rules('phone', 'Phone', 'required|is_unique[app_users.phone.id.' . $user_id . ']');
         $this->form_validation->set_rules('company', 'Company', 'required');
         $this->form_validation->set_message('required', translate('required_message'));
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
@@ -174,13 +174,13 @@ class Vendor extends MY_Controller {
                 'created_on' => date("Y-m-d H:i:s")
             );
             if ($user_id > 0) {
-                $this->model_vendor->update('app_admin', $data, 'id=' . $user_id);
+                $this->model_vendor->update('app_users', $data, 'id=' . $user_id);
                 $this->session->set_flashdata('msg', translate('vendor_update'));
                 $this->session->set_flashdata('msg_class', 'success');
             } else {
                 $name = (trim($this->input->post('first_name'))) . " " . (trim($this->input->post('last_name')));
                 $hidenuseremail = $this->input->post('email');
-                $this->model_vendor->insert('app_admin', $data);
+                $this->model_vendor->insert('app_users', $data);
 
                 //Send email to vendor
                 $subject = translate('vendor') . " | " . translate('account_registration');

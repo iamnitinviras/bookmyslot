@@ -18,7 +18,7 @@ class Dashboard extends MY_Controller {
 
         check_mandatory();
         $admin_id = (int) $this->session->userdata('ADMIN_ID');
-        $data['total_vendor'] = $this->model_dashboard->Totalcount('app_admin', "type='V'");
+        $data['total_vendor'] = $this->model_dashboard->Totalcount('app_users', "type='V'");
         $data['total_payout_request'] = $this->model_dashboard->Totalcount('app_payment_request', "status!='S'");
         $data['total_customer'] = $this->model_dashboard->Totalcount('app_customer');
         $data['total_event'] = $this->model_dashboard->Totalcount('app_event');
@@ -52,12 +52,12 @@ class Dashboard extends MY_Controller {
         $data['pending_event'] = $pending_event;
 
         //Get list of unverified vendor
-        $unverified_vendor = $this->model_dashboard->getData('app_admin', '*', 'profile_status="N" AND type="V"');
+        $unverified_vendor = $this->model_dashboard->getData('app_users', '*', 'profile_status="N" AND type="V"');
 
         //Check expire package
         if (get_site_setting('enable_membership') == 'Y'):
             $condition_membership = " status='A' AND type='V' AND membership_till >= '$current_date' AND membership_till <= '$up_date'";
-            $membership_vendor = $this->model_dashboard->getData('app_admin', 'id,status,company_name,first_name,last_name,email,package_id,membership_till', $condition_membership);
+            $membership_vendor = $this->model_dashboard->getData('app_users', 'id,status,company_name,first_name,last_name,email,package_id,membership_till', $condition_membership);
             $data['membership_vendor'] = $membership_vendor;
         endif;
 
@@ -102,11 +102,11 @@ class Dashboard extends MY_Controller {
 
     public function payout_request() {
         $fields = "";
-        $fields .= "app_payment_request.*,CONCAT(app_admin.first_name,' ',app_admin.last_name) as vendor_name";
+        $fields .= "app_payment_request.*,CONCAT(app_users.first_name,' ',app_users.last_name) as vendor_name";
         $join = array(
             array(
-                "table" => "app_admin",
-                "condition" => "app_admin.id=app_payment_request.vendor_id",
+                "table" => "app_users",
+                "condition" => "app_users.id=app_payment_request.vendor_id",
                 "jointype" => "INNER")
         );
 
@@ -133,8 +133,8 @@ class Dashboard extends MY_Controller {
                 $vendor_amount = $payment_data[0]['vendor_price'];
                 $admin_amount = $payment_data[0]['admin_price'];
 
-                $up_qry_vendor = $this->db->query("UPDATE app_admin SET my_earning=my_earning+" . $vendor_amount . ",my_wallet=my_wallet+" . $vendor_amount . " WHERE id=" . $payment_data[0]['vendor_id']);
-                $up_qry_admin = $this->db->query("UPDATE app_admin SET my_wallet=my_wallet+" . $admin_amount . " WHERE id=1");
+                $up_qry_vendor = $this->db->query("UPDATE app_users SET my_earning=my_earning+" . $vendor_amount . ",my_wallet=my_wallet+" . $vendor_amount . " WHERE id=" . $payment_data[0]['vendor_id']);
+                $up_qry_admin = $this->db->query("UPDATE app_users SET my_wallet=my_wallet+" . $admin_amount . " WHERE id=1");
 
                 $this->session->set_flashdata('msg', translate('status_update'));
                 $this->session->set_flashdata('msg_class', 'success');
@@ -161,7 +161,7 @@ class Dashboard extends MY_Controller {
 
                 $payment_data = $payment_data[0];
                 if (isset($payment_data['id']) && $payment_data['id'] > 0) {
-                    $payment_data = $this->model_dashboard->getData("app_admin", 'first_name,last_name,email', "id=" . $payment_data['vendor_id']);
+                    $payment_data = $this->model_dashboard->getData("app_users", 'first_name,last_name,email', "id=" . $payment_data['vendor_id']);
 
                     $first_name = isset($payment_data[0]['first_name']) ? $payment_data[0]['first_name'] : "";
                     $last_name = isset($payment_data[0]['last_name']) ? $payment_data[0]['last_name'] : "";
@@ -212,11 +212,11 @@ class Dashboard extends MY_Controller {
 
     public function event_inquiry() {
 
-        $fields = "app_contact_us.*,CONCAT(app_admin.first_name,' ',app_admin.last_name) as vendor_name,app_event.title as event_name";
+        $fields = "app_contact_us.*,CONCAT(app_users.first_name,' ',app_users.last_name) as vendor_name,app_event.title as event_name";
         $join = array(
             array(
-                "table" => "app_admin",
-                "condition" => "app_admin.id=app_contact_us.admin_id",
+                "table" => "app_users",
+                "condition" => "app_users.id=app_contact_us.admin_id",
                 "jointype" => "INNER"),
             array(
                 "table" => "app_event",

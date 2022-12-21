@@ -103,7 +103,7 @@ class Message extends MY_Controller {
             $chats_messages_html = "";
             $j = 0;
             foreach ($chats_messages->result() as $chats_messages) {
-//                $record = $this->db->get_where('app_admin', ['id' => $chats_messages->user_id])->row_array();
+//                $record = $this->db->get_where('app_users', ['id' => $chats_messages->user_id])->row_array();
 //                $avatar = $record['avatar'];
 
                 $li_class = ($this->login_id == $chats_messages->from_id) && $chats_messages->chat_type == 'NC' ?

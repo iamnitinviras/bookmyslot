@@ -36,7 +36,7 @@ class Membership extends MY_Controller {
         if (isset($package_data) && count($package_data) > 0) {
             $data['package_data'] = $package_data[0];
 
-            $data['vendor_data'] = $this->db->get_where('app_admin', array('id' => $this->login_id))->row_array();
+            $data['vendor_data'] = $this->db->get_where('app_users', array('id' => $this->login_id))->row_array();
             $data['title'] = translate('membership');
             $this->load->view('vendor/membership-details', $data);
         } else {
@@ -52,7 +52,7 @@ class Membership extends MY_Controller {
 
     public function package_purchase() {
 
-        $vendor_data = $this->db->get_where('app_admin', array('id' => $this->login_id))->row_array();
+        $vendor_data = $this->db->get_where('app_users', array('id' => $this->login_id))->row_array();
 
 
         $package_id = $this->input->post('package_id');
@@ -93,7 +93,7 @@ class Membership extends MY_Controller {
             $this->db->query("UPDATE app_event SET status='A' WHERE created_by=" . $this->login_id . " AND status='SS'");
 
             $this->model_membership->insert('app_membership_history', $data);
-            $this->model_membership->update('app_admin', $vendor_update_data, "id='$this->login_id'");
+            $this->model_membership->update('app_users', $vendor_update_data, "id='$this->login_id'");
             $this->session->set_flashdata('msg', translate('transaction_success'));
             $this->session->set_flashdata('msg_class', 'success');
             redirect('vendor/membership');
@@ -133,7 +133,7 @@ class Membership extends MY_Controller {
                     $this->db->query("UPDATE app_event SET status='A' WHERE created_by=" . $this->login_id . " AND status='SS'");
 
                     $this->model_membership->insert('app_membership_history', $data);
-                    $this->model_membership->update('app_admin', $vendor_update_data, "id='$this->login_id'");
+                    $this->model_membership->update('app_users', $vendor_update_data, "id='$this->login_id'");
 
                     $this->session->set_flashdata('msg', translate('transaction_success'));
                     $this->session->set_flashdata('msg_class', 'success');
@@ -248,7 +248,7 @@ class Membership extends MY_Controller {
             $this->db->query("UPDATE app_event SET status='A' WHERE created_by=" . $this->login_id . " AND status='SS'");
 
             $this->model_membership->insert('app_membership_history', $data);
-            $this->model_membership->update('app_admin', $vendor_update_data, "id='$this->login_id'");
+            $this->model_membership->update('app_users', $vendor_update_data, "id='$this->login_id'");
 
             $this->session->unset_userdata('package');
             $this->session->unset_userdata('membership_till');

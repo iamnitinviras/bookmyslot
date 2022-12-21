@@ -457,14 +457,14 @@ class ServiceCategory extends MY_Controller {
                 'jointype' => 'left'
             ),
             array(
-                'table' => 'app_admin',
-                'condition' => 'app_admin.id=app_event.created_by',
+                'table' => 'app_users',
+                'condition' => 'app_users.id=app_event.created_by',
                 'jointype' => 'left'
             )
         );
 
         $e_condition = "app_event_book.id=" . $id;
-        $event_data = $this->model_event->getData("app_event_book", "app_event_book.* ,app_event_book.price as final_price,app_event.title as Event_title,app_location.loc_title,app_city.city_title,app_event_category.title as category_title,CONCAT(app_customer.first_name,' ',app_customer.last_name) as Customer_name,app_customer.phone as Customer_phone,app_customer.email as Customer_email,app_event_book.addons_id,app_event.price,app_admin.company_name,app_event.description as Event_description, app_event.payment_type", $e_condition, $join);
+        $event_data = $this->model_event->getData("app_event_book", "app_event_book.* ,app_event_book.price as final_price,app_event.title as Event_title,app_location.loc_title,app_city.city_title,app_event_category.title as category_title,CONCAT(app_customer.first_name,' ',app_customer.last_name) as Customer_name,app_customer.phone as Customer_phone,app_customer.email as Customer_email,app_event_book.addons_id,app_event.price,app_users.company_name,app_event.description as Event_description, app_event.payment_type", $e_condition, $join);
 
         $data['event_data'] = $event_data;
         $this->load->view('admin/service/view_booking_details', $data);
@@ -474,11 +474,11 @@ class ServiceCategory extends MY_Controller {
 
         $Vendor_ID = $this->session->userdata('Vendor_ID');
         $fields = "";
-        $fields .= "app_appointment_payment.*,CONCAT(app_admin.first_name,' ',app_admin.last_name) as vendor_name,app_event.title as event_name,CONCAT(app_customer.first_name,' ',app_customer.last_name) as customer_name";
+        $fields .= "app_appointment_payment.*,CONCAT(app_users.first_name,' ',app_users.last_name) as vendor_name,app_event.title as event_name,CONCAT(app_customer.first_name,' ',app_customer.last_name) as customer_name";
         $join = array(
             array(
-                "table" => "app_admin",
-                "condition" => "app_admin.id=app_appointment_payment.vendor_id",
+                "table" => "app_users",
+                "condition" => "app_users.id=app_appointment_payment.vendor_id",
                 "jointype" => "INNER"),
             array(
                 "table" => "app_event",

@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS `app_admin`;
-CREATE TABLE IF NOT EXISTS `app_admin` (
+DROP TABLE IF EXISTS `app_users`;
+CREATE TABLE IF NOT EXISTS `app_users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `profile_image` varchar(100) NOT NULL DEFAULT '',
   `first_name` varchar(100) CHARACTER SET utf8 NOT NULL,
@@ -1462,7 +1462,7 @@ ALTER TABLE `app_appointment_payment`
 -- Constraints for table `app_event`
 --
 ALTER TABLE `app_event`
-  ADD CONSTRAINT `app_event_vendor` FOREIGN KEY (`created_by`) REFERENCES `app_admin` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `app_event_vendor` FOREIGN KEY (`created_by`) REFERENCES `app_users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `app_event_book`
@@ -1492,12 +1492,12 @@ ALTER TABLE `app_location`
 --
 -- Constraints for table `app_payment_request`
 --
-ALTER TABLE `app_payment_request` ADD CONSTRAINT `app_payment_request_vendor_id` FOREIGN KEY (`vendor_id`) REFERENCES `app_admin` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `app_payment_request` ADD CONSTRAINT `app_payment_request_vendor_id` FOREIGN KEY (`vendor_id`) REFERENCES `app_users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- custom update
 INSERT INTO `app_payment_setting` (`id`,`stripe`, `on_cash`, `stripe_secret`, `stripe_publish`, `paypal`, `paypal_sendbox_live`, `paypal_merchant_email`, `created_on`) VALUES (NULL,'N', 'N', NULL, NULL, 'N', 'S', NULL, '2018-08-01 00:00:00');
 
-INSERT INTO `app_admin` (`id`,`first_name`, `last_name`, `email`, `password`,`status`, `profile_status`, `type`, `company_name`, `created_on`,`cash_payment`)
+INSERT INTO `app_users` (`id`,`first_name`, `last_name`, `email`, `password`,`status`, `profile_status`, `type`, `company_name`, `created_on`,`cash_payment`)
 VALUES (NULL,'admin_first_name', 'admin_last_name', 'admin_email', 'admin_password','A', 'V', 'A', 'admin_company_name','admin_created_at','0');
 INSERT INTO `app_email_setting` (`id`,`mail_type`,`email_from`,`smtp_host`, `smtp_username`, `smtp_password`, `smtp_port`, `smtp_secure`)
 VALUES (NULL,'email_mail_type','email_email_from','email_smtp_host', 'email_smtp_username', 'email_smtp_password', 'email_smtp_port', 'email_smtp_secure');

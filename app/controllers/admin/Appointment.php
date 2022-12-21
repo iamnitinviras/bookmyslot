@@ -68,12 +68,12 @@ class Appointment extends MY_Controller {
                 "condition" => "app_event.id=app_event_book.event_id",
                 "jointype" => "LEFT"),
             array(
-                "table" => "app_admin",
-                "condition" => "app_event.created_by=app_admin.id",
+                "table" => "app_users",
+                "condition" => "app_event.created_by=app_users.id",
                 "jointype" => "INNER")
         );
 
-        $appointment = $this->model_appointment->getData('app_event_book', 'app_event_book.*,app_admin.company_name,app_customer.first_name,app_customer.last_name,app_event.title,app_event.created_by,app_event.payment_type', $cond, $join, "app_event_book.start_date ASC,app_event_book.start_time ASC");
+        $appointment = $this->model_appointment->getData('app_event_book', 'app_event_book.*,app_users.company_name,app_customer.first_name,app_customer.last_name,app_event.title,app_event.created_by,app_event.payment_type', $cond, $join, "app_event_book.start_date ASC,app_event_book.start_time ASC");
         $data['appointment_data'] = $appointment;
 
         $join_one = array(
@@ -91,14 +91,14 @@ class Appointment extends MY_Controller {
                 'condition' => 'app_event.id=app_event_book.event_id',
                 'jointype' => 'inner'
             ), array(
-                'table' => 'app_admin',
-                'condition' => 'app_event.created_by=app_admin.id',
+                'table' => 'app_users',
+                'condition' => 'app_event.created_by=app_users.id',
                 'jointype' => 'inner'
             )
         );
 
         $appointment_event = $this->model_appointment->getData("app_event_book", "app_event_book.event_id,app_event.id as event_id,app_event.title as title", $vendor_condition, $join_one, "", "app_event.id");
-        $appointment_vendor = $this->model_appointment->getData("app_event_book", "app_admin.company_name,app_admin.first_name,app_admin.last_name,app_admin.id", "", $join_two, "", "app_admin.id");
+        $appointment_vendor = $this->model_appointment->getData("app_event_book", "app_users.company_name,app_users.first_name,app_users.last_name,app_users.id", "", $join_two, "", "app_users.id");
 
         $city_join = array(
             array(
@@ -402,11 +402,11 @@ class Appointment extends MY_Controller {
 
     public function payment_history() {
         $fields = "";
-        $fields .= "app_appointment_payment.*,CONCAT(app_admin.first_name,' ',app_admin.last_name) as vendor_name,app_admin.company_name,app_event.title as event_name,CONCAT(app_customer.first_name,' ',app_customer.last_name) as customer_name";
+        $fields .= "app_appointment_payment.*,CONCAT(app_users.first_name,' ',app_users.last_name) as vendor_name,app_users.company_name,app_event.title as event_name,CONCAT(app_customer.first_name,' ',app_customer.last_name) as customer_name";
         $join = array(
             array(
-                "table" => "app_admin",
-                "condition" => "app_admin.id=app_appointment_payment.vendor_id",
+                "table" => "app_users",
+                "condition" => "app_users.id=app_appointment_payment.vendor_id",
                 "jointype" => "INNER"),
             array(
                 "table" => "app_event",
@@ -450,12 +450,12 @@ class Appointment extends MY_Controller {
                     'jointype' => 'left'
                 ),
                 array(
-                    'table' => 'app_admin',
-                    'condition' => 'app_admin.id=app_event.created_by',
+                    'table' => 'app_users',
+                    'condition' => 'app_users.id=app_event.created_by',
                     'jointype' => 'left'
                 ),
             );
-            $select_value = "app_event.*,app_location.loc_title,app_city.city_title,app_event_category.title as category_title,app_admin.company_name";
+            $select_value = "app_event.*,app_location.loc_title,app_city.city_title,app_event_category.title as category_title,app_users.company_name";
             $event = $this->model_appointment->getData("app_event", $select_value, "app_event.id=" . $id . " AND app_event.type='S'", $join_data);
             if (!isset($event) || isset($event) && count($event) == 0) {
                 $this->session->set_flashdata('msg_class', 'failure');
