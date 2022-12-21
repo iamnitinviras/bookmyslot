@@ -61,7 +61,7 @@ $folder_name="admin";
                                                     <a href="<?php echo base_url('admin/content/edit/' . $row['id']); ?>" class="text-success" title="<?php echo translate('edit'); ?>" data-bs-toggle="tooltip" data-bs-placement="top">
                                                         <i class="mdi mdi-pencil font-size-18"></i>
                                                     </a>
-                                                    <a id="" data-toggle="modal" onclick='DeleteRecord(this)' data-target="#delete-record" data-id="<?php echo (int) $row['id']; ?>" class="btn btn-danger font_size_12">
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal" onclick='DeleteRecord(this)' data-bs-target="#delete-record" data-id="<?php echo (int) $row['id']; ?>" class="text-danger">
                                                         <i class="mdi mdi-delete font-size-18"></i>
                                                     </a>
                                                 </td>

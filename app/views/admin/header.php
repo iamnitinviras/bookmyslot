@@ -294,7 +294,7 @@
 
 
                     <li>
-                        <a href="<?php echo base_url('admin/manage-content'); ?>">
+                        <a href="<?php echo base_url('admin/content'); ?>">
                             <i data-feather="file"></i>
                             <span data-key="t-file"><?php echo translate('content_management'); ?></span>
                         </a>

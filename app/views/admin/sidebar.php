@@ -412,7 +412,7 @@ if (isset($url_segment) && in_array($url_segment, $customerArr)) {
         </li>-->
 
         <li class="<?php echo $content_active; ?>">
-            <a href="<?php echo base_url('admin/manage-content'); ?>" class="border-color">
+            <a href="<?php echo base_url('admin/content'); ?>" class="border-color">
                 <i class="fa fa-file"></i>
                 <span> <?php echo translate('content_management'); ?></span>
             </a>

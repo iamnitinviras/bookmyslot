@@ -68,7 +68,7 @@ class Page_content extends MY_Controller {
                 $this->session->set_flashdata('msg', translate('content_insert'));
                 $this->session->set_flashdata('msg_class', 'success');
             }
-            redirect('admin/manage-content', 'redirect');
+            redirect('admin/content', 'redirect');
         }
     }
 

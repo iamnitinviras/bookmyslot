@@ -12,6 +12,7 @@ $status = (set_value("status")) ? set_value("status") : (!empty($content) ? $con
 $id = (set_value("id")) ? set_value("id") : (!empty($content) ? $content['id'] : 0);
 ?>
 <input id="folder_name" name="folder_name" type="hidden" value="<?php echo isset($folder_name) && $folder_name != '' ? $folder_name : ''; ?>"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
@@ -43,7 +44,7 @@ $id = (set_value("id")) ? set_value("id") : (!empty($content) ? $content['id'] :
                     <div class="row">
                         <div class="col-md-12 m-auto">
                             <?php $this->load->view('message'); ?>
-                            <div class="row">
+                            <div class="row mb-2">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="title"> <?php echo translate('title'); ?><small class="required">*</small></label>
@@ -54,7 +55,7 @@ $id = (set_value("id")) ? set_value("id") : (!empty($content) ? $content['id'] :
 
                             </div>
 
-                            <div class="row">
+                            <div class="row mb-2">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="description"> <?php echo translate('description'); ?><small class="required">*</small></label>
@@ -65,9 +66,9 @@ $id = (set_value("id")) ? set_value("id") : (!empty($content) ? $content['id'] :
 
                             </div>
 
-                            <div class="row">
+                            <div class="row mb-2">
                                 <div class="col-md-12">
-                                    <label style="color: #757575;" > <?php echo translate('status'); ?> <small class="required">*</small></label>
+                                    <label><?php echo translate('status'); ?> <small class="required">*</small></label>
                                     <div class="form-group">
                                         <?php
                                         $active = $inactive = '';
