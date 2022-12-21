@@ -1,72 +1,77 @@
 <?php
 include VIEWPATH . 'admin/header.php';
 ?>
-<div class="dashboard-body">
-    <!-- Start Content -->
-    <div class="content">
-        <!-- Start Container -->
-        <div class="container-fluid ">
-            <section class="form-light px-2 sm-margin-b-20">
-                <!-- Row -->
-                <div class="row">
-                    <div class="col-md-12 m-auto">
-                        <?php $this->load->view('message'); ?>
-
-                        <div class="card mt-4">
-                            <div class="card-header">
-                                <h5 class="black-text font-bold mb-0">
-                                    <?php echo translate('contact-us-request'); ?>
-                                </h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table mdl-data-table" id="example">
-                                        <thead>
-                                            <tr>
-                                                <th class="text-center font-bold dark-grey-text">#</th>
-                                                <th class="text-center font-bold dark-grey-text"><?php echo translate('name'); ?></th>
-                                                <th class="text-center font-bold dark-grey-text"><?php echo translate('email'); ?></th>
-                                                <th class="text-center font-bold dark-grey-text"><?php echo translate('phone'); ?></th>
-                                                <th class="text-center font-bold dark-grey-text"><?php echo translate('subject'); ?></th>
-                                                <th class="text-center font-bold dark-grey-text"><?php echo translate('message'); ?></th>
-                                                <th class="text-center font-bold dark-grey-text"><?php echo translate('request_date'); ?></th>
-                                                <th class="text-center font-bold dark-grey-text"><?php echo translate('action'); ?></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            if (isset($app_contact_us) && count($app_contact_us) > 0) {
-                                                foreach ($app_contact_us as $mem_key => $mem_row) {
-                                                    ?>
-                                                    <tr>
-                                                        <td class="text-center"><?php echo $mem_key + 1; ?></td>
-                                                        <td class="text-center"><?php echo ucfirst($mem_row['name']); ?></td>
-                                                        <td class="text-center"><?php echo $mem_row['email']; ?></td>
-                                                        <td class="text-center"><?php echo $mem_row['phone']; ?></td>
-                                                        <td class="text-center"><?php echo $mem_row['subject']; ?></td>
-                                                        <td class="text-center"><?php echo $mem_row['message']; ?></td>
-                                                        <td class="text-center"><?php echo get_formated_date($mem_row['created_on'], "N"); ?></td>
-                                                        <td class="text-center">
-                                                            <span class="d-inline-block" title="<?php echo translate('send') . " " . translate('reply'); ?>" data-toggle="tooltip" data-placement="top"><a id="" data-toggle="modal" data-id="<?php echo $mem_row['id']; ?>" data-email="<?php echo $mem_row['email']; ?>" data-name="<?php echo $mem_row['name']; ?>" data-subject="<?php echo $mem_row['subject']; ?>" onclick='send_reply(this)' data-target="#appointment-record" data-id="<?php echo (int) $row['id']; ?>" class="btn-floating btn-sm blue-gradient"><i class="fa fa-reply"></i></a></span>
-                                                        </td>
-                                                    </tr>
-                                                    <?php
-                                                }
-                                            }
-                                            ?>
-                                        </tbody>
-                                    </table>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-6 col-xl-6">
+                            <h4 class="card-title"><?php echo $title; ?></h4>
+                            <div class="page-title-box pb-0 d-sm-flex">
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="<?php echo base_url('admin/dashboard'); ?>"><?php echo translate('dashboard'); ?></a></li>
+                                        <li class="breadcrumb-item active"><?php echo $title; ?></li>
+                                    </ol>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!--col-md-12-->
                 </div>
-                <!--Row-->
-            </section>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12 m-auto">
+                            <?php $this->load->view('message'); ?>
+
+                            <div class="table-responsive">
+                                <table class="table table-bordered dt-responsive nowrap w-100" id="datatable">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-center font-bold dark-grey-text">#</th>
+                                        <th class="text-center font-bold dark-grey-text"><?php echo translate('name'); ?></th>
+                                        <th class="text-center font-bold dark-grey-text"><?php echo translate('email'); ?></th>
+                                        <th class="text-center font-bold dark-grey-text"><?php echo translate('phone'); ?></th>
+                                        <th class="text-center font-bold dark-grey-text"><?php echo translate('subject'); ?></th>
+                                        <th class="text-center font-bold dark-grey-text"><?php echo translate('message'); ?></th>
+                                        <th class="text-center font-bold dark-grey-text"><?php echo translate('request_date'); ?></th>
+                                        <th class="text-center font-bold dark-grey-text"><?php echo translate('action'); ?></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                    if (isset($app_contact_us) && count($app_contact_us) > 0) {
+                                        foreach ($app_contact_us as $mem_key => $mem_row) {
+                                            ?>
+                                            <tr>
+                                                <td class="text-center"><?php echo $mem_key + 1; ?></td>
+                                                <td class="text-center"><?php echo ucfirst($mem_row['name']); ?></td>
+                                                <td class="text-center"><?php echo $mem_row['email']; ?></td>
+                                                <td class="text-center"><?php echo $mem_row['phone']; ?></td>
+                                                <td class="text-center"><?php echo $mem_row['subject']; ?></td>
+                                                <td class="text-center"><?php echo $mem_row['message']; ?></td>
+                                                <td class="text-center"><?php echo get_formated_date($mem_row['created_on'], "N"); ?></td>
+                                                <td class="text-center">
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal" data-id="<?php echo $mem_row['id']; ?>" data-email="<?php echo $mem_row['email']; ?>" data-name="<?php echo $mem_row['name']; ?>" data-subject="<?php echo $mem_row['subject']; ?>" onclick='send_reply(this)' data-bs-target="#appointment-record" data-id="<?php echo (int) $row['id']; ?>" class="btn-floating btn-sm blue-gradient"><i class="fa fa-reply"></i></a>
+                                                </td>
+                                            </tr>
+                                            <?php
+                                        }
+                                    }
+                                    ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>   
+    </div>
+    <!-- end row -->
 </div>
+
 <div class="modal fade" id="appointment-record">
     <div class="modal-dialog">
         <div class="modal-content">
