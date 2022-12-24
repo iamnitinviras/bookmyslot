@@ -97,7 +97,7 @@ $id = (set_value("id")) ? set_value("id") : (!empty($event_data) ? $event_data['
                                             <?php echo translate('service'); ?> <?php echo translate('information'); ?>
                                         </div>
                                         <div class="card-body">
-                                            <div class="row">
+                                            <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="name"><?php echo translate('title'); ?><small class="required">*</small></label>
@@ -105,6 +105,8 @@ $id = (set_value("id")) ? set_value("id") : (!empty($event_data) ? $event_data['
                                                         <?php echo form_error('name'); ?>
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label><?php echo translate('select') . " " . translate("service") . " " . translate('category'); ?><small class="required">*</small></label>
@@ -141,6 +143,9 @@ $id = (set_value("id")) ? set_value("id") : (!empty($event_data) ? $event_data['
                                                         <?php echo form_error('category_id'); ?>
                                                     </div>
                                                 </div>
+                                            </div>
+
+                                            <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="black-text"><?php echo translate('select_city'); ?><small class="required">*</small></label>
@@ -180,7 +185,8 @@ $id = (set_value("id")) ? set_value("id") : (!empty($event_data) ? $event_data['
                                                     </div>
                                                 </div>
 
-
+                                            </div>
+                                            <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="address"> <?php echo translate('address'); ?><small class="required">*</small></label>
@@ -252,8 +258,8 @@ $id = (set_value("id")) ? set_value("id") : (!empty($event_data) ? $event_data['
                                             <?php echo translate('booking'); ?> <?php echo translate('setting'); ?>
                                         </div>
                                         <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-md-6">
+                                            <div class="row mb-3">
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label class="black-text"><?php echo translate('select'); ?> <?php echo translate('days'); ?><small class="required">*</small></label>
                                                         <select  tabindex="12" class="form-control" id="days" name="days[]" multiple>
@@ -269,7 +275,7 @@ $id = (set_value("id")) ? set_value("id") : (!empty($event_data) ? $event_data['
                                                         <?php echo form_error('days[]'); ?>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <div class="form-group" style="padding-top: <?php isset($id) && $id > 0 ? "10px" : ""; ?>;">
                                                         <label for="slot_time"> <?php echo translate('slot_time'); ?> <small class="required">*</small> ( <?php echo translate('in_min'); ?> )</label>
                                                         <input tabindex="16" autocomplete="off"  type="number" placeholder="<?php echo translate('slot_time'); ?>" id="slot_time" name="slot_time" value="<?php echo $slot_time; ?>" class="form-control" min="15">
@@ -277,14 +283,23 @@ $id = (set_value("id")) ? set_value("id") : (!empty($event_data) ? $event_data['
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
+                                                    <div class="form-group" >
+                                                        <label for="padding_time" class="d-block"> <?php echo translate('padding_time'); ?> ( <?php echo translate('in_min'); ?> )</label>
+                                                        <input tabindex="17" autocomplete="off"  type="text"  class="form-control integers" name="padding_time" value="<?php echo isset($padding_time) ? $padding_time : "0"; ?>">
+                                                        <?php echo form_error('padding_time'); ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-4">
                                                     <div class="form-group" style="padding-top: <?php isset($id) && $id > 0 ? "10px" : ""; ?>;">
                                                         <label for="start_time"> <?php echo translate('start_time'); ?> (In 24hr format)<small class="required">*</small></label>
                                                         <input readonly="" autocomplete="off"  tabindex="14" type="text" placeholder="<?php echo translate('start_time'); ?>" id="start_time" name="start_time" value="<?php echo $start_time; ?>" class="form-control">
                                                         <?php echo form_error('start_time'); ?>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <div class="form-group" style="padding-top: <?php isset($id) && $id > 0 ? "10px" : ""; ?>;">
                                                         <label for="end_time"> <?php echo translate('end_time'); ?> (In 24hr format)<small class="required">*</small></label>
                                                         <input readonly=""  autocomplete="off" tabindex="15" type="text" placeholder="<?php echo translate('end_time'); ?>" id="end_time" name="end_time" value="<?php echo $end_time; ?>" class="form-control">
@@ -293,15 +308,9 @@ $id = (set_value("id")) ? set_value("id") : (!empty($event_data) ? $event_data['
                                                 </div>
 
 
-                                                <div class="col-md-6">
-                                                    <div class="form-group" >
-                                                        <label for="padding_time" class="d-block"> <?php echo translate('padding_time'); ?> ( <?php echo translate('in_min'); ?> )</label>
-                                                        <input tabindex="17" autocomplete="off"  type="text"  class="form-control integers" name="padding_time" value="<?php echo isset($padding_time) ? $padding_time : "0"; ?>">
-                                                        <?php echo form_error('padding_time'); ?>
-                                                    </div>
-                                                </div>
 
-                                                <div class="col-md-6">
+
+                                                <div class="col-md-4">
                                                     <label style="color: #757575;" ><?php echo translate('is_allow_multiple_slotbooking'); ?> <small class="required">*</small></label>
                                                     <div class="form-group">
                                                         <?php
@@ -323,7 +332,7 @@ $id = (set_value("id")) ? set_value("id") : (!empty($event_data) ? $event_data['
                                                     </div>
                                                 </div>
 
-                                                <div id="book_limit" class="col-md-6  <?php echo isset($multiple_slotbooking_allow) && $multiple_slotbooking_allow == 'N' ? 'd-none' : ''; ?>">
+                                                <div id="book_limit" class="col-md-4 mt-3 <?php echo isset($multiple_slotbooking_allow) && $multiple_slotbooking_allow == 'N' ? 'd-none' : ''; ?>">
                                                     <div class="form-group" >
                                                         <label for="multiple_slotbooking_limit" class="d-block"> <?php echo translate('multiple_slotbooking_limit'); ?> <small class="required">*</small></label>
                                                         <input tabindex="20" autocomplete="off"  type="text"  class="form-control integers" id="multiple_slotbooking_limit" name="multiple_slotbooking_limit" value="<?php echo isset($multiple_slotbooking_limit) ? $multiple_slotbooking_limit : ""; ?>">
@@ -342,7 +351,7 @@ $id = (set_value("id")) ? set_value("id") : (!empty($event_data) ? $event_data['
                                             <?php echo translate('price'); ?> <?php echo translate('information'); ?>
                                         </div>
                                         <div class="card-body">
-                                            <div class="row">
+                                            <div class="row mb-3">
                                                 <div class="col-md-12">
                                                     <label style="color: #757575;" ><?php echo translate('type'); ?><small class="required">*</small></label>
                                                     <div class="form-group">
@@ -364,6 +373,8 @@ $id = (set_value("id")) ? set_value("id") : (!empty($event_data) ? $event_data['
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="row mb-3">
                                                 <div class="col-md-4">
                                                     <div class="form-group <?php echo isset($payment_type) && $payment_type == 'F' ? 'd-none' : ''; ?>" style="padding-top: <?php isset($id) && $id > 0 ? "10px" : ""; ?>;" id="price-box">
                                                         <label for="price"> <?php echo translate('price'); ?> <small class="required">*</small></label>
@@ -383,6 +394,8 @@ $id = (set_value("id")) ? set_value("id") : (!empty($event_data) ? $event_data['
                                                         <input tabindex="25"  autocomplete="off" readonly="" type="number" placeholder="<?php echo translate('discount') . " " . translate('price'); ?>" id="discounted_price" name="discounted_price" value="<?php echo $discounted_price; ?>" class="form-control">
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="row mb-3">
                                                 <div class="col-md-4">
                                                     <div class="price-box form-group <?php echo isset($payment_type) && $payment_type == 'F' ? 'd-none' : ''; ?>" style="padding-top: <?php isset($id) && $id > 0 ? "10px" : ""; ?>;">
                                                         <label for="from_date"> <?php echo translate('from_date') ?></label>

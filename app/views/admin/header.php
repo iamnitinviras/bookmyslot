@@ -282,21 +282,16 @@
                     <?php endif; ?>
 
                     <li>
-                        <a href="javascript: void(0);" class="has-arrow">
-                            <i data-feather="gift"></i>
-                            <span data-key="t-ui-elements"><?php echo translate('contact-us'); ?></span>
+                        <a href="<?php echo base_url('admin/contact-us'); ?>">
+                            <i data-feather="message-square"></i>
+                            <span data-key="t-message-square"><?php echo translate('contact-us'); ?></span>
                         </a>
-                        <ul class="sub-menu" aria-expanded="false">
-                            <li><a href="<?php echo base_url('admin/contact-us'); ?>" data-key="t-user-grid"><?php echo translate('contact-us-request'); ?></a></li>
-                            <li><a href="<?php echo base_url('admin/event-inquiry'); ?>" data-key="t-user-list"><?php echo translate('event_inquiry'); ?></a></li>
-                        </ul>
                     </li>
-
 
                     <li>
                         <a href="<?php echo base_url('admin/content'); ?>">
-                            <i data-feather="file"></i>
-                            <span data-key="t-file"><?php echo translate('content_management'); ?></span>
+                            <i data-feather="file-text"></i>
+                            <span data-key="t-file-text"><?php echo translate('content_management'); ?></span>
                         </a>
                     </li>
                     <li>
